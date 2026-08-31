@@ -1,0 +1,90 @@
+---
+schema: "repo-plan/v1"
+id: "RB-T-P302"
+title: "Reach ERTS pre-initialization and report the pinned runtime identity"
+type: "task"
+state: "open"
+priority: "P3"
+milestone: "RB-M-M3"
+parent: null
+depends_on:
+  - "RB-T-P301"
+related: []
+actor: "agent"
+owner: null
+defer_until: null
+evidence: []
+x_legacy_id: "P3-02"
+x_linear_id: "ROB-727"
+x_linear_url: "https://linear.app/robert-guss/issue/ROB-727/p3-02-reach-erts-pre-initialization-and-report-the-pinned-runtime"
+x_labels:
+  - "spec-complete"
+  - "gate-blocked"
+---
+# RB-T-P302: Reach ERTS pre-initialization and report the pinned runtime identity
+
+## Goal
+
+Advance from C entry to a diagnosable ERTS pre-initialization milestone while classifying every failure beneath the runtime.
+
+## Context
+
+[Architecture & Validation Plan](<../architecture.md>)
+
+This phase must run the pinned, standard upstream ERTS artifact inside the custom AArch64 OS. Linux-hosted runs are comparison evidence only. The final runtime profile is non-JIT SMP with two normal schedulers on four guest vCPUs.
+
+Blocked by: RB-T-P301.
+
+## Deliverables
+
+* Add structured milestones around libc startup, ERTS argument parsing, allocator setup, time/page-size/CPU discovery, signal setup, poll initialization, and native thread creation.
+* Route ERTS stdout/stderr to serial without requiring terminal or shell semantics.
+* On `ENOSYS`, contract mismatch, user fault, abort, or hang, capture the last ERTS milestone, current threads, mappings, waits, syscalls, and kernel trace.
+* Fix only kernel/compatibility behavior proven incorrect by reference/conformance evidence; update the contract and tests before code.
+
+## Acceptance criteria
+
+- [ ] The runtime prints or exposes OTP/ERTS identity from inside the guest.
+- [ ] Every host interaction remains admitted by the frozen contract; zero unknown syscalls occur.
+- [ ] A forced failure at each major milestone produces a localized artifact rather than an unexplained hang.
+- [ ] No BEAM scheduler, GC, loader, instruction, or process semantic code is patched.
+
+## Verification
+
+* `just test-erts-preinit`
+* `just evidence-erts-last-state`
+
+## Evidence
+
+* Run ten clean pre-init boots and injected failures.
+* Compare thread/mapping/syscall sequence with the AArch64 Linux reference.
+* Publish a bring-up log mapping each discovered defect to a conformance regression test.
+
+## Out of scope
+
+* Elixir application integration, GUI, JIT, networking, writable storage, NIFs, and phone hardware.
+* Semantic patches to BEAM execution, scheduling, GC, process behavior, or loading.
+* Host execution presented as guest success.
+
+## Additional context
+### Completion rule
+
+Done requires evidence from the exact guest image and pinned upstream artifact. Any full-runtime defect must be reduced to a smaller contract test when feasible and must preserve the upstream-diff budget.
+### Learning checkpoint
+
+Explain how OS native threads relate to BEAM processes/schedulers, which host semantic this issue exercises, and how the evidence rules out a host-side or one-off success.
+### Readiness-audit correction — 2026-08-30
+
+* Do not patch/instrument OTP source to create milestones. Derive milestones externally from immutable artifact symbols/build map, existing runtime output/options, syscall/thread/mapping/signal traces, and kernel progress markers. Any diagnostic build whose bytes differ from the official artifact is separate evidence and cannot satisfy this issue.
+* Define an explicit startup progress automaton with deadlines and required forward events for libc entry, argument parsing, allocators, platform queries, signal setup, poll setup, native-thread creation, scheduler initialization, and identity output. “No crash” is not progress.
+* Capture the exact thread creation, TLS, futex, signal, poll, mapping, clock, entropy, and system-query sequence and compare it against the final-flags native AArch64 reference; classify every difference before continuing.
+* Runtime identity must match source/build/artifact/image receipts and include OTP/ERTS version, emulator flavor, word size, endianness, JIT disabled state, scheduler argument profile, and any relevant compile-time options. Self-report and binary provenance must agree.
+* On a hang, freeze all CPUs and record per-CPU current task, user PC/SP/register summary, task states, futex/poll/timer waits and generations, pending signals, mappings, last compatibility calls, scheduler progress counters, IPI/TLB state, trace-loss counters, and host/QEMU validity.
+* Reproduce every discovered defect in the smallest contract probe before changing the kernel whenever technically feasible. A new syscall/flag/semantic behavior reopens the M2 contract audit, conformance suite, qualification, and Gate 2 authorization.
+* Spin/yield loops, artificial readiness markers, timeout retries, forced scheduler-count changes, disabled signals, or altered wait semantics may be diagnostic experiments only. None can satisfy pre-init acceptance or disappear from the defect record.
+* Ten boots must use the official immutable artifact, fresh system launches, production entropy, final platform identity, and no automatic retries; injected-failure cases prove each milestone is independently diagnosable.
+### Implementation-readiness disposition — 2026-08-30
+
+**Action:** KEEP
+
+Good incremental milestone. Include last progress event, thread/map/syscall snapshot, and deterministic abort evidence.

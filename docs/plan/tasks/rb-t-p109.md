@@ -1,0 +1,86 @@
+---
+schema: "repo-plan/v1"
+id: "RB-T-P109"
+title: "Harden user-copy paths and contain EL0 memory faults"
+type: "task"
+state: "open"
+priority: "P3"
+milestone: "RB-M-M1"
+parent: null
+depends_on:
+  - "RB-T-P100"
+  - "RB-E-P105"
+  - "RB-T-P103"
+  - "RB-E-P108"
+related: []
+actor: "agent"
+owner: null
+defer_until: null
+evidence: []
+x_legacy_id: "P1-09"
+x_linear_id: "ROB-705"
+x_linear_url: "https://linear.app/robert-guss/issue/ROB-705/p1-09-harden-user-copy-paths-and-contain-el0-memory-faults"
+x_labels:
+  - "spec-complete"
+  - "gate-blocked"
+---
+# RB-T-P109: Harden user-copy paths and contain EL0 memory faults
+
+## Goal
+
+Make every kernel interaction with untrusted userspace pointers explicit, bounded, and recoverable.
+
+## Context
+
+[Architecture & Validation Plan](<../architecture.md>)
+
+This work targets the project-owned AArch64 kernel on QEMU `virt`. Phase 1 is single-CPU except where a test explicitly prepares an SMP-safe interface. It must use the native project ABI, not the ERTS Linux-compatible personality.
+
+Blocked by: RB-T-P103, RB-E-P105, RB-E-P108.
+
+## Deliverables
+
+* Implement checked user-range validation, overflow-safe copy-in/copy-out, string/vector limits, and page-by-page permission checks.
+* Add a fault-recovery strategy for races between validation and access appropriate to this kernel design.
+* Classify lower-EL faults and terminate only the offending process while preserving a structured fault record.
+* Create adversarial userspace probes for null, kernel, unmapped, boundary-crossing, stale, oversized, and changing mappings.
+
+## Acceptance criteria
+
+- [ ] No test pointer reads or writes kernel memory or another process's address space.
+- [ ] Invalid buffers return the specified error or terminate the offender without kernel panic.
+- [ ] Boundary-crossing and overflow cases are covered explicitly.
+- [ ] Process cleanup after a fault releases all resources and the scheduler continues running another process.
+
+## Verification
+
+* `just test-usercopy`
+* `just run-user-fault-matrix`
+
+## Evidence
+
+* Run the user-pointer adversarial matrix under randomized preemption.
+* Inspect fault records and resource counters.
+* Review every syscall for use of the checked user-access layer.
+
+## Out of scope
+
+* ERTS, Elixir, musl/pthreads, GPU UI integration, networking, writable storage, and phone hardware.
+* General POSIX/Linux compatibility or a production security claim.
+* Broad optimization before correctness evidence.
+
+## Additional context
+### Completion rule
+
+Do not mark Done until every acceptance item has durable evidence from the exact build. Preserve any failing seed or trace; never convert a flake into success by blind retry.
+### Learning checkpoint
+
+Explain the possible QEMU boot entry at EL1 or EL2, normalization into EL1, and the later exception return from EL1 into an isolated EL0 process, the invariant this slice protects, one race or memory-corruption failure mode, and how the tests expose it.
+### Implementation-readiness disposition — 2026-08-30
+
+**Action:** AMEND
+
+Lock address-space lifetime + exception-fixup mechanism, partial-copy semantics, teardown serialization, and copy-vs-unmap/exit tests.
+### Normative readiness correction — 2026-08-30
+
+Use the frozen POC user-copy mechanism: address-space lifetime/read lock plus architecture exception-fixup guarded copy sites. Convert approved EL1 copy faults to `EFAULT`, define exact partial-copy behavior, and serialize unmap/protect/exit against copies. No kernel subsystem may dereference a user pointer directly. Test copy-versus-unmap, copy-versus-exit, guard crossing, integer overflow, zero length, and fault on each page boundary.

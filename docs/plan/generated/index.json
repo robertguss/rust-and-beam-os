@@ -1,0 +1,3835 @@
+{
+  "records": [
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P105A",
+        "RB-T-P105B",
+        "RB-T-P105C"
+      ],
+      "evidence": [],
+      "id": "RB-E-P105",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-e-p105.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "TRACKING: Complete kernel VM, address-space lifecycle, and single-core mapping safety",
+      "type": "epic",
+      "x_labels": [
+        "gate-blocked",
+        "tracking"
+      ],
+      "x_legacy_id": "P1-05",
+      "x_linear_id": "ROB-701",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-701/p1-05-tracking-complete-kernel-vm-address-space-lifecycle-and-single"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P106B",
+        "RB-T-P106A",
+        "RB-T-P106C"
+      ],
+      "evidence": [],
+      "id": "RB-E-P106",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-e-p106.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "TRACKING: Complete timer IRQs, preemptive scheduling, and wakeup safety",
+      "type": "epic",
+      "x_labels": [
+        "gate-blocked",
+        "tracking"
+      ],
+      "x_legacy_id": "P1-06",
+      "x_linear_id": "ROB-700",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-700/p1-06-tracking-complete-timer-irqs-preemptive-scheduling-and-wakeup"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P108B",
+        "RB-T-P108A"
+      ],
+      "evidence": [],
+      "id": "RB-E-P108",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-e-p108.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "TRACKING: Complete static ELF staging, executable publication, and EL0 entry",
+      "type": "epic",
+      "x_labels": [
+        "gate-blocked",
+        "tracking"
+      ],
+      "x_legacy_id": "P1-08",
+      "x_linear_id": "ROB-704",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-704/p1-08-tracking-complete-static-elf-staging-executable-publication-and"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P204A",
+        "RB-T-P204C",
+        "RB-T-P204B"
+      ],
+      "evidence": [],
+      "id": "RB-E-P204",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-e-p204.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "TRACKING: Complete VMA, mapping, protection, and teardown semantics",
+      "type": "epic",
+      "x_labels": [
+        "gate-blocked",
+        "tracking"
+      ],
+      "x_legacy_id": "P2-04",
+      "x_linear_id": "ROB-713",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-713/p2-04-tracking-complete-vma-mapping-protection-and-teardown-semantics"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P205A",
+        "RB-T-P205C",
+        "RB-T-P205B",
+        "RB-T-P200",
+        "RB-T-P114",
+        "RB-G-GATE1"
+      ],
+      "evidence": [],
+      "id": "RB-E-P205",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-e-p205.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "TRACKING: Complete SMP CPU, scheduler, and TLB safety",
+      "type": "epic",
+      "x_labels": [
+        "gate-blocked",
+        "tracking"
+      ],
+      "x_legacy_id": "P2-05",
+      "x_linear_id": "ROB-715",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-715/p2-05-tracking-complete-smp-cpu-scheduler-and-tlb-safety"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P206B",
+        "RB-T-P206A",
+        "RB-E-P205",
+        "RB-T-P202",
+        "RB-E-P204"
+      ],
+      "evidence": [],
+      "id": "RB-E-P206",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-e-p206.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "TRACKING: Complete thread start, futex-dependent exit, and reclamation",
+      "type": "epic",
+      "x_labels": [
+        "gate-blocked",
+        "tracking"
+      ],
+      "x_legacy_id": "P2-06",
+      "x_linear_id": "ROB-714",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-714/p2-06-tracking-complete-thread-start-futex-dependent-exit-and"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P209A",
+        "RB-T-P209C",
+        "RB-T-P209B",
+        "RB-E-P206",
+        "RB-E-P205"
+      ],
+      "evidence": [],
+      "id": "RB-E-P209",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-e-p209.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "TRACKING: Complete bounded signal state, AArch64 frames, and wait interruption",
+      "type": "epic",
+      "x_labels": [
+        "gate-blocked",
+        "tracking"
+      ],
+      "x_legacy_id": "P2-09",
+      "x_linear_id": "ROB-724",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-724/p2-09-tracking-complete-bounded-signal-state-aarch64-frames-and-wait"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P210B",
+        "RB-T-P210A",
+        "RB-T-P200",
+        "RB-E-P205",
+        "RB-T-P203"
+      ],
+      "evidence": [],
+      "id": "RB-E-P210",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-e-p210.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "TRACKING: Complete streams, descriptor lifecycle, and poll readiness",
+      "type": "epic",
+      "x_labels": [
+        "gate-blocked",
+        "tracking"
+      ],
+      "x_legacy_id": "P2-10",
+      "x_linear_id": "ROB-722",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-722/p2-10-tracking-complete-streams-descriptor-lifecycle-and-poll"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P211B",
+        "RB-T-P211C",
+        "RB-T-P211A"
+      ],
+      "evidence": [],
+      "id": "RB-E-P211",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-e-p211.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "TRACKING: Complete clocks/deadlines, entropy, and platform queries",
+      "type": "epic",
+      "x_labels": [
+        "gate-blocked",
+        "tracking"
+      ],
+      "x_legacy_id": "P2-11",
+      "x_linear_id": "ROB-716",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-716/p2-11-tracking-complete-clocksdeadlines-entropy-and-platform-queries"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P501B",
+        "RB-T-P501A",
+        "RB-T-P501C"
+      ],
+      "evidence": [],
+      "id": "RB-E-P501",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-e-p501.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "TRACKING: Complete VirtIO GPU transport, resources, and present qualification",
+      "type": "epic",
+      "x_labels": [
+        "gate-blocked",
+        "tracking"
+      ],
+      "x_legacy_id": "P5-01",
+      "x_linear_id": "ROB-751",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-751/p5-01-tracking-complete-virtio-gpu-transport-resources-and-present"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P503B",
+        "RB-T-P503A",
+        "RB-T-P503C"
+      ],
+      "evidence": [],
+      "id": "RB-E-P503",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-e-p503.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "TRACKING: Complete renderer bootstrap, surface client, and event/render loop",
+      "type": "epic",
+      "x_labels": [
+        "gate-blocked",
+        "tracking"
+      ],
+      "x_legacy_id": "P5-03",
+      "x_linear_id": "ROB-754",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-754/p5-03-tracking-complete-renderer-bootstrap-surface-client-and"
+    },
+    {
+      "actor": "human",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-AUDIT0",
+        "RB-T-P017",
+        "RB-T-P016",
+        "RB-T-P015",
+        "RB-T-P014",
+        "RB-T-P001",
+        "RB-T-P013",
+        "RB-T-P012",
+        "RB-T-P011",
+        "RB-T-P010",
+        "RB-T-P006",
+        "RB-T-P009",
+        "RB-T-P008",
+        "RB-T-P003",
+        "RB-T-P005",
+        "RB-T-P002",
+        "RB-T-P007",
+        "RB-T-P004"
+      ],
+      "evidence": [],
+      "id": "RB-G-GATE0",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "gates/rb-g-gate0.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Decide whether the Rust-kernel/standard-BEAM POC may enter kernel implementation",
+      "type": "gate",
+      "x_labels": [
+        "ready-for-human"
+      ],
+      "x_legacy_id": "GATE-0",
+      "x_linear_id": "ROB-695",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-695/gate-0-decide-whether-the-rust-kernelstandard-beam-poc-may-enter"
+    },
+    {
+      "actor": "human",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P100",
+        "RB-T-P114",
+        "RB-T-P113",
+        "RB-T-P112",
+        "RB-T-P111",
+        "RB-T-P110",
+        "RB-T-P109",
+        "RB-E-P108",
+        "RB-T-P107",
+        "RB-E-P105",
+        "RB-E-P106",
+        "RB-T-P101",
+        "RB-T-P102",
+        "RB-T-P104",
+        "RB-T-P103"
+      ],
+      "evidence": [],
+      "id": "RB-G-GATE1",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "gates/rb-g-gate1.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Decide whether the kernel spine is trustworthy enough for the musl contract",
+      "type": "gate",
+      "x_labels": [
+        "ready-for-human"
+      ],
+      "x_legacy_id": "GATE-1",
+      "x_linear_id": "ROB-708",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-708/gate-1-decide-whether-the-kernel-spine-is-trustworthy-enough-for-the"
+    },
+    {
+      "actor": "human",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P211C",
+        "RB-T-P211B",
+        "RB-T-P211A",
+        "RB-T-P213A",
+        "RB-T-P200",
+        "RB-T-P214",
+        "RB-T-P213",
+        "RB-E-P209",
+        "RB-T-P212",
+        "RB-E-P210",
+        "RB-E-P205",
+        "RB-T-P208",
+        "RB-T-P207",
+        "RB-T-P202",
+        "RB-E-P206",
+        "RB-T-P203",
+        "RB-T-P201",
+        "RB-E-P204"
+      ],
+      "evidence": [],
+      "id": "RB-G-GATE2",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "gates/rb-g-gate2.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Decide whether the ERTS host contract is bounded and trustworthy",
+      "type": "gate",
+      "x_labels": [
+        "ready-for-human"
+      ],
+      "x_legacy_id": "GATE-2",
+      "x_linear_id": "ROB-721",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-721/gate-2-decide-whether-the-erts-host-contract-is-bounded-and"
+    },
+    {
+      "actor": "human",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P300",
+        "RB-T-P301",
+        "RB-T-P309",
+        "RB-T-P310",
+        "RB-T-P308",
+        "RB-T-P304",
+        "RB-T-P307",
+        "RB-T-P303",
+        "RB-T-P302",
+        "RB-T-P305",
+        "RB-T-P306"
+      ],
+      "evidence": [],
+      "id": "RB-G-GATE3",
+      "milestone": "RB-M-M3",
+      "owner": null,
+      "parent": null,
+      "path": "gates/rb-g-gate3.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Decide whether standard upstream ERTS on the custom OS is proven",
+      "type": "gate",
+      "x_labels": [
+        "ready-for-human"
+      ],
+      "x_legacy_id": "GATE-3",
+      "x_linear_id": "ROB-735",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-735/gate-3-decide-whether-standard-upstream-erts-on-the-custom-os-is"
+    },
+    {
+      "actor": "human",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P410",
+        "RB-T-P409",
+        "RB-T-P408",
+        "RB-T-P405",
+        "RB-T-P407",
+        "RB-T-P401",
+        "RB-T-P406",
+        "RB-T-P403",
+        "RB-T-P404",
+        "RB-T-P402"
+      ],
+      "evidence": [],
+      "id": "RB-G-GATE4",
+      "milestone": "RB-M-M4",
+      "owner": null,
+      "parent": null,
+      "path": "gates/rb-g-gate4.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Decide whether the Elixir release and Rust IPC boundary are ready for GUI work",
+      "type": "gate",
+      "x_labels": [
+        "ready-for-human"
+      ],
+      "x_legacy_id": "GATE-4",
+      "x_linear_id": "ROB-737",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-737/gate-4-decide-whether-the-elixir-release-and-rust-ipc-boundary-are"
+    },
+    {
+      "actor": "human",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P511",
+        "RB-T-P513",
+        "RB-T-P512",
+        "RB-T-P510",
+        "RB-T-P509",
+        "RB-T-P508",
+        "RB-T-P507",
+        "RB-E-P501",
+        "RB-T-P506",
+        "RB-E-P503",
+        "RB-T-P505",
+        "RB-T-P504",
+        "RB-T-P502"
+      ],
+      "evidence": [],
+      "id": "RB-G-GATE5",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "gates/rb-g-gate5.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Decide whether the interactive Rust/Elixir vertical slice is worth qualifying",
+      "type": "gate",
+      "x_labels": [
+        "ready-for-human"
+      ],
+      "x_legacy_id": "GATE-5",
+      "x_linear_id": "ROB-757",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-757/gate-5-decide-whether-the-interactive-rustelixir-vertical-slice-is"
+    },
+    {
+      "actor": "human",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P610",
+        "RB-T-P609",
+        "RB-T-P608",
+        "RB-T-P607",
+        "RB-T-P602",
+        "RB-T-P605",
+        "RB-T-P604",
+        "RB-T-P601",
+        "RB-T-P606",
+        "RB-T-P603"
+      ],
+      "evidence": [],
+      "id": "RB-G-GATE6",
+      "milestone": "RB-M-M6",
+      "owner": null,
+      "parent": null,
+      "path": "gates/rb-g-gate6.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Choose Continue, Pivot, Narrow, or Stop after the completed POC",
+      "type": "gate",
+      "x_labels": [
+        "ready-for-human"
+      ],
+      "x_legacy_id": "GATE-6",
+      "x_linear_id": "ROB-769",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-769/gate-6-choose-continue-pivot-narrow-or-stop-after-the-completed-poc"
+    },
+    {
+      "authorized_by": null,
+      "id": "RB-M-M0",
+      "order": 0,
+      "path": "milestones/rb-m-m0.md",
+      "schema": "repo-plan/v1",
+      "title": "De-risk Artifacts & Contracts",
+      "type": "milestone",
+      "x_legacy_id": "M0"
+    },
+    {
+      "authorized_by": "RB-G-GATE0",
+      "id": "RB-M-M1",
+      "order": 1,
+      "path": "milestones/rb-m-m1.md",
+      "schema": "repo-plan/v1",
+      "title": "Bootable Rust Kernel Spine",
+      "type": "milestone",
+      "x_legacy_id": "M1"
+    },
+    {
+      "authorized_by": "RB-G-GATE1",
+      "id": "RB-M-M2",
+      "order": 2,
+      "path": "milestones/rb-m-m2.md",
+      "schema": "repo-plan/v1",
+      "title": "Musl & BEAM Host Contract",
+      "type": "milestone",
+      "x_legacy_id": "M2"
+    },
+    {
+      "authorized_by": "RB-G-GATE2",
+      "id": "RB-M-M3",
+      "order": 3,
+      "path": "milestones/rb-m-m3.md",
+      "schema": "repo-plan/v1",
+      "title": "Upstream ERTS Inside Custom OS",
+      "type": "milestone",
+      "x_legacy_id": "M3"
+    },
+    {
+      "authorized_by": "RB-G-GATE3",
+      "id": "RB-M-M4",
+      "order": 4,
+      "path": "milestones/rb-m-m4.md",
+      "schema": "repo-plan/v1",
+      "title": "Real Elixir Release & Rust IPC",
+      "type": "milestone",
+      "x_legacy_id": "M4"
+    },
+    {
+      "authorized_by": "RB-G-GATE4",
+      "id": "RB-M-M5",
+      "order": 5,
+      "path": "milestones/rb-m-m5.md",
+      "schema": "repo-plan/v1",
+      "title": "Interactive Rust GUI Proof",
+      "type": "milestone",
+      "x_legacy_id": "M5"
+    },
+    {
+      "authorized_by": "RB-G-GATE5",
+      "id": "RB-M-M6",
+      "order": 6,
+      "path": "milestones/rb-m-m6.md",
+      "schema": "repo-plan/v1",
+      "title": "Qualification, Productivity & Decision",
+      "type": "milestone",
+      "x_legacy_id": "M6"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [],
+      "evidence": [],
+      "id": "RB-T-AUDIT0",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-audit0.md",
+      "priority": "P0",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Close architecture-readiness blockers before Gate 0",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "AUDIT-0",
+      "x_linear_id": "ROB-800",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-800/audit-0-close-architecture-readiness-blockers-before-gate-0"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [],
+      "evidence": [],
+      "id": "RB-T-P001",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p001.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Create the repository, evidence model, and reproducible build shell",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-01",
+      "x_linear_id": "ROB-684",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-684/p0-01-create-the-repository-evidence-model-and-reproducible-build"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P003",
+        "RB-T-P001"
+      ],
+      "evidence": [],
+      "id": "RB-T-P002",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p002.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Build the Linux reference runtime_lab Mix application",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-02",
+      "x_linear_id": "ROB-683",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-683/p0-02-build-the-linux-reference-runtime-lab-mix-application"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P001"
+      ],
+      "evidence": [],
+      "id": "RB-T-P003",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p003.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Pin the complete host and target toolchain with build receipts",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-03",
+      "x_linear_id": "ROB-685",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-685/p0-03-pin-the-complete-host-and-target-toolchain-with-build-receipts"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P002",
+        "RB-T-P003"
+      ],
+      "evidence": [],
+      "id": "RB-T-P004",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p004.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Trace and document the reference ERTS workload on Linux",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-04",
+      "x_linear_id": "ROB-686",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-686/p0-04-trace-and-document-the-reference-erts-workload-on-linux"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P003"
+      ],
+      "evidence": [],
+      "id": "RB-T-P005",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p005.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Cross-build static non-JIT AArch64-musl upstream ERTS",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-05",
+      "x_linear_id": "ROB-688",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-688/p0-05-cross-build-static-non-jit-aarch64-musl-upstream-erts"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P005"
+      ],
+      "evidence": [],
+      "id": "RB-T-P006",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p006.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Run the target ERTS artifact on AArch64 Linux",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-06",
+      "x_linear_id": "ROB-693",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-693/p0-06-run-the-target-erts-artifact-on-aarch64-linux"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P005",
+        "RB-T-P002",
+        "RB-T-P006"
+      ],
+      "evidence": [],
+      "id": "RB-T-P007",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p007.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Pair a genuine Mix release with the target ERTS",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-07",
+      "x_linear_id": "ROB-692",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-692/p0-07-pair-a-genuine-mix-release-with-the-target-erts"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P017",
+        "RB-T-P014",
+        "RB-T-P007",
+        "RB-T-P004"
+      ],
+      "evidence": [],
+      "id": "RB-T-P008",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p008.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Freeze the exact AArch64 BEAM host contract revision 1",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-08",
+      "x_linear_id": "ROB-690",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-690/p0-08-freeze-the-exact-aarch64-beam-host-contract-revision-1"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P002",
+        "RB-T-P001"
+      ],
+      "evidence": [],
+      "id": "RB-T-P009",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p009.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Specify ETF UI protocol v1 and conformance fixtures",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-09",
+      "x_linear_id": "ROB-687",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-687/p0-09-specify-etf-ui-protocol-v1-and-conformance-fixtures"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P002",
+        "RB-T-P009"
+      ],
+      "evidence": [],
+      "id": "RB-T-P010",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p010.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement and stress Linux-hosted Rust↔Elixir protocol endpoints",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-10",
+      "x_linear_id": "ROB-689",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-689/p0-10-implement-and-stress-linux-hosted-rustelixir-protocol-endpoints"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P003",
+        "RB-T-P001"
+      ],
+      "evidence": [],
+      "id": "RB-T-P011",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p011.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Prove bare-metal virtio display and pointer input under Linux TCG",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-11",
+      "x_linear_id": "ROB-696",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-696/p0-11-prove-bare-metal-virtio-display-and-pointer-input-under-linux"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P011"
+      ],
+      "evidence": [],
+      "id": "RB-T-P012",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p012.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Prove the display/input path under Apple Silicon HVF and select MMIO or PCI",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-12",
+      "x_linear_id": "ROB-694",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-694/p0-12-prove-the-displayinput-path-under-apple-silicon-hvf-and-select"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P017",
+        "RB-T-P016",
+        "RB-T-P015",
+        "RB-T-P014",
+        "RB-T-P010",
+        "RB-T-P007",
+        "RB-T-P012",
+        "RB-T-P008",
+        "RB-T-P003"
+      ],
+      "evidence": [],
+      "id": "RB-T-P013",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p013.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Freeze Phase 0 ADRs, licenses, hypotheses, and evidence index",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-13",
+      "x_linear_id": "ROB-691",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-691/p0-13-freeze-phase-0-adrs-licenses-hypotheses-and-evidence-index"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P003",
+        "RB-T-P006",
+        "RB-T-P012"
+      ],
+      "evidence": [],
+      "id": "RB-T-P014",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p014.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Freeze the versioned QEMU machine, CPU, auxv/HWCAP, page-size, cache, and atomics baseline",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-14",
+      "x_linear_id": "ROB-777",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-777/p0-14-freeze-the-versioned-qemu-machine-cpu-auxvhwcap-page-size-cache"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P012",
+        "RB-T-P001",
+        "RB-T-P003",
+        "RB-T-P011"
+      ],
+      "evidence": [],
+      "id": "RB-T-P015",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p015.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Prove the no_std Slint renderer path and freeze the toolkit/license decision",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-15",
+      "x_linear_id": "ROB-778",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-778/p0-15-prove-the-no-std-slint-renderer-path-and-freeze-the"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P012",
+        "RB-T-P011",
+        "RB-T-P006",
+        "RB-T-P003"
+      ],
+      "evidence": [],
+      "id": "RB-T-P016",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p016.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Benchmark and freeze feasible TCG, KVM, and HVF qualification runner profiles",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-16",
+      "x_linear_id": "ROB-779",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-779/p0-16-benchmark-and-freeze-feasible-tcg-kvm-and-hvf-qualification"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P003",
+        "RB-T-P001"
+      ],
+      "evidence": [],
+      "id": "RB-T-P017",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p017.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Reproduce and disposition current BEAM-on-custom-kernel prior-art risks",
+      "type": "task",
+      "x_labels": [
+        "ready-for-agent"
+      ],
+      "x_legacy_id": "P0-17",
+      "x_linear_id": "ROB-780",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-780/p0-17-reproduce-and-disposition-current-beam-on-custom-kernel-prior"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P103",
+        "RB-T-P102"
+      ],
+      "evidence": [],
+      "id": "RB-T-P100",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p100.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Freeze single-CPU IRQ, preemption, locking, and exception-stack invariants",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-00",
+      "x_linear_id": "ROB-801",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-801/p1-00-freeze-single-cpu-irq-preemption-locking-and-exception-stack"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-AUDIT0",
+        "RB-G-GATE0"
+      ],
+      "evidence": [],
+      "id": "RB-T-P101",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p101.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Scaffold the no_std kernel, linker layout, and direct QEMU runner",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-01",
+      "x_linear_id": "ROB-698",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-698/p1-01-scaffold-the-no-std-kernel-linker-layout-and-direct-qemu-runner"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P101"
+      ],
+      "evidence": [],
+      "id": "RB-T-P102",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p102.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement EL normalization, UART, and QEMU device-tree discovery",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-02",
+      "x_linear_id": "ROB-699",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-699/p1-02-implement-el-normalization-uart-and-qemu-device-tree-discovery"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P102"
+      ],
+      "evidence": [],
+      "id": "RB-T-P103",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p103.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Install AArch64 exception vectors, IRQ dispatch, and structured panic records",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-03",
+      "x_linear_id": "ROB-702",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-702/p1-03-install-aarch64-exception-vectors-irq-dispatch-and-structured"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P103",
+        "RB-T-P102"
+      ],
+      "evidence": [],
+      "id": "RB-T-P104",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p104.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Build the physical page allocator and bounded kernel heap",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-04",
+      "x_linear_id": "ROB-697",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-697/p1-04-build-the-physical-page-allocator-and-bounded-kernel-heap"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P104"
+      ],
+      "evidence": [],
+      "id": "RB-T-P105A",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": "RB-E-P105",
+      "path": "tasks/rb-t-p105a.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement page-table primitives and a reference translation model",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-05a",
+      "x_linear_id": "ROB-806",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-806/p1-05a-implement-page-table-primitives-and-a-reference-translation"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P105A"
+      ],
+      "evidence": [],
+      "id": "RB-T-P105B",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": "RB-E-P105",
+      "path": "tasks/rb-t-p105b.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Freeze kernel/user virtual layout and implement address-space lifecycle",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-05b",
+      "x_linear_id": "ROB-804",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-804/p1-05b-freeze-kerneluser-virtual-layout-and-implement-address-space"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P105B",
+        "RB-T-P114"
+      ],
+      "evidence": [],
+      "id": "RB-T-P105C",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": "RB-E-P105",
+      "path": "tasks/rb-t-p105c.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement single-core map, protect, unmap, ASID, and teardown semantics",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-05c",
+      "x_linear_id": "ROB-807",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-807/p1-05c-implement-single-core-map-protect-unmap-asid-and-teardown"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P103",
+        "RB-T-P100"
+      ],
+      "evidence": [],
+      "id": "RB-T-P106A",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": "RB-E-P106",
+      "path": "tasks/rb-t-p106a.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement generic timer and GIC IRQ delivery",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-06a",
+      "x_linear_id": "ROB-805",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-805/p1-06a-implement-generic-timer-and-gic-irq-delivery"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P105C",
+        "RB-T-P100",
+        "RB-T-P106A"
+      ],
+      "evidence": [],
+      "id": "RB-T-P106B",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": "RB-E-P106",
+      "path": "tasks/rb-t-p106b.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement the single-CPU preemptive scheduler and task-state machine",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-06b",
+      "x_linear_id": "ROB-803",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-803/p1-06b-implement-the-single-cpu-preemptive-scheduler-and-task-state"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P106B",
+        "RB-T-P106A"
+      ],
+      "evidence": [],
+      "id": "RB-T-P106C",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": "RB-E-P106",
+      "path": "tasks/rb-t-p106c.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement sleep queues, timeouts, and wakeup linearization",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-06c",
+      "x_linear_id": "ROB-808",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-808/p1-06c-implement-sleep-queues-timeouts-and-wakeup-linearization"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-E-P106",
+        "RB-E-P105"
+      ],
+      "evidence": [],
+      "id": "RB-T-P107",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p107.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Define native ABI v1 and capability-scoped handle tables",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-07",
+      "x_linear_id": "ROB-703",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-703/p1-07-define-native-abi-v1-and-capability-scoped-handle-tables"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P105C",
+        "RB-T-P107"
+      ],
+      "evidence": [],
+      "id": "RB-T-P108A",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": "RB-E-P108",
+      "path": "tasks/rb-t-p108a.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Parse, validate, allocate, and stage a static AArch64 ELF",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-08a",
+      "x_linear_id": "ROB-810",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-810/p1-08a-parse-validate-allocate-and-stage-a-static-aarch64-elf"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P108A",
+        "RB-T-P114",
+        "RB-T-P113"
+      ],
+      "evidence": [],
+      "id": "RB-T-P108B",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": "RB-E-P108",
+      "path": "tasks/rb-t-p108b.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Publish executable segments and enter the isolated EL0 process",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-08b",
+      "x_linear_id": "ROB-809",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-809/p1-08b-publish-executable-segments-and-enter-the-isolated-el0-process"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P100",
+        "RB-E-P105",
+        "RB-T-P103",
+        "RB-E-P108"
+      ],
+      "evidence": [],
+      "id": "RB-T-P109",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p109.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Harden user-copy paths and contain EL0 memory faults",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-09",
+      "x_linear_id": "ROB-705",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-705/p1-09-harden-user-copy-paths-and-contain-el0-memory-faults"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-E-P108",
+        "RB-T-P104",
+        "RB-T-P101"
+      ],
+      "evidence": [],
+      "id": "RB-T-P110",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p110.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Build the immutable system archive and manifest-driven boot plan",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-10",
+      "x_linear_id": "ROB-707",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-707/p1-10-build-the-immutable-system-archive-and-manifest-driven-boot-plan"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P110",
+        "RB-E-P106",
+        "RB-T-P103",
+        "RB-E-P108"
+      ],
+      "evidence": [],
+      "id": "RB-T-P111",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p111.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Establish structured tracing, GDB/QMP control, and machine-readable test completion",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-11",
+      "x_linear_id": "ROB-706",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-706/p1-11-establish-structured-tracing-gdbqmp-control-and-machine-readable"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P100",
+        "RB-T-P114",
+        "RB-T-P113",
+        "RB-T-P111",
+        "RB-T-P103",
+        "RB-E-P108",
+        "RB-T-P110",
+        "RB-T-P109",
+        "RB-T-P107",
+        "RB-T-P102",
+        "RB-T-P104",
+        "RB-E-P106",
+        "RB-E-P105"
+      ],
+      "evidence": [],
+      "id": "RB-T-P112",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p112.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Qualify the kernel spine with 1,000 boots and randomized memory/scheduler tests",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-12",
+      "x_linear_id": "ROB-709",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-709/p1-12-qualify-the-kernel-spine-with-1000-boots-and-randomized"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P106B",
+        "RB-T-P014",
+        "RB-T-P103"
+      ],
+      "evidence": [],
+      "id": "RB-T-P113",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p113.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement and prove EL0 FP/AdvSIMD context isolation",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-13",
+      "x_linear_id": "ROB-781",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-781/p1-13-implement-and-prove-el0-fpadvsimd-context-isolation"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P105B",
+        "RB-T-P105A",
+        "RB-T-P014"
+      ],
+      "evidence": [],
+      "id": "RB-T-P114",
+      "milestone": "RB-M-M1",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p114.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement executable-page cache maintenance and page-table/TLB coherency",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P1-14",
+      "x_linear_id": "ROB-782",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-782/p1-14-implement-executable-page-cache-maintenance-and-page-tabletlb"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P114",
+        "RB-G-GATE1",
+        "RB-T-P014"
+      ],
+      "evidence": [],
+      "id": "RB-T-P200",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p200.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Prove the AArch64 atomic and memory-ordering foundation for SMP",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-00",
+      "x_linear_id": "ROB-783",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-783/p2-00-prove-the-aarch64-atomic-and-memory-ordering-foundation-for-smp"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P113",
+        "RB-T-P008",
+        "RB-G-GATE1"
+      ],
+      "evidence": [],
+      "id": "RB-T-P201",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p201.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Create the ERTS compatibility personality and executable syscall contract",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-01",
+      "x_linear_id": "ROB-712",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-712/p2-01-create-the-erts-compatibility-personality-and-executable-syscall"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P211C",
+        "RB-T-P211B",
+        "RB-T-P014",
+        "RB-T-P113",
+        "RB-T-P201"
+      ],
+      "evidence": [],
+      "id": "RB-T-P202",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p202.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Boot a static musl process with correct initial stack, auxv, TLS, and errno",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-02",
+      "x_linear_id": "ROB-710",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-710/p2-02-boot-a-static-musl-process-with-correct-initial-stack-auxv-tls"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P201",
+        "RB-T-P202"
+      ],
+      "evidence": [],
+      "id": "RB-T-P203",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p203.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement the read-only VFS and admitted file/path syscalls",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-03",
+      "x_linear_id": "ROB-711",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-711/p2-03-implement-the-read-only-vfs-and-admitted-filepath-syscalls"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P201",
+        "RB-T-P202"
+      ],
+      "evidence": [],
+      "id": "RB-T-P204A",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P204",
+      "path": "tasks/rb-t-p204a.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement the VMA model, brk, and anonymous mappings",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-04a",
+      "x_linear_id": "ROB-811",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-811/p2-04a-implement-the-vma-model-brk-and-anonymous-mappings"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P204A",
+        "RB-T-P114",
+        "RB-T-P205C"
+      ],
+      "evidence": [],
+      "id": "RB-T-P204B",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P204",
+      "path": "tasks/rb-t-p204b.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement mprotect, munmap, VMA splitting, merge, and rollback",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-04b",
+      "x_linear_id": "ROB-812",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-812/p2-04b-implement-mprotect-munmap-vma-splitting-merge-and-rollback"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P203",
+        "RB-T-P204A"
+      ],
+      "evidence": [],
+      "id": "RB-T-P204C",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P204",
+      "path": "tasks/rb-t-p204c.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement file-backed read-only mappings only if admitted",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-04c",
+      "x_linear_id": "ROB-814",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-814/p2-04c-implement-file-backed-read-only-mappings-only-if-admitted"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-G-GATE1",
+        "RB-T-P200"
+      ],
+      "evidence": [],
+      "id": "RB-T-P205A",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P205",
+      "path": "tasks/rb-t-p205a.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Bring up secondary CPUs, per-CPU state, timers, and GIC routing",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-05a",
+      "x_linear_id": "ROB-784",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-784/p2-05a-bring-up-secondary-cpus-per-cpu-state-timers-and-gic-routing"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P113",
+        "RB-T-P200",
+        "RB-T-P205A"
+      ],
+      "evidence": [],
+      "id": "RB-T-P205B",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P205",
+      "path": "tasks/rb-t-p205b.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Make scheduling, blocking, wakeups, and task migration SMP-correct",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-05b",
+      "x_linear_id": "ROB-785",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-785/p2-05b-make-scheduling-blocking-wakeups-and-task-migration-smp-correct"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P205B",
+        "RB-T-P114"
+      ],
+      "evidence": [],
+      "id": "RB-T-P205C",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P205",
+      "path": "tasks/rb-t-p205c.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement acknowledged cross-CPU TLB shootdowns and concurrent VM safety",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-05c",
+      "x_linear_id": "ROB-786",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-786/p2-05c-implement-acknowledged-cross-cpu-tlb-shootdowns-and-concurrent"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P200",
+        "RB-E-P204",
+        "RB-T-P205B",
+        "RB-T-P202"
+      ],
+      "evidence": [],
+      "id": "RB-T-P206A",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P206",
+      "path": "tasks/rb-t-p206a.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement the admitted clone/thread-start and TLS contract",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-06a",
+      "x_linear_id": "ROB-787",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-787/p2-06a-implement-the-admitted-clonethread-start-and-tls-contract"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P205C",
+        "RB-T-P207",
+        "RB-T-P206A"
+      ],
+      "evidence": [],
+      "id": "RB-T-P206B",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P206",
+      "path": "tasks/rb-t-p206b.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement thread exit, clear-child-TID wake, join/detach, and reclamation",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-06b",
+      "x_linear_id": "ROB-788",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-788/p2-06b-implement-thread-exit-clear-child-tid-wake-joindetach-and"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P205B",
+        "RB-T-P211A",
+        "RB-T-P206A",
+        "RB-T-P200",
+        "RB-E-P204"
+      ],
+      "evidence": [],
+      "id": "RB-T-P207",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p207.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement futex wait, wake, timeout, and required bitset semantics",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-07",
+      "x_linear_id": "ROB-718",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-718/p2-07-implement-futex-wait-wake-timeout-and-required-bitset-semantics"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P206B",
+        "RB-T-P207"
+      ],
+      "evidence": [],
+      "id": "RB-T-P208",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p208.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement robust-list and thread-exit synchronization cleanup",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-08",
+      "x_linear_id": "ROB-719",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-719/p2-08-implement-robust-list-and-thread-exit-synchronization-cleanup"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P200",
+        "RB-E-P205",
+        "RB-E-P206"
+      ],
+      "evidence": [],
+      "id": "RB-T-P209A",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P209",
+      "path": "tasks/rb-t-p209a.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement signal dispositions, masks, pending state, and target selection",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-09a",
+      "x_linear_id": "ROB-791",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-791/p2-09a-implement-signal-dispositions-masks-pending-state-and-target"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P108B",
+        "RB-T-P209A",
+        "RB-T-P113"
+      ],
+      "evidence": [],
+      "id": "RB-T-P209B",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P209",
+      "path": "tasks/rb-t-p209b.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement AArch64 signal frames, alternate stack, FPSIMD context, faults, and rt_sigreturn",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-09b",
+      "x_linear_id": "ROB-792",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-792/p2-09b-implement-aarch64-signal-frames-alternate-stack-fpsimd-context"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P211A",
+        "RB-T-P207",
+        "RB-T-P209B",
+        "RB-T-P210A",
+        "RB-T-P210B"
+      ],
+      "evidence": [],
+      "id": "RB-T-P209C",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P209",
+      "path": "tasks/rb-t-p209c.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Integrate signal interruption, restart, cancellation, and wait-race semantics",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-09c",
+      "x_linear_id": "ROB-793",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-793/p2-09c-integrate-signal-interruption-restart-cancellation-and-wait"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P205B",
+        "RB-T-P200",
+        "RB-T-P203"
+      ],
+      "evidence": [],
+      "id": "RB-T-P210A",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P210",
+      "path": "tasks/rb-t-p210a.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement bounded byte streams and descriptor lifecycle semantics",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-10a",
+      "x_linear_id": "ROB-789",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-789/p2-10a-implement-bounded-byte-streams-and-descriptor-lifecycle"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P211A",
+        "RB-T-P210A",
+        "RB-T-P200",
+        "RB-T-P205B"
+      ],
+      "evidence": [],
+      "id": "RB-T-P210B",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P210",
+      "path": "tasks/rb-t-p210b.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement poll/ppoll registration, readiness, timeout, close, and reuse races",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-10b",
+      "x_linear_id": "ROB-790",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-790/p2-10b-implement-pollppoll-registration-readiness-timeout-close-and"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P205B",
+        "RB-T-P200",
+        "RB-T-P201",
+        "RB-T-P205A"
+      ],
+      "evidence": [],
+      "id": "RB-T-P211A",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P211",
+      "path": "tasks/rb-t-p211a.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement counter-based clocks, absolute deadlines, sleeps, and timer cancellation",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-11a",
+      "x_linear_id": "ROB-794",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-794/p2-11a-implement-counter-based-clocks-absolute-deadlines-sleeps-and"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P014",
+        "RB-T-P205A",
+        "RB-T-P201"
+      ],
+      "evidence": [],
+      "id": "RB-T-P211B",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P211",
+      "path": "tasks/rb-t-p211b.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement boot entropy, virtio RNG, AT_RANDOM, and bounded getrandom semantics",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-11b",
+      "x_linear_id": "ROB-795",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-795/p2-11b-implement-boot-entropy-virtio-rng-at-random-and-bounded"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P205A",
+        "RB-T-P205B",
+        "RB-T-P201",
+        "RB-T-P014"
+      ],
+      "evidence": [],
+      "id": "RB-T-P211C",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": "RB-E-P211",
+      "path": "tasks/rb-t-p211c.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement bounded platform identity, limits, CPU-count, and affinity queries",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-11c",
+      "x_linear_id": "ROB-796",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-796/p2-11c-implement-bounded-platform-identity-limits-cpu-count-and"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P211C",
+        "RB-T-P211B",
+        "RB-T-P211A",
+        "RB-E-P204",
+        "RB-E-P210",
+        "RB-E-P209",
+        "RB-T-P207",
+        "RB-E-P206",
+        "RB-T-P202",
+        "RB-T-P203",
+        "RB-T-P208"
+      ],
+      "evidence": [],
+      "id": "RB-T-P212",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p212.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Build the complete static-musl conformance suite from the host contract",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-12",
+      "x_linear_id": "ROB-723",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-723/p2-12-build-the-complete-static-musl-conformance-suite-from-the-host"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P200",
+        "RB-T-P205C",
+        "RB-T-P205A",
+        "RB-T-P205B",
+        "RB-T-P211C",
+        "RB-T-P211B",
+        "RB-T-P211A",
+        "RB-T-P213A",
+        "RB-T-P016",
+        "RB-T-P212"
+      ],
+      "evidence": [],
+      "id": "RB-T-P213",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p213.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Run one-hour four-vCPU contention and randomized preemption qualification",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-13",
+      "x_linear_id": "ROB-717",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-717/p2-13-run-one-hour-four-vcpu-contention-and-randomized-preemption"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P212",
+        "RB-T-P016"
+      ],
+      "evidence": [],
+      "id": "RB-T-P213A",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p213a.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Freeze the M2 contention campaign, progress oracle, and leak criteria before execution",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-13a",
+      "x_linear_id": "ROB-797",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-797/p2-13a-freeze-the-m2-contention-campaign-progress-oracle-and-leak"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P212",
+        "RB-T-P213"
+      ],
+      "evidence": [],
+      "id": "RB-T-P214",
+      "milestone": "RB-M-M2",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p214.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Audit and freeze the bounded BEAM host contract revision 2",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P2-14",
+      "x_linear_id": "ROB-720",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-720/p2-14-audit-and-freeze-the-bounded-beam-host-contract-revision-2"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P016",
+        "RB-T-P306",
+        "RB-T-P307"
+      ],
+      "evidence": [],
+      "id": "RB-T-P300",
+      "milestone": "RB-M-M3",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p300.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Freeze ERTS boot, process-scale, 12-hour workload, memory, and runner qualification protocol",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P3-00",
+      "x_linear_id": "ROB-798",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-798/p3-00-freeze-erts-boot-process-scale-12-hour-workload-memory-and"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-G-GATE2",
+        "RB-T-P005"
+      ],
+      "evidence": [],
+      "id": "RB-T-P301",
+      "milestone": "RB-M-M3",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p301.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Package and load the pinned upstream beam.smp inside the guest",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P3-01",
+      "x_linear_id": "ROB-728",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-728/p3-01-package-and-load-the-pinned-upstream-beamsmp-inside-the-guest"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P301"
+      ],
+      "evidence": [],
+      "id": "RB-T-P302",
+      "milestone": "RB-M-M3",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p302.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Reach ERTS pre-initialization and report the pinned runtime identity",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P3-02",
+      "x_linear_id": "ROB-727",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-727/p3-02-reach-erts-pre-initialization-and-report-the-pinned-runtime"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P302",
+        "RB-T-P304"
+      ],
+      "evidence": [],
+      "id": "RB-T-P303",
+      "milestone": "RB-M-M3",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p303.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Boot kernel and stdlib in embedded noninteractive mode",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P3-03",
+      "x_linear_id": "ROB-725",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-725/p3-03-boot-kernel-and-stdlib-in-embedded-noninteractive-mode"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P301"
+      ],
+      "evidence": [],
+      "id": "RB-T-P304",
+      "milestone": "RB-M-M3",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p304.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Validate ERTS module loading against the immutable release tree",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P3-04",
+      "x_linear_id": "ROB-726",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-726/p3-04-validate-erts-module-loading-against-the-immutable-release-tree"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P303"
+      ],
+      "evidence": [],
+      "id": "RB-T-P305",
+      "milestone": "RB-M-M3",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p305.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Exercise Erlang processes, messages, timers, ETS, binaries, and GC",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P3-05",
+      "x_linear_id": "ROB-734",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-734/p3-05-exercise-erlang-processes-messages-timers-ets-binaries-and-gc"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P305"
+      ],
+      "evidence": [],
+      "id": "RB-T-P306",
+      "milestone": "RB-M-M3",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p306.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Bring ERTS to the final two-scheduler SMP profile",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P3-06",
+      "x_linear_id": "ROB-732",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-732/p3-06-bring-erts-to-the-final-two-scheduler-smp-profile"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P302",
+        "RB-T-P306",
+        "RB-T-P304",
+        "RB-T-P305"
+      ],
+      "evidence": [],
+      "id": "RB-T-P307",
+      "milestone": "RB-M-M3",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p307.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Close ERTS-discovered host-contract defects without semantic runtime patches",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P3-07",
+      "x_linear_id": "ROB-729",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-729/p3-07-close-erts-discovered-host-contract-defects-without-semantic"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P300",
+        "RB-T-P306",
+        "RB-T-P307"
+      ],
+      "evidence": [],
+      "id": "RB-T-P308",
+      "milestone": "RB-M-M3",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p308.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Qualify 100 boots and 10,000 Erlang-process lifecycle",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P3-08",
+      "x_linear_id": "ROB-730",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-730/p3-08-qualify-100-boots-and-10000-erlang-process-lifecycle"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P300",
+        "RB-T-P016",
+        "RB-T-P305",
+        "RB-T-P307",
+        "RB-T-P308",
+        "RB-T-P306"
+      ],
+      "evidence": [],
+      "id": "RB-T-P309",
+      "milestone": "RB-M-M3",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p309.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Run the 12-hour ERTS stress and memory-stability qualification",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P3-09",
+      "x_linear_id": "ROB-733",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-733/p3-09-run-the-12-hour-erts-stress-and-memory-stability-qualification"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P308",
+        "RB-T-P309",
+        "RB-T-P307"
+      ],
+      "evidence": [],
+      "id": "RB-T-P310",
+      "milestone": "RB-M-M3",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p310.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Audit upstream integrity and publish the central feasibility evidence",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P3-10",
+      "x_linear_id": "ROB-731",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-731/p3-10-audit-upstream-integrity-and-publish-the-central-feasibility"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P408",
+        "RB-T-P016",
+        "RB-T-P405",
+        "RB-T-P406",
+        "RB-T-P407",
+        "RB-T-P403"
+      ],
+      "evidence": [],
+      "id": "RB-T-P400",
+      "milestone": "RB-M-M4",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p400.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Freeze IPC, protocol, overload, and supervised-recovery qualification manifests",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P4-00",
+      "x_linear_id": "ROB-799",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-799/p4-00-freeze-ipc-protocol-overload-and-supervised-recovery"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-G-GATE3",
+        "RB-T-P110"
+      ],
+      "evidence": [],
+      "id": "RB-T-P401",
+      "milestone": "RB-M-M4",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p401.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Extend system.toml and the boot plan for renderer/BEAM IPC resources",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P4-01",
+      "x_linear_id": "ROB-736",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-736/p4-01-extend-systemtoml-and-the-boot-plan-for-rendererbeam-ipc"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P303",
+        "RB-T-P007",
+        "RB-T-P401"
+      ],
+      "evidence": [],
+      "id": "RB-T-P402",
+      "milestone": "RB-M-M4",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p402.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Boot the genuine runtime_lab Mix release inside the custom OS",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P4-02",
+      "x_linear_id": "ROB-741",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-741/p4-02-boot-the-genuine-runtime-lab-mix-release-inside-the-custom-os"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P402",
+        "RB-T-P002"
+      ],
+      "evidence": [],
+      "id": "RB-T-P403",
+      "milestone": "RB-M-M4",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p403.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement final runtime_lab supervision and supervisor-resilient in-memory demo state",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P4-03",
+      "x_linear_id": "ROB-739",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-739/p4-03-implement-final-runtime-lab-supervision-and-supervisor-resilient"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-E-P210",
+        "RB-T-P401"
+      ],
+      "evidence": [],
+      "id": "RB-T-P404",
+      "milestone": "RB-M-M4",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p404.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement kernel-provisioned bounded UI streams and ERTS fd mapping",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P4-04",
+      "x_linear_id": "ROB-740",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-740/p4-04-implement-kernel-provisioned-bounded-ui-streams-and-erts-fd"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P009",
+        "RB-T-P404"
+      ],
+      "evidence": [],
+      "id": "RB-T-P405",
+      "milestone": "RB-M-M4",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p405.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement the bounded Rust ETF codec and packet framing",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P4-05",
+      "x_linear_id": "ROB-743",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-743/p4-05-implement-the-bounded-rust-etf-codec-and-packet-framing"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P009",
+        "RB-T-P402",
+        "RB-T-P404"
+      ],
+      "evidence": [],
+      "id": "RB-T-P406",
+      "milestone": "RB-M-M4",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p406.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Connect Elixir to fixed descriptors with an fd port",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P4-06",
+      "x_linear_id": "ROB-746",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-746/p4-06-connect-elixir-to-fixed-descriptors-with-an-fd-port"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P406",
+        "RB-T-P405",
+        "RB-T-P403"
+      ],
+      "evidence": [],
+      "id": "RB-T-P407",
+      "milestone": "RB-M-M4",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p407.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement protocol handshake, sequencing, snapshots, patches, events, and metrics",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P4-07",
+      "x_linear_id": "ROB-745",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-745/p4-07-implement-protocol-handshake-sequencing-snapshots-patches-events"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P407"
+      ],
+      "evidence": [],
+      "id": "RB-T-P408",
+      "milestone": "RB-M-M4",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p408.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Enforce UI backpressure, disconnect, reconnect, and last-valid-model behavior",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P4-08",
+      "x_linear_id": "ROB-738",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-738/p4-08-enforce-ui-backpressure-disconnect-reconnect-and-last-valid"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P400",
+        "RB-T-P406",
+        "RB-T-P407",
+        "RB-T-P408",
+        "RB-T-P405"
+      ],
+      "evidence": [],
+      "id": "RB-T-P409",
+      "milestone": "RB-M-M4",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p409.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Qualify the Rust loopback service with one million messages and malformed input",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P4-09",
+      "x_linear_id": "ROB-742",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-742/p4-09-qualify-the-rust-loopback-service-with-one-million-messages-and"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P400",
+        "RB-T-P409",
+        "RB-T-P403",
+        "RB-T-P407",
+        "RB-T-P408"
+      ],
+      "evidence": [],
+      "id": "RB-T-P410",
+      "milestone": "RB-M-M4",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p410.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Qualify 1,000 supervised crashes and restart-intensity escalation",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P4-10",
+      "x_linear_id": "ROB-744",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-744/p4-10-qualify-1000-supervised-crashes-and-restart-intensity-escalation"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P114",
+        "RB-T-P107",
+        "RB-E-P105",
+        "RB-T-P012",
+        "RB-T-P011"
+      ],
+      "evidence": [],
+      "id": "RB-T-P500",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p500.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Freeze the display-surface, buffer-ownership, and present-completion ABI",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-00",
+      "x_linear_id": "ROB-802",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-802/p5-00-freeze-the-display-surface-buffer-ownership-and-present"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-G-GATE4",
+        "RB-T-P500",
+        "RB-T-P012",
+        "RB-T-P111"
+      ],
+      "evidence": [],
+      "id": "RB-T-P501A",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": "RB-E-P501",
+      "path": "tasks/rb-t-p501a.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement VirtIO GPU transport, status, features, and reset",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-01a",
+      "x_linear_id": "ROB-813",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-813/p5-01a-implement-virtio-gpu-transport-status-features-and-reset"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P501A",
+        "RB-T-P500"
+      ],
+      "evidence": [],
+      "id": "RB-T-P501B",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": "RB-E-P501",
+      "path": "tasks/rb-t-p501b.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement GPU 2D resources, backing, and scanout",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-01b",
+      "x_linear_id": "ROB-815",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-815/p5-01b-implement-gpu-2d-resources-backing-and-scanout"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P500",
+        "RB-T-P501B"
+      ],
+      "evidence": [],
+      "id": "RB-T-P501C",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": "RB-E-P501",
+      "path": "tasks/rb-t-p501c.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement transfer, flush, fence, error, and present qualification",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-01c",
+      "x_linear_id": "ROB-816",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-816/p5-01c-implement-transfer-flush-fence-error-and-present-qualification"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-G-GATE4",
+        "RB-T-P012",
+        "RB-T-P111"
+      ],
+      "evidence": [],
+      "id": "RB-T-P502",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p502.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Integrate virtio pointer input and normalize semantic pointer events",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-02",
+      "x_linear_id": "ROB-747",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-747/p5-02-integrate-virtio-pointer-input-and-normalize-semantic-pointer"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P500",
+        "RB-T-P401"
+      ],
+      "evidence": [],
+      "id": "RB-T-P503A",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": "RB-E-P503",
+      "path": "tasks/rb-t-p503a.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement renderer process and capability bootstrap",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-03a",
+      "x_linear_id": "ROB-817",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-817/p5-03a-implement-renderer-process-and-capability-bootstrap"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P503A",
+        "RB-T-P501C",
+        "RB-T-P500"
+      ],
+      "evidence": [],
+      "id": "RB-T-P503B",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": "RB-E-P503",
+      "path": "tasks/rb-t-p503b.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement the mapped-surface and present-completion client",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-03b",
+      "x_linear_id": "ROB-818",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-818/p5-03b-implement-the-mapped-surface-and-present-completion-client"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P407",
+        "RB-T-P502",
+        "RB-T-P503B",
+        "RB-T-P408",
+        "RB-T-P503A"
+      ],
+      "evidence": [],
+      "id": "RB-T-P503C",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": "RB-E-P503",
+      "path": "tasks/rb-t-p503c.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement the renderer event, render, and IPC loop with backpressure",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-03c",
+      "x_linear_id": "ROB-819",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-819/p5-03c-implement-the-renderer-event-render-and-ipc-loop-with"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P500",
+        "RB-T-P015",
+        "RB-E-P503"
+      ],
+      "evidence": [],
+      "id": "RB-T-P504",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p504.md",
+      "priority": "P1",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Verify and integrate the frozen UiBackend, toolkit, and license decision",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-04",
+      "x_linear_id": "ROB-748",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-748/p5-04-verify-and-integrate-the-frozen-uibackend-toolkit-and-license"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P504"
+      ],
+      "evidence": [],
+      "id": "RB-T-P505",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p505.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement the opinionated Runtime Lab shell, theme, fonts, and native heartbeat",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-05",
+      "x_linear_id": "ROB-753",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-753/p5-05-implement-the-opinionated-runtime-lab-shell-theme-fonts-and"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P505",
+        "RB-T-P407"
+      ],
+      "evidence": [],
+      "id": "RB-T-P506",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p506.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Render Elixir-controlled cards and apply snapshots/patches safely",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-06",
+      "x_linear_id": "ROB-750",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-750/p5-06-render-elixir-controlled-cards-and-apply-snapshotspatches-safely"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P407",
+        "RB-T-P502",
+        "RB-T-P506"
+      ],
+      "evidence": [],
+      "id": "RB-T-P507",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p507.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Connect pointer actions through Rust, kernel IPC, ERTS port, and Elixir",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-07",
+      "x_linear_id": "ROB-755",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-755/p5-07-connect-pointer-actions-through-rust-kernel-ipc-erts-port-and"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P506",
+        "RB-T-P403",
+        "RB-T-P507"
+      ],
+      "evidence": [],
+      "id": "RB-T-P508",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p508.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Expose runtime identity, kernel metrics, and bounded stress controls",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-08",
+      "x_linear_id": "ROB-756",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-756/p5-08-expose-runtime-identity-kernel-metrics-and-bounded-stress"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P410",
+        "RB-T-P506",
+        "RB-T-P507"
+      ],
+      "evidence": [],
+      "id": "RB-T-P509",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p509.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement the Crash Feature flow and visible supervised recovery",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-09",
+      "x_linear_id": "ROB-752",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-752/p5-09-implement-the-crash-feature-flow-and-visible-supervised-recovery"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P408",
+        "RB-T-P506"
+      ],
+      "evidence": [],
+      "id": "RB-T-P510",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p510.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Implement BEAM disconnect, reconnect, resnapshot, and last-valid-view UX",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-10",
+      "x_linear_id": "ROB-749",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-749/p5-10-implement-beam-disconnect-reconnect-resnapshot-and-last-valid"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P508",
+        "RB-T-P505",
+        "RB-T-P507",
+        "RB-T-P509",
+        "RB-T-P510"
+      ],
+      "evidence": [],
+      "id": "RB-T-P511",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p511.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Instrument event-to-present-completion, frame cadence, freezes, and memory",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-11",
+      "x_linear_id": "ROB-760",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-760/p5-11-instrument-event-to-present-completion-frame-cadence-freezes-and"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P505",
+        "RB-T-P508",
+        "RB-T-P510",
+        "RB-T-P506",
+        "RB-T-P509"
+      ],
+      "evidence": [],
+      "id": "RB-T-P512",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p512.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Build QMP screenshot and visual-regression checks",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-12",
+      "x_linear_id": "ROB-758",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-758/p5-12-build-qmp-screenshot-and-visual-regression-checks"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P512",
+        "RB-T-P511",
+        "RB-T-P510",
+        "RB-T-P508",
+        "RB-T-P509",
+        "RB-T-P507",
+        "RB-E-P501",
+        "RB-T-P504",
+        "RB-T-P505",
+        "RB-T-P502",
+        "RB-E-P503",
+        "RB-T-P506"
+      ],
+      "evidence": [],
+      "id": "RB-T-P513",
+      "milestone": "RB-M-M5",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p513.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Run the interactive Apple Silicon HVF acceptance demonstration",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P5-13",
+      "x_linear_id": "ROB-759",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-759/p5-13-run-the-interactive-apple-silicon-hvf-acceptance-demonstration"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P016",
+        "RB-G-GATE5"
+      ],
+      "evidence": [],
+      "id": "RB-T-P601",
+      "milestone": "RB-M-M6",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p601.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Freeze the final qualification contract and runner profiles",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P6-01",
+      "x_linear_id": "ROB-761",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-761/p6-01-freeze-the-final-qualification-contract-and-runner-profiles"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P601"
+      ],
+      "evidence": [],
+      "id": "RB-T-P602",
+      "milestone": "RB-M-M6",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p602.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Qualify 100 clean boots of the complete image",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P6-02",
+      "x_linear_id": "ROB-764",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-764/p6-02-qualify-100-clean-boots-of-the-complete-image"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P602",
+        "RB-T-P601"
+      ],
+      "evidence": [],
+      "id": "RB-T-P603",
+      "milestone": "RB-M-M6",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p603.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Run the 12-hour complete-system mixed stress qualification",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P6-03",
+      "x_linear_id": "ROB-762",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-762/p6-03-run-the-12-hour-complete-system-mixed-stress-qualification"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P601",
+        "RB-T-P602"
+      ],
+      "evidence": [],
+      "id": "RB-T-P604",
+      "milestone": "RB-M-M6",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p604.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Qualify 10,000 scripted UI actions with complete sequence accounting",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P6-04",
+      "x_linear_id": "ROB-765",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-765/p6-04-qualify-10000-scripted-ui-actions-with-complete-sequence"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P601"
+      ],
+      "evidence": [],
+      "id": "RB-T-P605",
+      "milestone": "RB-M-M6",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p605.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Prove reproducible image builds, provenance, SBOM, and license completeness",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P6-05",
+      "x_linear_id": "ROB-766",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-766/p6-05-prove-reproducible-image-builds-provenance-sbom-and-license"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P601",
+        "RB-T-P508"
+      ],
+      "evidence": [],
+      "id": "RB-T-P606",
+      "milestone": "RB-M-M6",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p606.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Run AI exercise A: add a high-level scheduler-utilization card",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P6-06",
+      "x_linear_id": "ROB-768",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-768/p6-06-run-ai-exercise-a-add-a-high-level-scheduler-utilization-card"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P508",
+        "RB-T-P601"
+      ],
+      "evidence": [],
+      "id": "RB-T-P607",
+      "milestone": "RB-M-M6",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p607.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Run AI exercise B: add a cross-boundary page-pressure capability",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P6-07",
+      "x_linear_id": "ROB-771",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-771/p6-07-run-ai-exercise-b-add-a-cross-boundary-page-pressure-capability"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P601",
+        "RB-T-P401",
+        "RB-T-P505"
+      ],
+      "evidence": [],
+      "id": "RB-T-P608",
+      "milestone": "RB-M-M6",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p608.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Run AI exercise C: change theme and feature composition by rebuilding the image",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P6-08",
+      "x_linear_id": "ROB-763",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-763/p6-08-run-ai-exercise-c-change-theme-and-feature-composition-by"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P608",
+        "RB-T-P604",
+        "RB-T-P605",
+        "RB-T-P602",
+        "RB-T-P606",
+        "RB-T-P607",
+        "RB-T-P603"
+      ],
+      "evidence": [],
+      "id": "RB-T-P609",
+      "milestone": "RB-M-M6",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p609.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Conduct the final security-boundary, fault-model, dependency, and upstream audit",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P6-09",
+      "x_linear_id": "ROB-767",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-767/p6-09-conduct-the-final-security-boundary-fault-model-dependency-and"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P609",
+        "RB-T-P603",
+        "RB-T-P608",
+        "RB-T-P606",
+        "RB-T-P607",
+        "RB-T-P602",
+        "RB-T-P604",
+        "RB-T-P605"
+      ],
+      "evidence": [],
+      "id": "RB-T-P610",
+      "milestone": "RB-M-M6",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p610.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Score H1–H6 and publish the final POC evidence report",
+      "type": "task",
+      "x_labels": [
+        "spec-complete",
+        "gate-blocked"
+      ],
+      "x_legacy_id": "P6-10",
+      "x_linear_id": "ROB-770",
+      "x_linear_url": "https://linear.app/robert-guss/issue/ROB-770/p6-10-score-h1-h6-and-publish-the-final-poc-evidence-report"
+    }
+  ],
+  "schema": "repo-plan/v1",
+  "source_digest": "sha256:3f4e21592844293c1bdccb48740979352bdca577e0f90aab24c085ad2153ace5"
+}

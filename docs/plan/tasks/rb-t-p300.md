@@ -1,0 +1,86 @@
+---
+schema: "repo-plan/v1"
+id: "RB-T-P300"
+title: "Freeze ERTS boot, process-scale, 12-hour workload, memory, and runner qualification protocol"
+type: "task"
+state: "open"
+priority: "P1"
+milestone: "RB-M-M3"
+parent: null
+depends_on:
+  - "RB-T-P016"
+  - "RB-T-P306"
+  - "RB-T-P307"
+related: []
+actor: "agent"
+owner: null
+defer_until: null
+evidence: []
+x_legacy_id: "P3-00"
+x_linear_id: "ROB-798"
+x_linear_url: "https://linear.app/robert-guss/issue/ROB-798/p3-00-freeze-erts-boot-process-scale-12-hour-workload-memory-and"
+x_labels:
+  - "spec-complete"
+  - "gate-blocked"
+---
+# RB-T-P300: Freeze ERTS boot, process-scale, 12-hour workload, memory, and runner qualification protocol
+
+## Goal
+
+Pre-register exactly how repeatable ERTS boot, 10,000-process behavior, sustained progress, and memory stability will be executed and judged before official M3 qualification data is inspected.
+
+## Context
+
+[Architecture & Validation Plan](<../architecture.md>)
+
+Blocked by: RB-T-P016, RB-T-P306, RB-T-P307.
+
+Blocks: RB-T-P308, RB-T-P309.
+
+## Deliverables
+
+* Select RB-T-P016-approved profiles for repeated boot, deterministic fault/race exploration, full 12-hour stress, and any performance statements. Do not hard-code TCG as the long-duration runner unless measurements justify it.
+* Freeze exact host/QEMU/accelerator/machine/CPU/GIC/vCPU/RAM/devices, target ERTS/release/image/contract/build hashes, VM arguments, entropy mode, host-resource/load policy, artifact capacity, watchdogs, and preflight.
+* Define a clean boot as a fresh QEMU/system launch of the immutable image, not a VM snapshot or retained guest state. Specify boot timeout, milestones, workload, halt completion, cleanup baseline, and failure preservation.
+* Define the 10,000-process workload: batch sizes, concurrent population, per-process state/work, message payload/checksum, links/monitors, timers, failures, GC/binary/ETS interaction, acknowledgement/completion, operation floors, and quiescent cleanup.
+* Freeze the 12-hour workload phases and stationary intervals, seed schedule, process/message/timer/ETS/binary/GC/native-thread rates, deliberate crashes, idle/quiescent checkpoints, minimum operation counts, and progress floors.
+* Predeclare every sampled metric and provenance: ERTS allocator/carrier/memory categories, process/port/ETS/binary/timer/run-queue/GC/reductions, OS tasks/stacks/pages/VMAs/ASIDs/descriptors/streams/futexes/waiters/timers/signals, and trace/evidence loss.
+* Classify metrics as exact-conservation, workload-proportional, bounded retained pool/cache, high-water-only, or informational. Exact metrics return to baseline at specified checkpoints. Retained metrics have a frozen warm-up, absolute cap, plateau definition, slope estimator, autocorrelation-aware uncertainty/confidence method, and pass threshold.
+* Distinguish reserved virtual address space, committed physical pages, ERTS-owned allocations, allocator fragmentation/carriers, kernel metadata, trace buffers, immutable image pages, and host QEMU memory. Never call aggregate growth a BEAM leak without attribution.
+* Define handling for GC: record natural and forced-GC views separately; a final forced collection cannot erase a sustained-growth failure or become the only stability evidence.
+* Freeze failure taxonomy, no-retry policy, replica/seed requirements, interrupted/censored-run handling, runner-invalid conditions, and injected-failure/replay proof.
+* Generate hashed manifests for boot/process qualification and 12-hour qualification before official runs.
+
+## Acceptance criteria
+
+- [ ] A fresh agent can execute and judge every M3 qualification without inventing thresholds, workload, normalization, or runner substitutions.
+- [ ] Duration and operation floors prevent a stalled, slow, or degraded ERTS from passing merely by remaining alive.
+- [ ] Memory rules distinguish leak, fragmentation, bounded caching, workload retention, virtual reservation, trace growth, and host-emulator memory.
+- [ ] Every metric has a unit, scope, owner, sampling cadence, reset/wrap rule, missing-data rule, and analysis category.
+- [ ] Trace loss, missing samples, counter resets, clock anomalies, QEMU/host interruption, manifest drift, deterministic production entropy, or insufficient progress invalidate the run.
+- [ ] Thresholds and hashes are committed before any official result is viewed.
+- [ ] Deliberate boot hang, Erlang-process leak, kernel-object leak, slow retained-memory slope, progress stall, trace truncation, and runner drift are all detected by dry-run canaries.
+
+## Verification
+
+* `just build-m3-qualification-manifests`
+* `just validate-m3-qualification-manifests`
+* `just dry-run-m3-qualification`
+* `just test-m3-progress-memory-oracles`
+
+## Evidence
+
+* Reduced-duration dry runs; deliberate failures in every major progress/resource category; host interruption; QEMU crash; missing samples; clock and manifest drift; final-GC masking attempt; exact repeat/replay of a stored seed.
+* Independent review of the manifests and analysis code in a fresh session.
+
+## Out of scope
+
+* Choosing a favorable threshold after results, claiming emulator timing generalizes to hardware, hiding a failure with retries or forced GC, or calling unexplained aggregate growth “normal ERTS behavior.”
+
+## Additional context
+### Completion rule
+
+Done means exact runners, workloads, operation/duration floors, memory attribution, statistics, failure handling, and evidence validity are frozen before official M3 qualification.
+### Learning checkpoint
+
+Explain how the protocol separates a kernel leak, ERTS live data, allocator fragmentation, bounded cache, virtual reservation, host-QEMU growth, deadlock, and mere low throughput.

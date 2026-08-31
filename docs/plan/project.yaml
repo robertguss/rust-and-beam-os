@@ -1,0 +1,3 @@
+schema: "repo-plan/v1"
+name: "Rust + BEAM Mobile OS POC"
+prefix: "RB"

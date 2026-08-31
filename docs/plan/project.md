@@ -6,7 +6,7 @@ exported_at: "2026-08-31T13:33:41.658Z"
 ---
 # Mission
 
-> **Implementation readiness — 2026-08-30:** Phase 0 evidence work only is authorized. M1–M6 implementation is gate-blocked. GATE-0 has not passed and must explicitly record **Authorize M1** before kernel work begins.
+> **Implementation readiness — 2026-08-30:** Phase 0 evidence work only is authorized. M1–M6 remain unauthorized. RB-G-GATE0 has not passed and must have an approved decision before kernel work begins.
 
 Build and falsify a proof-of-concept mobile-oriented operating system with a project-owned Rust kernel, standard upstream Erlang/OTP and Elixir, and one interactive Rust-rendered/Elixir-controlled GUI.
 

@@ -1,7 +1,7 @@
 # Agent entry point
 
-Plan work: Before selecting, implementing, reviewing, or closing a task, read `docs/plan/README.md`, then the assigned task file and the context it points to. The repository plan is canonical; `linear_url` fields are provenance only.
+Plan work: Before selecting, implementing, reviewing, or closing work, read `docs/plan/README.md` and `docs/plan/execution-policy.md`, then run `python3 scripts/repo_plan.py check --root docs/plan`.
 
-Authorization: Read `docs/plan/state.json` before starting work. Implement only tasks whose milestone is authorized and whose status is `ready-for-agent` or `in-progress`. Human gate decisions alone may authorize another milestone.
+Task selection: Run `python3 scripts/repo_plan.py ready --root docs/plan --json`. Implement only a returned task or an already-owned `in_progress` task. Human gate decisions alone authorize gated milestones.
 
-Plan integrity: After changing task metadata, dependencies, status, or authorization, run `python3 scripts/plan_tool.py validate --root docs/plan` and rebuild `docs/plan/index.json`.
+Plan integrity: Create records with `scripts/repo_plan.py new`. After changing canonical plan content, run `python3 scripts/repo_plan.py build --root docs/plan`, then rerun `check`; commit canonical records and regenerated views together.
