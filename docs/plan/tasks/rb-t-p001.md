@@ -3,16 +3,17 @@ schema: "repo-plan/v1"
 id: "RB-T-P001"
 title: "Create the repository, evidence model, and reproducible build shell"
 type: "task"
-state: "in_progress"
+state: "done"
 priority: "P3"
 milestone: "RB-M-M0"
 parent: null
 depends_on: []
 related: []
 actor: "agent"
-owner: "robertguss"
+owner: null
 defer_until: null
-evidence: []
+evidence:
+  - "docs/evidence/phase-0/RB-T-P001/evidence.json"
 x_legacy_id: "P0-01"
 x_linear_id: "ROB-684"
 x_linear_url: "https://linear.app/robert-guss/issue/ROB-684/p0-01-create-the-repository-evidence-model-and-reproducible-build"
@@ -52,13 +53,13 @@ Blocked by: None — this can start immediately.
 
 ## Acceptance criteria
 
-- [ ] A fresh remote Linux VM can bootstrap the repository using one documented
+- [x] A fresh remote Linux VM can bootstrap the repository using one documented
       command sequence.
-- [ ] `just check` succeeds and exposes discoverable placeholder commands
+- [x] `just check` succeeds and exposes discoverable placeholder commands
       without hiding their underlying commands.
-- [ ] An evidence fixture validates against the documented schema and points to
+- [x] An evidence fixture validates against the documented schema and points to
       immutable inputs/artifacts.
-- [ ] No kernel implementation beyond a compiling skeleton is introduced.
+- [x] No kernel implementation beyond a compiling skeleton is introduced.
 
 ## Verification
 
@@ -67,9 +68,10 @@ Blocked by: None — this can start immediately.
 
 ## Evidence
 
-- Run the bootstrap from a fresh clone in a clean Linux VM.
-- Run `just check` and the evidence-schema validation.
-- Save the transcript and environment receipt under `docs/evidence/phase-0/`.
+- [Execution receipt](../../evidence/phase-0/RB-T-P001/evidence.json)
+- [Clean-clone bootstrap transcript](../../evidence/phase-0/RB-T-P001/bootstrap-transcript.txt)
+- [Linux environment receipt](../../evidence/phase-0/RB-T-P001/environment.json)
+- [Machine-readable source/claim ledger](../../evidence/sources.json)
 
 ## Out of scope
 
@@ -89,8 +91,15 @@ changing scope.
 
 ### Learning checkpoint
 
-Explain the mechanism, its governing invariant, one plausible failure mode, and
-how the saved evidence distinguishes success from an accidental demo.
+The bootstrap reads one version manifest, verifies the architecture-specific
+`rustup-init` SHA-256, disables rustup self-update, installs the exact candidate
+Rust and `just` versions, and runs every visible check. Its governing invariant
+is that an input is either explicitly pinned and integrity-checked or clearly
+classified as an unsealed candidate. A mutable installer or implicit network
+fallback could otherwise make two successful demos use different tools. The
+clean-clone transcript, source revision, environment receipt, and revalidated
+artifact hashes distinguish this result from a preconfigured checkout that only
+appeared reproducible.
 
 ### Implementation-readiness disposition — 2026-08-30
 

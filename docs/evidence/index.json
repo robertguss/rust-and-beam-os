@@ -1,4 +1,11 @@
 {
   "schema": "rust-beam/evidence-index/v1",
-  "entries": []
+  "entries": [
+    {
+      "id": "RB-EV-P001-BOOTSTRAP",
+      "task": "RB-T-P001",
+      "record": "docs/evidence/phase-0/RB-T-P001/evidence.json",
+      "claim": "A fresh x86_64 remote Linux clone installed the candidate bootstrap tools and passed every scaffold check."
+    }
+  ]
 }

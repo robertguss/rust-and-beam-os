@@ -15,8 +15,8 @@ class GateAwareLabelTests(unittest.TestCase):
     def test_ready_task_is_ready_for_agent(self) -> None:
         self.assertIn("ready-for-agent", self.records["RB-T-AUDIT0"]["labels"])
 
-    def test_owned_task_is_in_progress(self) -> None:
-        self.assertEqual(self.records["RB-T-P001"]["labels"], ["in-progress"])
+    def test_completed_task_is_done(self) -> None:
+        self.assertEqual(self.records["RB-T-P001"]["labels"], ["done"])
 
     def test_future_milestone_is_gate_blocked(self) -> None:
         self.assertIn("gate-blocked", self.records["RB-T-P100"]["labels"])

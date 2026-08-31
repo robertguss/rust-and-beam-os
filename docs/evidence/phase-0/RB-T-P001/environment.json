@@ -1,0 +1,19 @@
+{
+  "schema": "rust-beam/environment/v1",
+  "recorded_at": "2026-08-31T19:00:54Z",
+  "runner": "Amp orb (remote secure E2B Linux sandbox)",
+  "os": "debian 12",
+  "kernel": "Linux 6.1.158+",
+  "architecture": "x86_64",
+  "source_revision": "c2b6e8bc115bbe2974cdc4b9ad235a15eae968dd",
+  "source_dirty": false,
+  "isolated_bootstrap_homes": true,
+  "tools": [
+    { "name": "rustc", "version": "1.89.0 (29483883e 2025-08-04)" },
+    { "name": "cargo", "version": "1.89.0 (c24e10642 2025-06-23)" },
+    { "name": "just", "version": "1.42.4" },
+    { "name": "python", "version": "3.11.6" },
+    { "name": "git", "version": "2.55.0" },
+    { "name": "cc", "version": "Debian 12.2.0-14+deb12u1" }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "rust-beam/evidence/v1",
+  "id": "RB-EV-P001-BOOTSTRAP",
+  "task": "RB-T-P001",
+  "recorded_at": "2026-08-31T19:00:54Z",
+  "claim": "A fresh x86_64 remote Linux clone installed the candidate bootstrap tools and passed every scaffold check.",
+  "classification": "scaffold",
+  "build": {
+    "id": "rb1-c2b6e8bc115b-clean-20260831T190054Z",
+    "source_revision": "c2b6e8bc115bbe2974cdc4b9ad235a15eae968dd",
+    "source_dirty": false,
+    "target": "x86_64-unknown-linux-gnu"
+  },
+  "command": {
+    "argv": ["./scripts/bootstrap.sh"],
+    "cwd": "."
+  },
+  "environment": {
+    "os": "debian 12 / Linux 6.1.158+",
+    "architecture": "x86_64",
+    "tools": [
+      { "name": "rustc", "version": "1.89.0 (29483883e 2025-08-04)" },
+      { "name": "cargo", "version": "1.89.0 (c24e10642 2025-06-23)" },
+      { "name": "just", "version": "1.42.4" },
+      { "name": "python", "version": "3.11.6" },
+      { "name": "git", "version": "2.55.0" },
+      { "name": "cc", "version": "Debian 12.2.0-14+deb12u1" }
+    ]
+  },
+  "inputs": [
+    {
+      "path": "Cargo.lock",
+      "digest": "sha256:f1997875b2039aa950485e4ab451d6dee93c3b9651c447d5c8785c65176e154d"
+    },
+    {
+      "path": "justfile",
+      "digest": "sha256:ea2c81f2792e27b25eaa92e670fd369543b50d5e6aff37b75736e6686b94c279"
+    },
+    {
+      "path": "rust-toolchain.toml",
+      "digest": "sha256:6c5d3c2f5c6b13243f4cd1fc3afe30786e232ce0ff6bdf1725ac323dbcd257c2"
+    },
+    {
+      "path": "scripts/bootstrap.sh",
+      "digest": "sha256:81dffee1b932b433348719f6c2eaf8fabdefc12421b6458b786eaf8775d71414"
+    },
+    {
+      "path": "scripts/evidence.py",
+      "digest": "sha256:74b2725c06af871e99d83adf7ad34188e5810369b0dae94b9d9982cc3ffcd546"
+    },
+    {
+      "path": "toolchain/bootstrap-tools.json",
+      "digest": "sha256:e7f4002af13168c0947c16742d50d3af91f5dcc5931260acf7fe0b391272bd6f"
+    },
+    {
+      "path": "docs/evidence/schema/evidence-v1.schema.json",
+      "digest": "sha256:a839d25933eb9fb64c88f43487bb5b0677cf48d237075bce622f8e1ee5af9a8b"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/phase-0/RB-T-P001/bootstrap-transcript.txt",
+      "digest": "sha256:325ef3b68bb46e80faa7426ff225c7e3807aef7c505241673044be2a740705a1"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P001/environment.json",
+      "digest": "sha256:0edce71d769bd10af7635f05453877966ae46d1d04df6b7f98ca1e4719ae5c87"
+    }
+  ],
+  "result": {
+    "status": "pass",
+    "exit_code": 0
+  }
+}
