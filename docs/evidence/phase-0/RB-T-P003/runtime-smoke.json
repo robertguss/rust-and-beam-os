@@ -1,0 +1,9 @@
+{
+  "application": "beam/toolchain_smoke",
+  "elixir": "1.20.4",
+  "identity": "otp=29.0.5 elixir=1.20.4",
+  "network": "disabled",
+  "otp": "29.0.5",
+  "result": "pass",
+  "schema": "rust-beam/runtime-pair-smoke/v1"
+}

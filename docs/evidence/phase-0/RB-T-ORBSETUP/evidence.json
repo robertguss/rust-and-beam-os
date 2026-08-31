@@ -46,7 +46,7 @@
     },
     {
       "path": "scripts/evidence.py",
-      "digest": "sha256:74b2725c06af871e99d83adf7ad34188e5810369b0dae94b9d9982cc3ffcd546"
+      "digest": "sha256:d43eb06aafb2827388c444cf05d6525edca19d5d81e62b8739546c0aa6e7414c"
     },
     {
       "path": "toolchain/bootstrap-tools.json",

@@ -1,0 +1,141 @@
+{
+  "schema": "rust-beam/evidence/v1",
+  "id": "RB-EV-P003-TOOLCHAIN",
+  "task": "RB-T-P003",
+  "recorded_at": "2026-08-31T21:26:11Z",
+  "claim": "Two fresh network-disabled Linux builders produced matching complete toolchain metadata, and the sealed OTP 29.0.5/Elixir 1.20.4 pair built and ran the reference Mix application offline.",
+  "classification": "smoke",
+  "build": {
+    "id": "rb1-a8272bc3f497-dirty-20260831T212611Z",
+    "source_revision": "a8272bc3f4975659d53bde1e83fca37fb586f9bc",
+    "source_dirty": true,
+    "target": "x86_64-unknown-linux-gnu builder / AArch64 target contract"
+  },
+  "command": {
+    "argv": ["just", "toolchain-bootstrap"],
+    "cwd": "."
+  },
+  "environment": {
+    "os": "debian 12 / Linux 6.1.158+",
+    "architecture": "x86_64",
+    "tools": [
+      { "name": "rustc", "version": "1.89.0 (29483883e 2025-08-04)" },
+      { "name": "cargo", "version": "1.89.0 (c24e10642 2025-06-23)" },
+      { "name": "just", "version": "1.42.4" },
+      { "name": "python", "version": "3.11.6 host / 3.13.7 builder" },
+      { "name": "docker", "version": "29.7.2" },
+      { "name": "builder-cc", "version": "Debian GCC 12.2.0" },
+      { "name": "builder-ld", "version": "GNU Binutils 2.40" },
+      { "name": "otp", "version": "29.0.5" },
+      { "name": "elixir", "version": "1.20.4" }
+    ]
+  },
+  "inputs": [
+    {
+      "path": "justfile",
+      "digest": "sha256:8ff5c4f0d4c941a765c31541d4f08b8d3c5a9fe54fd1bbc50d9791aae8351336"
+    },
+    {
+      "path": "toolchain/sources.lock.json",
+      "digest": "sha256:ab563078a6f8cc7bde137b06a72db55e54187405c7ff10ff4151ba2f1e0fd517"
+    },
+    {
+      "path": "toolchain/contract.json",
+      "digest": "sha256:2732ba0680e6f3b229cad0f5b8f0ea450adc959f7be8cc581678701d8e8fce00"
+    },
+    {
+      "path": "toolchain/TOOLCHAIN.md",
+      "digest": "sha256:b5e444d339c8bcdf34834a856812e45d3cf11044f321e72c20325f0d55ec4540"
+    },
+    {
+      "path": "scripts/toolchain.py",
+      "digest": "sha256:bc96bf87feaa6019c47dc8d460632a8b131a5fbe7a2a285d105c76331330a5de"
+    },
+    {
+      "path": "scripts/toolchain-bootstrap.sh",
+      "digest": "sha256:f860bddd5dbe1033b3147a88ef8f47cfb11dda947ca6310bee3c6da5a9d8d713"
+    },
+    {
+      "path": "scripts/toolchain-smoke.sh",
+      "digest": "sha256:823e6543892182186637dd449aae7e38cc613c779b0e1b0f1d3130aa5c9827e7"
+    },
+    {
+      "path": "scripts/evidence.py",
+      "digest": "sha256:d43eb06aafb2827388c444cf05d6525edca19d5d81e62b8739546c0aa6e7414c"
+    },
+    {
+      "path": "beam/toolchain_smoke/mix.exs",
+      "digest": "sha256:ab8591ade3470243006031c36d7b96bb9b7d9ec3b51329ac78ac7fd562935f9a"
+    },
+    {
+      "path": "beam/toolchain_smoke/lib/toolchain_smoke.ex",
+      "digest": "sha256:668190276cc4f02bbdf9f6cb61946f5d9fa99ae76c8b1d1646fe11ae97365e8c"
+    },
+    {
+      "path": "beam/toolchain_smoke/test/test_helper.exs",
+      "digest": "sha256:b086ec47f0c6c7aaeb4cffca5ae5243dd05e0dc96ab761ced93325d5315f4b12"
+    },
+    {
+      "path": "beam/toolchain_smoke/test/toolchain_smoke_test.exs",
+      "digest": "sha256:18684ee21c917e8f8fd3dd12f7a9bbe813c0d002e09cff36f4eb5de618fd8e84"
+    },
+    {
+      "path": "docs/adr/0001-phase-0-toolchain.md",
+      "digest": "sha256:520005a5efbb5cbca1768d13447171b7c5173c61725f7d47a8ffc176ec8b6eec"
+    },
+    {
+      "path": "docs/evidence/sources.json",
+      "digest": "sha256:7e6daf46702b5bf0e8be752fd80570d1d0af2de7a0ae41bf1444843a4fd1373d"
+    },
+    {
+      "path": "docs/evidence/schema/evidence-v1.schema.json",
+      "digest": "sha256:a839d25933eb9fb64c88f43487bb5b0677cf48d237075bce622f8e1ee5af9a8b"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/phase-0/RB-T-P003/README.md",
+      "digest": "sha256:1dd471b924bfe51e586ca23a273f9afc283914320a7cd1b94f12bd13b7af33d6"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P003/environment.json",
+      "digest": "sha256:88f5604f1c26fa900a90ca65d10603f1ef867ecb87e8dafcdd620746592ec5c6"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P003/bootstrap-transcript.txt",
+      "digest": "sha256:4675a9f0c43b8984082504593650fbb85946c63984e8719a0cf11742f1da44b9"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P003/toolchain-report.txt",
+      "digest": "sha256:b5e444d339c8bcdf34834a856812e45d3cf11044f321e72c20325f0d55ec4540"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P003/toolchain-verify.txt",
+      "digest": "sha256:b6cece83a56b4f2df5f249b418a1c458424e4743111cafe7f84c4ee2b6c03770"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P003/linux-clean-a.json",
+      "digest": "sha256:05a3baa79dd1ac92c2c72f49a27e6e9db18d6f4ae3a8724e5f9b3dd62a485035"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P003/linux-clean-b.json",
+      "digest": "sha256:f0289c3dca07c69c0cf6e383079357fde2a5d3964182740c8ae7ddef3f212931"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P003/comparison.json",
+      "digest": "sha256:b750b577935e5d5bfe3838ee3a2452a8f61e830bb297e5787cbbb2673fa259b4"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P003/runtime-smoke.txt",
+      "digest": "sha256:e549316e40e948c670ece09ffd872e821d6c810e386272a15acf84577c88a050"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P003/runtime-smoke.json",
+      "digest": "sha256:2760cac0e7d794b57730e03b158351a0caa8394bcca0817c1f233c1e5148aaae"
+    }
+  ],
+  "result": {
+    "status": "pass",
+    "exit_code": 0
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "schema": "rust-beam/toolchain-contract/v1",
+  "revision": 1,
+  "status": "p003-frozen-candidate",
+  "selected_at": "2026-08-31T21:00:00Z",
+  "source_lock_revision": 1,
+  "source_ids": [
+    "elixir-source",
+    "just-source",
+    "llvm-aarch64",
+    "llvm-source",
+    "llvm-x86_64",
+    "meson-source",
+    "musl-source",
+    "ninja-aarch64",
+    "ninja-x86_64",
+    "otp-source",
+    "python-builder-image",
+    "qemu-signature",
+    "qemu-source",
+    "rust-aarch64",
+    "rust-channel-manifest",
+    "rust-std-aarch64-musl",
+    "rust-std-aarch64-none",
+    "rust-x86_64",
+    "rustup-aarch64",
+    "rustup-x86_64"
+  ],
+  "runtime_pair": {
+    "otp": {
+      "version": "29.0.5",
+      "source_id": "otp-source",
+      "configure": ["--without-javac", "--without-odbc", "--without-wx"]
+    },
+    "elixir": {
+      "version": "1.20.4",
+      "source_id": "elixir-source",
+      "supported_otp": "27-29",
+      "compiler_options": ["deterministic"]
+    }
+  },
+  "rust": {
+    "version": "1.89.0",
+    "cargo_version": "1.89.0",
+    "commit": "29483883e",
+    "llvm_version": "20.1.7",
+    "host_targets": ["x86_64-unknown-linux-gnu", "aarch64-unknown-linux-gnu"],
+    "target_std": ["aarch64-unknown-none", "aarch64-unknown-linux-musl"]
+  },
+  "cross_toolchain": {
+    "compiler": "LLVM/Clang 20.1.8",
+    "linker": "LLD 20.1.8",
+    "source_id": "llvm-source",
+    "host_binary_source_ids": {
+      "x86_64-unknown-linux-gnu": "llvm-x86_64",
+      "aarch64-unknown-linux-gnu": "llvm-aarch64"
+    },
+    "kernel_c": {
+      "target": "aarch64-none-elf",
+      "flags": ["--target=aarch64-none-elf", "-mcpu=cortex-a53", "-ffreestanding", "-fno-stack-protector", "-fuse-ld=lld"]
+    },
+    "kernel_cxx": {
+      "target": "aarch64-none-elf",
+      "flags": ["--target=aarch64-none-elf", "-mcpu=cortex-a53", "-ffreestanding", "-fno-exceptions", "-fno-rtti", "-nostdlib", "-fuse-ld=lld"],
+      "runtime": "none; freestanding probes only"
+    },
+    "userspace_c": {
+      "target": "aarch64-linux-musl",
+      "flags": ["--target=aarch64-linux-musl", "-march=armv8-a", "-static", "-fuse-ld=lld"],
+      "sysroot": "sealed musl 1.2.5 output"
+    }
+  },
+  "targets": {
+    "kernel_rust": {
+      "triple": "aarch64-unknown-none",
+      "cpu": "cortex-a53",
+      "isa_floor": "Armv8-A with FP/AdvSIMD",
+      "rustflags": ["-Ctarget-cpu=cortex-a53", "-Cpanic=abort", "-Clinker=rust-lld"]
+    },
+    "userspace_rust": {
+      "triple": "aarch64-unknown-linux-musl",
+      "cpu": "generic",
+      "isa_floor": "Armv8-A",
+      "rustflags": ["-Ctarget-feature=+crt-static", "-Clinker=clang", "-Clink-arg=--target=aarch64-linux-musl", "-Clink-arg=-fuse-ld=lld"]
+    },
+    "endianness": "little",
+    "page_size": 4096
+  },
+  "musl": {
+    "version": "1.2.5",
+    "source_id": "musl-source",
+    "target": "aarch64-linux-musl",
+    "configure": ["--target=aarch64-linux-musl", "--enable-static", "--disable-shared"]
+  },
+  "qemu": {
+    "version": "11.1.0",
+    "source_id": "qemu-source",
+    "signature_source_id": "qemu-signature",
+    "build_targets": ["aarch64-softmmu", "aarch64-linux-user"],
+    "candidate_machine": "virt-11.1",
+    "final_platform_owner": "RB-T-P014"
+  },
+  "builder": {
+    "image_source_id": "python-builder-image",
+    "image": "docker.io/library/python@sha256:c900d35aba5fe4c1dc1cd358408baae2902ff2a2926a1d15cc5002c6061ddb2e",
+    "platforms": {
+      "x86_64": "sha256:dff7bf7639ce459600e6e042228480eb9b6c627ce590e282c9b1d7c03fcad30b",
+      "aarch64": "sha256:68331cab69c9b5e5ecd0d1d7f59bfcc5179bb790454169661a8beb4f436a45e6"
+    },
+    "expected_tools": {
+      "python3": "3.13.7",
+      "cc": "12.2.0",
+      "cxx": "12.2.0",
+      "ld": "2.40",
+      "make": "4.3",
+      "autoconf": "2.71",
+      "perl": "5.36.0",
+      "git": "2.39.5",
+      "curl": "7.88.1",
+      "pkg-config": "1.8.1"
+    }
+  },
+  "runner_profiles": {
+    "linux-tcg-full-system": {
+      "host": "Linux x86_64 or AArch64",
+      "claim": "portable full-system correctness smoke",
+      "command": ["qemu-system-aarch64", "-machine", "virt-11.1,gic-version=3", "-cpu", "cortex-a53", "-accel", "tcg,thread=multi", "-smp", "4", "-m", "1024", "-nodefaults", "-no-reboot", "-nographic", "-serial", "mon:stdio", "-kernel", "<kernel.elf>"]
+    },
+    "linux-aarch64-kvm-full-system": {
+      "host": "native AArch64 Linux with KVM",
+      "claim": "native-architecture full-system lane; separately qualified from TCG",
+      "command": ["qemu-system-aarch64", "-machine", "virt-11.1,gic-version=3", "-cpu", "host", "-accel", "kvm", "-smp", "4", "-m", "1024", "-nodefaults", "-no-reboot", "-nographic", "-serial", "mon:stdio", "-kernel", "<kernel.elf>"]
+    },
+    "linux-user-smoke": {
+      "host": "Linux with qemu-user",
+      "claim": "static AArch64-musl executable smoke only; never full-system evidence",
+      "command": ["qemu-aarch64", "<static-aarch64-musl-binary>"]
+    },
+    "macos-hvf-full-system": {
+      "host": "Apple Silicon macOS only",
+      "claim": "interactive accelerated compatibility lane; not metadata-equivalent to TCG",
+      "command": ["qemu-system-aarch64", "-machine", "virt-11.1,gic-version=3", "-cpu", "host", "-accel", "hvf", "-smp", "4", "-m", "1024", "-nodefaults", "-no-reboot", "-nographic", "-serial", "mon:stdio", "-kernel", "<kernel.elf>"]
+    }
+  },
+  "residual_risks": [
+    "RB-T-P014 must freeze the final QEMU machine, CPU, GIC, HWCAP, DTB, and TCG/HVF semantic delta after executable probes.",
+    "The aarch64-unknown-none target enables FP/AdvSIMD and therefore creates a later kernel context-management obligation.",
+    "The C++ selection is freestanding only; no userspace C++ standard library is admitted.",
+    "Matching normalized metadata does not claim bit-reproducible compiler or target binaries."
+  ]
+}

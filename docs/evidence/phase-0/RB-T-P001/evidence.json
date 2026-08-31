@@ -34,7 +34,7 @@
     },
     {
       "path": "justfile",
-      "digest": "sha256:ea2c81f2792e27b25eaa92e670fd369543b50d5e6aff37b75736e6686b94c279"
+      "digest": "sha256:8ff5c4f0d4c941a765c31541d4f08b8d3c5a9fe54fd1bbc50d9791aae8351336"
     },
     {
       "path": "rust-toolchain.toml",
@@ -46,7 +46,7 @@
     },
     {
       "path": "scripts/evidence.py",
-      "digest": "sha256:74b2725c06af871e99d83adf7ad34188e5810369b0dae94b9d9982cc3ffcd546"
+      "digest": "sha256:d43eb06aafb2827388c444cf05d6525edca19d5d81e62b8739546c0aa6e7414c"
     },
     {
       "path": "toolchain/bootstrap-tools.json",

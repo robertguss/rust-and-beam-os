@@ -13,6 +13,11 @@ import tomllib
 from pathlib import Path, PurePosixPath
 from typing import Any
 
+try:
+    from scripts import toolchain as toolchain_contract
+except ModuleNotFoundError:
+    import toolchain as toolchain_contract
+
 EVIDENCE_FIELDS = {
     "schema",
     "id",
@@ -255,39 +260,13 @@ def _validate_source_ledger(root: Path) -> None:
 
 def _validate_source_lock(root: Path) -> None:
     path = root / "toolchain/sources.lock.json"
-    lock = _mapping(
-        _load_json(path),
-        {"schema", "revision", "state", "sealed_at", "policy", "entries"},
-        str(path),
-    )
-    if lock["schema"] != "rust-beam/source-lock/v1":
-        raise EvidenceError(f"{path}.schema: unsupported schema")
-    if not isinstance(lock["revision"], int) or isinstance(lock["revision"], bool) or lock["revision"] < 0:
-        raise EvidenceError(f"{path}.revision: expected a non-negative integer")
-    if lock["state"] not in {"unsealed", "sealed"}:
-        raise EvidenceError(f"{path}.state: expected unsealed or sealed")
+    lock = _load_json(path)
+    try:
+        toolchain_contract.validate_lock(lock)
+    except toolchain_contract.ToolchainError as error:
+        raise EvidenceError(f"{path}: {error}") from error
     _repository_file(root, lock["policy"], f"{path}.policy")
-    if not isinstance(lock["entries"], list):
-        raise EvidenceError(f"{path}.entries: expected an array")
-    if lock["state"] == "unsealed" and lock["sealed_at"] is not None:
-        raise EvidenceError(f"{path}.sealed_at: unsealed locks require null")
-    if lock["state"] == "sealed":
-        _timestamp(lock["sealed_at"], f"{path}.sealed_at")
-        if not lock["entries"]:
-            raise EvidenceError(f"{path}.entries: sealed locks cannot be empty")
-    required = {"id", "locator", "immutable_reference", "digest", "mirror_path", "license", "consumers"}
-    for index, raw in enumerate(lock["entries"]):
-        where = f"{path}.entries[{index}]"
-        entry = _mapping(raw, required, where)
-        for field in ("id", "locator", "immutable_reference", "license"):
-            _nonempty(entry[field], f"{where}.{field}")
-        if not isinstance(entry["digest"], str) or not DIGEST.fullmatch(entry["digest"]):
-            raise EvidenceError(f"{where}.digest: invalid SHA-256")
-        _string_list(entry["consumers"], f"{where}.consumers")
-        if lock["state"] == "sealed":
-            _repository_file(root, entry["mirror_path"], f"{where}.mirror_path")
-        else:
-            _nonempty(entry["mirror_path"], f"{where}.mirror_path")
+    _timestamp(lock["sealed_at"], f"{path}.sealed_at")
 
 
 def _validate_bootstrap_manifest(root: Path) -> None:

@@ -1,0 +1,24 @@
+{
+  "schema": "rust-beam/environment/v1",
+  "recorded_at": "2026-08-31T21:26:11Z",
+  "runner": "Amp orb (remote secure E2B Linux sandbox)",
+  "os": "debian 12",
+  "kernel": "Linux 6.1.158+",
+  "architecture": "x86_64",
+  "source_revision": "a8272bc3f4975659d53bde1e83fca37fb586f9bc",
+  "source_dirty": true,
+  "builder_image": "docker.io/library/python@sha256:c900d35aba5fe4c1dc1cd358408baae2902ff2a2926a1d15cc5002c6061ddb2e",
+  "builder_platform_digest": "sha256:dff7bf7639ce459600e6e042228480eb9b6c627ce590e282c9b1d7c03fcad30b",
+  "tools": [
+    { "name": "rustc", "version": "1.89.0 (29483883e 2025-08-04)" },
+    { "name": "cargo", "version": "1.89.0 (c24e10642 2025-06-23)" },
+    { "name": "just", "version": "1.42.4" },
+    { "name": "host-python", "version": "3.11.6" },
+    { "name": "docker", "version": "29.7.2" },
+    { "name": "builder-python", "version": "3.13.7" },
+    { "name": "builder-cc", "version": "Debian 12.2.0-14+deb12u1" },
+    { "name": "builder-ld", "version": "GNU Binutils 2.40" },
+    { "name": "otp", "version": "29.0.5" },
+    { "name": "elixir", "version": "1.20.4" }
+  ]
+}

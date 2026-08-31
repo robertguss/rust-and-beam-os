@@ -748,7 +748,9 @@
       "depends_on": [
         "RB-T-P001"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/evidence/phase-0/RB-T-P003/evidence.json"
+      ],
       "id": "RB-T-P003",
       "milestone": "RB-M-M0",
       "owner": null,
@@ -757,7 +759,7 @@
       "priority": "P3",
       "related": [],
       "schema": "repo-plan/v1",
-      "state": "open",
+      "state": "done",
       "title": "Pin the complete host and target toolchain with build receipts",
       "type": "task",
       "x_labels": [
@@ -3852,5 +3854,5 @@
     }
   ],
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:de0b1bad044f262e0a8f94fe6c0d366ffb13023e9948d15787e1ee713946aaa8"
+  "source_digest": "sha256:a3482d4b8a78f01d20a93dd56b309d874d3589120310fc357ef2169266527f22"
 }

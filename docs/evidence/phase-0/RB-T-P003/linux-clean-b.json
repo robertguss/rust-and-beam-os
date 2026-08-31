@@ -1,0 +1,729 @@
+{
+  "builder_observation": {
+    "architecture": "x86_64",
+    "container_index": "docker.io/library/python@sha256:c900d35aba5fe4c1dc1cd358408baae2902ff2a2926a1d15cc5002c6061ddb2e",
+    "container_platform_digest": "sha256:dff7bf7639ce459600e6e042228480eb9b6c627ce590e282c9b1d7c03fcad30b",
+    "id": "linux-clean-b",
+    "os": {
+      "id": "debian",
+      "version_id": "12"
+    },
+    "tools": {
+      "autoconf": "autoconf (GNU Autoconf) 2.71",
+      "cc": "cc (Debian 12.2.0-14+deb12u1) 12.2.0",
+      "curl": "curl 7.88.1 (x86_64-pc-linux-gnu) libcurl/7.88.1 OpenSSL/3.0.17 zlib/1.2.13 brotli/1.0.9 zstd/1.5.4 libidn2/2.3.3 libpsl/0.21.2 (+libidn2/2.3.3) libssh2/1.10.0 nghttp2/1.52.0 librtmp/2.3 OpenLDAP/2.5.13",
+      "cxx": "c++ (Debian 12.2.0-14+deb12u1) 12.2.0",
+      "git": "git version 2.39.5",
+      "ld": "GNU ld (GNU Binutils for Debian) 2.40",
+      "make": "GNU Make 4.3",
+      "perl": "v5.36.0",
+      "pkg-config": "1.8.1",
+      "python3": "Python 3.13.7"
+    }
+  },
+  "contract": {
+    "builder": {
+      "expected_tools": {
+        "autoconf": "2.71",
+        "cc": "12.2.0",
+        "curl": "7.88.1",
+        "cxx": "12.2.0",
+        "git": "2.39.5",
+        "ld": "2.40",
+        "make": "4.3",
+        "perl": "5.36.0",
+        "pkg-config": "1.8.1",
+        "python3": "3.13.7"
+      },
+      "image": "docker.io/library/python@sha256:c900d35aba5fe4c1dc1cd358408baae2902ff2a2926a1d15cc5002c6061ddb2e",
+      "image_source_id": "python-builder-image",
+      "platforms": {
+        "aarch64": "sha256:68331cab69c9b5e5ecd0d1d7f59bfcc5179bb790454169661a8beb4f436a45e6",
+        "x86_64": "sha256:dff7bf7639ce459600e6e042228480eb9b6c627ce590e282c9b1d7c03fcad30b"
+      }
+    },
+    "cross_toolchain": {
+      "compiler": "LLVM/Clang 20.1.8",
+      "host_binary_source_ids": {
+        "aarch64-unknown-linux-gnu": "llvm-aarch64",
+        "x86_64-unknown-linux-gnu": "llvm-x86_64"
+      },
+      "kernel_c": {
+        "flags": [
+          "--target=aarch64-none-elf",
+          "-mcpu=cortex-a53",
+          "-ffreestanding",
+          "-fno-stack-protector",
+          "-fuse-ld=lld"
+        ],
+        "target": "aarch64-none-elf"
+      },
+      "kernel_cxx": {
+        "flags": [
+          "--target=aarch64-none-elf",
+          "-mcpu=cortex-a53",
+          "-ffreestanding",
+          "-fno-exceptions",
+          "-fno-rtti",
+          "-nostdlib",
+          "-fuse-ld=lld"
+        ],
+        "runtime": "none; freestanding probes only",
+        "target": "aarch64-none-elf"
+      },
+      "linker": "LLD 20.1.8",
+      "source_id": "llvm-source",
+      "userspace_c": {
+        "flags": [
+          "--target=aarch64-linux-musl",
+          "-march=armv8-a",
+          "-static",
+          "-fuse-ld=lld"
+        ],
+        "sysroot": "sealed musl 1.2.5 output",
+        "target": "aarch64-linux-musl"
+      }
+    },
+    "musl": {
+      "configure": [
+        "--target=aarch64-linux-musl",
+        "--enable-static",
+        "--disable-shared"
+      ],
+      "source_id": "musl-source",
+      "target": "aarch64-linux-musl",
+      "version": "1.2.5"
+    },
+    "qemu": {
+      "build_targets": [
+        "aarch64-softmmu",
+        "aarch64-linux-user"
+      ],
+      "candidate_machine": "virt-11.1",
+      "final_platform_owner": "RB-T-P014",
+      "signature_source_id": "qemu-signature",
+      "source_id": "qemu-source",
+      "version": "11.1.0"
+    },
+    "residual_risks": [
+      "RB-T-P014 must freeze the final QEMU machine, CPU, GIC, HWCAP, DTB, and TCG/HVF semantic delta after executable probes.",
+      "The aarch64-unknown-none target enables FP/AdvSIMD and therefore creates a later kernel context-management obligation.",
+      "The C++ selection is freestanding only; no userspace C++ standard library is admitted.",
+      "Matching normalized metadata does not claim bit-reproducible compiler or target binaries."
+    ],
+    "revision": 1,
+    "runner_profiles": {
+      "linux-aarch64-kvm-full-system": {
+        "claim": "native-architecture full-system lane; separately qualified from TCG",
+        "command": [
+          "qemu-system-aarch64",
+          "-machine",
+          "virt-11.1,gic-version=3",
+          "-cpu",
+          "host",
+          "-accel",
+          "kvm",
+          "-smp",
+          "4",
+          "-m",
+          "1024",
+          "-nodefaults",
+          "-no-reboot",
+          "-nographic",
+          "-serial",
+          "mon:stdio",
+          "-kernel",
+          "<kernel.elf>"
+        ],
+        "host": "native AArch64 Linux with KVM"
+      },
+      "linux-tcg-full-system": {
+        "claim": "portable full-system correctness smoke",
+        "command": [
+          "qemu-system-aarch64",
+          "-machine",
+          "virt-11.1,gic-version=3",
+          "-cpu",
+          "cortex-a53",
+          "-accel",
+          "tcg,thread=multi",
+          "-smp",
+          "4",
+          "-m",
+          "1024",
+          "-nodefaults",
+          "-no-reboot",
+          "-nographic",
+          "-serial",
+          "mon:stdio",
+          "-kernel",
+          "<kernel.elf>"
+        ],
+        "host": "Linux x86_64 or AArch64"
+      },
+      "linux-user-smoke": {
+        "claim": "static AArch64-musl executable smoke only; never full-system evidence",
+        "command": [
+          "qemu-aarch64",
+          "<static-aarch64-musl-binary>"
+        ],
+        "host": "Linux with qemu-user"
+      },
+      "macos-hvf-full-system": {
+        "claim": "interactive accelerated compatibility lane; not metadata-equivalent to TCG",
+        "command": [
+          "qemu-system-aarch64",
+          "-machine",
+          "virt-11.1,gic-version=3",
+          "-cpu",
+          "host",
+          "-accel",
+          "hvf",
+          "-smp",
+          "4",
+          "-m",
+          "1024",
+          "-nodefaults",
+          "-no-reboot",
+          "-nographic",
+          "-serial",
+          "mon:stdio",
+          "-kernel",
+          "<kernel.elf>"
+        ],
+        "host": "Apple Silicon macOS only"
+      }
+    },
+    "runtime_pair": {
+      "elixir": {
+        "compiler_options": [
+          "deterministic"
+        ],
+        "source_id": "elixir-source",
+        "supported_otp": "27-29",
+        "version": "1.20.4"
+      },
+      "otp": {
+        "configure": [
+          "--without-javac",
+          "--without-odbc",
+          "--without-wx"
+        ],
+        "source_id": "otp-source",
+        "version": "29.0.5"
+      }
+    },
+    "rust": {
+      "cargo_version": "1.89.0",
+      "commit": "29483883e",
+      "host_targets": [
+        "x86_64-unknown-linux-gnu",
+        "aarch64-unknown-linux-gnu"
+      ],
+      "llvm_version": "20.1.7",
+      "target_std": [
+        "aarch64-unknown-none",
+        "aarch64-unknown-linux-musl"
+      ],
+      "version": "1.89.0"
+    },
+    "schema": "rust-beam/toolchain-contract/v1",
+    "selected_at": "2026-08-31T21:00:00Z",
+    "source_ids": [
+      "elixir-source",
+      "just-source",
+      "llvm-aarch64",
+      "llvm-source",
+      "llvm-x86_64",
+      "meson-source",
+      "musl-source",
+      "ninja-aarch64",
+      "ninja-x86_64",
+      "otp-source",
+      "python-builder-image",
+      "qemu-signature",
+      "qemu-source",
+      "rust-aarch64",
+      "rust-channel-manifest",
+      "rust-std-aarch64-musl",
+      "rust-std-aarch64-none",
+      "rust-x86_64",
+      "rustup-aarch64",
+      "rustup-x86_64"
+    ],
+    "source_lock_revision": 1,
+    "status": "p003-frozen-candidate",
+    "targets": {
+      "endianness": "little",
+      "kernel_rust": {
+        "cpu": "cortex-a53",
+        "isa_floor": "Armv8-A with FP/AdvSIMD",
+        "rustflags": [
+          "-Ctarget-cpu=cortex-a53",
+          "-Cpanic=abort",
+          "-Clinker=rust-lld"
+        ],
+        "triple": "aarch64-unknown-none"
+      },
+      "page_size": 4096,
+      "userspace_rust": {
+        "cpu": "generic",
+        "isa_floor": "Armv8-A",
+        "rustflags": [
+          "-Ctarget-feature=+crt-static",
+          "-Clinker=clang",
+          "-Clink-arg=--target=aarch64-linux-musl",
+          "-Clink-arg=-fuse-ld=lld"
+        ],
+        "triple": "aarch64-unknown-linux-musl"
+      }
+    }
+  },
+  "contract_digest": "sha256:19739c9da2342fbea2e7a8ea5963f4481d860384799491fd5a1d53a6a4242460",
+  "schema": "rust-beam/toolchain-receipt/v1",
+  "source_lock": {
+    "cache_layout": "sha256/<digest>",
+    "entries": [
+      {
+        "artifact": "source",
+        "component": "Elixir",
+        "consumers": [
+          "RB-T-P003",
+          "RB-T-P002"
+        ],
+        "digest": "sha256:6a2451e8655554edbbcec952f545ac2f8f25778b3883166c7cc724d6cf31d298",
+        "digest_provenance": "locally-computed-from-immutable-upstream-artifact",
+        "hosts": [
+          "all"
+        ],
+        "id": "elixir-source",
+        "immutable_reference": "v1.20.4 / commit 759443e724f55bf58e71c0603644e99058918d52",
+        "kind": "archive",
+        "license": "Apache-2.0",
+        "license_locator": "https://github.com/elixir-lang/elixir/blob/v1.20.4/LICENSE",
+        "locator": "https://github.com/elixir-lang/elixir/archive/759443e724f55bf58e71c0603644e99058918d52.tar.gz",
+        "mirror_path": "sha256/6a2451e8655554edbbcec952f545ac2f8f25778b3883166c7cc724d6cf31d298",
+        "size": 3689039,
+        "version": "1.20.4"
+      },
+      {
+        "artifact": "crate-source",
+        "component": "just",
+        "consumers": [
+          "RB-T-P003",
+          "scripts/bootstrap.sh"
+        ],
+        "digest": "sha256:d26a2ff78b980d1de1078473e13dbd5fe72a1837a42e68d5c7327426f1254d34",
+        "digest_provenance": "locally-computed-from-versioned-upstream-artifact",
+        "hosts": [
+          "all"
+        ],
+        "id": "just-source",
+        "immutable_reference": "crates.io just 1.42.4",
+        "kind": "archive",
+        "license": "CC0-1.0",
+        "license_locator": "https://github.com/casey/just/blob/1.42.4/LICENSE",
+        "locator": "https://static.crates.io/crates/just/just-1.42.4.crate",
+        "mirror_path": "sha256/d26a2ff78b980d1de1078473e13dbd5fe72a1837a42e68d5c7327426f1254d34",
+        "size": 287138,
+        "version": "1.42.4"
+      },
+      {
+        "artifact": "aarch64-linux-binary",
+        "component": "LLVM/Clang/LLD",
+        "consumers": [
+          "RB-T-P003",
+          "RB-T-P005"
+        ],
+        "digest": "sha256:b855cc17d935fdd83da82206b7a7cfc680095efd1e9e8182c4a05e761958bef8",
+        "digest_provenance": "official-github-release-asset-digest",
+        "hosts": [
+          "aarch64-unknown-linux-gnu"
+        ],
+        "id": "llvm-aarch64",
+        "immutable_reference": "llvmorg-20.1.8",
+        "kind": "archive",
+        "license": "Apache-2.0 WITH LLVM-exception",
+        "license_locator": "https://github.com/llvm/llvm-project/blob/llvmorg-20.1.8/LICENSE.TXT",
+        "locator": "https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/LLVM-20.1.8-Linux-ARM64.tar.xz",
+        "mirror_path": "sha256/b855cc17d935fdd83da82206b7a7cfc680095efd1e9e8182c4a05e761958bef8",
+        "size": 1859437192,
+        "version": "20.1.8"
+      },
+      {
+        "artifact": "source",
+        "component": "LLVM/Clang/LLD",
+        "consumers": [
+          "RB-T-P003"
+        ],
+        "digest": "sha256:6898f963c8e938981e6c4a302e83ec5beb4630147c7311183cf61069af16333d",
+        "digest_provenance": "official-github-release-asset-digest",
+        "hosts": [
+          "all"
+        ],
+        "id": "llvm-source",
+        "immutable_reference": "llvmorg-20.1.8",
+        "kind": "archive",
+        "license": "Apache-2.0 WITH LLVM-exception",
+        "license_locator": "https://github.com/llvm/llvm-project/blob/llvmorg-20.1.8/LICENSE.TXT",
+        "locator": "https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/llvm-project-20.1.8.src.tar.xz",
+        "mirror_path": "sha256/6898f963c8e938981e6c4a302e83ec5beb4630147c7311183cf61069af16333d",
+        "size": 147242952,
+        "version": "20.1.8"
+      },
+      {
+        "artifact": "x86_64-linux-binary",
+        "component": "LLVM/Clang/LLD",
+        "consumers": [
+          "RB-T-P003",
+          "RB-T-P005"
+        ],
+        "digest": "sha256:1ead36b3dfcb774b57be530df42bec70ab2d239fbce9889447c7a29a4ddc1ae6",
+        "digest_provenance": "official-github-release-asset-digest",
+        "hosts": [
+          "x86_64-unknown-linux-gnu"
+        ],
+        "id": "llvm-x86_64",
+        "immutable_reference": "llvmorg-20.1.8",
+        "kind": "archive",
+        "license": "Apache-2.0 WITH LLVM-exception",
+        "license_locator": "https://github.com/llvm/llvm-project/blob/llvmorg-20.1.8/LICENSE.TXT",
+        "locator": "https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/LLVM-20.1.8-Linux-X64.tar.xz",
+        "mirror_path": "sha256/1ead36b3dfcb774b57be530df42bec70ab2d239fbce9889447c7a29a4ddc1ae6",
+        "size": 2021269412,
+        "version": "20.1.8"
+      },
+      {
+        "artifact": "source",
+        "component": "Meson",
+        "consumers": [
+          "RB-T-P003"
+        ],
+        "digest": "sha256:cd27277649b5ed50d19875031de516e270b22e890d9db65ed9af57d18ebc498d",
+        "digest_provenance": "official-github-release-asset-digest-and-local-match",
+        "hosts": [
+          "all"
+        ],
+        "id": "meson-source",
+        "immutable_reference": "1.9.0",
+        "kind": "archive",
+        "license": "Apache-2.0",
+        "license_locator": "https://github.com/mesonbuild/meson/blob/1.9.0/COPYING",
+        "locator": "https://github.com/mesonbuild/meson/releases/download/1.9.0/meson-1.9.0.tar.gz",
+        "mirror_path": "sha256/cd27277649b5ed50d19875031de516e270b22e890d9db65ed9af57d18ebc498d",
+        "size": 2366082,
+        "version": "1.9.0"
+      },
+      {
+        "artifact": "source",
+        "component": "musl",
+        "consumers": [
+          "RB-T-P003",
+          "RB-T-P005"
+        ],
+        "digest": "sha256:a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4",
+        "digest_provenance": "locally-computed-from-versioned-upstream-artifact",
+        "hosts": [
+          "all"
+        ],
+        "id": "musl-source",
+        "immutable_reference": "musl 1.2.5",
+        "kind": "archive",
+        "license": "MIT",
+        "license_locator": "https://git.musl-libc.org/cgit/musl/tree/COPYRIGHT?h=v1.2.5",
+        "locator": "https://musl.libc.org/releases/musl-1.2.5.tar.gz",
+        "mirror_path": "sha256/a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4",
+        "size": 1080786,
+        "version": "1.2.5"
+      },
+      {
+        "artifact": "aarch64-linux-binary",
+        "component": "Ninja",
+        "consumers": [
+          "RB-T-P003"
+        ],
+        "digest": "sha256:740f1b9f9d8ae68438240a6a2f3f7a27fc8b1946d2024a6a6b25857ee877987b",
+        "digest_provenance": "official-github-release-asset-digest-and-local-match",
+        "hosts": [
+          "aarch64-unknown-linux-gnu"
+        ],
+        "id": "ninja-aarch64",
+        "immutable_reference": "v1.13.1",
+        "kind": "archive",
+        "license": "Apache-2.0",
+        "license_locator": "https://github.com/ninja-build/ninja/blob/v1.13.1/COPYING",
+        "locator": "https://github.com/ninja-build/ninja/releases/download/v1.13.1/ninja-linux-aarch64.zip",
+        "mirror_path": "sha256/740f1b9f9d8ae68438240a6a2f3f7a27fc8b1946d2024a6a6b25857ee877987b",
+        "size": 126282,
+        "version": "1.13.1"
+      },
+      {
+        "artifact": "x86_64-linux-binary",
+        "component": "Ninja",
+        "consumers": [
+          "RB-T-P003"
+        ],
+        "digest": "sha256:0830252db77884957a1a4b87b05a1e2d9b5f658b8367f82999a941884cbe0238",
+        "digest_provenance": "official-github-release-asset-digest-and-local-match",
+        "hosts": [
+          "x86_64-unknown-linux-gnu"
+        ],
+        "id": "ninja-x86_64",
+        "immutable_reference": "v1.13.1",
+        "kind": "archive",
+        "license": "Apache-2.0",
+        "license_locator": "https://github.com/ninja-build/ninja/blob/v1.13.1/COPYING",
+        "locator": "https://github.com/ninja-build/ninja/releases/download/v1.13.1/ninja-linux.zip",
+        "mirror_path": "sha256/0830252db77884957a1a4b87b05a1e2d9b5f658b8367f82999a941884cbe0238",
+        "size": 134048,
+        "version": "1.13.1"
+      },
+      {
+        "artifact": "source",
+        "component": "Erlang/OTP",
+        "consumers": [
+          "RB-T-P003",
+          "RB-T-P002",
+          "RB-T-P005"
+        ],
+        "digest": "sha256:86f6f40d4638852b0383235b02a70d8450184e441e83a06a108bf8e5bf1b2e04",
+        "digest_provenance": "official-github-release-asset-digest",
+        "hosts": [
+          "all"
+        ],
+        "id": "otp-source",
+        "immutable_reference": "OTP-29.0.5 / commit 5cf5f9725452f4e1b6a4890e8ff0305d76924b98",
+        "kind": "archive",
+        "license": "Apache-2.0",
+        "license_locator": "https://github.com/erlang/otp/blob/OTP-29.0.5/LICENSE.txt",
+        "locator": "https://github.com/erlang/otp/releases/download/OTP-29.0.5/otp_src_29.0.5.tar.gz",
+        "mirror_path": "sha256/86f6f40d4638852b0383235b02a70d8450184e441e83a06a108bf8e5bf1b2e04",
+        "size": 106645320,
+        "version": "29.0.5"
+      },
+      {
+        "artifact": "multi-architecture-oci-index",
+        "component": "Linux builder OCI image",
+        "consumers": [
+          "RB-T-P003"
+        ],
+        "digest": "sha256:c900d35aba5fe4c1dc1cd358408baae2902ff2a2926a1d15cc5002c6061ddb2e",
+        "digest_provenance": "official-oci-registry-content-digest-and-local-match",
+        "hosts": [
+          "x86_64-unknown-linux-gnu",
+          "aarch64-unknown-linux-gnu"
+        ],
+        "id": "python-builder-image",
+        "immutable_reference": "sha256:c900d35aba5fe4c1dc1cd358408baae2902ff2a2926a1d15cc5002c6061ddb2e",
+        "kind": "oci-index",
+        "license": "NOASSERTION (aggregate image; retain Debian package copyright metadata)",
+        "license_locator": "https://github.com/docker-library/python/blob/0f65c3b868ba826104b00a1cc6b6c8431080f836/3.13/bookworm/Dockerfile",
+        "locator": "docker://docker.io/library/python@sha256:c900d35aba5fe4c1dc1cd358408baae2902ff2a2926a1d15cc5002c6061ddb2e",
+        "mirror_path": "oci/sha256/c900d35aba5fe4c1dc1cd358408baae2902ff2a2926a1d15cc5002c6061ddb2e",
+        "size": 9075,
+        "version": "python:3.13.7-bookworm"
+      },
+      {
+        "artifact": "source-signature",
+        "component": "QEMU",
+        "consumers": [
+          "RB-T-P003"
+        ],
+        "digest": "sha256:fba624880262f196e4b4e38acf6bd28e47ba8fc2b0522e279a687565d11aae1f",
+        "digest_provenance": "locally-computed-from-versioned-upstream-artifact",
+        "hosts": [
+          "all"
+        ],
+        "id": "qemu-signature",
+        "immutable_reference": "qemu-11.1.0",
+        "kind": "signature",
+        "license": "NOASSERTION (detached signature metadata)",
+        "license_locator": "https://www.qemu.org/download/",
+        "locator": "https://download.qemu.org/qemu-11.1.0.tar.xz.sig",
+        "mirror_path": "sha256/fba624880262f196e4b4e38acf6bd28e47ba8fc2b0522e279a687565d11aae1f",
+        "size": 310,
+        "version": "11.1.0"
+      },
+      {
+        "artifact": "source",
+        "component": "QEMU",
+        "consumers": [
+          "RB-T-P003",
+          "RB-T-P011",
+          "RB-T-P014"
+        ],
+        "digest": "sha256:6ee1d1a61f68212476b27108c26da5f449dc09b626d42f8279ba0dc2e08fa858",
+        "digest_provenance": "locally-computed-from-versioned-upstream-artifact",
+        "hosts": [
+          "all"
+        ],
+        "id": "qemu-source",
+        "immutable_reference": "qemu-11.1.0",
+        "kind": "archive",
+        "license": "GPL-2.0-only (distribution aggregate; subcomponents vary)",
+        "license_locator": "https://gitlab.com/qemu-project/qemu/-/blob/v11.1.0/COPYING",
+        "locator": "https://download.qemu.org/qemu-11.1.0.tar.xz",
+        "mirror_path": "sha256/6ee1d1a61f68212476b27108c26da5f449dc09b626d42f8279ba0dc2e08fa858",
+        "size": 141831772,
+        "version": "11.1.0"
+      },
+      {
+        "artifact": "aarch64-linux-host",
+        "component": "Rust/Cargo",
+        "consumers": [
+          "RB-T-P003"
+        ],
+        "digest": "sha256:ae6f35b027cb32339fa4ac94dab37a21194e9a5c680491d01e54aa61e9da4de7",
+        "digest_provenance": "official-rust-channel-manifest",
+        "hosts": [
+          "aarch64-unknown-linux-gnu"
+        ],
+        "id": "rust-aarch64",
+        "immutable_reference": "Rust 1.89.0 / 2025-08-07",
+        "kind": "archive",
+        "license": "MIT OR Apache-2.0",
+        "license_locator": "https://github.com/rust-lang/rust/blob/1.89.0/COPYRIGHT",
+        "locator": "https://static.rust-lang.org/dist/2025-08-07/rust-1.89.0-aarch64-unknown-linux-gnu.tar.xz",
+        "mirror_path": "sha256/ae6f35b027cb32339fa4ac94dab37a21194e9a5c680491d01e54aa61e9da4de7",
+        "size": 167842432,
+        "version": "1.89.0"
+      },
+      {
+        "artifact": "channel-manifest",
+        "component": "Rust/Cargo",
+        "consumers": [
+          "RB-T-P003"
+        ],
+        "digest": "sha256:fbd1662e100e7b305908ece23b441cb7534eadfa6336c5f173ff08d1cec174a1",
+        "digest_provenance": "official-sha256-sidecar-and-local-match",
+        "hosts": [
+          "all"
+        ],
+        "id": "rust-channel-manifest",
+        "immutable_reference": "Rust 1.89.0 / 2025-08-07",
+        "kind": "manifest",
+        "license": "MIT OR Apache-2.0",
+        "license_locator": "https://github.com/rust-lang/rust/blob/1.89.0/COPYRIGHT",
+        "locator": "https://static.rust-lang.org/dist/2025-08-07/channel-rust-1.89.0.toml",
+        "mirror_path": "sha256/fbd1662e100e7b305908ece23b441cb7534eadfa6336c5f173ff08d1cec174a1",
+        "size": 949694,
+        "version": "1.89.0"
+      },
+      {
+        "artifact": "aarch64-unknown-linux-musl",
+        "component": "Rust standard library",
+        "consumers": [
+          "RB-T-P003",
+          "RB-T-P005"
+        ],
+        "digest": "sha256:611633874e2000fd84807be65d82a6dfb7735c728969f5c8f62cad66702e6681",
+        "digest_provenance": "official-rust-channel-manifest",
+        "hosts": [
+          "all"
+        ],
+        "id": "rust-std-aarch64-musl",
+        "immutable_reference": "Rust 1.89.0 / aarch64-unknown-linux-musl",
+        "kind": "archive",
+        "license": "MIT OR Apache-2.0",
+        "license_locator": "https://github.com/rust-lang/rust/blob/1.89.0/COPYRIGHT",
+        "locator": "https://static.rust-lang.org/dist/2025-08-07/rust-std-1.89.0-aarch64-unknown-linux-musl.tar.xz",
+        "mirror_path": "sha256/611633874e2000fd84807be65d82a6dfb7735c728969f5c8f62cad66702e6681",
+        "size": 26839312,
+        "version": "1.89.0"
+      },
+      {
+        "artifact": "aarch64-unknown-none",
+        "component": "Rust standard library",
+        "consumers": [
+          "RB-T-P003",
+          "RB-T-P101"
+        ],
+        "digest": "sha256:40a6eb6a55ebc5309dbc9c128134e1c209abf1b0a7e882cd014873fb062b94b5",
+        "digest_provenance": "official-rust-channel-manifest",
+        "hosts": [
+          "all"
+        ],
+        "id": "rust-std-aarch64-none",
+        "immutable_reference": "Rust 1.89.0 / aarch64-unknown-none",
+        "kind": "archive",
+        "license": "MIT OR Apache-2.0",
+        "license_locator": "https://github.com/rust-lang/rust/blob/1.89.0/COPYRIGHT",
+        "locator": "https://static.rust-lang.org/dist/2025-08-07/rust-std-1.89.0-aarch64-unknown-none.tar.xz",
+        "mirror_path": "sha256/40a6eb6a55ebc5309dbc9c128134e1c209abf1b0a7e882cd014873fb062b94b5",
+        "size": 12773628,
+        "version": "1.89.0"
+      },
+      {
+        "artifact": "x86_64-linux-host",
+        "component": "Rust/Cargo",
+        "consumers": [
+          "RB-T-P003"
+        ],
+        "digest": "sha256:c4f2796b10ee886001f0799bc40caea38746403a33c379d77878c4f4683f9b51",
+        "digest_provenance": "official-rust-channel-manifest",
+        "hosts": [
+          "x86_64-unknown-linux-gnu"
+        ],
+        "id": "rust-x86_64",
+        "immutable_reference": "Rust 1.89.0 / 2025-08-07",
+        "kind": "archive",
+        "license": "MIT OR Apache-2.0",
+        "license_locator": "https://github.com/rust-lang/rust/blob/1.89.0/COPYRIGHT",
+        "locator": "https://static.rust-lang.org/dist/2025-08-07/rust-1.89.0-x86_64-unknown-linux-gnu.tar.xz",
+        "mirror_path": "sha256/c4f2796b10ee886001f0799bc40caea38746403a33c379d77878c4f4683f9b51",
+        "size": 201436760,
+        "version": "1.89.0"
+      },
+      {
+        "artifact": "aarch64-linux-binary",
+        "component": "rustup-init",
+        "consumers": [
+          "RB-T-P003",
+          "scripts/bootstrap.sh"
+        ],
+        "digest": "sha256:e3853c5a252fca15252d07cb23a1bdd9377a8c6f3efa01531109281ae47f841c",
+        "digest_provenance": "locally-computed-from-versioned-upstream-artifact",
+        "hosts": [
+          "aarch64-unknown-linux-gnu"
+        ],
+        "id": "rustup-aarch64",
+        "immutable_reference": "rustup 1.28.2 / aarch64-unknown-linux-gnu",
+        "kind": "binary",
+        "license": "MIT OR Apache-2.0",
+        "license_locator": "https://github.com/rust-lang/rustup/blob/1.28.2/LICENSE-MIT",
+        "locator": "https://static.rust-lang.org/rustup/archive/1.28.2/aarch64-unknown-linux-gnu/rustup-init",
+        "mirror_path": "sha256/e3853c5a252fca15252d07cb23a1bdd9377a8c6f3efa01531109281ae47f841c",
+        "size": 19321944,
+        "version": "1.28.2"
+      },
+      {
+        "artifact": "x86_64-linux-binary",
+        "component": "rustup-init",
+        "consumers": [
+          "RB-T-P003",
+          "scripts/bootstrap.sh"
+        ],
+        "digest": "sha256:20a06e644b0d9bd2fbdbfd52d42540bdde820ea7df86e92e533c073da0cdd43c",
+        "digest_provenance": "locally-computed-from-versioned-upstream-artifact",
+        "hosts": [
+          "x86_64-unknown-linux-gnu"
+        ],
+        "id": "rustup-x86_64",
+        "immutable_reference": "rustup 1.28.2 / x86_64-unknown-linux-gnu",
+        "kind": "binary",
+        "license": "MIT OR Apache-2.0",
+        "license_locator": "https://github.com/rust-lang/rustup/blob/1.28.2/LICENSE-MIT",
+        "locator": "https://static.rust-lang.org/rustup/archive/1.28.2/x86_64-unknown-linux-gnu/rustup-init",
+        "mirror_path": "sha256/20a06e644b0d9bd2fbdbfd52d42540bdde820ea7df86e92e533c073da0cdd43c",
+        "size": 20889000,
+        "version": "1.28.2"
+      }
+    ],
+    "policy": "docs/dependency-policy.md",
+    "revision": 1,
+    "schema": "rust-beam/source-lock/v1",
+    "sealed_at": "2026-08-31T21:00:00Z",
+    "state": "sealed"
+  },
+  "source_lock_digest": "sha256:1efbebcec638126cde1ef04967f89827e2229f4bdb7e57e9333141de0374aa99"
+}

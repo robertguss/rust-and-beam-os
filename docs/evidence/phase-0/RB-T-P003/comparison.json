@@ -1,0 +1,53 @@
+{
+  "builders": [
+    {
+      "architecture": "x86_64",
+      "container_index": "docker.io/library/python@sha256:c900d35aba5fe4c1dc1cd358408baae2902ff2a2926a1d15cc5002c6061ddb2e",
+      "container_platform_digest": "sha256:dff7bf7639ce459600e6e042228480eb9b6c627ce590e282c9b1d7c03fcad30b",
+      "id": "linux-clean-a",
+      "os": {
+        "id": "debian",
+        "version_id": "12"
+      },
+      "tools": {
+        "autoconf": "autoconf (GNU Autoconf) 2.71",
+        "cc": "cc (Debian 12.2.0-14+deb12u1) 12.2.0",
+        "curl": "curl 7.88.1 (x86_64-pc-linux-gnu) libcurl/7.88.1 OpenSSL/3.0.17 zlib/1.2.13 brotli/1.0.9 zstd/1.5.4 libidn2/2.3.3 libpsl/0.21.2 (+libidn2/2.3.3) libssh2/1.10.0 nghttp2/1.52.0 librtmp/2.3 OpenLDAP/2.5.13",
+        "cxx": "c++ (Debian 12.2.0-14+deb12u1) 12.2.0",
+        "git": "git version 2.39.5",
+        "ld": "GNU ld (GNU Binutils for Debian) 2.40",
+        "make": "GNU Make 4.3",
+        "perl": "v5.36.0",
+        "pkg-config": "1.8.1",
+        "python3": "Python 3.13.7"
+      }
+    },
+    {
+      "architecture": "x86_64",
+      "container_index": "docker.io/library/python@sha256:c900d35aba5fe4c1dc1cd358408baae2902ff2a2926a1d15cc5002c6061ddb2e",
+      "container_platform_digest": "sha256:dff7bf7639ce459600e6e042228480eb9b6c627ce590e282c9b1d7c03fcad30b",
+      "id": "linux-clean-b",
+      "os": {
+        "id": "debian",
+        "version_id": "12"
+      },
+      "tools": {
+        "autoconf": "autoconf (GNU Autoconf) 2.71",
+        "cc": "cc (Debian 12.2.0-14+deb12u1) 12.2.0",
+        "curl": "curl 7.88.1 (x86_64-pc-linux-gnu) libcurl/7.88.1 OpenSSL/3.0.17 zlib/1.2.13 brotli/1.0.9 zstd/1.5.4 libidn2/2.3.3 libpsl/0.21.2 (+libidn2/2.3.3) libssh2/1.10.0 nghttp2/1.52.0 librtmp/2.3 OpenLDAP/2.5.13",
+        "cxx": "c++ (Debian 12.2.0-14+deb12u1) 12.2.0",
+        "git": "git version 2.39.5",
+        "ld": "GNU ld (GNU Binutils for Debian) 2.40",
+        "make": "GNU Make 4.3",
+        "perl": "v5.36.0",
+        "pkg-config": "1.8.1",
+        "python3": "Python 3.13.7"
+      }
+    }
+  ],
+  "claim": "architecture-independent toolchain metadata matches; target binaries are not claimed bit-reproducible",
+  "contract_digest": "sha256:19739c9da2342fbea2e7a8ea5963f4481d860384799491fd5a1d53a6a4242460",
+  "result": "match",
+  "schema": "rust-beam/toolchain-comparison/v1",
+  "source_lock_digest": "sha256:1efbebcec638126cde1ef04967f89827e2229f4bdb7e57e9333141de0374aa99"
+}

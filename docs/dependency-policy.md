@@ -2,12 +2,10 @@
 
 ## Candidate phase
 
-Until `RB-T-P003` freezes the complete toolchain, every version is a candidate.
-Candidate downloads must still use immutable versions where available and verify
-publisher checksums or ecosystem lockfile checksums. Cargo commands use
-`--locked` once a lockfile exists. New dependencies require a narrow role,
-license disposition, feature list, source identity, unsafe-code review, and an
-owning task.
+Source-lock revision 1 and toolchain-contract revision 1 are the P003 frozen
+candidate. New dependencies require a narrow role, license disposition, feature
+list, source identity, unsafe-code review, and an owning task. Cargo commands
+use `--locked`; every non-Cargo toolchain input uses the source lock.
 
 ## Source lock states
 
@@ -16,8 +14,9 @@ owning task.
 - `unsealed`: probes may retrieve declared candidate sources; results cannot
   claim offline reproducibility or Gate-0-frozen closure.
 - `sealed`: every input has an immutable locator, local SHA-256, license, and
-  repository-relative mirror path. Builds run with network access disabled and
-  fail on any source absent from the lock.
+  content-addressed mirror path. Retrieval is a separate explicit command;
+  builds run with network access disabled and fail on any source absent from the
+  lock.
 
 Changing a sealed entry creates a new source-lock revision and invalidates all
 evidence that consumed the old revision. A build must never silently fall back
@@ -32,7 +31,8 @@ repository path; large source archives are not committed ad hoc. The source lock
 records the original locator, immutable reference, digest, mirror path, license,
 and consumers.
 
-The bootstrap exception is explicit: pinned `rustup-init` binaries are verified
-against checked-in SHA-256 values; Rust components are verified by rustup; the
-candidate `just` crate is installed from its published locked Cargo graph. This
-is repeatable scaffolding, not the sealed P003 build environment.
+The small repository bootstrap remains separate from the target build
+environment, but its `rustup-init` and `just` inputs are now also present in
+source-lock revision 1. Rust components are pinned by the dated official channel
+manifest and exact component digests. The OCI builder is selected by index
+digest with x86_64 and AArch64 child manifests recorded in the contract.

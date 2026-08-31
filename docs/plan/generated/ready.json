@@ -1,7 +1,7 @@
 {
   "date": null,
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:de0b1bad044f262e0a8f94fe6c0d366ffb13023e9948d15787e1ee713946aaa8",
+  "source_digest": "sha256:a3482d4b8a78f01d20a93dd56b309d874d3589120310fc357ef2169266527f22",
   "tasks": [
     {
       "id": "RB-T-AUDIT0",
@@ -13,11 +13,38 @@
       "reason": "open; milestone authorized; all dependencies done"
     },
     {
-      "id": "RB-T-P003",
-      "incomplete_downstream": 111,
+      "id": "RB-T-P017",
+      "incomplete_downstream": 98,
       "milestone": "RB-M-M0",
       "milestone_order": 0,
-      "path": "tasks/rb-t-p003.md",
+      "path": "tasks/rb-t-p017.md",
+      "priority": "P1",
+      "reason": "open; milestone authorized; all dependencies done"
+    },
+    {
+      "id": "RB-T-P002",
+      "incomplete_downstream": 102,
+      "milestone": "RB-M-M0",
+      "milestone_order": 0,
+      "path": "tasks/rb-t-p002.md",
+      "priority": "P3",
+      "reason": "open; milestone authorized; all dependencies done"
+    },
+    {
+      "id": "RB-T-P005",
+      "incomplete_downstream": 102,
+      "milestone": "RB-M-M0",
+      "milestone_order": 0,
+      "path": "tasks/rb-t-p005.md",
+      "priority": "P3",
+      "reason": "open; milestone authorized; all dependencies done"
+    },
+    {
+      "id": "RB-T-P011",
+      "incomplete_downstream": 102,
+      "milestone": "RB-M-M0",
+      "milestone_order": 0,
+      "path": "tasks/rb-t-p011.md",
       "priority": "P3",
       "reason": "open; milestone authorized; all dependencies done"
     }

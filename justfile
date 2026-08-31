@@ -34,6 +34,36 @@ evidence-check *args:
 evidence-hash *paths:
     python3 scripts/evidence.py hash --root . {{paths}}
 
+# Mirror the sealed source lock, compare two clean builders, and prove OTP/Elixir.
+toolchain-bootstrap:
+    ./scripts/toolchain-bootstrap.sh
+
+# Print the generated human-readable frozen-candidate toolchain report.
+toolchain-report:
+    python3 scripts/toolchain.py report
+
+# Verify the offline source cache and clean-builder receipts from bootstrap.
+toolchain-verify:
+    python3 scripts/toolchain.py verify --require-cache \
+      --receipt target/toolchain-receipts/linux-clean-a.json \
+      --receipt target/toolchain-receipts/linux-clean-b.json
+
+# Print the portable Linux full-system TCG candidate command.
+qemu-tcg-command:
+    python3 scripts/toolchain.py runner linux-tcg-full-system
+
+# Print the native AArch64 Linux/KVM full-system candidate command.
+qemu-kvm-command:
+    python3 scripts/toolchain.py runner linux-aarch64-kvm-full-system
+
+# Print the qemu-user smoke command, which is never full-system evidence.
+qemu-user-smoke-command:
+    python3 scripts/toolchain.py runner linux-user-smoke
+
+# Print the Apple Silicon macOS/HVF full-system candidate command.
+qemu-hvf-command:
+    python3 scripts/toolchain.py runner macos-hvf-full-system
+
 # Show which implementation commands are intentionally still placeholders.
 status:
     cargo xtask status
