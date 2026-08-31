@@ -287,7 +287,7 @@ Run focused tests during each slice and the complete suite before every commit:
 
 ```sh
 python3 -m unittest tests/test_repo_plan.py
-python3 -m unittest
+python3 -m unittest discover -s tests
 ```
 
 ## Boundaries

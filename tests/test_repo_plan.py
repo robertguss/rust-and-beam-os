@@ -1,8 +1,13 @@
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 
 from scripts import repo_plan
+
+
+SCRIPT = Path(__file__).resolve().parent.parent / "scripts" / "repo_plan.py"
 
 
 class DeterministicGenerationTests(unittest.TestCase):
@@ -134,6 +139,53 @@ class DeterministicGenerationTests(unittest.TestCase):
                     priority="P1",
                     templates=repo_plan.DEFAULT_TEMPLATES,
                 )
+
+    def test_cli_initializes_and_adds_a_task(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "plan"
+            init = subprocess.run(
+                [
+                    sys.executable,
+                    str(SCRIPT),
+                    "init",
+                    "--root",
+                    str(root),
+                    "--name",
+                    "Example project",
+                    "--prefix",
+                    "EX",
+                    "--milestone-id",
+                    "EX-M-M0",
+                    "--milestone-title",
+                    "Foundation",
+                ],
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(0, init.returncode, init.stderr)
+
+            create = subprocess.run(
+                [
+                    sys.executable,
+                    str(SCRIPT),
+                    "new",
+                    "task",
+                    "--root",
+                    str(root),
+                    "--id",
+                    "EX-T-7M3K2Q",
+                    "--title",
+                    "Reproduce runtime",
+                    "--milestone",
+                    "EX-M-M0",
+                    "--priority",
+                    "P1",
+                ],
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(0, create.returncode, create.stderr)
+            self.assertTrue((root / "tasks" / "ex-t-7m3k2q.md").exists())
 
 
 if __name__ == "__main__":

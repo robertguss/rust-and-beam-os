@@ -3,9 +3,11 @@
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import re
+import sys
 from pathlib import Path
 from string import Template
 from typing import Any, Iterable
@@ -221,3 +223,73 @@ def initialize_plan(
         templates=templates,
     )
     build_plan(root)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    init = subparsers.add_parser("init", help="create a complete repo-plan/v1 tree")
+    init.add_argument("--root", type=Path, required=True)
+    init.add_argument("--name", required=True)
+    init.add_argument("--prefix", required=True)
+    init.add_argument("--milestone-id", required=True)
+    init.add_argument("--milestone-title", required=True)
+
+    new = subparsers.add_parser("new", help="create one canonical record")
+    new.add_argument("record_type", choices=("task", "epic", "milestone", "gate", "decision"))
+    new.add_argument("--root", type=Path, required=True)
+    new.add_argument("--id", required=True)
+    new.add_argument("--title", required=True)
+    new.add_argument("--milestone")
+    new.add_argument("--priority", default="P2")
+    new.add_argument("--parent")
+    new.add_argument("--order", type=int, default=0)
+    new.add_argument("--authorized-by")
+    new.add_argument("--gate")
+    new.add_argument("--outcome", choices=("approved", "rejected"), default="approved")
+
+    build = subparsers.add_parser("build", help="rebuild deterministic projections")
+    build.add_argument("--root", type=Path, required=True)
+    build.add_argument("--date")
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    try:
+        if args.command == "init":
+            initialize_plan(
+                root=args.root,
+                name=args.name,
+                prefix=args.prefix,
+                milestone_id=args.milestone_id,
+                milestone_title=args.milestone_title,
+            )
+            print(f"initialized {args.root}")
+        elif args.command == "new":
+            destination = create_record(
+                root=args.root,
+                record_type=args.record_type,
+                record_id=args.id,
+                title=args.title,
+                milestone=args.milestone,
+                priority=args.priority,
+                parent=args.parent,
+                order=args.order,
+                authorized_by=args.authorized_by,
+                gate=args.gate,
+                outcome=args.outcome,
+            )
+            print(destination)
+        elif args.command == "build":
+            build_plan(args.root, evaluation_date=args.date)
+            print(f"rebuilt {args.root / 'generated'}")
+    except (FileExistsError, OSError, ValueError) as error:
+        print(error, file=sys.stderr)
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
