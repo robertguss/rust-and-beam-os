@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 
 from scripts import repo_plan
+from scripts import plan_tool as legacy_plan_tool
 
 
 SCRIPT = Path(__file__).resolve().parent.parent / "scripts" / "repo_plan.py"
@@ -479,6 +480,128 @@ class ValidationTests(unittest.TestCase):
             )
 
             self.assertEqual([], repo_plan.validate_plan(root).errors)
+
+
+class LegacyMigrationTests(unittest.TestCase):
+    def write_legacy_plan(self, root: Path) -> None:
+        root.mkdir(parents=True)
+        (root / "README.md").write_text("# Legacy plan\n")
+        (root / "project.md").write_text("# Legacy project context\n")
+        (root / "state.json").write_text('{"authorized_milestones":["M0"]}\n')
+        (root / "index.json").write_text('{"legacy":true}\n')
+
+        milestone = {
+            "id": "M0",
+            "title": "M0 — Foundation",
+            "kind": "milestone",
+            "exported_at": "2026-08-31T12:00:00Z",
+        }
+        milestone_path = root / "milestones" / "m0.md"
+        milestone_path.parent.mkdir(parents=True)
+        milestone_path.write_text(
+            legacy_plan_tool.render_markdown(
+                milestone,
+                "# M0\n\n## Outcome\n\nFoundation.\n\n## Exit criteria\n\n- Complete.\n",
+            )
+        )
+
+        first = {
+            "id": "P0-01",
+            "linear_id": "ROB-1",
+            "linear_url": "https://linear.example/ROB-1",
+            "title": "First task",
+            "milestone": "M0",
+            "kind": "implementation",
+            "status": "ready-for-agent",
+            "priority": "high",
+            "parent": None,
+            "labels": ["ready-for-agent"],
+            "blocked_by": [],
+            "blocks": ["P0-02"],
+        }
+        second = {
+            **first,
+            "id": "P0-02",
+            "linear_id": "ROB-2",
+            "title": "Second task",
+            "blocked_by": ["P0-01"],
+            "blocks": [],
+        }
+        body = (
+            "# Legacy task\n\n"
+            "[Project](<../project.md>)\n\n"
+            "## Goal\n\nDeliver the result.\n\n"
+            "## Locked context\n\nUse the project contract.\n\n"
+            "## What to build\n\nBuild one artifact.\n\n"
+            "## Acceptance criteria\n\n- It works.\n\n"
+            "## Required tests and evidence\n\nRun the test and record output.\n\n"
+            "## Out of scope\n\nUnrelated work.\n\n"
+            "## Verification commands\n\n`make test`\n"
+        )
+        for record in (first, second):
+            path = root / "tasks" / f"{record['id'].lower()}.md"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(legacy_plan_tool.render_markdown(record, body))
+
+    def test_migration_is_deterministic_and_produces_a_valid_v1_plan(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            first = Path(temporary) / "first"
+            second = Path(temporary) / "second"
+            for root in (first, second):
+                self.write_legacy_plan(root)
+                repo_plan.migrate_legacy(root=root, name="Legacy project", prefix="EX")
+
+            first_files = {
+                path.relative_to(first): path.read_bytes()
+                for path in first.rglob("*")
+                if path.is_file()
+            }
+            second_files = {
+                path.relative_to(second): path.read_bytes()
+                for path in second.rglob("*")
+                if path.is_file()
+            }
+            self.assertEqual(first_files, second_files)
+            self.assertNotIn(Path("state.json"), first_files)
+            self.assertNotIn(Path("index.json"), first_files)
+            self.assertIn(Path("project.yaml"), first_files)
+            self.assertIn(Path("tasks/ex-t-p001.md"), first_files)
+            self.assertIn(Path("tasks/ex-t-p002.md"), first_files)
+
+            result = repo_plan.check_plan(first, evaluation_date=None)
+            self.assertEqual([], result.errors)
+            migrated = result.records["EX-T-P002"]
+            self.assertEqual(["EX-T-P001"], migrated["depends_on"])
+            self.assertNotIn("blocks", migrated)
+            self.assertEqual("P1", migrated["priority"])
+            self.assertEqual(repo_plan.REQUIRED_HEADINGS["task"], tuple(
+                heading for heading in repo_plan.second_level_headings(migrated["body"])
+                if heading in repo_plan.REQUIRED_HEADINGS["task"]
+            ))
+
+    def test_cli_exposes_the_transactional_legacy_migration(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "plan"
+            self.write_legacy_plan(root)
+
+            migrated = subprocess.run(
+                [
+                    sys.executable,
+                    str(SCRIPT),
+                    "migrate-legacy",
+                    "--root",
+                    str(root),
+                    "--name",
+                    "Legacy project",
+                    "--prefix",
+                    "EX",
+                ],
+                capture_output=True,
+                text=True,
+            )
+
+            self.assertEqual(0, migrated.returncode, migrated.stderr)
+            self.assertTrue((root / "project.yaml").exists())
 
 
 if __name__ == "__main__":

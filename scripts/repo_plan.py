@@ -8,7 +8,9 @@ import datetime as dt
 import hashlib
 import json
 import re
+import shutil
 import sys
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 from string import Template
@@ -139,6 +141,31 @@ def second_level_headings(body: str) -> list[str]:
 
 def _yaml(value: str | None) -> str:
     return "null" if value is None else json.dumps(value, ensure_ascii=False)
+
+
+def _render_scalar(value: Any) -> str:
+    if value is None:
+        return "null"
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    if isinstance(value, int):
+        return str(value)
+    return json.dumps(str(value), ensure_ascii=False)
+
+
+def render_markdown(metadata: dict[str, Any], body: str) -> str:
+    lines = ["---"]
+    for key, value in metadata.items():
+        if isinstance(value, list):
+            if value:
+                lines.append(f"{key}:")
+                lines.extend(f"  - {_render_scalar(item)}" for item in value)
+            else:
+                lines.append(f"{key}: []")
+        else:
+            lines.append(f"{key}: {_render_scalar(value)}")
+    lines.extend(("---", ""))
+    return "\n".join(lines) + body.rstrip() + "\n"
 
 
 def _render(templates: Path, name: str, values: dict[str, Any]) -> str:
@@ -673,6 +700,237 @@ def initialize_plan(
     build_plan(root)
 
 
+def _legacy_id(prefix: str, record_type: str, old_id: str) -> str:
+    token = re.sub(r"[^A-Z0-9]", "", old_id.upper())
+    minimum = 1 if record_type == "milestone" else 4
+    if len(token) < minimum:
+        suffix = hashlib.sha256(old_id.encode()).hexdigest().upper()
+        token = (token + suffix)[:minimum]
+    if len(token) > 12:
+        suffix = hashlib.sha256(old_id.encode()).hexdigest()[:5].upper()
+        token = token[:7] + suffix
+    return f"{prefix}-{TYPE_CODES[record_type]}-{token}"
+
+
+def _split_legacy_sections(body: str) -> tuple[str, list[tuple[str, str]]]:
+    matches = list(re.finditer(r"^## ([^\n]+)\n", body, flags=re.MULTILINE))
+    prefix = body[: matches[0].start()] if matches else body
+    prefix = re.sub(r"^# [^\n]+\n?", "", prefix).strip()
+    sections: list[tuple[str, str]] = []
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(body)
+        sections.append((match.group(1).strip(), body[match.end() : end].strip()))
+    return prefix, sections
+
+
+def _canonicalize_legacy_body(record_id: str, title: str, record_type: str, body: str) -> str:
+    prefix, sections = _split_legacy_sections(body)
+    used: set[int] = set()
+
+    def take(*names: str) -> str:
+        values: list[str] = []
+        for index, (heading, content) in enumerate(sections):
+            if index not in used and heading in names:
+                used.add(index)
+                if content:
+                    values.append(content)
+        return "\n\n".join(values)
+
+    def section(heading: str, content: str, fallback: str) -> str:
+        return f"## {heading}\n\n{content or fallback}"
+
+    if record_type in {"task", "epic"}:
+        context_parts = [part for part in (prefix, take("Locked context", "Context", "Parent tracking issue", "Dependencies")) if part]
+        verification = take("Verification commands", "Verification")
+        evidence = take("Required tests and evidence", "Tests/evidence", "Evidence")
+        canonical = [
+            section("Goal", take("Goal"), "Complete the outcome named by this record."),
+            section("Context", "\n\n".join(context_parts), "Use the linked project and milestone contracts."),
+            section("Deliverables", take("What to build", "Required scope", "Deliverables"), "Produce the artifact named by the goal."),
+            section("Acceptance criteria", take("Acceptance criteria"), "Meet the record's stated completion rule."),
+            section("Verification", verification, evidence or "Run the verification required by the acceptance criteria."),
+            section("Evidence", evidence, verification or "Record durable repository evidence."),
+            section("Out of scope", take("Out of scope"), "Work beyond this record's goal and deliverables."),
+        ]
+    elif record_type == "gate":
+        context_parts = [part for part in (prefix, take("Goal", "Locked context", "Context", "Dependencies")) if part]
+        evidence = take("Required evidence", "Required tests and evidence", "Tests/evidence", "Evidence")
+        canonical = [
+            section("Decision", take("Decision") or "\n\n".join(context_parts), "Decide whether the next milestone is authorized."),
+            section("Required evidence", evidence, "Review every completed dependency and its evidence."),
+            section("Acceptance criteria", take("Acceptance criteria"), "Record an explicit approval or rejection."),
+            section("Decision record", take("Decision record", "Completion rule"), "Create exactly one decision record."),
+            section("Out of scope", take("Out of scope"), "This gate authorizes only its named milestone."),
+        ]
+    else:
+        return body
+
+    remaining = [(heading, content) for index, (heading, content) in enumerate(sections) if index not in used]
+    if remaining:
+        additional = ["## Additional context"]
+        for heading, content in remaining:
+            additional.extend((f"### {heading}", "", content))
+        canonical.append("\n".join(additional).rstrip())
+    return f"# {record_id}: {title}\n\n" + "\n\n".join(canonical) + "\n"
+
+
+def migrate_legacy(
+    *,
+    root: Path,
+    name: str,
+    prefix: str,
+    templates: Path = DEFAULT_TEMPLATES,
+) -> None:
+    """Transactionally migrate this repository's legacy Linear export to v1."""
+    if (root / "project.yaml").exists():
+        raise ValueError(f"plan is already repo-plan/v1: {root}")
+    if not re.fullmatch(r"[A-Z][A-Z0-9]{1,7}", prefix):
+        raise ValueError("prefix must contain 2-8 uppercase letters or digits and start with a letter")
+    template_errors = validate_templates(templates)
+    if template_errors:
+        raise ValueError("invalid templates:\n" + "\n".join(template_errors))
+
+    legacy: list[tuple[Path, dict[str, Any], str]] = []
+    for directory in ("milestones", "tasks", "gates"):
+        for path in sorted((root / directory).glob("*.md")):
+            if path.name == "README.md":
+                continue
+            metadata, body = parse_markdown(path.read_text())
+            legacy.append((path, metadata, body))
+    if not legacy:
+        raise ValueError(f"no legacy records found in {root}")
+
+    id_map: dict[str, str] = {}
+    type_map: dict[str, str] = {}
+    for _, metadata, _ in legacy:
+        old_id = str(metadata["id"])
+        kind = str(metadata.get("kind", ""))
+        if kind == "milestone":
+            record_type = "milestone"
+        elif kind == "gate" or old_id.startswith("GATE-"):
+            record_type = "gate"
+        elif kind == "tracking":
+            record_type = "epic"
+        else:
+            record_type = "task"
+        new_id = _legacy_id(prefix, record_type, old_id)
+        if new_id in id_map.values():
+            raise ValueError(f"legacy ids collide after migration: {old_id} -> {new_id}")
+        id_map[old_id] = new_id
+        type_map[old_id] = record_type
+
+    priority_map = {"urgent": "P0", "high": "P1", "medium": "P2", "low": "P3", "none": "P3"}
+    status_map = {"in-progress": "in_progress", "in_progress": "in_progress", "done": "done", "cancelled": "cancelled"}
+
+    with tempfile.TemporaryDirectory() as temporary:
+        stage = Path(temporary) / "plan"
+        shutil.copytree(root, stage)
+        for directory in (*RECORD_DIRECTORIES, "generated"):
+            shutil.rmtree(stage / directory, ignore_errors=True)
+        for path in (stage / "state.json", stage / "index.json", stage / "project.yaml"):
+            if path.exists():
+                path.unlink()
+
+        (stage / "README.md").write_text(
+            _render(templates, "README.md.tmpl", {"project_name": name})
+        )
+        (stage / "project.yaml").write_text(
+            _render(
+                templates,
+                "project.yaml.tmpl",
+                {"project_name_yaml": _yaml(name), "prefix_yaml": _yaml(prefix)},
+            )
+        )
+        collection_descriptions = {
+            "tasks": "Canonical task and epic records. Use the generator to add records.",
+            "gates": "Canonical human authorization gates. Agents may prepare but not pass gates.",
+            "decisions": "Immutable human decisions that complete gates.",
+        }
+        for directory, description in collection_descriptions.items():
+            destination = stage / directory / "README.md"
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_text(
+                _render(
+                    templates,
+                    "collection.README.md.tmpl",
+                    {"collection_title": directory.title(), "collection_description": description},
+                )
+            )
+
+        rendered: list[tuple[Path, dict[str, Any], str, str]] = []
+        for old_path, old, body in legacy:
+            old_id = str(old["id"])
+            record_type = type_map[old_id]
+            new_id = id_map[old_id]
+            title = str(old.get("title", old_id)).split(" — ", 1)[-1]
+            if record_type == "milestone":
+                milestone_number = re.search(r"\d+", old_id)
+                order = int(milestone_number.group()) if milestone_number else 0
+                authorized_by = None if order == 0 else id_map.get(f"GATE-{order - 1}")
+                metadata = {
+                    "schema": SCHEMA,
+                    "id": new_id,
+                    "title": title,
+                    "type": "milestone",
+                    "order": order,
+                    "authorized_by": authorized_by,
+                    "x_legacy_id": old_id,
+                }
+                new_body = re.sub(r"^# [^\n]+", f"# {new_id}: {title}", body, count=1)
+                destination = Path("milestones") / f"{new_id.lower()}.md"
+            else:
+                milestone = id_map.get(str(old.get("milestone")))
+                metadata = {
+                    "schema": SCHEMA,
+                    "id": new_id,
+                    "title": title,
+                    "type": record_type,
+                    "state": status_map.get(str(old.get("status")), "open"),
+                    "priority": priority_map.get(str(old.get("priority")), "P3"),
+                    "milestone": milestone,
+                    "parent": id_map.get(str(old.get("parent"))) if old.get("parent") else None,
+                    "depends_on": [id_map.get(str(item), str(item)) for item in old.get("blocked_by", [])],
+                    "related": [],
+                    "actor": "human" if record_type == "gate" else "agent",
+                    "owner": None,
+                    "defer_until": None,
+                    "evidence": [],
+                    "x_legacy_id": old_id,
+                }
+                if old.get("linear_id"):
+                    metadata["x_linear_id"] = old["linear_id"]
+                if old.get("linear_url"):
+                    metadata["x_linear_url"] = old["linear_url"]
+                if old.get("labels"):
+                    metadata["x_labels"] = old["labels"]
+                new_body = _canonicalize_legacy_body(new_id, title, record_type, body)
+                directory = "gates" if record_type == "gate" else "tasks"
+                destination = Path(directory) / f"{new_id.lower()}.md"
+            rendered.append((destination, metadata, new_body, old_path.name))
+
+        filename_map = {old_name: destination.name for destination, _, _, old_name in rendered}
+        for destination, metadata, body, _ in rendered:
+            for old_name, new_name in filename_map.items():
+                body = body.replace(old_name, new_name)
+            path = stage / destination
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(render_markdown(metadata, body))
+
+        build_plan(stage)
+        checked = check_plan(stage, evaluation_date=None)
+        if checked.errors:
+            raise ValueError("migrated plan is invalid:\n" + "\n".join(checked.errors))
+
+        for directory in (*RECORD_DIRECTORIES, "generated"):
+            shutil.rmtree(root / directory, ignore_errors=True)
+            shutil.copytree(stage / directory, root / directory)
+        (root / "README.md").write_bytes((stage / "README.md").read_bytes())
+        (root / "project.yaml").write_bytes((stage / "project.yaml").read_bytes())
+        for path in (root / "state.json", root / "index.json"):
+            if path.exists():
+                path.unlink()
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -709,6 +967,11 @@ def build_parser() -> argparse.ArgumentParser:
     ready.add_argument("--root", type=Path, required=True)
     ready.add_argument("--date")
     ready.add_argument("--json", action="store_true")
+
+    migrate = subparsers.add_parser("migrate-legacy", help="transactionally migrate the legacy plan format")
+    migrate.add_argument("--root", type=Path, required=True)
+    migrate.add_argument("--name", required=True)
+    migrate.add_argument("--prefix", required=True)
     return parser
 
 
@@ -761,6 +1024,9 @@ def main(argv: list[str] | None = None) -> int:
             else:
                 for record in ready_records:
                     print(record["id"])
+        elif args.command == "migrate-legacy":
+            migrate_legacy(root=args.root, name=args.name, prefix=args.prefix)
+            print(f"migrated {args.root} to {SCHEMA}")
     except (FileExistsError, OSError, ValueError) as error:
         print(error, file=sys.stderr)
         return 1
