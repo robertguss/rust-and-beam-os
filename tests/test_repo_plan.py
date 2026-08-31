@@ -1,4 +1,5 @@
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -493,6 +494,82 @@ class ValidationTests(unittest.TestCase):
             )
 
             self.assertEqual([], repo_plan.validate_plan(root).errors)
+
+    def test_rejects_unknown_fields_self_edges_and_done_dependencies(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = self.initialize(temporary)
+            dependency = self.create_task(root, "EX-T-7M3K2Q")
+            task = self.create_task(root, "EX-T-8N4R6W")
+            self.set_scalar(task, "state", '"open"', '"done"')
+            self.set_list(task, "depends_on", ["EX-T-7M3K2Q", "EX-T-8N4R6W"])
+            task.write_text(task.read_text().replace("state: \"done\"\n", "state: \"done\"\nmagic: \"value\"\n", 1))
+
+            joined = "\n".join(repo_plan.validate_plan(root).errors)
+
+            self.assertIn("unknown fields: magic", joined)
+            self.assertIn("depends_on cannot reference itself", joined)
+            self.assertIn("done record has unfinished dependencies", joined)
+            self.assertEqual("open", repo_plan.parse_markdown(dependency.read_text())[0]["state"])
+
+    def test_rejects_done_epic_with_unfinished_child(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = self.initialize(temporary)
+            epic = self.create_task(root, "EX-E-6Q2V8K", record_type="epic")
+            self.create_task(root, "EX-T-7M3K2Q", parent="EX-E-6Q2V8K")
+            self.set_scalar(epic, "state", '"open"', '"done"')
+
+            joined = "\n".join(repo_plan.validate_plan(root).errors)
+
+            self.assertIn("done epic has unfinished children", joined)
+
+    def test_rejected_gate_does_not_authorize_its_milestone(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = self.initialize(temporary)
+            gate = repo_plan.create_record(
+                root=root,
+                record_type="gate",
+                record_id="EX-G-5W8N2R",
+                title="Authorize M1",
+                milestone="EX-M-M0",
+                templates=repo_plan.DEFAULT_TEMPLATES,
+            )
+            self.set_scalar(gate, "state", '"open"', '"done"')
+            repo_plan.create_record(
+                root=root,
+                record_type="decision",
+                record_id="EX-D-6Q2V8K",
+                title="Reject M1",
+                gate="EX-G-5W8N2R",
+                outcome="rejected",
+                templates=repo_plan.DEFAULT_TEMPLATES,
+            )
+            repo_plan.create_record(
+                root=root,
+                record_type="milestone",
+                record_id="EX-M-M1",
+                title="Implementation",
+                order=1,
+                authorized_by="EX-G-5W8N2R",
+                templates=repo_plan.DEFAULT_TEMPLATES,
+            )
+            self.create_task(root, "EX-T-7M3K2Q", milestone="EX-M-M1")
+
+            result = repo_plan.validate_plan(root)
+            ready = repo_plan.compute_ready(result.records, evaluation_date=None)
+
+            self.assertEqual([], result.errors)
+            self.assertEqual([], ready)
+
+    def test_template_manifest_detects_a_missing_template(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            templates = Path(temporary) / "templates"
+            shutil.copytree(repo_plan.DEFAULT_TEMPLATES, templates)
+            (templates / "gate.md.tmpl").unlink()
+
+            self.assertEqual(
+                ["missing template: gate.md.tmpl"],
+                repo_plan.validate_templates(templates),
+            )
 
 
 class LegacyMigrationTests(unittest.TestCase):
