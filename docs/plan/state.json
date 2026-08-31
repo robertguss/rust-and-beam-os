@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "authorized_milestones": [
+    "M0"
+  ],
+  "current_gate": "GATE-0",
+  "note": "Only a human gate decision may authorize another milestone."
+}

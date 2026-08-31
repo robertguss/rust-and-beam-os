@@ -1,0 +1,2955 @@
+{
+  "schema_version": 1,
+  "exported_at": "2026-08-31T13:33:41.658Z",
+  "task_count": 132,
+  "tasks": [
+    {
+      "id": "AUDIT-0",
+      "linear_id": "ROB-800",
+      "title": "Close architecture-readiness blockers before Gate 0",
+      "milestone": "M0",
+      "kind": "audit",
+      "status": "ready-for-agent",
+      "priority": "urgent",
+      "parent": null,
+      "blocked_by": [],
+      "blocks": [
+        "P1-01",
+        "GATE-0"
+      ],
+      "path": "tasks/audit-0.md"
+    },
+    {
+      "id": "GATE-0",
+      "linear_id": "ROB-695",
+      "title": "Decide whether the Rust-kernel/standard-BEAM POC may enter kernel implementation",
+      "milestone": "M0",
+      "kind": "gate",
+      "status": "ready-for-human",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "AUDIT-0",
+        "P0-17",
+        "P0-16",
+        "P0-15",
+        "P0-14",
+        "P0-01",
+        "P0-13",
+        "P0-12",
+        "P0-11",
+        "P0-10",
+        "P0-06",
+        "P0-09",
+        "P0-08",
+        "P0-03",
+        "P0-05",
+        "P0-02",
+        "P0-07",
+        "P0-04"
+      ],
+      "blocks": [
+        "P1-01"
+      ],
+      "path": "gates/gate-0.md"
+    },
+    {
+      "id": "GATE-1",
+      "linear_id": "ROB-708",
+      "title": "Decide whether the kernel spine is trustworthy enough for the musl contract",
+      "milestone": "M1",
+      "kind": "gate",
+      "status": "ready-for-human",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P1-00",
+        "P1-14",
+        "P1-13",
+        "P1-12",
+        "P1-11",
+        "P1-10",
+        "P1-09",
+        "P1-08",
+        "P1-07",
+        "P1-05",
+        "P1-06",
+        "P1-01",
+        "P1-02",
+        "P1-04",
+        "P1-03"
+      ],
+      "blocks": [
+        "P2-05a",
+        "P2-00",
+        "P2-01",
+        "P2-05"
+      ],
+      "path": "gates/gate-1.md"
+    },
+    {
+      "id": "GATE-2",
+      "linear_id": "ROB-721",
+      "title": "Decide whether the ERTS host contract is bounded and trustworthy",
+      "milestone": "M2",
+      "kind": "gate",
+      "status": "ready-for-human",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P2-11c",
+        "P2-11b",
+        "P2-11a",
+        "P2-13a",
+        "P2-00",
+        "P2-14",
+        "P2-13",
+        "P2-09",
+        "P2-12",
+        "P2-10",
+        "P2-05",
+        "P2-08",
+        "P2-07",
+        "P2-02",
+        "P2-06",
+        "P2-03",
+        "P2-01",
+        "P2-04"
+      ],
+      "blocks": [
+        "P3-01"
+      ],
+      "path": "gates/gate-2.md"
+    },
+    {
+      "id": "GATE-3",
+      "linear_id": "ROB-735",
+      "title": "Decide whether standard upstream ERTS on the custom OS is proven",
+      "milestone": "M3",
+      "kind": "gate",
+      "status": "ready-for-human",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P3-00",
+        "P3-01",
+        "P3-09",
+        "P3-10",
+        "P3-08",
+        "P3-04",
+        "P3-07",
+        "P3-03",
+        "P3-02",
+        "P3-05",
+        "P3-06"
+      ],
+      "blocks": [
+        "P4-01"
+      ],
+      "path": "gates/gate-3.md"
+    },
+    {
+      "id": "GATE-4",
+      "linear_id": "ROB-737",
+      "title": "Decide whether the Elixir release and Rust IPC boundary are ready for GUI work",
+      "milestone": "M4",
+      "kind": "gate",
+      "status": "ready-for-human",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P4-10",
+        "P4-09",
+        "P4-08",
+        "P4-05",
+        "P4-07",
+        "P4-01",
+        "P4-06",
+        "P4-03",
+        "P4-04",
+        "P4-02"
+      ],
+      "blocks": [
+        "P5-01a",
+        "P5-02"
+      ],
+      "path": "gates/gate-4.md"
+    },
+    {
+      "id": "GATE-5",
+      "linear_id": "ROB-757",
+      "title": "Decide whether the interactive Rust/Elixir vertical slice is worth qualifying",
+      "milestone": "M5",
+      "kind": "gate",
+      "status": "ready-for-human",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P5-11",
+        "P5-13",
+        "P5-12",
+        "P5-10",
+        "P5-09",
+        "P5-08",
+        "P5-07",
+        "P5-01",
+        "P5-06",
+        "P5-03",
+        "P5-05",
+        "P5-04",
+        "P5-02"
+      ],
+      "blocks": [
+        "P6-01"
+      ],
+      "path": "gates/gate-5.md"
+    },
+    {
+      "id": "GATE-6",
+      "linear_id": "ROB-769",
+      "title": "Choose Continue, Pivot, Narrow, or Stop after the completed POC",
+      "milestone": "M6",
+      "kind": "gate",
+      "status": "ready-for-human",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P6-10",
+        "P6-09",
+        "P6-08",
+        "P6-07",
+        "P6-02",
+        "P6-05",
+        "P6-04",
+        "P6-01",
+        "P6-06",
+        "P6-03"
+      ],
+      "blocks": [],
+      "path": "gates/gate-6.md"
+    },
+    {
+      "id": "P0-01",
+      "linear_id": "ROB-684",
+      "title": "Create the repository, evidence model, and reproducible build shell",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [],
+      "blocks": [
+        "P0-17",
+        "P0-15",
+        "GATE-0",
+        "P0-11",
+        "P0-09",
+        "P0-03",
+        "P0-02"
+      ],
+      "path": "tasks/p0-01.md"
+    },
+    {
+      "id": "P0-02",
+      "linear_id": "ROB-683",
+      "title": "Build the Linux reference runtime_lab Mix application",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-03",
+        "P0-01"
+      ],
+      "blocks": [
+        "P4-03",
+        "P0-07",
+        "GATE-0",
+        "P0-10",
+        "P0-09",
+        "P0-04"
+      ],
+      "path": "tasks/p0-02.md"
+    },
+    {
+      "id": "P0-03",
+      "linear_id": "ROB-685",
+      "title": "Pin the complete host and target toolchain with build receipts",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-01"
+      ],
+      "blocks": [
+        "P0-02",
+        "P0-17",
+        "P0-16",
+        "P0-15",
+        "P0-14",
+        "GATE-0",
+        "P0-13",
+        "P0-11",
+        "P0-05",
+        "P0-04"
+      ],
+      "path": "tasks/p0-03.md"
+    },
+    {
+      "id": "P0-04",
+      "linear_id": "ROB-686",
+      "title": "Trace and document the reference ERTS workload on Linux",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-02",
+        "P0-03"
+      ],
+      "blocks": [
+        "GATE-0",
+        "P0-08"
+      ],
+      "path": "tasks/p0-04.md"
+    },
+    {
+      "id": "P0-05",
+      "linear_id": "ROB-688",
+      "title": "Cross-build static non-JIT AArch64-musl upstream ERTS",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-03"
+      ],
+      "blocks": [
+        "P3-01",
+        "P0-07",
+        "GATE-0",
+        "P0-06"
+      ],
+      "path": "tasks/p0-05.md"
+    },
+    {
+      "id": "P0-06",
+      "linear_id": "ROB-693",
+      "title": "Run the target ERTS artifact on AArch64 Linux",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-05"
+      ],
+      "blocks": [
+        "P0-16",
+        "P0-14",
+        "P0-07",
+        "GATE-0"
+      ],
+      "path": "tasks/p0-06.md"
+    },
+    {
+      "id": "P0-07",
+      "linear_id": "ROB-692",
+      "title": "Pair a genuine Mix release with the target ERTS",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-05",
+        "P0-02",
+        "P0-06"
+      ],
+      "blocks": [
+        "P4-02",
+        "GATE-0",
+        "P0-13",
+        "P0-08"
+      ],
+      "path": "tasks/p0-07.md"
+    },
+    {
+      "id": "P0-08",
+      "linear_id": "ROB-690",
+      "title": "Freeze the exact AArch64 BEAM host contract revision 1",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-17",
+        "P0-14",
+        "P0-07",
+        "P0-04"
+      ],
+      "blocks": [
+        "P2-01",
+        "GATE-0",
+        "P0-13"
+      ],
+      "path": "tasks/p0-08.md"
+    },
+    {
+      "id": "P0-09",
+      "linear_id": "ROB-687",
+      "title": "Specify ETF UI protocol v1 and conformance fixtures",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-02",
+        "P0-01"
+      ],
+      "blocks": [
+        "P4-06",
+        "P4-05",
+        "GATE-0",
+        "P0-10"
+      ],
+      "path": "tasks/p0-09.md"
+    },
+    {
+      "id": "P0-10",
+      "linear_id": "ROB-689",
+      "title": "Implement and stress Linux-hosted Rust↔Elixir protocol endpoints",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-02",
+        "P0-09"
+      ],
+      "blocks": [
+        "GATE-0",
+        "P0-13"
+      ],
+      "path": "tasks/p0-10.md"
+    },
+    {
+      "id": "P0-11",
+      "linear_id": "ROB-696",
+      "title": "Prove bare-metal virtio display and pointer input under Linux TCG",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-03",
+        "P0-01"
+      ],
+      "blocks": [
+        "P5-00",
+        "P0-16",
+        "P0-15",
+        "GATE-0",
+        "P0-12"
+      ],
+      "path": "tasks/p0-11.md"
+    },
+    {
+      "id": "P0-12",
+      "linear_id": "ROB-694",
+      "title": "Prove the display/input path under Apple Silicon HVF and select MMIO or PCI",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-11"
+      ],
+      "blocks": [
+        "P5-01a",
+        "P5-00",
+        "P0-16",
+        "P0-15",
+        "P0-14",
+        "P5-02",
+        "GATE-0",
+        "P0-13"
+      ],
+      "path": "tasks/p0-12.md"
+    },
+    {
+      "id": "P0-13",
+      "linear_id": "ROB-691",
+      "title": "Freeze Phase 0 ADRs, licenses, hypotheses, and evidence index",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-17",
+        "P0-16",
+        "P0-15",
+        "P0-14",
+        "P0-10",
+        "P0-07",
+        "P0-12",
+        "P0-08",
+        "P0-03"
+      ],
+      "blocks": [
+        "GATE-0"
+      ],
+      "path": "tasks/p0-13.md"
+    },
+    {
+      "id": "P0-14",
+      "linear_id": "ROB-777",
+      "title": "Freeze the versioned QEMU machine, CPU, auxv/HWCAP, page-size, cache, and atomics baseline",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P0-03",
+        "P0-06",
+        "P0-12"
+      ],
+      "blocks": [
+        "P2-02",
+        "P2-11c",
+        "P2-11b",
+        "P2-00",
+        "P1-14",
+        "P1-13",
+        "P0-08",
+        "GATE-0",
+        "P0-13"
+      ],
+      "path": "tasks/p0-14.md"
+    },
+    {
+      "id": "P0-15",
+      "linear_id": "ROB-778",
+      "title": "Prove the no_std Slint renderer path and freeze the toolkit/license decision",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P0-12",
+        "P0-01",
+        "P0-03",
+        "P0-11"
+      ],
+      "blocks": [
+        "P5-04",
+        "P0-13",
+        "GATE-0"
+      ],
+      "path": "tasks/p0-15.md"
+    },
+    {
+      "id": "P0-16",
+      "linear_id": "ROB-779",
+      "title": "Benchmark and freeze feasible TCG, KVM, and HVF qualification runner profiles",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P0-12",
+        "P0-11",
+        "P0-06",
+        "P0-03"
+      ],
+      "blocks": [
+        "P4-00",
+        "P3-00",
+        "P2-13a",
+        "P6-01",
+        "P2-13",
+        "P3-09",
+        "GATE-0",
+        "P0-13"
+      ],
+      "path": "tasks/p0-16.md"
+    },
+    {
+      "id": "P0-17",
+      "linear_id": "ROB-780",
+      "title": "Reproduce and disposition current BEAM-on-custom-kernel prior-art risks",
+      "milestone": "M0",
+      "kind": "implementation",
+      "status": "ready-for-agent",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P0-03",
+        "P0-01"
+      ],
+      "blocks": [
+        "P0-13",
+        "GATE-0",
+        "P0-08"
+      ],
+      "path": "tasks/p0-17.md"
+    },
+    {
+      "id": "P1-00",
+      "linear_id": "ROB-801",
+      "title": "Freeze single-CPU IRQ, preemption, locking, and exception-stack invariants",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P1-03",
+        "P1-02"
+      ],
+      "blocks": [
+        "P1-06b",
+        "P1-06a",
+        "P1-09",
+        "P1-12",
+        "GATE-1"
+      ],
+      "path": "tasks/p1-00.md"
+    },
+    {
+      "id": "P1-01",
+      "linear_id": "ROB-698",
+      "title": "Scaffold the no_std kernel, linker layout, and direct QEMU runner",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "AUDIT-0",
+        "GATE-0"
+      ],
+      "blocks": [
+        "GATE-1",
+        "P1-10",
+        "P1-02"
+      ],
+      "path": "tasks/p1-01.md"
+    },
+    {
+      "id": "P1-02",
+      "linear_id": "ROB-699",
+      "title": "Implement EL normalization, UART, and QEMU device-tree discovery",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P1-01"
+      ],
+      "blocks": [
+        "P1-00",
+        "GATE-1",
+        "P1-12",
+        "P1-04",
+        "P1-03"
+      ],
+      "path": "tasks/p1-02.md"
+    },
+    {
+      "id": "P1-03",
+      "linear_id": "ROB-702",
+      "title": "Install AArch64 exception vectors, IRQ dispatch, and structured panic records",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P1-02"
+      ],
+      "blocks": [
+        "P1-06a",
+        "P1-00",
+        "P1-13",
+        "GATE-1",
+        "P1-12",
+        "P1-11",
+        "P1-09",
+        "P1-04"
+      ],
+      "path": "tasks/p1-03.md"
+    },
+    {
+      "id": "P1-04",
+      "linear_id": "ROB-697",
+      "title": "Build the physical page allocator and bounded kernel heap",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P1-03",
+        "P1-02"
+      ],
+      "blocks": [
+        "P1-05a",
+        "GATE-1",
+        "P1-12",
+        "P1-10"
+      ],
+      "path": "tasks/p1-04.md"
+    },
+    {
+      "id": "P1-05",
+      "linear_id": "ROB-701",
+      "title": "TRACKING: Complete kernel VM, address-space lifecycle, and single-core mapping safety",
+      "milestone": "M1",
+      "kind": "tracking",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P1-05a",
+        "P1-05b",
+        "P1-05c"
+      ],
+      "blocks": [
+        "P5-00",
+        "GATE-1",
+        "P1-12",
+        "P1-09",
+        "P1-07"
+      ],
+      "path": "tasks/p1-05.md"
+    },
+    {
+      "id": "P1-05a",
+      "linear_id": "ROB-806",
+      "title": "Implement page-table primitives and a reference translation model",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P1-05",
+      "blocked_by": [
+        "P1-04"
+      ],
+      "blocks": [
+        "P1-05b",
+        "P1-05",
+        "P1-14"
+      ],
+      "path": "tasks/p1-05a.md"
+    },
+    {
+      "id": "P1-05b",
+      "linear_id": "ROB-804",
+      "title": "Freeze kernel/user virtual layout and implement address-space lifecycle",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P1-05",
+      "blocked_by": [
+        "P1-05a"
+      ],
+      "blocks": [
+        "P1-05c",
+        "P1-05",
+        "P1-14"
+      ],
+      "path": "tasks/p1-05b.md"
+    },
+    {
+      "id": "P1-05c",
+      "linear_id": "ROB-807",
+      "title": "Implement single-core map, protect, unmap, ASID, and teardown semantics",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P1-05",
+      "blocked_by": [
+        "P1-05b",
+        "P1-14"
+      ],
+      "blocks": [
+        "P1-08a",
+        "P1-06b",
+        "P1-05"
+      ],
+      "path": "tasks/p1-05c.md"
+    },
+    {
+      "id": "P1-06",
+      "linear_id": "ROB-700",
+      "title": "TRACKING: Complete timer IRQs, preemptive scheduling, and wakeup safety",
+      "milestone": "M1",
+      "kind": "tracking",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P1-06b",
+        "P1-06a",
+        "P1-06c"
+      ],
+      "blocks": [
+        "GATE-1",
+        "P1-12",
+        "P1-11",
+        "P1-07"
+      ],
+      "path": "tasks/p1-06.md"
+    },
+    {
+      "id": "P1-06a",
+      "linear_id": "ROB-805",
+      "title": "Implement generic timer and GIC IRQ delivery",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P1-06",
+      "blocked_by": [
+        "P1-03",
+        "P1-00"
+      ],
+      "blocks": [
+        "P1-06c",
+        "P1-06",
+        "P1-06b"
+      ],
+      "path": "tasks/p1-06a.md"
+    },
+    {
+      "id": "P1-06b",
+      "linear_id": "ROB-803",
+      "title": "Implement the single-CPU preemptive scheduler and task-state machine",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P1-06",
+      "blocked_by": [
+        "P1-05c",
+        "P1-00",
+        "P1-06a"
+      ],
+      "blocks": [
+        "P1-06c",
+        "P1-06",
+        "P1-13"
+      ],
+      "path": "tasks/p1-06b.md"
+    },
+    {
+      "id": "P1-06c",
+      "linear_id": "ROB-808",
+      "title": "Implement sleep queues, timeouts, and wakeup linearization",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P1-06",
+      "blocked_by": [
+        "P1-06b",
+        "P1-06a"
+      ],
+      "blocks": [
+        "P1-06"
+      ],
+      "path": "tasks/p1-06c.md"
+    },
+    {
+      "id": "P1-07",
+      "linear_id": "ROB-703",
+      "title": "Define native ABI v1 and capability-scoped handle tables",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P1-06",
+        "P1-05"
+      ],
+      "blocks": [
+        "P1-08a",
+        "P5-00",
+        "GATE-1",
+        "P1-12"
+      ],
+      "path": "tasks/p1-07.md"
+    },
+    {
+      "id": "P1-08",
+      "linear_id": "ROB-704",
+      "title": "TRACKING: Complete static ELF staging, executable publication, and EL0 entry",
+      "milestone": "M1",
+      "kind": "tracking",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P1-08b",
+        "P1-08a"
+      ],
+      "blocks": [
+        "GATE-1",
+        "P1-12",
+        "P1-11",
+        "P1-09",
+        "P1-10"
+      ],
+      "path": "tasks/p1-08.md"
+    },
+    {
+      "id": "P1-08a",
+      "linear_id": "ROB-810",
+      "title": "Parse, validate, allocate, and stage a static AArch64 ELF",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P1-08",
+      "blocked_by": [
+        "P1-05c",
+        "P1-07"
+      ],
+      "blocks": [
+        "P1-08",
+        "P1-08b"
+      ],
+      "path": "tasks/p1-08a.md"
+    },
+    {
+      "id": "P1-08b",
+      "linear_id": "ROB-809",
+      "title": "Publish executable segments and enter the isolated EL0 process",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P1-08",
+      "blocked_by": [
+        "P1-08a",
+        "P1-14",
+        "P1-13"
+      ],
+      "blocks": [
+        "P1-08",
+        "P2-09b"
+      ],
+      "path": "tasks/p1-08b.md"
+    },
+    {
+      "id": "P1-09",
+      "linear_id": "ROB-705",
+      "title": "Harden user-copy paths and contain EL0 memory faults",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P1-00",
+        "P1-05",
+        "P1-03",
+        "P1-08"
+      ],
+      "blocks": [
+        "GATE-1",
+        "P1-12"
+      ],
+      "path": "tasks/p1-09.md"
+    },
+    {
+      "id": "P1-10",
+      "linear_id": "ROB-707",
+      "title": "Build the immutable system archive and manifest-driven boot plan",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P1-08",
+        "P1-04",
+        "P1-01"
+      ],
+      "blocks": [
+        "P4-01",
+        "GATE-1",
+        "P1-12",
+        "P1-11"
+      ],
+      "path": "tasks/p1-10.md"
+    },
+    {
+      "id": "P1-11",
+      "linear_id": "ROB-706",
+      "title": "Establish structured tracing, GDB/QMP control, and machine-readable test completion",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P1-10",
+        "P1-06",
+        "P1-03",
+        "P1-08"
+      ],
+      "blocks": [
+        "P5-01a",
+        "P5-02",
+        "GATE-1",
+        "P1-12"
+      ],
+      "path": "tasks/p1-11.md"
+    },
+    {
+      "id": "P1-12",
+      "linear_id": "ROB-709",
+      "title": "Qualify the kernel spine with 1,000 boots and randomized memory/scheduler tests",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P1-00",
+        "P1-14",
+        "P1-13",
+        "P1-11",
+        "P1-03",
+        "P1-08",
+        "P1-10",
+        "P1-09",
+        "P1-07",
+        "P1-02",
+        "P1-04",
+        "P1-06",
+        "P1-05"
+      ],
+      "blocks": [
+        "GATE-1"
+      ],
+      "path": "tasks/p1-12.md"
+    },
+    {
+      "id": "P1-13",
+      "linear_id": "ROB-781",
+      "title": "Implement and prove EL0 FP/AdvSIMD context isolation",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P1-06b",
+        "P0-14",
+        "P1-03"
+      ],
+      "blocks": [
+        "P1-08b",
+        "P2-05b",
+        "P2-09b",
+        "P2-02",
+        "GATE-1",
+        "P2-01",
+        "P1-12"
+      ],
+      "path": "tasks/p1-13.md"
+    },
+    {
+      "id": "P1-14",
+      "linear_id": "ROB-782",
+      "title": "Implement executable-page cache maintenance and page-table/TLB coherency",
+      "milestone": "M1",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P1-05b",
+        "P1-05a",
+        "P0-14"
+      ],
+      "blocks": [
+        "P1-05c",
+        "P2-04b",
+        "P1-08b",
+        "P5-00",
+        "P2-05c",
+        "P2-00",
+        "P2-05",
+        "P1-12",
+        "GATE-1"
+      ],
+      "path": "tasks/p1-14.md"
+    },
+    {
+      "id": "P2-00",
+      "linear_id": "ROB-783",
+      "title": "Prove the AArch64 atomic and memory-ordering foundation for SMP",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P1-14",
+        "GATE-1",
+        "P0-14"
+      ],
+      "blocks": [
+        "P2-13",
+        "P2-11a",
+        "P2-09a",
+        "P2-10b",
+        "P2-10a",
+        "P2-06a",
+        "P2-05b",
+        "P2-05a",
+        "P2-05",
+        "GATE-2",
+        "P2-10",
+        "P2-07"
+      ],
+      "path": "tasks/p2-00.md"
+    },
+    {
+      "id": "P2-01",
+      "linear_id": "ROB-712",
+      "title": "Create the ERTS compatibility personality and executable syscall contract",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P1-13",
+        "P0-08",
+        "GATE-1"
+      ],
+      "blocks": [
+        "P2-04a",
+        "P2-11c",
+        "P2-11b",
+        "P2-11a",
+        "GATE-2",
+        "P2-02",
+        "P2-03"
+      ],
+      "path": "tasks/p2-01.md"
+    },
+    {
+      "id": "P2-02",
+      "linear_id": "ROB-710",
+      "title": "Boot a static musl process with correct initial stack, auxv, TLS, and errno",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P2-11c",
+        "P2-11b",
+        "P0-14",
+        "P1-13",
+        "P2-01"
+      ],
+      "blocks": [
+        "P2-04a",
+        "P2-06a",
+        "P2-06",
+        "GATE-2",
+        "P2-12",
+        "P2-03"
+      ],
+      "path": "tasks/p2-02.md"
+    },
+    {
+      "id": "P2-03",
+      "linear_id": "ROB-711",
+      "title": "Implement the read-only VFS and admitted file/path syscalls",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P2-01",
+        "P2-02"
+      ],
+      "blocks": [
+        "P2-04c",
+        "P2-10a",
+        "P2-10",
+        "GATE-2",
+        "P2-12"
+      ],
+      "path": "tasks/p2-03.md"
+    },
+    {
+      "id": "P2-04",
+      "linear_id": "ROB-713",
+      "title": "TRACKING: Complete VMA, mapping, protection, and teardown semantics",
+      "milestone": "M2",
+      "kind": "tracking",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P2-04a",
+        "P2-04c",
+        "P2-04b"
+      ],
+      "blocks": [
+        "P2-06a",
+        "P2-06",
+        "GATE-2",
+        "P2-12",
+        "P2-07"
+      ],
+      "path": "tasks/p2-04.md"
+    },
+    {
+      "id": "P2-04a",
+      "linear_id": "ROB-811",
+      "title": "Implement the VMA model, brk, and anonymous mappings",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-04",
+      "blocked_by": [
+        "P2-01",
+        "P2-02"
+      ],
+      "blocks": [
+        "P2-04b",
+        "P2-04",
+        "P2-04c"
+      ],
+      "path": "tasks/p2-04a.md"
+    },
+    {
+      "id": "P2-04b",
+      "linear_id": "ROB-812",
+      "title": "Implement mprotect, munmap, VMA splitting, merge, and rollback",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-04",
+      "blocked_by": [
+        "P2-04a",
+        "P1-14",
+        "P2-05c"
+      ],
+      "blocks": [
+        "P2-04"
+      ],
+      "path": "tasks/p2-04b.md"
+    },
+    {
+      "id": "P2-04c",
+      "linear_id": "ROB-814",
+      "title": "Implement file-backed read-only mappings only if admitted",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-04",
+      "blocked_by": [
+        "P2-03",
+        "P2-04a"
+      ],
+      "blocks": [
+        "P2-04"
+      ],
+      "path": "tasks/p2-04c.md"
+    },
+    {
+      "id": "P2-05",
+      "linear_id": "ROB-715",
+      "title": "TRACKING: Complete SMP CPU, scheduler, and TLB safety",
+      "milestone": "M2",
+      "kind": "tracking",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P2-05a",
+        "P2-05c",
+        "P2-05b",
+        "P2-00",
+        "P1-14",
+        "GATE-1"
+      ],
+      "blocks": [
+        "P2-09a",
+        "P2-06",
+        "P2-10",
+        "GATE-2",
+        "P2-09"
+      ],
+      "path": "tasks/p2-05.md"
+    },
+    {
+      "id": "P2-05a",
+      "linear_id": "ROB-784",
+      "title": "Bring up secondary CPUs, per-CPU state, timers, and GIC routing",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-05",
+      "blocked_by": [
+        "GATE-1",
+        "P2-00"
+      ],
+      "blocks": [
+        "P2-11c",
+        "P2-13",
+        "P2-11b",
+        "P2-11a",
+        "P2-05",
+        "P2-05b"
+      ],
+      "path": "tasks/p2-05a.md"
+    },
+    {
+      "id": "P2-05b",
+      "linear_id": "ROB-785",
+      "title": "Make scheduling, blocking, wakeups, and task migration SMP-correct",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-05",
+      "blocked_by": [
+        "P1-13",
+        "P2-00",
+        "P2-05a"
+      ],
+      "blocks": [
+        "P2-11c",
+        "P2-13",
+        "P2-07",
+        "P2-11a",
+        "P2-10b",
+        "P2-10a",
+        "P2-06a",
+        "P2-05",
+        "P2-05c"
+      ],
+      "path": "tasks/p2-05b.md"
+    },
+    {
+      "id": "P2-05c",
+      "linear_id": "ROB-786",
+      "title": "Implement acknowledged cross-CPU TLB shootdowns and concurrent VM safety",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-05",
+      "blocked_by": [
+        "P2-05b",
+        "P1-14"
+      ],
+      "blocks": [
+        "P2-13",
+        "P2-04b",
+        "P2-06b",
+        "P2-05"
+      ],
+      "path": "tasks/p2-05c.md"
+    },
+    {
+      "id": "P2-06",
+      "linear_id": "ROB-714",
+      "title": "TRACKING: Complete thread start, futex-dependent exit, and reclamation",
+      "milestone": "M2",
+      "kind": "tracking",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P2-06b",
+        "P2-06a",
+        "P2-05",
+        "P2-02",
+        "P2-04"
+      ],
+      "blocks": [
+        "P2-09a",
+        "GATE-2",
+        "P2-09",
+        "P2-12"
+      ],
+      "path": "tasks/p2-06.md"
+    },
+    {
+      "id": "P2-06a",
+      "linear_id": "ROB-787",
+      "title": "Implement the admitted clone/thread-start and TLS contract",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-06",
+      "blocked_by": [
+        "P2-00",
+        "P2-04",
+        "P2-05b",
+        "P2-02"
+      ],
+      "blocks": [
+        "P2-06",
+        "P2-06b",
+        "P2-07"
+      ],
+      "path": "tasks/p2-06a.md"
+    },
+    {
+      "id": "P2-06b",
+      "linear_id": "ROB-788",
+      "title": "Implement thread exit, clear-child-TID wake, join/detach, and reclamation",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-06",
+      "blocked_by": [
+        "P2-05c",
+        "P2-07",
+        "P2-06a"
+      ],
+      "blocks": [
+        "P2-08",
+        "P2-06"
+      ],
+      "path": "tasks/p2-06b.md"
+    },
+    {
+      "id": "P2-07",
+      "linear_id": "ROB-718",
+      "title": "Implement futex wait, wake, timeout, and required bitset semantics",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P2-05b",
+        "P2-11a",
+        "P2-06a",
+        "P2-00",
+        "P2-04"
+      ],
+      "blocks": [
+        "P2-09c",
+        "P2-06b",
+        "P2-08",
+        "GATE-2",
+        "P2-12"
+      ],
+      "path": "tasks/p2-07.md"
+    },
+    {
+      "id": "P2-08",
+      "linear_id": "ROB-719",
+      "title": "Implement robust-list and thread-exit synchronization cleanup",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P2-06b",
+        "P2-07"
+      ],
+      "blocks": [
+        "GATE-2",
+        "P2-12"
+      ],
+      "path": "tasks/p2-08.md"
+    },
+    {
+      "id": "P2-09",
+      "linear_id": "ROB-724",
+      "title": "TRACKING: Complete bounded signal state, AArch64 frames, and wait interruption",
+      "milestone": "M2",
+      "kind": "tracking",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P2-09a",
+        "P2-09c",
+        "P2-09b",
+        "P2-06",
+        "P2-05"
+      ],
+      "blocks": [
+        "GATE-2",
+        "P2-12"
+      ],
+      "path": "tasks/p2-09.md"
+    },
+    {
+      "id": "P2-09a",
+      "linear_id": "ROB-791",
+      "title": "Implement signal dispositions, masks, pending state, and target selection",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-09",
+      "blocked_by": [
+        "P2-00",
+        "P2-05",
+        "P2-06"
+      ],
+      "blocks": [
+        "P2-09",
+        "P2-09b"
+      ],
+      "path": "tasks/p2-09a.md"
+    },
+    {
+      "id": "P2-09b",
+      "linear_id": "ROB-792",
+      "title": "Implement AArch64 signal frames, alternate stack, FPSIMD context, faults, and rt_sigreturn",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-09",
+      "blocked_by": [
+        "P1-08b",
+        "P2-09a",
+        "P1-13"
+      ],
+      "blocks": [
+        "P2-09",
+        "P2-09c"
+      ],
+      "path": "tasks/p2-09b.md"
+    },
+    {
+      "id": "P2-09c",
+      "linear_id": "ROB-793",
+      "title": "Integrate signal interruption, restart, cancellation, and wait-race semantics",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-09",
+      "blocked_by": [
+        "P2-11a",
+        "P2-07",
+        "P2-09b",
+        "P2-10a",
+        "P2-10b"
+      ],
+      "blocks": [
+        "P2-09"
+      ],
+      "path": "tasks/p2-09c.md"
+    },
+    {
+      "id": "P2-10",
+      "linear_id": "ROB-722",
+      "title": "TRACKING: Complete streams, descriptor lifecycle, and poll readiness",
+      "milestone": "M2",
+      "kind": "tracking",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P2-10b",
+        "P2-10a",
+        "P2-00",
+        "P2-05",
+        "P2-03"
+      ],
+      "blocks": [
+        "P4-04",
+        "GATE-2",
+        "P2-12"
+      ],
+      "path": "tasks/p2-10.md"
+    },
+    {
+      "id": "P2-10a",
+      "linear_id": "ROB-789",
+      "title": "Implement bounded byte streams and descriptor lifecycle semantics",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-10",
+      "blocked_by": [
+        "P2-05b",
+        "P2-00",
+        "P2-03"
+      ],
+      "blocks": [
+        "P2-09c",
+        "P2-10",
+        "P2-10b"
+      ],
+      "path": "tasks/p2-10a.md"
+    },
+    {
+      "id": "P2-10b",
+      "linear_id": "ROB-790",
+      "title": "Implement poll/ppoll registration, readiness, timeout, close, and reuse races",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-10",
+      "blocked_by": [
+        "P2-11a",
+        "P2-10a",
+        "P2-00",
+        "P2-05b"
+      ],
+      "blocks": [
+        "P2-09c",
+        "P2-10"
+      ],
+      "path": "tasks/p2-10b.md"
+    },
+    {
+      "id": "P2-11",
+      "linear_id": "ROB-716",
+      "title": "TRACKING: Complete clocks/deadlines, entropy, and platform queries",
+      "milestone": "M2",
+      "kind": "tracking",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P2-11b",
+        "P2-11c",
+        "P2-11a"
+      ],
+      "blocks": [],
+      "path": "tasks/p2-11.md"
+    },
+    {
+      "id": "P2-11a",
+      "linear_id": "ROB-794",
+      "title": "Implement counter-based clocks, absolute deadlines, sleeps, and timer cancellation",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-11",
+      "blocked_by": [
+        "P2-05b",
+        "P2-00",
+        "P2-01",
+        "P2-05a"
+      ],
+      "blocks": [
+        "P2-12",
+        "P2-07",
+        "P2-09c",
+        "GATE-2",
+        "P2-13",
+        "P2-10b",
+        "P2-11"
+      ],
+      "path": "tasks/p2-11a.md"
+    },
+    {
+      "id": "P2-11b",
+      "linear_id": "ROB-795",
+      "title": "Implement boot entropy, virtio RNG, AT_RANDOM, and bounded getrandom semantics",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-11",
+      "blocked_by": [
+        "P0-14",
+        "P2-05a",
+        "P2-01"
+      ],
+      "blocks": [
+        "GATE-2",
+        "P2-13",
+        "P2-12",
+        "P2-02",
+        "P2-11"
+      ],
+      "path": "tasks/p2-11b.md"
+    },
+    {
+      "id": "P2-11c",
+      "linear_id": "ROB-796",
+      "title": "Implement bounded platform identity, limits, CPU-count, and affinity queries",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P2-11",
+      "blocked_by": [
+        "P2-05a",
+        "P2-05b",
+        "P2-01",
+        "P0-14"
+      ],
+      "blocks": [
+        "P2-13",
+        "GATE-2",
+        "P2-12",
+        "P2-02",
+        "P2-11"
+      ],
+      "path": "tasks/p2-11c.md"
+    },
+    {
+      "id": "P2-12",
+      "linear_id": "ROB-723",
+      "title": "Build the complete static-musl conformance suite from the host contract",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P2-11c",
+        "P2-11b",
+        "P2-11a",
+        "P2-04",
+        "P2-10",
+        "P2-09",
+        "P2-07",
+        "P2-06",
+        "P2-02",
+        "P2-03",
+        "P2-08"
+      ],
+      "blocks": [
+        "P2-13a",
+        "GATE-2",
+        "P2-13",
+        "P2-14"
+      ],
+      "path": "tasks/p2-12.md"
+    },
+    {
+      "id": "P2-13",
+      "linear_id": "ROB-717",
+      "title": "Run one-hour four-vCPU contention and randomized preemption qualification",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P2-00",
+        "P2-05c",
+        "P2-05a",
+        "P2-05b",
+        "P2-11c",
+        "P2-11b",
+        "P2-11a",
+        "P2-13a",
+        "P0-16",
+        "P2-12"
+      ],
+      "blocks": [
+        "GATE-2",
+        "P2-14"
+      ],
+      "path": "tasks/p2-13.md"
+    },
+    {
+      "id": "P2-13a",
+      "linear_id": "ROB-797",
+      "title": "Freeze the M2 contention campaign, progress oracle, and leak criteria before execution",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P2-12",
+        "P0-16"
+      ],
+      "blocks": [
+        "GATE-2",
+        "P2-13"
+      ],
+      "path": "tasks/p2-13a.md"
+    },
+    {
+      "id": "P2-14",
+      "linear_id": "ROB-720",
+      "title": "Audit and freeze the bounded BEAM host contract revision 2",
+      "milestone": "M2",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P2-12",
+        "P2-13"
+      ],
+      "blocks": [
+        "GATE-2"
+      ],
+      "path": "tasks/p2-14.md"
+    },
+    {
+      "id": "P3-00",
+      "linear_id": "ROB-798",
+      "title": "Freeze ERTS boot, process-scale, 12-hour workload, memory, and runner qualification protocol",
+      "milestone": "M3",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P0-16",
+        "P3-06",
+        "P3-07"
+      ],
+      "blocks": [
+        "GATE-3",
+        "P3-08",
+        "P3-09"
+      ],
+      "path": "tasks/p3-00.md"
+    },
+    {
+      "id": "P3-01",
+      "linear_id": "ROB-728",
+      "title": "Package and load the pinned upstream beam.smp inside the guest",
+      "milestone": "M3",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "GATE-2",
+        "P0-05"
+      ],
+      "blocks": [
+        "GATE-3",
+        "P3-02",
+        "P3-04"
+      ],
+      "path": "tasks/p3-01.md"
+    },
+    {
+      "id": "P3-02",
+      "linear_id": "ROB-727",
+      "title": "Reach ERTS pre-initialization and report the pinned runtime identity",
+      "milestone": "M3",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P3-01"
+      ],
+      "blocks": [
+        "GATE-3",
+        "P3-07",
+        "P3-03"
+      ],
+      "path": "tasks/p3-02.md"
+    },
+    {
+      "id": "P3-03",
+      "linear_id": "ROB-725",
+      "title": "Boot kernel and stdlib in embedded noninteractive mode",
+      "milestone": "M3",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P3-02",
+        "P3-04"
+      ],
+      "blocks": [
+        "P4-02",
+        "GATE-3",
+        "P3-05"
+      ],
+      "path": "tasks/p3-03.md"
+    },
+    {
+      "id": "P3-04",
+      "linear_id": "ROB-726",
+      "title": "Validate ERTS module loading against the immutable release tree",
+      "milestone": "M3",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P3-01"
+      ],
+      "blocks": [
+        "GATE-3",
+        "P3-07",
+        "P3-03"
+      ],
+      "path": "tasks/p3-04.md"
+    },
+    {
+      "id": "P3-05",
+      "linear_id": "ROB-734",
+      "title": "Exercise Erlang processes, messages, timers, ETS, binaries, and GC",
+      "milestone": "M3",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P3-03"
+      ],
+      "blocks": [
+        "GATE-3",
+        "P3-09",
+        "P3-07",
+        "P3-06"
+      ],
+      "path": "tasks/p3-05.md"
+    },
+    {
+      "id": "P3-06",
+      "linear_id": "ROB-732",
+      "title": "Bring ERTS to the final two-scheduler SMP profile",
+      "milestone": "M3",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P3-05"
+      ],
+      "blocks": [
+        "P3-00",
+        "GATE-3",
+        "P3-09",
+        "P3-08",
+        "P3-07"
+      ],
+      "path": "tasks/p3-06.md"
+    },
+    {
+      "id": "P3-07",
+      "linear_id": "ROB-729",
+      "title": "Close ERTS-discovered host-contract defects without semantic runtime patches",
+      "milestone": "M3",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P3-02",
+        "P3-06",
+        "P3-04",
+        "P3-05"
+      ],
+      "blocks": [
+        "P3-00",
+        "GATE-3",
+        "P3-10",
+        "P3-09",
+        "P3-08"
+      ],
+      "path": "tasks/p3-07.md"
+    },
+    {
+      "id": "P3-08",
+      "linear_id": "ROB-730",
+      "title": "Qualify 100 boots and 10,000 Erlang-process lifecycle",
+      "milestone": "M3",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P3-00",
+        "P3-06",
+        "P3-07"
+      ],
+      "blocks": [
+        "GATE-3",
+        "P3-10",
+        "P3-09"
+      ],
+      "path": "tasks/p3-08.md"
+    },
+    {
+      "id": "P3-09",
+      "linear_id": "ROB-733",
+      "title": "Run the 12-hour ERTS stress and memory-stability qualification",
+      "milestone": "M3",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P3-00",
+        "P0-16",
+        "P3-05",
+        "P3-07",
+        "P3-08",
+        "P3-06"
+      ],
+      "blocks": [
+        "GATE-3",
+        "P3-10"
+      ],
+      "path": "tasks/p3-09.md"
+    },
+    {
+      "id": "P3-10",
+      "linear_id": "ROB-731",
+      "title": "Audit upstream integrity and publish the central feasibility evidence",
+      "milestone": "M3",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P3-08",
+        "P3-09",
+        "P3-07"
+      ],
+      "blocks": [
+        "GATE-3"
+      ],
+      "path": "tasks/p3-10.md"
+    },
+    {
+      "id": "P4-00",
+      "linear_id": "ROB-799",
+      "title": "Freeze IPC, protocol, overload, and supervised-recovery qualification manifests",
+      "milestone": "M4",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P4-08",
+        "P0-16",
+        "P4-05",
+        "P4-06",
+        "P4-07",
+        "P4-03"
+      ],
+      "blocks": [
+        "P4-10",
+        "P4-09"
+      ],
+      "path": "tasks/p4-00.md"
+    },
+    {
+      "id": "P4-01",
+      "linear_id": "ROB-736",
+      "title": "Extend system.toml and the boot plan for renderer/BEAM IPC resources",
+      "milestone": "M4",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "GATE-3",
+        "P1-10"
+      ],
+      "blocks": [
+        "P5-03a",
+        "P6-08",
+        "GATE-4",
+        "P4-02",
+        "P4-04"
+      ],
+      "path": "tasks/p4-01.md"
+    },
+    {
+      "id": "P4-02",
+      "linear_id": "ROB-741",
+      "title": "Boot the genuine runtime_lab Mix release inside the custom OS",
+      "milestone": "M4",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P3-03",
+        "P0-07",
+        "P4-01"
+      ],
+      "blocks": [
+        "GATE-4",
+        "P4-06",
+        "P4-03"
+      ],
+      "path": "tasks/p4-02.md"
+    },
+    {
+      "id": "P4-03",
+      "linear_id": "ROB-739",
+      "title": "Implement final runtime_lab supervision and supervisor-resilient in-memory demo state",
+      "milestone": "M4",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P4-02",
+        "P0-02"
+      ],
+      "blocks": [
+        "P4-00",
+        "P5-08",
+        "GATE-4",
+        "P4-07",
+        "P4-10"
+      ],
+      "path": "tasks/p4-03.md"
+    },
+    {
+      "id": "P4-04",
+      "linear_id": "ROB-740",
+      "title": "Implement kernel-provisioned bounded UI streams and ERTS fd mapping",
+      "milestone": "M4",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P2-10",
+        "P4-01"
+      ],
+      "blocks": [
+        "GATE-4",
+        "P4-06",
+        "P4-05"
+      ],
+      "path": "tasks/p4-04.md"
+    },
+    {
+      "id": "P4-05",
+      "linear_id": "ROB-743",
+      "title": "Implement the bounded Rust ETF codec and packet framing",
+      "milestone": "M4",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-09",
+        "P4-04"
+      ],
+      "blocks": [
+        "P4-00",
+        "GATE-4",
+        "P4-07",
+        "P4-09"
+      ],
+      "path": "tasks/p4-05.md"
+    },
+    {
+      "id": "P4-06",
+      "linear_id": "ROB-746",
+      "title": "Connect Elixir to fixed descriptors with an fd port",
+      "milestone": "M4",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-09",
+        "P4-02",
+        "P4-04"
+      ],
+      "blocks": [
+        "P4-00",
+        "GATE-4",
+        "P4-07",
+        "P4-09"
+      ],
+      "path": "tasks/p4-06.md"
+    },
+    {
+      "id": "P4-07",
+      "linear_id": "ROB-745",
+      "title": "Implement protocol handshake, sequencing, snapshots, patches, events, and metrics",
+      "milestone": "M4",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P4-06",
+        "P4-05",
+        "P4-03"
+      ],
+      "blocks": [
+        "P5-03c",
+        "P4-00",
+        "P5-07",
+        "P5-06",
+        "P4-08",
+        "GATE-4",
+        "P4-09",
+        "P4-10"
+      ],
+      "path": "tasks/p4-07.md"
+    },
+    {
+      "id": "P4-08",
+      "linear_id": "ROB-738",
+      "title": "Enforce UI backpressure, disconnect, reconnect, and last-valid-model behavior",
+      "milestone": "M4",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P4-07"
+      ],
+      "blocks": [
+        "P5-03c",
+        "P4-00",
+        "P5-10",
+        "GATE-4",
+        "P4-09",
+        "P4-10"
+      ],
+      "path": "tasks/p4-08.md"
+    },
+    {
+      "id": "P4-09",
+      "linear_id": "ROB-742",
+      "title": "Qualify the Rust loopback service with one million messages and malformed input",
+      "milestone": "M4",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P4-00",
+        "P4-06",
+        "P4-07",
+        "P4-08",
+        "P4-05"
+      ],
+      "blocks": [
+        "GATE-4",
+        "P4-10"
+      ],
+      "path": "tasks/p4-09.md"
+    },
+    {
+      "id": "P4-10",
+      "linear_id": "ROB-744",
+      "title": "Qualify 1,000 supervised crashes and restart-intensity escalation",
+      "milestone": "M4",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P4-00",
+        "P4-09",
+        "P4-03",
+        "P4-07",
+        "P4-08"
+      ],
+      "blocks": [
+        "P5-09",
+        "GATE-4"
+      ],
+      "path": "tasks/p4-10.md"
+    },
+    {
+      "id": "P5-00",
+      "linear_id": "ROB-802",
+      "title": "Freeze the display-surface, buffer-ownership, and present-completion ABI",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P1-14",
+        "P1-07",
+        "P1-05",
+        "P0-12",
+        "P0-11"
+      ],
+      "blocks": [
+        "P5-03b",
+        "P5-01c",
+        "P5-03a",
+        "P5-01a",
+        "P5-01b",
+        "P5-04"
+      ],
+      "path": "tasks/p5-00.md"
+    },
+    {
+      "id": "P5-01",
+      "linear_id": "ROB-751",
+      "title": "TRACKING: Complete VirtIO GPU transport, resources, and present qualification",
+      "milestone": "M5",
+      "kind": "tracking",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P5-01b",
+        "P5-01a",
+        "P5-01c"
+      ],
+      "blocks": [
+        "P5-13",
+        "GATE-5"
+      ],
+      "path": "tasks/p5-01.md"
+    },
+    {
+      "id": "P5-01a",
+      "linear_id": "ROB-813",
+      "title": "Implement VirtIO GPU transport, status, features, and reset",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P5-01",
+      "blocked_by": [
+        "GATE-4",
+        "P5-00",
+        "P0-12",
+        "P1-11"
+      ],
+      "blocks": [
+        "P5-01",
+        "P5-01b"
+      ],
+      "path": "tasks/p5-01a.md"
+    },
+    {
+      "id": "P5-01b",
+      "linear_id": "ROB-815",
+      "title": "Implement GPU 2D resources, backing, and scanout",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P5-01",
+      "blocked_by": [
+        "P5-01a",
+        "P5-00"
+      ],
+      "blocks": [
+        "P5-01c",
+        "P5-01"
+      ],
+      "path": "tasks/p5-01b.md"
+    },
+    {
+      "id": "P5-01c",
+      "linear_id": "ROB-816",
+      "title": "Implement transfer, flush, fence, error, and present qualification",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P5-01",
+      "blocked_by": [
+        "P5-00",
+        "P5-01b"
+      ],
+      "blocks": [
+        "P5-03b",
+        "P5-01"
+      ],
+      "path": "tasks/p5-01c.md"
+    },
+    {
+      "id": "P5-02",
+      "linear_id": "ROB-747",
+      "title": "Integrate virtio pointer input and normalize semantic pointer events",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "GATE-4",
+        "P0-12",
+        "P1-11"
+      ],
+      "blocks": [
+        "P5-03c",
+        "P5-07",
+        "P5-13",
+        "GATE-5"
+      ],
+      "path": "tasks/p5-02.md"
+    },
+    {
+      "id": "P5-03",
+      "linear_id": "ROB-754",
+      "title": "TRACKING: Complete renderer bootstrap, surface client, and event/render loop",
+      "milestone": "M5",
+      "kind": "tracking",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P5-03b",
+        "P5-03a",
+        "P5-03c"
+      ],
+      "blocks": [
+        "P5-13",
+        "GATE-5",
+        "P5-04"
+      ],
+      "path": "tasks/p5-03.md"
+    },
+    {
+      "id": "P5-03a",
+      "linear_id": "ROB-817",
+      "title": "Implement renderer process and capability bootstrap",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P5-03",
+      "blocked_by": [
+        "P5-00",
+        "P4-01"
+      ],
+      "blocks": [
+        "P5-03",
+        "P5-03c",
+        "P5-03b"
+      ],
+      "path": "tasks/p5-03a.md"
+    },
+    {
+      "id": "P5-03b",
+      "linear_id": "ROB-818",
+      "title": "Implement the mapped-surface and present-completion client",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P5-03",
+      "blocked_by": [
+        "P5-03a",
+        "P5-01c",
+        "P5-00"
+      ],
+      "blocks": [
+        "P5-03",
+        "P5-03c"
+      ],
+      "path": "tasks/p5-03b.md"
+    },
+    {
+      "id": "P5-03c",
+      "linear_id": "ROB-819",
+      "title": "Implement the renderer event, render, and IPC loop with backpressure",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": "P5-03",
+      "blocked_by": [
+        "P4-07",
+        "P5-02",
+        "P5-03b",
+        "P4-08",
+        "P5-03a"
+      ],
+      "blocks": [
+        "P5-03"
+      ],
+      "path": "tasks/p5-03c.md"
+    },
+    {
+      "id": "P5-04",
+      "linear_id": "ROB-748",
+      "title": "Verify and integrate the frozen UiBackend, toolkit, and license decision",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "high",
+      "parent": null,
+      "blocked_by": [
+        "P5-00",
+        "P0-15",
+        "P5-03"
+      ],
+      "blocks": [
+        "P5-13",
+        "GATE-5",
+        "P5-05"
+      ],
+      "path": "tasks/p5-04.md"
+    },
+    {
+      "id": "P5-05",
+      "linear_id": "ROB-753",
+      "title": "Implement the opinionated Runtime Lab shell, theme, fonts, and native heartbeat",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P5-04"
+      ],
+      "blocks": [
+        "P6-08",
+        "P5-13",
+        "GATE-5",
+        "P5-12",
+        "P5-11",
+        "P5-06"
+      ],
+      "path": "tasks/p5-05.md"
+    },
+    {
+      "id": "P5-06",
+      "linear_id": "ROB-750",
+      "title": "Render Elixir-controlled cards and apply snapshots/patches safely",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P5-05",
+        "P4-07"
+      ],
+      "blocks": [
+        "P5-07",
+        "P5-13",
+        "GATE-5",
+        "P5-12",
+        "P5-08",
+        "P5-09",
+        "P5-10"
+      ],
+      "path": "tasks/p5-06.md"
+    },
+    {
+      "id": "P5-07",
+      "linear_id": "ROB-755",
+      "title": "Connect pointer actions through Rust, kernel IPC, ERTS port, and Elixir",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P4-07",
+        "P5-02",
+        "P5-06"
+      ],
+      "blocks": [
+        "P5-13",
+        "GATE-5",
+        "P5-08",
+        "P5-11",
+        "P5-09"
+      ],
+      "path": "tasks/p5-07.md"
+    },
+    {
+      "id": "P5-08",
+      "linear_id": "ROB-756",
+      "title": "Expose runtime identity, kernel metrics, and bounded stress controls",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P5-06",
+        "P4-03",
+        "P5-07"
+      ],
+      "blocks": [
+        "P6-07",
+        "P6-06",
+        "P5-13",
+        "GATE-5",
+        "P5-12",
+        "P5-11"
+      ],
+      "path": "tasks/p5-08.md"
+    },
+    {
+      "id": "P5-09",
+      "linear_id": "ROB-752",
+      "title": "Implement the Crash Feature flow and visible supervised recovery",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P4-10",
+        "P5-06",
+        "P5-07"
+      ],
+      "blocks": [
+        "P5-13",
+        "GATE-5",
+        "P5-12",
+        "P5-11"
+      ],
+      "path": "tasks/p5-09.md"
+    },
+    {
+      "id": "P5-10",
+      "linear_id": "ROB-749",
+      "title": "Implement BEAM disconnect, reconnect, resnapshot, and last-valid-view UX",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P4-08",
+        "P5-06"
+      ],
+      "blocks": [
+        "P5-13",
+        "GATE-5",
+        "P5-12",
+        "P5-11"
+      ],
+      "path": "tasks/p5-10.md"
+    },
+    {
+      "id": "P5-11",
+      "linear_id": "ROB-760",
+      "title": "Instrument event-to-present-completion, frame cadence, freezes, and memory",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P5-08",
+        "P5-05",
+        "P5-07",
+        "P5-09",
+        "P5-10"
+      ],
+      "blocks": [
+        "P5-13",
+        "GATE-5"
+      ],
+      "path": "tasks/p5-11.md"
+    },
+    {
+      "id": "P5-12",
+      "linear_id": "ROB-758",
+      "title": "Build QMP screenshot and visual-regression checks",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P5-05",
+        "P5-08",
+        "P5-10",
+        "P5-06",
+        "P5-09"
+      ],
+      "blocks": [
+        "P5-13",
+        "GATE-5"
+      ],
+      "path": "tasks/p5-12.md"
+    },
+    {
+      "id": "P5-13",
+      "linear_id": "ROB-759",
+      "title": "Run the interactive Apple Silicon HVF acceptance demonstration",
+      "milestone": "M5",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P5-12",
+        "P5-11",
+        "P5-10",
+        "P5-08",
+        "P5-09",
+        "P5-07",
+        "P5-01",
+        "P5-04",
+        "P5-05",
+        "P5-02",
+        "P5-03",
+        "P5-06"
+      ],
+      "blocks": [
+        "GATE-5"
+      ],
+      "path": "tasks/p5-13.md"
+    },
+    {
+      "id": "P6-01",
+      "linear_id": "ROB-761",
+      "title": "Freeze the final qualification contract and runner profiles",
+      "milestone": "M6",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P0-16",
+        "GATE-5"
+      ],
+      "blocks": [
+        "GATE-6",
+        "P6-05",
+        "P6-08",
+        "P6-07",
+        "P6-02",
+        "P6-04",
+        "P6-06",
+        "P6-03"
+      ],
+      "path": "tasks/p6-01.md"
+    },
+    {
+      "id": "P6-02",
+      "linear_id": "ROB-764",
+      "title": "Qualify 100 clean boots of the complete image",
+      "milestone": "M6",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P6-01"
+      ],
+      "blocks": [
+        "P6-09",
+        "P6-10",
+        "GATE-6",
+        "P6-04",
+        "P6-03"
+      ],
+      "path": "tasks/p6-02.md"
+    },
+    {
+      "id": "P6-03",
+      "linear_id": "ROB-762",
+      "title": "Run the 12-hour complete-system mixed stress qualification",
+      "milestone": "M6",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P6-02",
+        "P6-01"
+      ],
+      "blocks": [
+        "P6-09",
+        "P6-10",
+        "GATE-6"
+      ],
+      "path": "tasks/p6-03.md"
+    },
+    {
+      "id": "P6-04",
+      "linear_id": "ROB-765",
+      "title": "Qualify 10,000 scripted UI actions with complete sequence accounting",
+      "milestone": "M6",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P6-01",
+        "P6-02"
+      ],
+      "blocks": [
+        "P6-09",
+        "P6-10",
+        "GATE-6"
+      ],
+      "path": "tasks/p6-04.md"
+    },
+    {
+      "id": "P6-05",
+      "linear_id": "ROB-766",
+      "title": "Prove reproducible image builds, provenance, SBOM, and license completeness",
+      "milestone": "M6",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P6-01"
+      ],
+      "blocks": [
+        "P6-09",
+        "P6-10",
+        "GATE-6"
+      ],
+      "path": "tasks/p6-05.md"
+    },
+    {
+      "id": "P6-06",
+      "linear_id": "ROB-768",
+      "title": "Run AI exercise A: add a high-level scheduler-utilization card",
+      "milestone": "M6",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P6-01",
+        "P5-08"
+      ],
+      "blocks": [
+        "P6-09",
+        "P6-10",
+        "GATE-6"
+      ],
+      "path": "tasks/p6-06.md"
+    },
+    {
+      "id": "P6-07",
+      "linear_id": "ROB-771",
+      "title": "Run AI exercise B: add a cross-boundary page-pressure capability",
+      "milestone": "M6",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P5-08",
+        "P6-01"
+      ],
+      "blocks": [
+        "P6-09",
+        "P6-10",
+        "GATE-6"
+      ],
+      "path": "tasks/p6-07.md"
+    },
+    {
+      "id": "P6-08",
+      "linear_id": "ROB-763",
+      "title": "Run AI exercise C: change theme and feature composition by rebuilding the image",
+      "milestone": "M6",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P6-01",
+        "P4-01",
+        "P5-05"
+      ],
+      "blocks": [
+        "P6-09",
+        "P6-10",
+        "GATE-6"
+      ],
+      "path": "tasks/p6-08.md"
+    },
+    {
+      "id": "P6-09",
+      "linear_id": "ROB-767",
+      "title": "Conduct the final security-boundary, fault-model, dependency, and upstream audit",
+      "milestone": "M6",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P6-08",
+        "P6-04",
+        "P6-05",
+        "P6-02",
+        "P6-06",
+        "P6-07",
+        "P6-03"
+      ],
+      "blocks": [
+        "P6-10",
+        "GATE-6"
+      ],
+      "path": "tasks/p6-09.md"
+    },
+    {
+      "id": "P6-10",
+      "linear_id": "ROB-770",
+      "title": "Score H1–H6 and publish the final POC evidence report",
+      "milestone": "M6",
+      "kind": "implementation",
+      "status": "gate-blocked",
+      "priority": "none",
+      "parent": null,
+      "blocked_by": [
+        "P6-09",
+        "P6-03",
+        "P6-08",
+        "P6-06",
+        "P6-07",
+        "P6-02",
+        "P6-04",
+        "P6-05"
+      ],
+      "blocks": [
+        "GATE-6"
+      ],
+      "path": "tasks/p6-10.md"
+    }
+  ]
+}
