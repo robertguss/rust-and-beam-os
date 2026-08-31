@@ -1,0 +1,86 @@
+orb setup: system prerequisites
+orb setup: system packages already installed
+orb setup: system prerequisites completed in 0s
+orb setup: pinned repository bootstrap
+info: auto-self-update mode set to 'disable'
+bootstrap: installing Rust 1.89.0 from rust-toolchain.toml
+info: syncing channel updates for '1.89.0-x86_64-unknown-linux-gnu'
+info: latest update on 2025-08-07, rust version 1.89.0 (29483883e 2025-08-04)
+info: component 'clippy' for target 'x86_64-unknown-linux-gnu' is up to date
+info: component 'rustfmt' for target 'x86_64-unknown-linux-gnu' is up to date
+
+  1.89.0-x86_64-unknown-linux-gnu unchanged - rustc 1.89.0 (29483883e 2025-08-04)
+
+bootstrap: rustc rustc 1.89.0 (29483883e 2025-08-04)
+bootstrap: just 1.42.4
+bootstrap: running just check
+cargo fmt --all --check
+cargo clippy --locked --workspace --all-targets --all-features -- -D warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.03s
+cargo test --locked --workspace
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.03s
+     Running unittests src/main.rs (target/debug/deps/xtask-e4405cef26d96237)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+python3 -m unittest discover -s tests -v
+test_digest_drift_is_rejected (test_evidence.EvidenceValidationTests.test_digest_drift_is_rejected) ... ok
+test_repository_escape_is_rejected (test_evidence.EvidenceValidationTests.test_repository_escape_is_rejected) ... ok
+test_repository_fixture_passes (test_evidence.EvidenceValidationTests.test_repository_fixture_passes) ... ok
+test_completed_task_is_done (test_plan_labels.GateAwareLabelTests.test_completed_task_is_done) ... ok
+test_future_milestone_is_gate_blocked (test_plan_labels.GateAwareLabelTests.test_future_milestone_is_gate_blocked) ... ok
+test_ready_task_is_ready_for_agent (test_plan_labels.GateAwareLabelTests.test_ready_task_is_ready_for_agent) ... ok
+test_round_trips_emitted_front_matter (test_plan_tool.FrontMatterTests.test_round_trips_emitted_front_matter) ... ok
+test_builds_a_stably_sorted_compact_index (test_plan_tool.IndexTests.test_builds_a_stably_sorted_compact_index) ... ok
+test_accepts_an_acyclic_symmetric_gate_aware_plan (test_plan_tool.PlanValidationTests.test_accepts_an_acyclic_symmetric_gate_aware_plan) ... ok
+test_allows_ready_work_after_the_milestone_is_authorized (test_plan_tool.PlanValidationTests.test_allows_ready_work_after_the_milestone_is_authorized) ... ok
+test_rejects_future_work_marked_ready_for_agent (test_plan_tool.PlanValidationTests.test_rejects_future_work_marked_ready_for_agent) ... ok
+test_rejects_missing_dependencies_cycles_and_asymmetric_edges (test_plan_tool.PlanValidationTests.test_rejects_missing_dependencies_cycles_and_asymmetric_edges) ... ok
+test_imports_documents_milestones_tasks_gates_and_index (test_plan_tool.SnapshotImportTests.test_imports_documents_milestones_tasks_gates_and_index) ... ok
+test_stdin_import_consumes_one_snapshot_line_without_waiting_for_eof (test_plan_tool.SnapshotImportTests.test_stdin_import_consumes_one_snapshot_line_without_waiting_for_eof) ... ok
+test_cli_build_check_and_ready_form_an_offline_workflow (test_repo_plan.DeterministicGenerationTests.test_cli_build_check_and_ready_form_an_offline_workflow) ... ok
+test_cli_initializes_and_adds_a_task (test_repo_plan.DeterministicGenerationTests.test_cli_initializes_and_adds_a_task) ... ok
+test_generation_refuses_to_overwrite_canonical_content (test_repo_plan.DeterministicGenerationTests.test_generation_refuses_to_overwrite_canonical_content) ... ok
+test_generation_rejects_invalid_identity_and_references_before_writing (test_repo_plan.DeterministicGenerationTests.test_generation_rejects_invalid_identity_and_references_before_writing) ... ok
+test_init_creates_a_complete_byte_identical_plan (test_repo_plan.DeterministicGenerationTests.test_init_creates_a_complete_byte_identical_plan) ... ok
+test_new_task_renders_the_versioned_template_exactly (test_repo_plan.DeterministicGenerationTests.test_new_task_renders_the_versioned_template_exactly) ... ok
+test_cli_exposes_the_transactional_legacy_migration (test_repo_plan.LegacyMigrationTests.test_cli_exposes_the_transactional_legacy_migration) ... ok
+test_migration_is_deterministic_and_produces_a_valid_v1_plan (test_repo_plan.LegacyMigrationTests.test_migration_is_deterministic_and_produces_a_valid_v1_plan) ... ok
+test_check_detects_scaffold_drift_and_build_restores_templates (test_repo_plan.ValidationTests.test_check_detects_scaffold_drift_and_build_restores_templates) ... ok
+test_done_gate_requires_exactly_one_decision (test_repo_plan.ValidationTests.test_done_gate_requires_exactly_one_decision) ... ok
+test_done_tasks_require_evidence_and_in_progress_tasks_require_owner (test_repo_plan.ValidationTests.test_done_tasks_require_evidence_and_in_progress_tasks_require_owner) ... ok
+test_initialized_plan_is_valid_and_generated_views_are_current (test_repo_plan.ValidationTests.test_initialized_plan_is_valid_and_generated_views_are_current) ... ok
+test_ready_work_is_authorized_dependency_free_and_explainably_sorted (test_repo_plan.ValidationTests.test_ready_work_is_authorized_dependency_free_and_explainably_sorted) ... ok
+test_rejected_gate_does_not_authorize_its_milestone (test_repo_plan.ValidationTests.test_rejected_gate_does_not_authorize_its_milestone) ... ok
+test_rejects_blocking_and_parent_cycles (test_repo_plan.ValidationTests.test_rejects_blocking_and_parent_cycles) ... ok
+test_rejects_done_epic_with_unfinished_child (test_repo_plan.ValidationTests.test_rejects_done_epic_with_unfinished_child) ... ok
+test_rejects_unknown_fields_self_edges_and_done_dependencies (test_repo_plan.ValidationTests.test_rejects_unknown_fields_self_edges_and_done_dependencies) ... ok
+test_reports_missing_sections_references_links_and_stale_views (test_repo_plan.ValidationTests.test_reports_missing_sections_references_links_and_stale_views) ... ok
+test_template_manifest_detects_a_missing_template (test_repo_plan.ValidationTests.test_template_manifest_detects_a_missing_template) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 0.672s
+
+OK
+imported 0 issues into /tmp/tmp2gpciz8s/plan
+python3 scripts/repo_plan.py check --root docs/plan
+validated 140 records
+python3 scripts/evidence.py check --root .
+validated 2 evidence record(s)
+python3 scripts/plan_labels.py check --root docs/plan
+validated gate-aware labels for 133 executable records
+bootstrap: complete
+bootstrap: add /tmp/rb-orb-home.hZq79f/.cargo/bin to PATH in future shells (or source /tmp/rb-orb-home.hZq79f/.cargo/env)
+orb setup: pinned repository bootstrap completed in 2s
+orb setup: login-shell configuration
+orb setup: login-shell Cargo path already configured
+orb setup: login-shell configuration completed in 0s
+orb setup: clean login-shell verification
+rustc 1.89.0 (29483883e 2025-08-04)
+cargo 1.89.0 (c24e10642 2025-06-23)
+just 1.42.4
+orb setup: clean login-shell verification completed in 0s
+orb setup: complete
+warm setup elapsed=1.93 seconds

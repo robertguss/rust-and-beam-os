@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+
+run_step() {
+  local label="$1"
+  shift
+  local started=$SECONDS
+  printf 'orb setup: %s\n' "$label"
+  "$@"
+  printf 'orb setup: %s completed in %ss\n' "$label" "$((SECONDS - started))"
+}
+
+install_system_packages() {
+  local packages=(bash build-essential ca-certificates coreutils curl git python3)
+  local missing=()
+  local package
+  for package in "${packages[@]}"; do
+    if ! dpkg-query -W -f='${Status}' "$package" 2>/dev/null | grep -Fqx 'install ok installed'; then
+      missing+=("$package")
+    fi
+  done
+
+  if ((${#missing[@]} == 0)); then
+    echo "orb setup: system packages already installed"
+    return
+  fi
+
+  echo "orb setup: installing system packages: ${missing[*]}"
+  if ((EUID == 0)); then
+    apt-get update
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends "${missing[@]}"
+  else
+    sudo -n apt-get update
+    sudo -n env DEBIAN_FRONTEND=noninteractive \
+      apt-get install -y --no-install-recommends "${missing[@]}"
+  fi
+}
+
+persist_cargo_path() {
+  local profile="$HOME/.bash_profile"
+  local marker="# rust-and-beam-os orb toolchain"
+  touch "$profile"
+  if grep -Fqx "$marker" "$profile"; then
+    echo "orb setup: login-shell Cargo path already configured"
+    return
+  fi
+
+  cat >>"$profile" <<'EOF'
+
+# rust-and-beam-os orb toolchain
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
+EOF
+  echo "orb setup: configured login-shell Cargo path"
+}
+
+verify_login_shell() {
+  env -i \
+    HOME="$HOME" \
+    USER="${USER:-user}" \
+    PATH=/usr/bin:/bin \
+    REPO_ROOT="$repo_root" \
+    /bin/bash -lc '
+      cd "$REPO_ROOT"
+      test "$(command -v rustc)" = "$HOME/.cargo/bin/rustc"
+      test "$(command -v cargo)" = "$HOME/.cargo/bin/cargo"
+      test "$(command -v just)" = "$HOME/.cargo/bin/just"
+      rustc --version
+      cargo --version
+      just --version
+    '
+}
+
+run_step "system prerequisites" install_system_packages
+run_step "pinned repository bootstrap" "$repo_root/scripts/bootstrap.sh"
+run_step "login-shell configuration" persist_cargo_path
+run_step "clean login-shell verification" verify_login_shell
+
+echo "orb setup: complete"

@@ -1,0 +1,30 @@
+{
+  "schema": "rust-beam/orb-setup-environment/v1",
+  "recorded_at": "2026-08-31T20:08:09Z",
+  "runner": "Amp orb (Debian 12 remote secure E2B sandbox)",
+  "architecture": "x86_64",
+  "source_revision": "83b8334317ac6d563235df3f4c966c578a298527",
+  "source_dirty": true,
+  "isolated_home": true,
+  "services_required": false,
+  "secrets_required": false,
+  "system_packages": [
+    "bash",
+    "build-essential",
+    "ca-certificates",
+    "coreutils",
+    "curl",
+    "git",
+    "python3"
+  ],
+  "tools": [
+    { "name": "rustc", "version": "1.89.0 (29483883e 2025-08-04)" },
+    { "name": "cargo", "version": "1.89.0 (c24e10642 2025-06-23)" },
+    { "name": "just", "version": "1.42.4" }
+  ],
+  "timings_seconds": {
+    "fresh_setup": 68.89,
+    "warm_setup": 1.93,
+    "resume": 0.10
+  }
+}

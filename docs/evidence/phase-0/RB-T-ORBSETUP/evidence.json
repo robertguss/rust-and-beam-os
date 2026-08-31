@@ -1,0 +1,94 @@
+{
+  "schema": "rust-beam/evidence/v1",
+  "id": "RB-EV-ORBSETUP-LIFECYCLE",
+  "task": "RB-T-ORBSETUP",
+  "recorded_at": "2026-08-31T20:08:09Z",
+  "claim": "A fresh simulated orb installed the pinned repository toolchain in under two minutes; repeated setup and resume reused it without installation, and a minimal login shell passed every repository check.",
+  "classification": "scaffold",
+  "build": {
+    "id": "rb1-83b8334317ac-dirty-20260831T200809Z",
+    "source_revision": "83b8334317ac6d563235df3f4c966c578a298527",
+    "source_dirty": true,
+    "target": "x86_64-unknown-linux-gnu"
+  },
+  "command": {
+    "argv": ["bash", "-lc", "./.agents/setup && ./.agents/resume && just check"],
+    "cwd": "."
+  },
+  "environment": {
+    "os": "debian 12 / Linux 6.1.158+",
+    "architecture": "x86_64",
+    "tools": [
+      { "name": "rustc", "version": "1.89.0 (29483883e 2025-08-04)" },
+      { "name": "cargo", "version": "1.89.0 (c24e10642 2025-06-23)" },
+      { "name": "just", "version": "1.42.4" },
+      { "name": "python", "version": "3.11.6" },
+      { "name": "git", "version": "2.55.0" },
+      { "name": "cc", "version": "Debian 12.2.0-14+deb12u1" }
+    ]
+  },
+  "inputs": [
+    {
+      "path": ".agents/setup",
+      "digest": "sha256:72ee94eebd3f54ea6f0c1b971e28edbfaf64a5727069371ad4cff8b2a3ffc3a2"
+    },
+    {
+      "path": ".agents/resume",
+      "digest": "sha256:ba5e48af178a595ce64b5d4bb937b94d1ad08d6bd1f4d3cce54fb3770e6c1f0e"
+    },
+    {
+      "path": ".gitignore",
+      "digest": "sha256:26b24bee9ad00c4b053d475aeb28602abcc46183595687d2a6abfd828649793f"
+    },
+    {
+      "path": "scripts/bootstrap.sh",
+      "digest": "sha256:81dffee1b932b433348719f6c2eaf8fabdefc12421b6458b786eaf8775d71414"
+    },
+    {
+      "path": "scripts/evidence.py",
+      "digest": "sha256:74b2725c06af871e99d83adf7ad34188e5810369b0dae94b9d9982cc3ffcd546"
+    },
+    {
+      "path": "toolchain/bootstrap-tools.json",
+      "digest": "sha256:e7f4002af13168c0947c16742d50d3af91f5dcc5931260acf7fe0b391272bd6f"
+    },
+    {
+      "path": "docs/evidence/schema/evidence-v1.schema.json",
+      "digest": "sha256:a839d25933eb9fb64c88f43487bb5b0677cf48d237075bce622f8e1ee5af9a8b"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/phase-0/RB-T-ORBSETUP/README.md",
+      "digest": "sha256:ff0b8121a72f349d86007369ab815f0e5b3eb1b39027ab0b6de712a5e145b1fd"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-ORBSETUP/environment.json",
+      "digest": "sha256:32b09bccfc384729b4eeefa9ecc11744879b8a1724f081216fab1d62a50c8044"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-ORBSETUP/setup-fresh.txt",
+      "digest": "sha256:c1bd1960d7c649ba9712eeb2b3ae3c1c6f74f5ccc2a66df0d3a89fb1cd290d32"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-ORBSETUP/setup-warm.txt",
+      "digest": "sha256:ded503d16244b47627414a702ea00da4aa4643baf09229004d6ca0818ce2568b"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-ORBSETUP/resume.txt",
+      "digest": "sha256:c14b21e1e923982e816800fa98a72e478ec7e12b8c29497a9d7a66b005687e01"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-ORBSETUP/login-shell.txt",
+      "digest": "sha256:df6d78c1584eb43a85a52a11a59274c39879bfed37e5e821d9d69780cb3a1e85"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-ORBSETUP/final-check.txt",
+      "digest": "sha256:be82fb1f0e4ea4aa35fc63fe962cb2cdfa1e32f3be7c1c26f7f3aee2d8a161b7"
+    }
+  ],
+  "result": {
+    "status": "pass",
+    "exit_code": 0
+  }
+}

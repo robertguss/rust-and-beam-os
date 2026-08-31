@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+for tool in rustc cargo just; do
+  if [[ ! -x "$HOME/.cargo/bin/$tool" ]]; then
+    echo "orb resume: missing $HOME/.cargo/bin/$tool; rerun .agents/setup" >&2
+    exit 1
+  fi
+done
+
+cd "$repo_root"
+rustc --version >/dev/null
+cargo --version >/dev/null
+just --version >/dev/null
+
+echo "orb resume: pinned development tools are available"

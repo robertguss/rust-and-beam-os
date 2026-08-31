@@ -6,6 +6,12 @@
       "task": "RB-T-P001",
       "record": "docs/evidence/phase-0/RB-T-P001/evidence.json",
       "claim": "A fresh x86_64 remote Linux clone installed the candidate bootstrap tools and passed every scaffold check."
+    },
+    {
+      "id": "RB-EV-ORBSETUP-LIFECYCLE",
+      "task": "RB-T-ORBSETUP",
+      "record": "docs/evidence/phase-0/RB-T-ORBSETUP/evidence.json",
+      "claim": "A fresh simulated orb installed the pinned repository toolchain in under two minutes; repeated setup and resume reused it without installation, and a minimal login shell passed every repository check."
     }
   ]
 }

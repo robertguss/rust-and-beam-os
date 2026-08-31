@@ -1,0 +1,6 @@
+rustc=/tmp/rb-orb-home.hZq79f/.cargo/bin/rustc
+cargo=/tmp/rb-orb-home.hZq79f/.cargo/bin/cargo
+just=/tmp/rb-orb-home.hZq79f/.cargo/bin/just
+rustc 1.89.0 (29483883e 2025-08-04)
+cargo 1.89.0 (c24e10642 2025-06-23)
+just 1.42.4

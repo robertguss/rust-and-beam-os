@@ -677,6 +677,25 @@
       "defer_until": null,
       "depends_on": [],
       "evidence": [
+        "docs/evidence/phase-0/RB-T-ORBSETUP/evidence.json"
+      ],
+      "id": "RB-T-ORBSETUP",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-orbsetup.md",
+      "priority": "P3",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "done",
+      "title": "Prepare Amp orb setup and resume lifecycle",
+      "type": "task"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [],
+      "evidence": [
         "docs/evidence/phase-0/RB-T-P001/evidence.json"
       ],
       "id": "RB-T-P001",
@@ -3833,5 +3852,5 @@
     }
   ],
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:9007aaa02dc6388691d325afd13937c85252886301abb79038823d1a86124d3f"
+  "source_digest": "sha256:de0b1bad044f262e0a8f94fe6c0d366ffb13023e9948d15787e1ee713946aaa8"
 }
