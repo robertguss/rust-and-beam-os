@@ -1,0 +1,26 @@
+{
+  "schema": "rust-beam/prior-art-observation/v1",
+  "commit": "105c4946c756a6f3d23d1c41b9e8139352ddc115",
+  "host": {
+    "os": "Linux-6.1.158+-x86_64-with-glibc2.36",
+    "architecture": "x86_64"
+  },
+  "archive_sha256": "1e07f608b43bb3455b3d1b32f05e67bef2ed7613fc66466b153d94a5a55f6782",
+  "source_files_verified": 17,
+  "committed_beam_sha256": "774d91b7037ea24562dc3e9271f9a28890bc8e63eb3de11225d52fff56ab6e23",
+  "kernel_build": {
+    "status": "pass",
+    "command": "cargo build --release --locked --target x86_64-tyn.json -Zbuild-std=core,alloc,compiler_builtins -Zbuild-std-features=compiler-builtins-mem",
+    "rust": "nightly-2026-06-01 / rustc 1.98.0-nightly (14210df0e 2026-05-31)",
+    "sha256": "193c91fe1680282c8f84cbccc610e84137f8219bafefa30c37d75df441d150ae",
+    "result": "Finished release profile in 6.91 seconds with upstream warnings"
+  },
+  "kvm_boot": {
+    "status": "blocked",
+    "reasons": [
+      "/dev/kvm is absent",
+      "qemu-system-x86_64 is absent"
+    ],
+    "tcg_substituted": false
+  }
+}

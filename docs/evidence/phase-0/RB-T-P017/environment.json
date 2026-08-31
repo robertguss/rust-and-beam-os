@@ -1,0 +1,23 @@
+{
+  "schema": "rust-beam/environment/v1",
+  "recorded_at": "2026-08-31T23:41:53Z",
+  "runner": "Amp orb (remote secure E2B Linux sandbox)",
+  "os": "debian 12",
+  "kernel": "Linux 6.1.158+",
+  "architecture": "x86_64",
+  "source_revision": "eba59075e094ba2c3c670e257b95afaa56facd71",
+  "source_dirty": true,
+  "accelerator": {
+    "kvm_device": false,
+    "qemu_system_x86_64": null,
+    "tcg_substituted": false
+  },
+  "tools": [
+    { "name": "rustc", "version": "1.89.0 (29483883e 2025-08-04) project / 1.98.0-nightly (14210df0e 2026-05-31) Tyn" },
+    { "name": "cargo", "version": "1.89.0 (c24e10642 2025-06-23) project / 1.98.0-nightly (fbb61be30 2026-05-26) Tyn" },
+    { "name": "cc", "version": "Debian 12.2.0-14+deb12u1" },
+    { "name": "readelf", "version": "GNU Binutils 2.40" },
+    { "name": "python", "version": "3.11.6" },
+    { "name": "just", "version": "1.42.4" }
+  ]
+}

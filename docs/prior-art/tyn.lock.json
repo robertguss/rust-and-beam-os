@@ -1,0 +1,141 @@
+{
+  "schema": "rust-beam/prior-art-lock/v1",
+  "project": "Tyn",
+  "repository": "https://github.com/tyn-os/kernel",
+  "commit": "105c4946c756a6f3d23d1c41b9e8139352ddc115",
+  "retrieved_on": "2026-08-31",
+  "archive": {
+    "url": "https://codeload.github.com/tyn-os/kernel/tar.gz/105c4946c756a6f3d23d1c41b9e8139352ddc115",
+    "sha256": "1e07f608b43bb3455b3d1b32f05e67bef2ed7613fc66466b153d94a5a55f6782",
+    "size": 29278588
+  },
+  "source_files": [
+    {
+      "path": ".tool-versions",
+      "sha256": "ff5bccb15653ebf00eac13b991dc966af7c5a72a3038bb831e4c5a31126ea498"
+    },
+    {
+      "path": "BUGS.md",
+      "sha256": "b33c4609c0ed0cb657d796c4034cf8eb629ebe6364d0177ab3970418c56c539b"
+    },
+    {
+      "path": "Cargo.lock",
+      "sha256": "54c210c4a4b589a584ce6fd9a250f2365cc211d172b43f42941e5907c9282d11"
+    },
+    {
+      "path": "Cargo.toml",
+      "sha256": "8f11ed31839d0c558501f8afbc92a8b464b1c6dbce7f855a8fb499b8b91e4010"
+    },
+    {
+      "path": "README.md",
+      "sha256": "371d605877f762503d92d5b191e9326c3822ba2d72ed39191a6db77618af9a20"
+    },
+    {
+      "path": "beam-build/Dockerfile",
+      "sha256": "be61b7cd345e4ef1ede07cc940ae8cf860c1eecf0185a644b883c6c8e1220f0e"
+    },
+    {
+      "path": "docs/BUILDING_ERTS.md",
+      "sha256": "9f5b0a119276b7fcc4d07f6cb1ac2dfdc57b0315d25bd53279b79541c6bc78ce"
+    },
+    {
+      "path": "docs/CAPABILITY_MAP.md",
+      "sha256": "db2671020b61055a8930117ec3aecc939ba276fb4dce8bab6d4deb38101b1648"
+    },
+    {
+      "path": "docs/FUTEX_HISTORY.md",
+      "sha256": "5833ed4f302a27bbc452d1fa65f740b7fafb6ef8f25696c403f9647517cec55c"
+    },
+    {
+      "path": "docs/TECHNICAL_REPORT.md",
+      "sha256": "4a0d547150b7fc52815add36f90b8851652defc28cc79f10348c911a5845147a"
+    },
+    {
+      "path": "rust-toolchain.toml",
+      "sha256": "e5fa8e978d1524ba8984aa28599145165216e1e854023a75f821ad40bd212003"
+    },
+    {
+      "path": "src/elf.rs",
+      "sha256": "f60ec086e218aab4ce582039ea182271bfaa9bd8ded9bb3d8f9a80d0e5569a8e"
+    },
+    {
+      "path": "src/main.rs",
+      "sha256": "09c0f331a3f9beb3ec17ed6224d35436f7c425f819130d59de1a603c58d30292"
+    },
+    {
+      "path": "src/sched.rs",
+      "sha256": "34a3c150fba79bcc10511a7ecb0ce6255f15d5cca80de431eb26f981976b3f8f"
+    },
+    {
+      "path": "src/syscall.rs",
+      "sha256": "5d12e97bf63c4c3f2a888ab33949bc0ba19609ce69697542446f47c6f59e2a68"
+    },
+    {
+      "path": "src/vfs.rs",
+      "sha256": "1f30b45ff79ff96ad27aaae29a9ee71730a12fc839933cbb4dd4acb88c4e940e"
+    },
+    {
+      "path": "x86_64-tyn.json",
+      "sha256": "a5e66c32d5bcf9b096ad6ad29bbebe611b996257925c77ca8464163bfb8689c3"
+    }
+  ],
+  "artifacts": {
+    "beam": {
+      "path": "src/beam.smp.elf",
+      "sha256": "774d91b7037ea24562dc3e9271f9a28890bc8e63eb3de11225d52fff56ab6e23",
+      "size": 16872480,
+      "elf": {
+        "class": "ELF64",
+        "data": "little-endian",
+        "type": "ET_EXEC",
+        "machine": "x86-64",
+        "entry": "0x613307",
+        "program_headers": 8,
+        "load_segments": 4,
+        "interpreter": false,
+        "dynamic_section": false,
+        "tls_filesz": "0x28",
+        "tls_memsz": "0xa0",
+        "gnu_stack": "RW",
+        "build_id": "2517335af694b032f17eeb4865fe283c90368860"
+      }
+    },
+    "rootfs": {
+      "path": "src/otp-rootfs.cpio",
+      "sha256": "99648891d078b553d6e10c5aa65b932a28ebde0cfd4ccbe2a503663599435254",
+      "size": 33968640
+    }
+  },
+  "runtime": {
+    "otp": "27.3.4.2",
+    "erts": "15.2.7.1",
+    "elixir": "1.18.3-otp-27",
+    "musl": "1.2.4",
+    "compiler": "GCC 13.2",
+    "jit": true,
+    "patches": "none in the current reproducible OTP recipe"
+  },
+  "kernel_build": {
+    "rust_channel": "nightly-2026-06-01",
+    "target": "x86_64-tyn.json",
+    "command": [
+      "cargo",
+      "build",
+      "--release",
+      "--locked",
+      "--target",
+      "x86_64-tyn.json",
+      "-Zbuild-std=core,alloc,compiler_builtins",
+      "-Zbuild-std-features=compiler-builtins-mem"
+    ]
+  },
+  "authoritative_runner": {
+    "architecture": "x86_64",
+    "accelerator": "KVM",
+    "machine": "q35",
+    "cpu": "host",
+    "cpus": 8,
+    "memory_mib": 2560,
+    "tcg_is_diagnostic_only": true
+  }
+}

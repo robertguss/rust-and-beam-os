@@ -1,0 +1,99 @@
+{
+  "schema": "rust-beam/evidence/v1",
+  "id": "RB-EV-P017-PRIOR-ART",
+  "task": "RB-T-P017",
+  "recorded_at": "2026-08-31T23:41:53Z",
+  "claim": "The pinned Tyn source, committed ERTS ELF, architecture differences, limitations, and corrected futex history were audited; its kernel rebuilt; unavailable KVM execution was recorded without TCG substitution; and the Linux liveness probe passed while detecting five injected thread-progress failures.",
+  "classification": "host",
+  "build": {
+    "id": "rb1-eba59075e094-dirty-20260831T234153Z",
+    "source_revision": "eba59075e094ba2c3c670e257b95afaa56facd71",
+    "source_dirty": true,
+    "target": "x86_64 Linux host / pinned x86_64 Tyn source audit"
+  },
+  "command": {
+    "argv": [
+      "bash",
+      "-c",
+      "just prior-art-tyn-audit && just prior-art-tyn-reproduce && just test-thread-progress-probe && just prior-art-coverage"
+    ],
+    "cwd": "."
+  },
+  "environment": {
+    "os": "debian 12 / Linux 6.1.158+; no /dev/kvm; no qemu-system-x86_64",
+    "architecture": "x86_64",
+    "tools": [
+      { "name": "rustc-project", "version": "1.89.0 (29483883e 2025-08-04)" },
+      { "name": "rustc-tyn", "version": "1.98.0-nightly (14210df0e 2026-05-31)" },
+      { "name": "cargo-tyn", "version": "1.98.0-nightly (fbb61be30 2026-05-26)" },
+      { "name": "cc", "version": "Debian 12.2.0-14+deb12u1" },
+      { "name": "readelf", "version": "GNU Binutils 2.40" },
+      { "name": "python", "version": "3.11.6" },
+      { "name": "just", "version": "1.42.4" }
+    ]
+  },
+  "inputs": [
+    {
+      "path": "justfile",
+      "digest": "sha256:531fe813c819ef66cc568d6aae013847be6f7d7ea4521fec0a0b2f22067d5ae8"
+    },
+    {
+      "path": "scripts/prior_art.py",
+      "digest": "sha256:6b4c30750036eada84470745fa9be7e3a76e3cc183b73a661277cba1ee04ab33"
+    },
+    {
+      "path": "scripts/thread_progress.py",
+      "digest": "sha256:21a7faabd969e6f18975cbb81d3ad51ab854c97f73889da17313e0c3ab483e4a"
+    },
+    {
+      "path": "tests/thread-progress/thread_progress_probe.c",
+      "digest": "sha256:df0e11943a09936b5ac88a8bfd283ef0e0e0665beb73b3120308ec56c12b9f6c"
+    },
+    {
+      "path": "docs/prior-art/tyn.lock.json",
+      "digest": "sha256:d6e446faf3de80319f6470af779ab5754cea886fc56aabd4fb40843c4fd217b6"
+    },
+    {
+      "path": "docs/prior-art/tyn-coverage.json",
+      "digest": "sha256:1c7de3939afb8b1f91a029eb6b2a11ead1917275eac1d782aacff86c7f0aa2c2"
+    },
+    {
+      "path": "docs/prior-art/tyn.md",
+      "digest": "sha256:e8028c9cc8c0490d172624b0a2eb349463d6e0870c6a6d47704b67aaad6eab78"
+    },
+    {
+      "path": "docs/evidence/sources.json",
+      "digest": "sha256:87000c5f6cdf21d58bc3a12ba8898fd858e3dd82a2e84596e01b19de5c2dc425"
+    },
+    {
+      "path": "docs/plan/gates/rb-g-gate0.md",
+      "digest": "sha256:fe8d2a221b644bab5cbd85b44554ba6e177885c87081e32d94ec5cba7b7b21bb"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/phase-0/RB-T-P017/README.md",
+      "digest": "sha256:fdc2bc75f9de6edca24b0fcd45193034836cc342e90ff5cac82018ce8dd3fe63"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P017/environment.json",
+      "digest": "sha256:1bf7134e492e2c6a4533c5a25d8eed4fb53b3c3c313f2bb9a1f3715c3d0bc4f4"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P017/tyn-reproduction.json",
+      "digest": "sha256:486d13b324df33eae12a8fc8e323d629028a6847a34b57fe77761efa65a80b42"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P017/thread-progress.txt",
+      "digest": "sha256:7d59e8bfa2042ea4186bf29ef58ab624e217bab5b6313697d6e26625dc230d5c"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P017/verification.txt",
+      "digest": "sha256:351ce247b46592e68b23f719b84cb1fd83c3bd7958931797e5d6534ce08a5b1e"
+    }
+  ],
+  "result": {
+    "status": "pass",
+    "exit_code": 0
+  }
+}

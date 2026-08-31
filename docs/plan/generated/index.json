@@ -1126,7 +1126,9 @@
         "RB-T-P003",
         "RB-T-P001"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/evidence/phase-0/RB-T-P017/evidence.json"
+      ],
       "id": "RB-T-P017",
       "milestone": "RB-M-M0",
       "owner": null,
@@ -1135,7 +1137,7 @@
       "priority": "P1",
       "related": [],
       "schema": "repo-plan/v1",
-      "state": "open",
+      "state": "done",
       "title": "Reproduce and disposition current BEAM-on-custom-kernel prior-art risks",
       "type": "task",
       "x_labels": [
@@ -3854,5 +3856,5 @@
     }
   ],
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:a3482d4b8a78f01d20a93dd56b309d874d3589120310fc357ef2169266527f22"
+  "source_digest": "sha256:392ef3516af879cb4bdd4c4d3f769ff5db5fbd94f12d7921cfba0cfced7ab393"
 }

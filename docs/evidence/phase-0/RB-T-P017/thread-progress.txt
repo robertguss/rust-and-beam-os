@@ -1,0 +1,9 @@
+$ just test-thread-progress-probe
+python3 scripts/thread_progress.py check --root .
+status=pass schedulers=4 rounds=200 futex=wait-wake compare_before_block=pass signal_eintr=pass clear_child_tid=pass scheduler_progress=pass
+oracle=pass status=fail detected=lost-wakeup injected=lost-wakeup
+oracle=pass status=fail detected=stalled-startup injected=stalled-startup
+oracle=pass status=fail detected=premature-futex-block injected=premature-futex-block
+oracle=pass status=fail detected=scheduler-stall injected=scheduler-stall
+oracle=pass status=fail detected=thread-exit-join injected=thread-exit-join
+thread-progress probe: 1 healthy profile and 5 injected faults passed

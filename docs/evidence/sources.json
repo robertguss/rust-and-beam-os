@@ -182,6 +182,21 @@
       ],
       "consumers": ["RB-T-P003", "toolchain/sources.lock.json", "toolchain/contract.json"],
       "limitations": "The aggregate image contains distribution packages with component-specific licenses; the receipt records observed tools but does not claim bit-reproducible builds."
+    },
+    {
+      "id": "RB-SRC-TYN-105C4946",
+      "title": "Tyn Rust kernel and BEAM host prior art",
+      "locator": "https://codeload.github.com/tyn-os/kernel/tar.gz/105c4946c756a6f3d23d1c41b9e8139352ddc115",
+      "retrieved_on": "2026-08-31",
+      "immutable_reference": "105c4946c756a6f3d23d1c41b9e8139352ddc115",
+      "digest": "sha256:1e07f608b43bb3455b3d1b32f05e67bef2ed7613fc66466b153d94a5a55f6782",
+      "classification": "prior-art",
+      "claims": [
+        "At the pinned commit Tyn contains an x86_64 Rust kernel, a static musl OTP 27.3.4.2 ERTS artifact, a narrow Linux syscall personality, and a conservative init-time futex spin-yield valve coupled to the serial_shell ready marker.",
+        "Tyn is feasibility and warning evidence only; its self-reported KVM, Nitro, TCG, reliability, networking, and TLS observations do not prove this project's AArch64 QEMU virt, TCG, KVM, or HVF behavior."
+      ],
+      "consumers": ["RB-T-P017", "docs/prior-art/tyn.lock.json", "docs/prior-art/tyn.md"],
+      "limitations": "Source and committed artifacts were independently inspected and the kernel rebuilt, but this orb had no /dev/kvm or qemu-system-x86_64, so no Tyn boot or reported run-rate claim was reproduced."
     }
   ]
 }

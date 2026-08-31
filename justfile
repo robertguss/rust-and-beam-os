@@ -64,6 +64,22 @@ qemu-user-smoke-command:
 qemu-hvf-command:
     python3 scripts/toolchain.py runner macos-hvf-full-system
 
+# Validate the pinned Tyn source audit and claim classifications.
+prior-art-tyn-audit:
+    python3 scripts/prior_art.py audit --root .
+
+# Fetch, verify, inspect, and build pinned Tyn; boot only on an x86_64 KVM host.
+prior-art-tyn-reproduce:
+    python3 scripts/prior_art.py reproduce --root .
+
+# Exercise thread/futex/signal/clear-child-TID progress and injected failures.
+test-thread-progress-probe:
+    python3 scripts/thread_progress.py check --root .
+
+# Prove every relevant Tyn limitation has one owned project disposition.
+prior-art-coverage:
+    python3 scripts/prior_art.py coverage --root .
+
 # Show which implementation commands are intentionally still placeholders.
 status:
     cargo xtask status

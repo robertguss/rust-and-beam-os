@@ -1,0 +1,147 @@
+{
+  "schema": "rust-beam/prior-art-coverage/v1",
+  "task": "RB-T-P017",
+  "source_commit": "105c4946c756a6f3d23d1c41b9e8139352ddc115",
+  "findings": [
+    {
+      "id": "init-thread-progress-valve",
+      "category": "new-contract-test",
+      "source": "docs/FUTEX_HISTORY.md",
+      "disposition": "Treat ERTS SMP/thread progress as a Gate-0 kill criterion and detect lost wake, premature block, stalled startup, scheduler stall, and exit/join failure without accepting a valve.",
+      "consumers": ["just test-thread-progress-probe", "RB-T-P309", "RB-G-GATE0"]
+    },
+    {
+      "id": "clear-child-tid-join",
+      "category": "new-contract-test",
+      "source": "src/sched.rs",
+      "disposition": "Require ordered child-TID publication, clear-on-exit, futex wake, join completion, and generation-safe reclamation.",
+      "consumers": ["just test-thread-progress-probe", "RB-T-P008", "RB-T-P206B"]
+    },
+    {
+      "id": "robust-futex-noop",
+      "category": "already-covered",
+      "source": "src/syscall.rs",
+      "disposition": "Do not inherit the success stub; derive and test the pinned musl robust-list lifecycle.",
+      "consumers": ["RB-T-P008", "RB-T-P208"]
+    },
+    {
+      "id": "signal-semantics-absent",
+      "category": "already-covered",
+      "source": "src/syscall.rs",
+      "disposition": "Require real action, mask, delivery, frame, return, interruption, restart, and synchronous-fault semantics.",
+      "consumers": ["just test-thread-progress-probe", "RB-T-P008", "RB-E-P209"]
+    },
+    {
+      "id": "x86-platform-coupling",
+      "category": "architecture-difference",
+      "source": "x86_64-tyn.json",
+      "disposition": "Derive AArch64 QEMU virt, GIC, timer, TLS, CPU-feature, auxv, and weak-memory contracts independently.",
+      "consumers": ["RB-T-P014", "RB-T-P200", "RB-T-P202"]
+    },
+    {
+      "id": "kvm-nitro-evidence-profile",
+      "category": "architecture-difference",
+      "source": "README.md",
+      "disposition": "Keep Linux TCG, native AArch64 KVM, and Apple Silicon HVF evidence separate and non-substitutable.",
+      "consumers": ["RB-T-P016"]
+    },
+    {
+      "id": "kvm-reproduction-unavailable",
+      "category": "not-reproducible",
+      "source": "README.md",
+      "disposition": "Record the source/ELF/build inspection, but make no boot or rate claim until an x86_64 KVM runner executes the pinned image.",
+      "consumers": ["just prior-art-tyn-reproduce", "RB-T-P017"]
+    },
+    {
+      "id": "identity-map-isolation",
+      "category": "already-covered",
+      "source": "BUGS.md",
+      "disposition": "Retain separate EL0 address spaces, validated user-copy, guard pages, W^X, and contained faults as project requirements.",
+      "consumers": ["RB-T-P202", "RB-T-P204A"]
+    },
+    {
+      "id": "tcg-memory-faults",
+      "category": "new-contract-test",
+      "source": "BUGS.md",
+      "disposition": "Preserve first failure artifacts and classify RAM/layout/profile failures rather than relabeling them as slow emulation.",
+      "consumers": ["RB-T-P014", "RB-T-P016"]
+    },
+    {
+      "id": "jit-and-static-nifs",
+      "category": "architecture-difference",
+      "source": "beam-build/Dockerfile",
+      "disposition": "Use the project's non-JIT artifact and prohibit arbitrary NIFs/drivers; Tyn's executable-mmap and static-NIF path is not imported.",
+      "consumers": ["RB-T-P008"]
+    },
+    {
+      "id": "writable-storage",
+      "category": "architecture-difference",
+      "source": "src/vfs.rs",
+      "disposition": "Persistent and general writable storage remain out of scope; do not import Tyn's tmpfs implementation.",
+      "consumers": ["RB-T-P008"]
+    },
+    {
+      "id": "networking-and-distribution",
+      "category": "architecture-difference",
+      "source": "README.md",
+      "disposition": "Networking, DNS, TLS, and distribution claims neither validate nor block the bounded renderer IPC POC.",
+      "consumers": ["RB-T-P008"]
+    },
+    {
+      "id": "fork-exec-subprocesses",
+      "category": "already-covered",
+      "source": "src/syscall.rs",
+      "disposition": "Reject fork, exec, System.cmd, os_mon, and subprocess-dependent release closure rather than returning fake success.",
+      "consumers": ["RB-T-P008"]
+    },
+    {
+      "id": "syscall-success-stubs",
+      "category": "new-contract-test",
+      "source": "src/syscall.rs",
+      "disposition": "Every admitted operation and flag needs source-plus-trace semantics and positive, negative, error, and race evidence where applicable.",
+      "consumers": ["RB-T-P008", "RB-T-P013"]
+    },
+    {
+      "id": "crypto-tls-claims",
+      "category": "accepted-residual-risk",
+      "source": "docs/CAPABILITY_MAP.md",
+      "disposition": "Crypto/TLS and arbitrary NIF security are outside this POC; state that boundary and import no security claim.",
+      "consumers": ["RB-T-P008", "RB-G-GATE0"]
+    },
+    {
+      "id": "x86-hardware-rng",
+      "category": "architecture-difference",
+      "source": "README.md",
+      "disposition": "Select and test an AArch64 entropy source without transferring RDRAND/RDSEED assumptions.",
+      "consumers": ["RB-T-P008", "RB-T-P014"]
+    },
+    {
+      "id": "external-capability-rates",
+      "category": "not-reproducible",
+      "source": "docs/CAPABILITY_MAP.md",
+      "disposition": "Keep Phoenix, Nitro, distribution, TLS, wall-clock, throughput, and launch-rate observations classified as Tyn author reports.",
+      "consumers": ["RB-T-P017"]
+    },
+    {
+      "id": "mutable-build-base",
+      "category": "new-contract-test",
+      "source": "beam-build/Dockerfile",
+      "disposition": "Tyn's Alpine 3.19 tag and downloaded OTP URL are not sealed by OCI/source digest in its recipe; do not call the upstream artifact byte-reproducible without independent receipts.",
+      "consumers": ["RB-T-P003", "RB-T-P008"]
+    },
+    {
+      "id": "stale-packaged-artifacts",
+      "category": "already-covered",
+      "source": "docs/BUILDING_ERTS.md",
+      "disposition": "Require paired source, release closure, deterministic image assembly, and build receipts for the exact committed artifacts.",
+      "consumers": ["RB-T-P003", "RB-T-P008", "RB-T-P013"]
+    },
+    {
+      "id": "renderer-boundary-absent",
+      "category": "architecture-difference",
+      "source": "README.md",
+      "disposition": "Tyn provides no evidence for the two-process renderer, heartbeat, GPU/input ownership, or BEAM-loss recovery boundary.",
+      "consumers": ["RB-T-P013"]
+    }
+  ]
+}

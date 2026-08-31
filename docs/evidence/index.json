@@ -18,6 +18,12 @@
       "task": "RB-T-P003",
       "record": "docs/evidence/phase-0/RB-T-P003/evidence.json",
       "claim": "Two fresh network-disabled Linux builders produced matching complete toolchain metadata, and the sealed OTP 29.0.5/Elixir 1.20.4 pair built and ran the reference Mix application offline."
+    },
+    {
+      "id": "RB-EV-P017-PRIOR-ART",
+      "task": "RB-T-P017",
+      "record": "docs/evidence/phase-0/RB-T-P017/evidence.json",
+      "claim": "The pinned Tyn source, committed ERTS ELF, architecture differences, limitations, and corrected futex history were audited; its kernel rebuilt; unavailable KVM execution was recorded without TCG substitution; and the Linux liveness probe passed while detecting five injected thread-progress failures."
     }
   ]
 }
