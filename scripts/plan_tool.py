@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from dataclasses import dataclass
@@ -59,6 +60,8 @@ def _render_scalar(value: Any) -> str:
 
 def _parse_scalar(value: str) -> Any:
     value = value.strip()
+    if value == "[]":
+        return []
     if value == "null":
         return None
     if value == "true":
@@ -80,8 +83,11 @@ def render_markdown(metadata: dict[str, Any], body: str) -> str:
     for key in keys:
         value = metadata[key]
         if isinstance(value, list):
-            lines.append(f"{key}:")
-            lines.extend(f"  - {_render_scalar(item)}" for item in value)
+            if not value:
+                lines.append(f"{key}: []")
+            else:
+                lines.append(f"{key}:")
+                lines.extend(f"  - {_render_scalar(item)}" for item in value)
         else:
             lines.append(f"{key}: {_render_scalar(value)}")
     lines.extend(("---", ""))
@@ -186,8 +192,27 @@ def _find_cycles(records: dict[str, dict[str, Any]]) -> list[list[str]]:
     return cycles
 
 
+def _load_state(root: Path) -> tuple[dict[str, Any], list[str]]:
+    path = root / "state.json"
+    if not path.exists():
+        return {"schema_version": 1, "authorized_milestones": ["M0"], "current_gate": "GATE-0"}, []
+    try:
+        state = json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError) as error:
+        return {}, [f"{path}: {error}"]
+    authorized = state.get("authorized_milestones")
+    if not isinstance(authorized, list) or not all(re.fullmatch(r"M\d+", str(item)) for item in authorized):
+        return state, [f"{path}: authorized_milestones must be a list of milestone ids"]
+    if "M0" not in authorized:
+        return state, [f"{path}: M0 must remain authorized"]
+    return state, []
+
+
 def validate_plan(root: Path) -> ValidationResult:
     records, errors = load_records(root)
+    state, state_errors = _load_state(root)
+    errors.extend(state_errors)
+    authorized_milestones = set(state.get("authorized_milestones", ["M0"]))
 
     for task_id, record in records.items():
         for field in ("blocked_by", "blocks"):
@@ -206,9 +231,9 @@ def validate_plan(root: Path) -> ValidationResult:
         kind = record.get("kind")
         status = record.get("status")
         labels = set(record.get("labels", []))
-        if kind == "gate" and status != "ready-for-human":
-            errors.append(f"{task_id}: gates must have ready-for-human status")
-        if kind != "gate" and re.fullmatch(r"M[1-6]", milestone) and status != "gate-blocked":
+        if kind == "gate" and status not in {"ready-for-human", "done"}:
+            errors.append(f"{task_id}: gates must be ready-for-human or done")
+        if kind != "gate" and milestone not in authorized_milestones and status != "gate-blocked":
             errors.append(f"{task_id}: M1-M6 work must remain gate-blocked")
         if kind == "tracking" and ("tracking" not in labels or "ready-for-agent" in labels):
             errors.append(f"{task_id}: tracking issues require tracking and cannot be ready-for-agent")
@@ -300,14 +325,84 @@ def _issue_status(labels: list[str]) -> str:
     return "backlog"
 
 
+def _rewrite_offline_body(
+    body: str,
+    source: Path,
+    url_to_path: dict[str, Path],
+    issue_paths: dict[str, Path] | None = None,
+    linear_to_canonical: dict[str, str] | None = None,
+) -> str:
+    rewritten = body
+    for url, destination in sorted(url_to_path.items(), key=lambda item: len(item[0]), reverse=True):
+        relative = os.path.relpath(destination, start=source.parent)
+        rewritten = rewritten.replace(url, Path(relative).as_posix())
+    if issue_paths and linear_to_canonical:
+        def replace_issue(match: re.Match[str]) -> str:
+            linear_id = match.group(1)
+            if linear_id not in issue_paths:
+                return match.group(0)
+            relative = Path(os.path.relpath(issue_paths[linear_id], start=source.parent)).as_posix()
+            return f"[{linear_to_canonical[linear_id]}](<{relative}>)"
+
+        rewritten = re.sub(r"<issue\b[^>]*>\s*(ROB-\d+)\s*</issue>", replace_issue, rewritten)
+    replacements = {
+        "using only Linear content": "using only repository plan content",
+        "using only Linear": "using only repository plan content",
+        "relevant Linear issue": "relevant repository task file",
+        "Linear status update": "repository status and evidence update",
+    }
+    for old, new in replacements.items():
+        rewritten = rewritten.replace(old, new)
+    return rewritten
+
+
 def import_snapshot(snapshot: dict[str, Any], root: Path) -> None:
     """Materialize a normalized repository plan from a complete Linear snapshot."""
     exported_at = str(snapshot["exported_at"])
     project = snapshot["project"]
     issues = snapshot["issues"]
 
+    linear_to_canonical = {issue["id"]: _canonical_id(issue["title"]) for issue in issues}
+    issue_paths: dict[str, Path] = {}
+    for issue in issues:
+        task_id = linear_to_canonical[issue["id"]]
+        kind = _issue_kind(task_id, list(issue.get("labels", [])))
+        directory = "gates" if kind == "gate" else "tasks"
+        issue_paths[issue["id"]] = root / directory / f"{task_id.lower()}.md"
+
+    document_paths: dict[str, Path] = {}
+    for document in snapshot.get("documents", []):
+        title = document["title"]
+        if "Architecture" in title:
+            document_paths[title] = root / "architecture.md"
+        elif "Readiness" in title or "Remediation" in title:
+            document_paths[title] = root / "readiness-review.md"
+        else:
+            document_paths[title] = root / "documents" / f"{_slug(title)}.md"
+
+    url_to_path = {project["url"]: root / "project.md"} if project.get("url") else {}
+    url_to_path.update(
+        {document["url"]: document_paths[document["title"]] for document in snapshot.get("documents", []) if document.get("url")}
+    )
+    url_to_path.update({issue["url"]: issue_paths[issue["id"]] for issue in issues if issue.get("url")})
+
     for directory in (root / "tasks", root / "gates", root / "milestones"):
         _clear_generated_markdown(directory)
+
+    state_path = root / "state.json"
+    if not state_path.exists():
+        state_path.write_text(
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "authorized_milestones": ["M0"],
+                    "current_gate": "GATE-0",
+                    "note": "Only a human gate decision may authorize another milestone.",
+                },
+                indent=2,
+            )
+            + "\n"
+        )
 
     _write_generated_markdown(
         root / "project.md",
@@ -317,19 +412,18 @@ def import_snapshot(snapshot: dict[str, Any], root: Path) -> None:
             "linear_url": project.get("url"),
             "exported_at": exported_at,
         },
-        project.get("description") or project.get("summary") or "",
+        _rewrite_offline_body(
+            project.get("description") or project.get("summary") or "",
+            root / "project.md",
+            url_to_path,
+            issue_paths,
+            linear_to_canonical,
+        ),
     )
 
-    document_paths: dict[str, Path] = {}
     for document in snapshot.get("documents", []):
         title = document["title"]
-        if "Architecture" in title:
-            destination = root / "architecture.md"
-        elif "Readiness" in title or "Remediation" in title:
-            destination = root / "readiness-review.md"
-        else:
-            destination = root / "documents" / f"{_slug(title)}.md"
-        document_paths[title] = destination
+        destination = document_paths[title]
         _write_generated_markdown(
             destination,
             {
@@ -338,7 +432,9 @@ def import_snapshot(snapshot: dict[str, Any], root: Path) -> None:
                 "linear_url": document.get("url"),
                 "exported_at": exported_at,
             },
-            document.get("content", ""),
+            _rewrite_offline_body(
+                document.get("content", ""), destination, url_to_path, issue_paths, linear_to_canonical
+            ),
         )
 
     for milestone in snapshot.get("milestones", []):
@@ -351,10 +447,15 @@ def import_snapshot(snapshot: dict[str, Any], root: Path) -> None:
                 "kind": "milestone",
                 "exported_at": exported_at,
             },
-            milestone.get("description", ""),
+            _rewrite_offline_body(
+                milestone.get("description", ""),
+                root / "milestones" / f"{milestone_id.lower()}.md",
+                url_to_path,
+                issue_paths,
+                linear_to_canonical,
+            ),
         )
 
-    linear_to_canonical = {issue["id"]: _canonical_id(issue["title"]) for issue in issues}
     for issue in issues:
         task_id = linear_to_canonical[issue["id"]]
         labels = list(issue.get("labels", []))
@@ -375,11 +476,16 @@ def import_snapshot(snapshot: dict[str, Any], root: Path) -> None:
             "blocked_by": [linear_to_canonical[item] for item in issue.get("blocked_by", [])],
             "blocks": [linear_to_canonical[item] for item in issue.get("blocks", [])],
         }
-        directory = "gates" if kind == "gate" else "tasks"
         _write_generated_markdown(
-            root / directory / f"{task_id.lower()}.md",
+            issue_paths[issue["id"]],
             metadata,
-            issue.get("description", ""),
+            _rewrite_offline_body(
+                issue.get("description", ""),
+                issue_paths[issue["id"]],
+                url_to_path,
+                issue_paths,
+                linear_to_canonical,
+            ),
         )
 
     result = validate_plan(root)
@@ -414,7 +520,7 @@ def _command_build_index(args: argparse.Namespace) -> int:
 
 def _command_import_snapshot(args: argparse.Namespace) -> int:
     if str(args.snapshot) == "-":
-        snapshot = json.load(sys.stdin)
+        snapshot = json.loads(sys.stdin.readline())
     else:
         snapshot = json.loads(args.snapshot.read_text())
     import_snapshot(snapshot, args.root)

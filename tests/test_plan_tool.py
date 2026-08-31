@@ -1,7 +1,10 @@
+import argparse
+import io
 import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from scripts import plan_tool
 
@@ -18,13 +21,14 @@ class FrontMatterTests(unittest.TestCase):
             "priority": "high",
             "parent": None,
             "labels": ["spec-complete", "gate-blocked"],
-            "blocked_by": ["P1-02", "P1-03"],
+            "blocked_by": [],
             "blocks": ["P1-06"],
         }
 
         rendered = plan_tool.render_markdown(metadata, "# Goal\n\nDefine the rules.\n")
         parsed, body = plan_tool.parse_markdown(rendered)
 
+        self.assertIn("blocked_by: []", rendered)
         self.assertEqual(metadata, parsed)
         self.assertEqual("# Goal\n\nDefine the rules.\n", body)
 
@@ -97,6 +101,29 @@ class PlanValidationTests(unittest.TestCase):
 
             self.assertTrue(any("M1-M6 work must remain gate-blocked" in error for error in result.errors))
 
+    def test_allows_ready_work_after_the_milestone_is_authorized(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "state.json").write_text(
+                json.dumps(
+                    {
+                        "schema_version": 1,
+                        "authorized_milestones": ["M0", "M1"],
+                        "current_gate": "GATE-1",
+                    }
+                )
+            )
+            task = self.record(
+                "P1-01",
+                status="ready-for-agent",
+                labels=["ready-for-agent"],
+            )
+            self.write_record(root, task)
+
+            result = plan_tool.validate_plan(root)
+
+            self.assertEqual([], result.errors)
+
 
 class IndexTests(unittest.TestCase):
     def test_builds_a_stably_sorted_compact_index(self):
@@ -136,6 +163,30 @@ class IndexTests(unittest.TestCase):
 
 
 class SnapshotImportTests(unittest.TestCase):
+    def test_stdin_import_consumes_one_snapshot_line_without_waiting_for_eof(self):
+        snapshot = {
+            "exported_at": "2026-08-31T12:00:00Z",
+            "project": {
+                "name": "Rust + BEAM Mobile OS POC",
+                "summary": "Phase 0 only.",
+                "description": "# Mission\n",
+                "url": "https://linear.example/project",
+            },
+            "documents": [],
+            "milestones": [],
+            "issues": [],
+        }
+
+        with tempfile.TemporaryDirectory() as temporary:
+            args = argparse.Namespace(snapshot=Path("-"), root=Path(temporary) / "plan")
+            stream = io.StringIO(json.dumps(snapshot) + "\nthis must remain unread\n")
+
+            with mock.patch("sys.stdin", stream):
+                result = plan_tool._command_import_snapshot(args)
+
+            self.assertEqual(0, result)
+            self.assertEqual("this must remain unread\n", stream.readline())
+
     def test_imports_documents_milestones_tasks_gates_and_index(self):
         snapshot = {
             "exported_at": "2026-08-31T12:00:00Z",
@@ -167,7 +218,10 @@ class SnapshotImportTests(unittest.TestCase):
                 {
                     "id": "ROB-1",
                     "title": "P1-01 — First task",
-                    "description": "# Goal\n\nFirst.\n",
+                    "description": (
+                        "# Goal\n\nFirst.\n\n"
+                        "[Architecture](<https://linear.example/architecture>)\n"
+                    ),
                     "url": "https://linear.example/ROB-1",
                     "milestone": "M1 — Bootable Rust Kernel Spine",
                     "priority": "High",
@@ -179,7 +233,10 @@ class SnapshotImportTests(unittest.TestCase):
                 {
                     "id": "ROB-2",
                     "title": "GATE-1 — Decide whether to continue",
-                    "description": "# Decision\n\nReview evidence.\n",
+                    "description": (
+                        "# Decision\n\nReview the relevant Linear issue using only Linear and evidence.\n\n"
+                        "<issue id=\"uuid\" href=\"https://linear.example/old-slug\">ROB-1</issue>\n"
+                    ),
                     "url": "https://linear.example/ROB-2",
                     "milestone": "M1 — Bootable Rust Kernel Spine",
                     "priority": "No priority",
@@ -204,7 +261,14 @@ class SnapshotImportTests(unittest.TestCase):
             self.assertTrue((root / "gates" / "gate-1.md").exists())
             self.assertEqual(2, json.loads((root / "index.json").read_text())["task_count"])
             self.assertEqual([], plan_tool.validate_plan(root).errors)
-            self.assertIn("# Goal\n\nFirst.", (root / "tasks" / "p1-01.md").read_text())
+            task_content = (root / "tasks" / "p1-01.md").read_text()
+            gate_content = (root / "gates" / "gate-1.md").read_text()
+            self.assertIn("# Goal\n\nFirst.", task_content)
+            self.assertIn("[Architecture](<../architecture.md>)", task_content)
+            self.assertIn("[P1-01](<../tasks/p1-01.md>)", gate_content)
+            self.assertIn("relevant repository task file", gate_content)
+            self.assertIn("using only repository plan content and evidence", gate_content)
+            self.assertNotIn("linear.example", task_content.split("---", 2)[-1])
 
 
 if __name__ == "__main__":
