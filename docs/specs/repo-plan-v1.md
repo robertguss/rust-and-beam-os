@@ -36,6 +36,10 @@ deterministic projections. They may be committed for zero-tool discovery, but
 they are never writable authorities. A local database may be added later only
 as a disposable, ignored cache.
 
+The plan `README.md` and collection README files are generated scaffolds. The
+CLI restores them from versioned templates during `build`, and `check` rejects
+template drift.
+
 Every canonical record has exactly one file. Reverse edges and computed states
 are projections:
 
@@ -239,6 +243,7 @@ The ready projection records the factors so the ordering is explainable.
 - an epic marked `done` while a non-cancelled child is unfinished;
 - invalid owner/state combination;
 - broken repository-local Markdown link;
+- missing or modified generated scaffold;
 - generated projections that differ from a clean rebuild.
 
 Informational `related` edges may cycle. Claims are advisory across Git clones:
@@ -265,12 +270,16 @@ python3 scripts/repo_plan.py new decision --root plan --id EX-D-5W8N2R \
 python3 scripts/repo_plan.py build --root plan --date 2026-08-31
 python3 scripts/repo_plan.py check --root plan --date 2026-08-31
 python3 scripts/repo_plan.py ready --root plan --date 2026-08-31 --json
+
+# One-time migration for the legacy format used by the reference repository.
+python3 scripts/repo_plan.py migrate-legacy --root docs/plan \
+  --name "Rust + BEAM Mobile OS POC" --prefix RB
 ```
 
 `new` refuses to overwrite a file. `init` refuses a non-empty destination.
-`build` is the only command that writes generated projections. `check` and
-`ready` are read-only. Dates are explicit inputs; the CLI never embeds the wall
-clock in canonical or generated files.
+`build` is the only command that rewrites generated scaffolds and projections.
+`check` and `ready` are read-only. Dates are explicit inputs; the CLI never
+embeds the wall clock in canonical or generated files.
 
 ## Testing strategy
 

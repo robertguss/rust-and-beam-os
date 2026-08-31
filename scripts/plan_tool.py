@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build and validate the repository-native implementation plan."""
+"""Legacy Linear snapshot import and pre-repo-plan/v1 validation tooling."""
 
 from __future__ import annotations
 
