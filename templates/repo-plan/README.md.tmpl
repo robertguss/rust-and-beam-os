@@ -1,0 +1,19 @@
+# ${project_name} plan
+
+This directory is the canonical implementation plan. Read `project.yaml`, then
+use the generated index to locate a record. Canonical Markdown files remain the
+authority when a generated view disagrees.
+
+## Agent workflow
+
+1. Run the repository's `repo_plan.py check` command. Completion criterion: the
+   canonical graph and generated views are valid and current.
+2. Run `repo_plan.py ready --json` and select only a returned task. Completion
+   criterion: the task is open, authorized, undeferred, and dependency-ready.
+3. Read the task, its milestone, and every direct dependency. Completion
+   criterion: the acceptance, verification, evidence, and scope boundaries are
+   understood.
+4. Update the canonical record with the implementation and evidence, rebuild
+   generated views, and run `check`. Completion criterion: all checks pass.
+
+Gate completion is a human action recorded by a decision file.
