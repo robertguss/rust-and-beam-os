@@ -1,3 +1,4 @@
+import json
 import subprocess
 import sys
 import tempfile
@@ -140,6 +141,49 @@ class DeterministicGenerationTests(unittest.TestCase):
                     templates=repo_plan.DEFAULT_TEMPLATES,
                 )
 
+    def test_generation_rejects_invalid_identity_and_references_before_writing(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            invalid_root = Path(temporary) / "invalid"
+            with self.assertRaisesRegex(ValueError, "prefix"):
+                repo_plan.initialize_plan(
+                    root=invalid_root,
+                    name="Invalid project",
+                    prefix="bad",
+                    milestone_id="BAD-M-M0",
+                    milestone_title="Foundation",
+                    templates=repo_plan.DEFAULT_TEMPLATES,
+                )
+            self.assertFalse(invalid_root.exists())
+
+            root = Path(temporary) / "plan"
+            repo_plan.initialize_plan(
+                root=root,
+                name="Example project",
+                prefix="EX",
+                milestone_id="EX-M-M0",
+                milestone_title="Foundation",
+                templates=repo_plan.DEFAULT_TEMPLATES,
+            )
+            with self.assertRaisesRegex(ValueError, "invalid id"):
+                repo_plan.create_record(
+                    root=root,
+                    record_type="task",
+                    record_id="WRONG",
+                    title="Invalid identity",
+                    milestone="EX-M-M0",
+                    templates=repo_plan.DEFAULT_TEMPLATES,
+                )
+            with self.assertRaisesRegex(ValueError, "missing milestone"):
+                repo_plan.create_record(
+                    root=root,
+                    record_type="task",
+                    record_id="EX-T-7M3K2Q",
+                    title="Missing milestone",
+                    milestone="EX-M-NOTFOUND",
+                    templates=repo_plan.DEFAULT_TEMPLATES,
+                )
+            self.assertEqual([], list((root / "tasks").glob("ex-*.md")))
+
     def test_cli_initializes_and_adds_a_task(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary) / "plan"
@@ -186,6 +230,79 @@ class DeterministicGenerationTests(unittest.TestCase):
             )
             self.assertEqual(0, create.returncode, create.stderr)
             self.assertTrue((root / "tasks" / "ex-t-7m3k2q.md").exists())
+
+    def test_cli_build_check_and_ready_form_an_offline_workflow(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary) / "plan"
+            common = [sys.executable, str(SCRIPT)]
+            init = subprocess.run(
+                [
+                    *common,
+                    "init",
+                    "--root",
+                    str(root),
+                    "--name",
+                    "Example project",
+                    "--prefix",
+                    "EX",
+                    "--milestone-id",
+                    "EX-M-M0",
+                    "--milestone-title",
+                    "Foundation",
+                ],
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(0, init.returncode, init.stderr)
+            create = subprocess.run(
+                [
+                    *common,
+                    "new",
+                    "task",
+                    "--root",
+                    str(root),
+                    "--id",
+                    "EX-T-7M3K2Q",
+                    "--title",
+                    "Reproduce runtime",
+                    "--milestone",
+                    "EX-M-M0",
+                    "--priority",
+                    "P1",
+                ],
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(0, create.returncode, create.stderr)
+
+            stale = subprocess.run(
+                [*common, "check", "--root", str(root), "--date", "2026-08-31"],
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(1, stale.returncode)
+            self.assertIn("is stale", stale.stderr)
+
+            build = subprocess.run(
+                [*common, "build", "--root", str(root), "--date", "2026-08-31"],
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(0, build.returncode, build.stderr)
+            check = subprocess.run(
+                [*common, "check", "--root", str(root), "--date", "2026-08-31"],
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(0, check.returncode, check.stderr)
+
+            ready = subprocess.run(
+                [*common, "ready", "--root", str(root), "--date", "2026-08-31", "--json"],
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(0, ready.returncode, ready.stderr)
+            self.assertEqual(["EX-T-7M3K2Q"], [item["id"] for item in json.loads(ready.stdout)])
 
 
 class ValidationTests(unittest.TestCase):

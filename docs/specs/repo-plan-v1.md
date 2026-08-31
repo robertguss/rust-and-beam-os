@@ -94,10 +94,11 @@ prefix: "EX"
 
 `prefix` is uppercase ASCII, begins with a letter, and contains two to eight
 letters or digits. Record IDs are immutable and match
-`<PREFIX>-<TYPE>-<TOKEN>`, where type is `T`, `E`, `G`, `M`, or `D` and token is
-four to twelve uppercase letters or digits. Callers supply IDs explicitly so
-record creation remains deterministic and distributed allocation has no shared
-counter.
+`<PREFIX>-<TYPE>-<TOKEN>`, where type is `T`, `E`, `G`, `M`, or `D`. Task, epic,
+gate, and decision tokens contain four to twelve uppercase letters or digits;
+milestone tokens contain one to twelve so names such as `M0` remain available.
+Callers supply IDs explicitly so record creation remains deterministic and
+distributed allocation has no shared counter.
 
 ## Record contracts
 
@@ -208,7 +209,9 @@ A task is ready when all of these are true:
 6. its milestone is authorized.
 
 A milestone is authorized when `authorized_by` is null or the named gate is
-`done`. Gate completion remains a human action. The CLI never completes a gate.
+`done` with exactly one `approved` decision. A rejected decision completes the
+gate without authorizing the milestone. Gate completion remains a human action;
+the CLI never completes a gate.
 
 Ready work is ordered lexicographically by:
 

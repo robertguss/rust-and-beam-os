@@ -76,6 +76,12 @@ class ValidationResult:
     errors: list[str]
 
 
+def _valid_id(prefix: str, record_type: str, record_id: str) -> bool:
+    code = TYPE_CODES[record_type]
+    token_length = "{1,12}" if record_type == "milestone" else "{4,12}"
+    return re.fullmatch(rf"{re.escape(prefix)}-{code}-[A-Z0-9]{token_length}", record_id) is not None
+
+
 def _parse_scalar(value: str) -> Any:
     value = value.strip()
     if value == "[]":
@@ -297,9 +303,7 @@ def validate_plan(root: Path) -> ValidationResult:
         if record.get("schema") != SCHEMA:
             errors.append(f"{path}: schema must be {SCHEMA}")
 
-        code = TYPE_CODES[record_type]
-        token_length = "{1,12}" if record_type == "milestone" else "{4,12}"
-        if not re.fullmatch(rf"{re.escape(prefix)}-{code}-[A-Z0-9]{token_length}", record_id):
+        if not _valid_id(prefix, record_type, record_id):
             errors.append(f"{path}: invalid id for {record_type}: {record_id}")
         if Path(path).stem != record_id.lower():
             errors.append(f"{path}: filename must be {record_id.lower()}.md")
@@ -572,6 +576,26 @@ def create_record(
     else:
         raise ValueError(f"unsupported record type: {record_type}")
 
+    project, records, load_errors = _load_plan(root)
+    if load_errors:
+        raise ValueError("cannot create a record in an invalid plan:\n" + "\n".join(load_errors))
+    prefix = str(project.get("prefix", ""))
+    if not _valid_id(prefix, record_type, record_id):
+        raise ValueError(f"invalid id for {record_type}: {record_id}")
+    if priority not in {"P0", "P1", "P2", "P3", "P4"}:
+        raise ValueError(f"invalid priority: {priority}")
+    if record_type in {"task", "epic", "gate"}:
+        if milestone not in records or records[milestone].get("type") != "milestone":
+            raise ValueError(f"missing milestone: {milestone}")
+        if parent is not None and (parent not in records or records[parent].get("type") != "epic"):
+            raise ValueError(f"missing epic parent: {parent}")
+    if record_type == "milestone" and authorized_by is not None:
+        if authorized_by not in records or records[authorized_by].get("type") != "gate":
+            raise ValueError(f"missing authorization gate: {authorized_by}")
+    if record_type == "decision":
+        if gate not in records or records[gate].get("type") != "gate":
+            raise ValueError(f"missing decision gate: {gate}")
+
     values = {
         "id": record_id,
         "id_yaml": _yaml(record_id),
@@ -600,6 +624,15 @@ def initialize_plan(
     milestone_title: str,
     templates: Path = DEFAULT_TEMPLATES,
 ) -> None:
+    if not name or "\n" in name:
+        raise ValueError("name must be a non-empty single line")
+    if not re.fullmatch(r"[A-Z][A-Z0-9]{1,7}", prefix):
+        raise ValueError("prefix must contain 2-8 uppercase letters or digits and start with a letter")
+    if not _valid_id(prefix, "milestone", milestone_id):
+        raise ValueError(f"invalid id for milestone: {milestone_id}")
+    template_errors = validate_templates(templates)
+    if template_errors:
+        raise ValueError("invalid templates:\n" + "\n".join(template_errors))
     if root.exists() and any(root.iterdir()):
         raise FileExistsError(f"destination is non-empty: {root}")
     root.mkdir(parents=True, exist_ok=True)
@@ -667,6 +700,15 @@ def build_parser() -> argparse.ArgumentParser:
     build = subparsers.add_parser("build", help="rebuild deterministic projections")
     build.add_argument("--root", type=Path, required=True)
     build.add_argument("--date")
+
+    check = subparsers.add_parser("check", help="validate canonical inputs and generated projections")
+    check.add_argument("--root", type=Path, required=True)
+    check.add_argument("--date")
+
+    ready = subparsers.add_parser("ready", help="list deterministic dependency-ready work")
+    ready.add_argument("--root", type=Path, required=True)
+    ready.add_argument("--date")
+    ready.add_argument("--json", action="store_true")
     return parser
 
 
@@ -700,6 +742,25 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "build":
             build_plan(args.root, evaluation_date=args.date)
             print(f"rebuilt {args.root / 'generated'}")
+        elif args.command == "check":
+            result = check_plan(args.root, evaluation_date=args.date)
+            if result.errors:
+                for error in result.errors:
+                    print(error, file=sys.stderr)
+                return 1
+            print(f"validated {len(result.records)} records")
+        elif args.command == "ready":
+            result = check_plan(args.root, evaluation_date=args.date)
+            if result.errors:
+                for error in result.errors:
+                    print(error, file=sys.stderr)
+                return 1
+            ready_records = compute_ready(result.records, evaluation_date=args.date)
+            if args.json:
+                print(json.dumps(ready_records, ensure_ascii=False, indent=2, sort_keys=True))
+            else:
+                for record in ready_records:
+                    print(record["id"])
     except (FileExistsError, OSError, ValueError) as error:
         print(error, file=sys.stderr)
         return 1
