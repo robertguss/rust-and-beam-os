@@ -363,6 +363,19 @@ class ValidationTests(unittest.TestCase):
             self.assertEqual([], result.errors)
             self.assertEqual(1, len(result.records))
 
+    def test_check_detects_scaffold_drift_and_build_restores_templates(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = self.initialize(temporary)
+            (root / "README.md").write_text("# Hand-edited generated instructions\n")
+
+            stale = "\n".join(repo_plan.check_plan(root, evaluation_date=None).errors)
+            self.assertIn("README.md differs from its template", stale)
+
+            repo_plan.build_plan(root)
+
+            self.assertEqual([], repo_plan.check_plan(root, evaluation_date=None).errors)
+            self.assertIn("## Agent workflow", (root / "README.md").read_text())
+
     def test_reports_missing_sections_references_links_and_stale_views(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = self.initialize(temporary)
@@ -532,6 +545,7 @@ class LegacyMigrationTests(unittest.TestCase):
             "[Project](<../project.md>)\n\n"
             "## Goal\n\nDeliver the result.\n\n"
             "## Locked context\n\nUse the project contract.\n\n"
+            "## Dependencies\n\nDepends on P0-01 when named by metadata.\n\n"
             "## What to build\n\nBuild one artifact.\n\n"
             "## Acceptance criteria\n\n- It works.\n\n"
             "## Required tests and evidence\n\nRun the test and record output.\n\n"
@@ -574,6 +588,8 @@ class LegacyMigrationTests(unittest.TestCase):
             self.assertEqual(["EX-T-P001"], migrated["depends_on"])
             self.assertNotIn("blocks", migrated)
             self.assertEqual("P1", migrated["priority"])
+            self.assertIn("Depends on EX-T-P001", migrated["body"])
+            self.assertNotIn("P0-01", migrated["body"])
             self.assertEqual(repo_plan.REQUIRED_HEADINGS["task"], tuple(
                 heading for heading in repo_plan.second_level_headings(migrated["body"])
                 if heading in repo_plan.REQUIRED_HEADINGS["task"]

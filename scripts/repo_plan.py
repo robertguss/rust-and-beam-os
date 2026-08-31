@@ -30,6 +30,11 @@ REQUIRED_TEMPLATES = {
     "project.yaml.tmpl",
     "task.md.tmpl",
 }
+COLLECTION_DESCRIPTIONS = {
+    "tasks": "Canonical task and epic records. Use the generator to add records.",
+    "gates": "Canonical human authorization gates. Agents may prepare but not pass gates.",
+    "decisions": "Immutable human decisions that complete gates.",
+}
 REQUIRED_HEADINGS = {
     "task": (
         "Goal",
@@ -172,6 +177,26 @@ def _render(templates: Path, name: str, values: dict[str, Any]) -> str:
     template = Template((templates / name).read_text())
     rendered = template.substitute({key: str(value) for key, value in values.items()})
     return rendered.rstrip() + "\n"
+
+
+def _scaffold_values(project_name: str, templates: Path = DEFAULT_TEMPLATES) -> dict[Path, bytes]:
+    values = {
+        Path("README.md"): _render(templates, "README.md.tmpl", {"project_name": project_name}).encode()
+    }
+    for directory, description in COLLECTION_DESCRIPTIONS.items():
+        values[Path(directory) / "README.md"] = _render(
+            templates,
+            "collection.README.md.tmpl",
+            {"collection_title": directory.title(), "collection_description": description},
+        ).encode()
+    return values
+
+
+def _write_scaffold(root: Path, project_name: str, templates: Path = DEFAULT_TEMPLATES) -> None:
+    for relative, content in _scaffold_values(project_name, templates).items():
+        path = root / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(content)
 
 
 def _write_new(path: Path, content: str) -> None:
@@ -553,6 +578,8 @@ def _json_bytes(value: dict[str, Any]) -> bytes:
 
 def build_plan(root: Path, evaluation_date: str | None = None) -> None:
     """Validate canonical inputs and write deterministic projections."""
+    project = parse_mapping((root / "project.yaml").read_text())
+    _write_scaffold(root, str(project.get("name", "")))
     result = validate_plan(root)
     if result.errors:
         raise ValueError("plan is invalid:\n" + "\n".join(result.errors))
@@ -565,6 +592,18 @@ def build_plan(root: Path, evaluation_date: str | None = None) -> None:
 def check_plan(root: Path, evaluation_date: str | None) -> ValidationResult:
     result = validate_plan(root)
     errors = list(result.errors)
+    project_path = root / "project.yaml"
+    if project_path.exists():
+        try:
+            project = parse_mapping(project_path.read_text())
+            for relative, expected_content in _scaffold_values(str(project.get("name", ""))).items():
+                path = root / relative
+                if not path.exists():
+                    errors.append(f"{relative.as_posix()} is missing")
+                elif path.read_bytes() != expected_content:
+                    errors.append(f"{relative.as_posix()} differs from its template")
+        except (OSError, ValueError, json.JSONDecodeError):
+            pass
     try:
         expected = _projection_values(root, result.records, evaluation_date)
     except (KeyError, TypeError, ValueError):
@@ -675,12 +714,7 @@ def initialize_plan(
             {"project_name_yaml": _yaml(name), "prefix_yaml": _yaml(prefix)},
         ),
     )
-    collection_descriptions = {
-        "tasks": "Canonical task and epic records. Use the generator to add records.",
-        "gates": "Canonical human authorization gates. Agents may prepare but not pass gates.",
-        "decisions": "Immutable human decisions that complete gates.",
-    }
-    for directory, description in collection_descriptions.items():
+    for directory, description in COLLECTION_DESCRIPTIONS.items():
         _write_new(
             root / directory / "README.md",
             _render(
@@ -774,6 +808,14 @@ def _canonicalize_legacy_body(record_id: str, title: str, record_type: str, body
     return f"# {record_id}: {title}\n\n" + "\n\n".join(canonical) + "\n"
 
 
+def _rewrite_legacy_ids(body: str, id_map: dict[str, str]) -> str:
+    rewritten = body
+    for old_id, new_id in sorted(id_map.items(), key=lambda item: len(item[0]), reverse=True):
+        pattern = rf"(?<![A-Z0-9]){re.escape(old_id)}(?![A-Z0-9])"
+        rewritten = re.sub(pattern, new_id, rewritten)
+    return rewritten
+
+
 def migrate_legacy(
     *,
     root: Path,
@@ -841,12 +883,7 @@ def migrate_legacy(
                 {"project_name_yaml": _yaml(name), "prefix_yaml": _yaml(prefix)},
             )
         )
-        collection_descriptions = {
-            "tasks": "Canonical task and epic records. Use the generator to add records.",
-            "gates": "Canonical human authorization gates. Agents may prepare but not pass gates.",
-            "decisions": "Immutable human decisions that complete gates.",
-        }
-        for directory, description in collection_descriptions.items():
+        for directory, description in COLLECTION_DESCRIPTIONS.items():
             destination = stage / directory / "README.md"
             destination.parent.mkdir(parents=True, exist_ok=True)
             destination.write_text(
@@ -909,9 +946,11 @@ def migrate_legacy(
             rendered.append((destination, metadata, new_body, old_path.name))
 
         filename_map = {old_name: destination.name for destination, _, _, old_name in rendered}
+        body_id_map = {old_id: new_id for old_id, new_id in id_map.items() if type_map[old_id] != "milestone"}
         for destination, metadata, body, _ in rendered:
             for old_name, new_name in filename_map.items():
                 body = body.replace(old_name, new_name)
+            body = _rewrite_legacy_ids(body, body_id_map)
             path = stage / destination
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(render_markdown(metadata, body))
@@ -929,6 +968,32 @@ def migrate_legacy(
         for path in (root / "state.json", root / "index.json"):
             if path.exists():
                 path.unlink()
+
+
+def normalize_legacy_references(root: Path) -> None:
+    """Replace legacy task IDs in v1 bodies without changing provenance fields."""
+    result = validate_plan(root)
+    if result.errors:
+        raise ValueError("plan is invalid:\n" + "\n".join(result.errors))
+    id_map = {
+        str(record["x_legacy_id"]): record_id
+        for record_id, record in result.records.items()
+        if record.get("x_legacy_id") and record.get("type") != "milestone"
+    }
+    with tempfile.TemporaryDirectory() as temporary:
+        stage = Path(temporary) / "plan"
+        shutil.copytree(root, stage)
+        for record in result.records.values():
+            path = stage / str(record["path"])
+            metadata, body = parse_markdown(path.read_text())
+            path.write_text(render_markdown(metadata, _rewrite_legacy_ids(body, id_map)))
+        build_plan(stage)
+        checked = check_plan(stage, evaluation_date=None)
+        if checked.errors:
+            raise ValueError("normalized plan is invalid:\n" + "\n".join(checked.errors))
+        for directory in (*RECORD_DIRECTORIES, "generated"):
+            shutil.rmtree(root / directory, ignore_errors=True)
+            shutil.copytree(stage / directory, root / directory)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -972,6 +1037,9 @@ def build_parser() -> argparse.ArgumentParser:
     migrate.add_argument("--root", type=Path, required=True)
     migrate.add_argument("--name", required=True)
     migrate.add_argument("--prefix", required=True)
+
+    normalize = subparsers.add_parser("normalize-legacy-refs", help="rewrite legacy IDs in migrated record bodies")
+    normalize.add_argument("--root", type=Path, required=True)
     return parser
 
 
@@ -1027,6 +1095,9 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "migrate-legacy":
             migrate_legacy(root=args.root, name=args.name, prefix=args.prefix)
             print(f"migrated {args.root} to {SCHEMA}")
+        elif args.command == "normalize-legacy-refs":
+            normalize_legacy_references(args.root)
+            print(f"normalized legacy references in {args.root}")
     except (FileExistsError, OSError, ValueError) as error:
         print(error, file=sys.stderr)
         return 1
