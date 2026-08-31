@@ -1,0 +1,41 @@
+{
+  "schema": "rust-beam/evidence/v1",
+  "id": "RB-EV-FIXTURE-V1",
+  "task": "RB-T-P001",
+  "recorded_at": "2026-08-31T00:00:00Z",
+  "claim": "The v1 evidence validator accepts a valid immutable fixture.",
+  "classification": "scaffold",
+  "build": {
+    "id": "rb1-9f83bd17ca8f-dirty-20260831T000000Z",
+    "source_revision": "9f83bd17ca8f51a98bc1f38c4882d21521026ebf",
+    "source_dirty": true,
+    "target": "x86_64-unknown-linux-gnu"
+  },
+  "command": {
+    "argv": ["python3", "scripts/evidence.py", "check", "--root", "."],
+    "cwd": "."
+  },
+  "environment": {
+    "os": "linux",
+    "architecture": "x86_64",
+    "tools": [
+      { "name": "python", "version": "3.11+" }
+    ]
+  },
+  "inputs": [
+    {
+      "path": "docs/evidence/fixtures/input.txt",
+      "digest": "sha256:f762ba7fb037d2011a6e43ff2718002ff942ecdd885367540e612bc718958857"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/fixtures/artifact.txt",
+      "digest": "sha256:f6d76122c04c86a92a5de8235a5afb2a9ee51e184216798b16bd7064028b6ae6"
+    }
+  ],
+  "result": {
+    "status": "pass",
+    "exit_code": 0
+  }
+}

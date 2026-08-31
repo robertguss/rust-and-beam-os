@@ -1,0 +1,47 @@
+{
+  "schema": "rust-beam/source-claims/v1",
+  "entries": [
+    {
+      "id": "RB-SRC-RUSTUP-1-28-2-AARCH64",
+      "title": "rustup-init 1.28.2 for AArch64 Linux",
+      "locator": "https://static.rust-lang.org/rustup/archive/1.28.2/aarch64-unknown-linux-gnu/rustup-init",
+      "retrieved_on": "2026-08-31",
+      "immutable_reference": "rustup 1.28.2 / aarch64-unknown-linux-gnu",
+      "digest": "sha256:e3853c5a252fca15252d07cb23a1bdd9377a8c6f3efa01531109281ae47f841c",
+      "classification": "official-documentation",
+      "claims": [
+        "The repository bootstrap identifies and verifies the versioned official AArch64 Linux rustup-init artifact."
+      ],
+      "consumers": ["RB-T-P001", "toolchain/bootstrap-tools.json"],
+      "limitations": "Bootstrap input only; it does not freeze the P003 host/target toolchain or prove the AArch64 bootstrap run."
+    },
+    {
+      "id": "RB-SRC-RUSTUP-1-28-2-X86-64",
+      "title": "rustup-init 1.28.2 for x86_64 Linux",
+      "locator": "https://static.rust-lang.org/rustup/archive/1.28.2/x86_64-unknown-linux-gnu/rustup-init",
+      "retrieved_on": "2026-08-31",
+      "immutable_reference": "rustup 1.28.2 / x86_64-unknown-linux-gnu",
+      "digest": "sha256:20a06e644b0d9bd2fbdbfd52d42540bdde820ea7df86e92e533c073da0cdd43c",
+      "classification": "official-documentation",
+      "claims": [
+        "The repository bootstrap identifies and verifies the versioned official x86_64 Linux rustup-init artifact."
+      ],
+      "consumers": ["RB-T-P001", "toolchain/bootstrap-tools.json"],
+      "limitations": "Bootstrap input only; it does not freeze the P003 host/target toolchain."
+    },
+    {
+      "id": "RB-SRC-JUST-1-42-4",
+      "title": "just 1.42.4 crate archive",
+      "locator": "https://static.crates.io/crates/just/just-1.42.4.crate",
+      "retrieved_on": "2026-08-31",
+      "immutable_reference": "crates.io just 1.42.4",
+      "digest": "sha256:d26a2ff78b980d1de1078473e13dbd5fe72a1837a42e68d5c7327426f1254d34",
+      "classification": "source",
+      "claims": [
+        "The bootstrap installs the recorded just release using its published locked Cargo graph."
+      ],
+      "consumers": ["RB-T-P001", "toolchain/bootstrap-tools.json"],
+      "limitations": "Candidate developer tool only; its transitive sources are not yet a sealed offline mirror."
+    }
+  ]
+}

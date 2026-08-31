@@ -1,0 +1,8 @@
+{
+  "schema": "rust-beam/source-lock/v1",
+  "revision": 0,
+  "state": "unsealed",
+  "sealed_at": null,
+  "policy": "docs/dependency-policy.md",
+  "entries": []
+}

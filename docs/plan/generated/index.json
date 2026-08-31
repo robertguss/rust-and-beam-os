@@ -679,13 +679,13 @@
       "evidence": [],
       "id": "RB-T-P001",
       "milestone": "RB-M-M0",
-      "owner": null,
+      "owner": "robertguss",
       "parent": null,
       "path": "tasks/rb-t-p001.md",
       "priority": "P3",
       "related": [],
       "schema": "repo-plan/v1",
-      "state": "open",
+      "state": "in_progress",
       "title": "Create the repository, evidence model, and reproducible build shell",
       "type": "task",
       "x_labels": [
@@ -3831,5 +3831,5 @@
     }
   ],
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:3f4e21592844293c1bdccb48740979352bdca577e0f90aab24c085ad2153ace5"
+  "source_digest": "sha256:eccdd54125e25aacc14640d9bff4effbf4c3ca8d1fbbfa4ef0c5846cf2aee502"
 }

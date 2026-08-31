@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rust-beam.invalid/schema/source-claims-v1.schema.json",
+  "title": "Rust + BEAM source/claim ledger v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "entries"],
+  "properties": {
+    "schema": { "const": "rust-beam/source-claims/v1" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "locator",
+          "retrieved_on",
+          "immutable_reference",
+          "digest",
+          "classification",
+          "claims",
+          "consumers",
+          "limitations"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^RB-SRC-[A-Z0-9-]+$" },
+          "title": { "type": "string", "minLength": 1 },
+          "locator": { "type": "string", "minLength": 1 },
+          "retrieved_on": { "type": "string", "format": "date" },
+          "immutable_reference": { "type": ["string", "null"] },
+          "digest": {
+            "type": ["string", "null"],
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "classification": {
+            "enum": ["specification", "official-documentation", "source", "prior-art"]
+          },
+          "claims": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "consumers": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "limitations": { "type": "string" }
+        }
+      }
+    }
+  }
+}
