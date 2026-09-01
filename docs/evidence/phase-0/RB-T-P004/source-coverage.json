@@ -1,0 +1,32 @@
+{
+  "schema": "rust-beam/beam-host-source-coverage/v1",
+  "contract": "abi/beam-host.yaml",
+  "revision": 0,
+  "status": "pass",
+  "classifications": {
+    "required": 53,
+    "optional/disabled": 17,
+    "build-time-only": 21,
+    "unexplained": 0
+  },
+  "source_inventory": {
+    "items": 18,
+    "otp-source": 8,
+    "musl-source": 10,
+    "missing_paths": [],
+    "missing_symbols": [],
+    "unclassified_interactions": []
+  },
+  "fault_scenarios": [
+    "allocation",
+    "copy-EFAULT",
+    "poll-timeout",
+    "pthread-cancellation",
+    "alternate-stack-signal",
+    "close-EBADF",
+    "thread-start",
+    "thread-exit-join",
+    "shutdown"
+  ],
+  "unresolved": []
+}

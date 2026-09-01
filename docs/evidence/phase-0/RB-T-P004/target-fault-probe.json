@@ -1,0 +1,1 @@
+{"schema":"rust-beam/beam-host-fault-probe/v1","status":"pass","allocation":"ENOMEM-or-EINVAL","copy":"EFAULT","timeout":"expired","cancellation":"joined","signal":"alternate-stack","close":"EBADF","thread_start":"created","thread_exit":"joined","shutdown":"normal"}

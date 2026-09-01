@@ -96,6 +96,15 @@ test-target-erts-linux:
     python3 -m unittest tests.test_erts_linux -v
     python3 scripts/erts_linux.py run --boots 10 --output target/erts-linux-reference/acceptance
 
+# Trace two host runtime_lab replays plus the error-path probe and compare them.
+trace-reference-runtime:
+    python3 scripts/beam_host.py trace
+
+# Validate beam-host revision 0 against source and all available traces.
+beam-host-validate:
+    python3 -m unittest tests.test_beam_host -v
+    python3 scripts/beam_host.py validate
+
 # Prove every relevant Tyn limitation has one owned project disposition.
 prior-art-coverage:
     python3 scripts/prior_art.py coverage --root .

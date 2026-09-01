@@ -1,0 +1,26 @@
+$ just trace-reference-runtime
+python3 scripts/beam_host.py trace
+beam-host trace: PASS replays=2 syscalls=80 threads=10
+
+$ just beam-host-validate
+python3 -m unittest tests.test_beam_host -v
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.003s
+
+OK
+python3 scripts/beam_host.py validate
+beam-host contract: PASS revision=0 required=53 classified=91 source_items=18
+
+$ python3 -m unittest tests.test_erts_linux -v
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.004s
+
+OK
+
+$ python3 -m py_compile scripts/beam_host.py scripts/erts_linux.py
+
+$ bash -n tests/erts-linux/init.sh
+
+$ git diff --check

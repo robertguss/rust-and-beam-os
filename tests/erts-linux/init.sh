@@ -54,6 +54,11 @@ mkdir -p /work/results/profiles /work/results/traces
 printf 'RB_GUEST event=boot kernel=%s machine=aarch64 vcpus=%s\n' \
     "$(uname -r)" "$(find /sys/devices/system/cpu -maxdepth 1 -type d -name 'cpu[0-9]*' | wc -l)"
 must platform-probe /probe/platform_probe /work/results/platform.json
+strace -ff -qq -ttt -T -yy -s 256 -o /tmp/traces/fault \
+    /probe/beam_host_fault_probe /work/results/fault-probe.json
+fault_status=$?
+printf 'RB_GUEST event=fault-probe status=%s\n' "$fault_status"
+[ "$fault_status" -eq 0 ] || fail "$fault_status" fault-probe
 cp /proc/cpuinfo /work/results/cpuinfo.txt
 cp /proc/meminfo /work/results/meminfo.txt
 cp /proc/cmdline /work/results/kernel-cmdline.txt
@@ -127,7 +132,7 @@ run_profile() {
 run_profile single -S 1:1 -SDcpu 1:1 -SDio 1 -A 1
 run_profile candidate -S 2:2 -SDcpu 1:1 -SDio 1 -A 1
 cp /tmp/traces/* /work/results/traces/
-printf 'status=pass\nminimal=0\nsingle=0\ncandidate=0\n' > /work/results/guest-status.txt
+printf 'status=pass\nfault=0\nminimal=0\nsingle=0\ncandidate=0\n' > /work/results/guest-status.txt
 sync
 must unmount-results umount /work
 printf 'RB_GUEST event=complete status=pass\n'

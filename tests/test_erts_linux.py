@@ -170,10 +170,17 @@ class ErtsLinuxTests(unittest.TestCase):
 
     def test_guest_launch_contains_both_frozen_scheduler_profiles(self):
         init = (ROOT / "tests/erts-linux/init.sh").read_text()
+        self.assertIn("/probe/beam_host_fault_probe", init)
+        self.assertIn("fault_status", init)
         self.assertIn("run_profile single -S 1:1 -SDcpu 1:1 -SDio 1 -A 1", init)
         self.assertIn("run_profile candidate -S 2:2 -SDcpu 1:1 -SDio 1 -A 1", init)
         self.assertIn("-boot /otp/releases/29/start", init)
         self.assertNotIn("qemu-aarch64", init)
+
+    def test_contract_comparison_parses_revision_zero_interactions(self):
+        comparison = ERTS_LINUX.contract_comparison(ROOT, {"clone", "futex", "tkill"})
+        self.assertEqual("pass", comparison["status"])
+        self.assertEqual([], comparison["unmapped_syscalls"])
 
 
 if __name__ == "__main__":

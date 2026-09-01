@@ -3,7 +3,7 @@ schema: "repo-plan/v1"
 id: "RB-T-P004"
 title: "Trace and document the reference ERTS workload on Linux"
 type: "task"
-state: "in_progress"
+state: "done"
 priority: "P3"
 milestone: "RB-M-M0"
 parent: null
@@ -12,9 +12,10 @@ depends_on:
   - "RB-T-P003"
 related: []
 actor: "agent"
-owner: "amp:T-01a05912-a43d-754e-84fc-d56536c31a76"
+owner: null
 defer_until: null
-evidence: []
+evidence:
+  - "docs/evidence/phase-0/RB-T-P004/evidence.json"
 x_legacy_id: "P0-04"
 x_linear_id: "ROB-686"
 x_linear_url: "https://linear.app/robert-guss/issue/ROB-686/p0-04-trace-and-document-the-reference-erts-workload-on-linux"
@@ -55,13 +56,13 @@ Blocked by: RB-T-P002, RB-T-P003.
 
 ## Acceptance criteria
 
-- [ ] Every observed host interaction is classified as required,
+- [x] Every observed host interaction is classified as required,
       optional/disabled, build-time only, or unexplained.
-- [ ] Each required entry names at least one evidence source and one future
+- [x] Each required entry names at least one evidence source and one future
       conformance test.
-- [ ] Unknown/unexplained interactions are resolved or explicitly block the
+- [x] Unknown/unexplained interactions are resolved or explicitly block the
       gate.
-- [ ] The trace workload and capture commands are committed and repeatable.
+- [x] The trace workload and capture commands are committed and repeatable.
 
 ## Verification
 
@@ -73,6 +74,14 @@ Blocked by: RB-T-P002, RB-T-P003.
 - Replay the workload twice and compare normalized traces.
 - Review the contract against ERTS Unix source and the chosen build flags.
 - Save raw and normalized traces with toolchain/build IDs.
+
+- [Execution receipt](../../evidence/phase-0/RB-T-P004/evidence.json)
+- [Evidence explanation](../../evidence/phase-0/RB-T-P004/README.md)
+- [Source-to-contract coverage](../../evidence/phase-0/RB-T-P004/source-coverage.json)
+- [Host trace aggregate](../../evidence/phase-0/RB-T-P004/host-aggregate.json)
+- [Raw trace manifest](../../evidence/phase-0/RB-T-P004/raw-trace-manifest.json)
+- [Full-system target observations](../../evidence/phase-0/RB-T-P004/target-observations.json)
+- [Verification transcript](../../evidence/phase-0/RB-T-P004/verification.txt)
 
 ## Out of scope
 

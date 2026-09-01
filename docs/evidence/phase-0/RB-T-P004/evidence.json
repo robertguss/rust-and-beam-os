@@ -1,0 +1,164 @@
+{
+  "schema": "rust-beam/evidence/v1",
+  "id": "RB-EV-P004-BEAM-HOST",
+  "task": "RB-T-P004",
+  "recorded_at": "2026-09-01T04:23:23Z",
+  "claim": "The exact pinned runtime_lab workload produced two equal normalized host traces; revision 0 classifies all 91 host and target interactions against 18 sealed OTP/musl source items; and full-system AArch64-musl probes cover the required error, timeout, cancellation, signal, thread-lifecycle, and shutdown paths with no unexplained calls.",
+  "classification": "host",
+  "build": {
+    "id": "rb1-ea5b84f436c4-dirty-20260901T042323Z",
+    "source_revision": "ea5b84f436c47150936c7b963449bb5673b4dc28",
+    "source_dirty": true,
+    "target": "x86_64 Linux host trace plus full-system AArch64-musl Linux differential evidence"
+  },
+  "command": {
+    "argv": [
+      "bash",
+      "-c",
+      "just trace-reference-runtime && just beam-host-validate"
+    ],
+    "cwd": "."
+  },
+  "environment": {
+    "os": "debian 12 / Linux 6.1.158+",
+    "architecture": "x86_64 host / AArch64 full-system target",
+    "tools": [
+      {
+        "name": "otp",
+        "version": "29.0.5"
+      },
+      {
+        "name": "erts",
+        "version": "17.0.5"
+      },
+      {
+        "name": "elixir",
+        "version": "1.20.4"
+      },
+      {
+        "name": "musl",
+        "version": "1.2.5"
+      },
+      {
+        "name": "strace",
+        "version": "6.1"
+      },
+      {
+        "name": "qemu-system-aarch64",
+        "version": "11.1.0"
+      },
+      {
+        "name": "python",
+        "version": "3.11.6"
+      },
+      {
+        "name": "cc",
+        "version": "Debian 12.2.0-14+deb12u1"
+      }
+    ]
+  },
+  "inputs": [
+    {
+      "path": "abi/beam-host.yaml",
+      "digest": "sha256:e293d55b2712e89b26833b6fedaa7bc24259f969bacd3e3ac3f55fba2c2b6ce5"
+    },
+    {
+      "path": "justfile",
+      "digest": "sha256:c546b46590090ef7aced19df716ca86fca182ef07ff79b839f2e8e81fdd1eba3"
+    },
+    {
+      "path": "scripts/beam_host.py",
+      "digest": "sha256:ee6157471778599df06fe59a7108881fea4df69efdcb332694e5e70556d5812b"
+    },
+    {
+      "path": "scripts/erts_linux.py",
+      "digest": "sha256:43469d1d537c613f19e023b086c70a4f067802139d0143bb10b01a2b934bfd6d"
+    },
+    {
+      "path": "tests/beam-host/fault_probe.c",
+      "digest": "sha256:480a287899e5d9588b2617a95e2993d57dd7a3ce87e7cb07e6aea7e980dcddc5"
+    },
+    {
+      "path": "tests/erts-linux/init.sh",
+      "digest": "sha256:e6655b86393e87eb3d917867036bdea3d41cdfab0608ef65958cc81b98618d0b"
+    },
+    {
+      "path": "tests/test_beam_host.py",
+      "digest": "sha256:693fad54f25cc1d6bc7e9344d99ce4c14507609ca7aaed9ccab288d1a83b716e"
+    },
+    {
+      "path": "tests/test_erts_linux.py",
+      "digest": "sha256:032bc56f884d7966dae7ee16d85e302dd56f62660bcf79ef1e1c8076c4d586a2"
+    },
+    {
+      "path": "beam/runtime_lab/mix.exs",
+      "digest": "sha256:ba99b1d0fafceb160a4ed1e289ebec77311428a506b451d8de7f4c78205cb61a"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/command.ex",
+      "digest": "sha256:8665bf80d99656ab7b455495b09f45898b52faa5d7b5832b648b148a05c8b43e"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/workloads.ex",
+      "digest": "sha256:e4c5c18927ddac623fbc01bc6a63c44406e2262264b41456c6001766c46c64d3"
+    },
+    {
+      "path": "toolchain/sources.lock.json",
+      "digest": "sha256:5c1267150cea3b382773e5592da6007b3a26236a16605a9bf5248e6d0271a38c"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/phase-0/RB-T-P004/README.md",
+      "digest": "sha256:e7f8ad749186d52f8221493fdbee954e44f5a606ab14bbccd23e8a61a7dd8b19"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P004/source-coverage.json",
+      "digest": "sha256:a3971e371bc474460350a4fe3cc8c5d1529891196df750f25e0cc5de1abba688"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P004/host-aggregate.json",
+      "digest": "sha256:5b4887e99ddd4e1974ba15c466f4d9e7e1edcb6697b4c523f1ef2d4f335ed7e9"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P004/host-replay-1-normalized.json",
+      "digest": "sha256:5b0ec5e966d3973b59324b0573256e136beac4862c14925cec915c9917fc6210"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P004/host-replay-2-normalized.json",
+      "digest": "sha256:5b0ec5e966d3973b59324b0573256e136beac4862c14925cec915c9917fc6210"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P004/host-replay-1-raw-strace.txt.gz",
+      "digest": "sha256:87d9222387f67d10030344b5313dec2dfe943009c58ca4a03e9d39012465cfdb"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P004/host-replay-2-raw-strace.txt.gz",
+      "digest": "sha256:4db2c7310a1169387dc366a1f7120bd74a813ea032f11e1c54565f8ca77b2ac4"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P004/host-replay-summary.json",
+      "digest": "sha256:149fc5ea7569ec49627bc83be5c3d9d5f9579045231d35300483d227e6be18cf"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P004/raw-trace-manifest.json",
+      "digest": "sha256:7289b0de585d42d6073103383ea84a563820f0dffac8703a3e14c333f974350c"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P004/target-observations.json",
+      "digest": "sha256:666f8e8d2477136d5751066c4a5fac996f0a1a43f0b080c75a3fa52cc08ba2e0"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P004/target-fault-probe.json",
+      "digest": "sha256:1e1675bbd8a257463c5698c402907ab7f02290987cfee2136f60f2ec0af957b0"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P004/verification.txt",
+      "digest": "sha256:3f54996f680b35dfd8141b5ccfbd2a4191c0b95dba11ae72598d7d6efbf4b32f"
+    }
+  ],
+  "result": {
+    "status": "pass",
+    "exit_code": 0
+  }
+}

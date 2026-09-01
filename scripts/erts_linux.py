@@ -29,6 +29,7 @@ BEAM_PATH = Path("target/otp-aarch64/primary/release/erts-17.0.5/bin/beam.smp")
 RELEASE_PATH = Path("target/otp-aarch64/primary/release")
 QEMU_PATH = Path("target/qemu-11.1.0/build/qemu-system-aarch64")
 SOURCE_FILES = (
+    Path("tests/beam-host/fault_probe.c"),
     Path("tests/erts-linux/init.sh"),
     Path("tests/erts-linux/platform_probe.c"),
     Path("tests/erts-linux/rb_erts_workload.erl"),
@@ -231,7 +232,7 @@ def ensure_otp(root: Path, profile: dict[str, Any]) -> Path:
     return beam
 
 
-def build_platform_probe(root: Path, destination: Path) -> None:
+def build_c_probe(root: Path, source: Path, destination: Path) -> None:
     common = root / "target/otp-aarch64/common"
     clang = common / "llvm/bin/clang"
     sysroot = common / "sysroot"
@@ -257,7 +258,7 @@ def build_platform_probe(root: Path, destination: Path) -> None:
             "-Wl,-z,common-page-size=4096",
             "-Wl,--build-id=none",
             "-pthread",
-            str(root / "tests/erts-linux/platform_probe.c"),
+            str(root / source),
             "-o",
             str(destination),
         ],
@@ -466,7 +467,8 @@ def prepare_reference(root: Path) -> dict[str, Path]:
     shutil.copytree(root / RELEASE_PATH, guest_root / "otp", symlinks=True)
     probe = guest_root / "probe"
     probe.mkdir()
-    build_platform_probe(root, probe / "platform_probe")
+    build_c_probe(root, Path("tests/erts-linux/platform_probe.c"), probe / "platform_probe")
+    build_c_probe(root, Path("tests/beam-host/fault_probe.c"), probe / "beam_host_fault_probe")
     build_workload(root, probe)
     shutil.copy2(root / "tests/erts-linux/init.sh", guest_root / "init")
     (guest_root / "init").chmod(0o755)
@@ -488,6 +490,7 @@ def prepare_reference(root: Path) -> dict[str, Path]:
             "initramfs_size": initramfs.stat().st_size,
             "kernel_path": str(sources["alpine-aarch64-kernel"].relative_to(root)),
             "kernel_sha256": sha256(sources["alpine-aarch64-kernel"]),
+            "fault_probe_sha256": sha256(probe / "beam_host_fault_probe"),
             "platform_probe_sha256": sha256(probe / "platform_probe"),
             "workload_beam_sha256": sha256(probe / "rb_erts_workload.beam"),
         },
@@ -684,8 +687,15 @@ def contract_comparison(root: Path, syscalls: set[str]) -> dict[str, Any]:
             "reason": "RB-T-P004 has not yet produced the source-plus-trace host contract",
             "observed_syscalls": sorted(syscalls),
         }
-    text = contract.read_text(encoding="utf-8")
-    missing = sorted(syscall for syscall in syscalls if not re.search(rf"\b{re.escape(syscall)}\b", text))
+    value = load_json(contract)
+    if value.get("schema") != "rust-beam/beam-host-contract/v1" or value.get("revision") != 0:
+        raise ReferenceError("abi/beam-host.yaml is not revision 0")
+    classified = {
+        item.get("syscall")
+        for item in value.get("interactions", [])
+        if item.get("classification") in {"required", "optional/disabled", "build-time-only"}
+    }
+    missing = sorted(syscalls - classified)
     return {
         "status": "pass" if not missing else "mismatch",
         "contract": "abi/beam-host.yaml revision 0",
@@ -830,10 +840,31 @@ def run_boot(
     image.unlink()
     results = boot_dir / "results"
     guest_status = parse_key_values(results / "guest-status.txt")
-    if guest_status != {"status": "pass", "minimal": "0", "single": "0", "candidate": "0"}:
+    if guest_status != {
+        "status": "pass",
+        "fault": "0",
+        "minimal": "0",
+        "single": "0",
+        "candidate": "0",
+    }:
         raise ReferenceError(f"guest status differs: {guest_status}")
     platform_result = load_json(results / "platform.json")
     validate_platform(platform_result)
+    fault_result = load_json(results / "fault-probe.json")
+    if fault_result != {
+        "schema": "rust-beam/beam-host-fault-probe/v1",
+        "status": "pass",
+        "allocation": "ENOMEM-or-EINVAL",
+        "copy": "EFAULT",
+        "timeout": "expired",
+        "cancellation": "joined",
+        "signal": "alternate-stack",
+        "close": "EBADF",
+        "thread_start": "created",
+        "thread_exit": "joined",
+        "shutdown": "normal",
+    }:
+        raise ReferenceError(f"fault probe result differs: {fault_result}")
     workloads = {name: load_json(results / f"workload-{name}.json") for name in ("single", "candidate")}
     for name, workload in workloads.items():
         validate_workload(name, workload)
@@ -892,6 +923,7 @@ def run_boot(
         "dynamic_interpreter": None,
         "application_nifs": [],
         "platform": platform_result,
+        "fault_probe": fault_result,
         "workloads": workloads,
         "thread_topology": topologies,
         "auxv": auxv,

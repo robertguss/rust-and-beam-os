@@ -778,16 +778,18 @@
         "RB-T-P002",
         "RB-T-P003"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/evidence/phase-0/RB-T-P004/evidence.json"
+      ],
       "id": "RB-T-P004",
       "milestone": "RB-M-M0",
-      "owner": "amp:T-01a05912-a43d-754e-84fc-d56536c31a76",
+      "owner": null,
       "parent": null,
       "path": "tasks/rb-t-p004.md",
       "priority": "P3",
       "related": [],
       "schema": "repo-plan/v1",
-      "state": "in_progress",
+      "state": "done",
       "title": "Trace and document the reference ERTS workload on Linux",
       "type": "task",
       "x_labels": [
@@ -3862,5 +3864,5 @@
     }
   ],
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:c6d67e7e6b96d30ba1f0e4a3e0a193c74f853f901d6df491a6df0e122d1d8b7d"
+  "source_digest": "sha256:ab3f04089f23e5a23dd555ce32dff70705d432319d500283337c580ec252ea33"
 }

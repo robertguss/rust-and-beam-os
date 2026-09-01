@@ -1,0 +1,1080 @@
+{
+  "schema": "rust-beam/beam-host-replay/v1",
+  "replay": 1,
+  "boot_snapshot": {
+    "descriptor_count": 18,
+    "thread_count": 10,
+    "threads": [
+      {
+        "name": "beam.smp",
+        "state": "S (sleeping)"
+      },
+      {
+        "name": "erts_ssig_disp",
+        "state": "S (sleeping)"
+      },
+      {
+        "name": "erts_smsg_disp",
+        "state": "S (sleeping)"
+      },
+      {
+        "name": "erts_async_1",
+        "state": "S (sleeping)"
+      },
+      {
+        "name": "erts_sched_1",
+        "state": "R (running)"
+      },
+      {
+        "name": "erts_sched_2",
+        "state": "S (sleeping)"
+      },
+      {
+        "name": "erts_dcpus_1",
+        "state": "S (sleeping)"
+      },
+      {
+        "name": "erts_dios_1",
+        "state": "S (sleeping)"
+      },
+      {
+        "name": "erts_aux_1",
+        "state": "S (sleeping)"
+      },
+      {
+        "name": "erts_poll_0",
+        "state": "S (sleeping)"
+      }
+    ]
+  },
+  "fault_probe": {
+    "allocation": "ENOMEM-or-EINVAL",
+    "cancellation": "joined",
+    "close": "EBADF",
+    "copy": "EFAULT",
+    "schema": "rust-beam/beam-host-fault-probe/v1",
+    "shutdown": "normal",
+    "signal": "alternate-stack",
+    "status": "pass",
+    "thread_exit": "joined",
+    "thread_start": "created",
+    "timeout": "expired"
+  },
+  "scenarios": {
+    "boot-shutdown": {
+      "trace_files": 16,
+      "syscalls": [
+        "accept",
+        "access",
+        "arch_prctl",
+        "bind",
+        "brk",
+        "chdir",
+        "chown",
+        "clone",
+        "clone3",
+        "close",
+        "close_range",
+        "dup2",
+        "epoll_create",
+        "epoll_ctl",
+        "epoll_wait",
+        "execve",
+        "exit",
+        "exit_group",
+        "fcntl",
+        "ftruncate",
+        "futex",
+        "getcwd",
+        "getdents64",
+        "getegid",
+        "geteuid",
+        "getgid",
+        "getpid",
+        "getppid",
+        "getrandom",
+        "getsockname",
+        "getsockopt",
+        "getuid",
+        "ioctl",
+        "link",
+        "listen",
+        "lseek",
+        "madvise",
+        "memfd_create",
+        "mkdir",
+        "mmap",
+        "mprotect",
+        "mremap",
+        "munmap",
+        "newfstatat",
+        "openat",
+        "pipe2",
+        "ppoll",
+        "prctl",
+        "pread64",
+        "prlimit64",
+        "pselect6",
+        "pwrite64",
+        "read",
+        "readlink",
+        "readv",
+        "recvmsg",
+        "rseq",
+        "rt_sigaction",
+        "rt_sigprocmask",
+        "rt_sigreturn",
+        "sched_getaffinity",
+        "sched_yield",
+        "set_robust_list",
+        "set_tid_address",
+        "setsid",
+        "setsockopt",
+        "sigaltstack",
+        "socket",
+        "socketpair",
+        "sysinfo",
+        "timerfd_create",
+        "timerfd_settime",
+        "uname",
+        "unlink",
+        "utimensat",
+        "wait4",
+        "write",
+        "writev"
+      ],
+      "errors": {
+        "accept": [
+          "EAGAIN"
+        ],
+        "access": [
+          "EACCES",
+          "ENOENT"
+        ],
+        "chown": [
+          "ENOENT"
+        ],
+        "close": [
+          "EBADF"
+        ],
+        "epoll_ctl": [
+          "EPERM"
+        ],
+        "execve": [
+          "ENOENT"
+        ],
+        "futex": [
+          "EAGAIN"
+        ],
+        "ioctl": [
+          "EBADF",
+          "ENOTTY"
+        ],
+        "link": [
+          "EEXIST"
+        ],
+        "mkdir": [
+          "EEXIST"
+        ],
+        "newfstatat": [
+          "ENOENT"
+        ],
+        "openat": [
+          "ENOENT",
+          "ENOTDIR"
+        ],
+        "read": [
+          "EAGAIN"
+        ],
+        "readlink": [
+          "EINVAL"
+        ],
+        "wait4": [
+          "ECHILD"
+        ]
+      },
+      "argument_tokens": {
+        "access": [
+          "W_OK"
+        ],
+        "bind": [
+          "AF_INET"
+        ],
+        "clone": [
+          "CLONE_CHILD_CLEARTID",
+          "CLONE_CHILD_SETTID",
+          "SIGCHLD"
+        ],
+        "clone3": [
+          "CLONE_CHILD_CLEARTID",
+          "CLONE_FILES",
+          "CLONE_FS",
+          "CLONE_PARENT_SETTID",
+          "CLONE_SETTLS",
+          "CLONE_SIGHAND",
+          "CLONE_SYSVSEM",
+          "CLONE_THREAD",
+          "CLONE_VM"
+        ],
+        "close": [
+          "OTP_VERSION"
+        ],
+        "epoll_ctl": [
+          "EPOLLIN",
+          "EPOLLONESHOT",
+          "EPOLL_CTL_ADD",
+          "EPOLL_CTL_DEL",
+          "EPOLL_CTL_MOD"
+        ],
+        "epoll_wait": [
+          "EPOLLIN"
+        ],
+        "fcntl": [
+          "F_DUPFD",
+          "F_GETFD",
+          "F_GETFL",
+          "F_SETFD",
+          "F_SETFL",
+          "O_NONBLOCK",
+          "O_RDONLY",
+          "O_RDWR",
+          "O_WRONLY"
+        ],
+        "futex": [
+          "FUTEX_BITSET_MATCH_ANY",
+          "FUTEX_CLOCK_REALTIME",
+          "FUTEX_WAIT_BITSET",
+          "FUTEX_WAIT_BITSET_PRIVATE",
+          "FUTEX_WAIT_PRIVATE",
+          "FUTEX_WAKE_PRIVATE"
+        ],
+        "getsockname": [
+          "AF_INET"
+        ],
+        "getsockopt": [
+          "SOL_IP",
+          "SOL_SOCKET"
+        ],
+        "madvise": [
+          "MADV_DONTNEED",
+          "MADV_HUGEPAGE"
+        ],
+        "mmap": [
+          "MAP_ANONYMOUS",
+          "MAP_DENYWRITE",
+          "MAP_FIXED",
+          "MAP_NORESERVE",
+          "MAP_PRIVATE",
+          "MAP_SHARED",
+          "MAP_STACK",
+          "PROT_EXEC",
+          "PROT_NONE",
+          "PROT_READ",
+          "PROT_WRITE"
+        ],
+        "mprotect": [
+          "PROT_READ",
+          "PROT_WRITE"
+        ],
+        "newfstatat": [
+          "AT_EMPTY_PATH",
+          "AT_FDCWD",
+          "AT_SYMLINK_NOFOLLOW",
+          "OTP_VERSION"
+        ],
+        "openat": [
+          "AT_FDCWD",
+          "OTP_VERSION",
+          "O_APPEND",
+          "O_CLOEXEC",
+          "O_CREAT",
+          "O_DIRECTORY",
+          "O_NONBLOCK",
+          "O_RDONLY",
+          "O_RDWR",
+          "O_TRUNC",
+          "O_WRONLY"
+        ],
+        "ppoll": [
+          "POLLIN",
+          "POLLRDNORM"
+        ],
+        "prctl": [
+          "PR_SET_NAME"
+        ],
+        "prlimit64": [
+          "RLIMIT_NOFILE",
+          "RLIMIT_STACK"
+        ],
+        "readv": [
+          "OTP_VERSION"
+        ],
+        "recvmsg": [
+          "MSG_DONTWAIT"
+        ],
+        "rt_sigaction": [
+          "SA_NOCLDSTOP",
+          "SA_ONSTACK",
+          "SA_RESTART",
+          "SA_RESTORER",
+          "SA_SIGINFO",
+          "SIGABRT",
+          "SIGALRM",
+          "SIGBUS",
+          "SIGCHLD",
+          "SIGCONT",
+          "SIGFPE",
+          "SIGHUP",
+          "SIGILL",
+          "SIGINT",
+          "SIGIO",
+          "SIGKILL",
+          "SIGPIPE",
+          "SIGPROF",
+          "SIGPWR",
+          "SIGQUIT",
+          "SIGRT_1",
+          "SIGRT_10",
+          "SIGRT_11",
+          "SIGRT_12",
+          "SIGRT_13",
+          "SIGRT_14",
+          "SIGRT_15",
+          "SIGRT_16",
+          "SIGRT_17",
+          "SIGRT_18",
+          "SIGRT_19",
+          "SIGRT_2",
+          "SIGRT_20",
+          "SIGRT_21",
+          "SIGRT_22",
+          "SIGRT_23",
+          "SIGRT_24",
+          "SIGRT_25",
+          "SIGRT_26",
+          "SIGRT_27",
+          "SIGRT_28",
+          "SIGRT_29",
+          "SIGRT_3",
+          "SIGRT_30",
+          "SIGRT_31",
+          "SIGRT_32",
+          "SIGRT_4",
+          "SIGRT_5",
+          "SIGRT_6",
+          "SIGRT_7",
+          "SIGRT_8",
+          "SIGRT_9",
+          "SIGSEGV",
+          "SIGSTKFLT",
+          "SIGSTOP",
+          "SIGSYS",
+          "SIGTERM",
+          "SIGTRAP",
+          "SIGTSTP",
+          "SIGTTIN",
+          "SIGTTOU",
+          "SIGURG",
+          "SIGUSR1",
+          "SIGUSR2",
+          "SIGVTALRM",
+          "SIGWINCH",
+          "SIGXCPU",
+          "SIGXFSZ",
+          "SIG_DFL",
+          "SIG_IGN"
+        ],
+        "rt_sigprocmask": [
+          "SIG_BLOCK",
+          "SIG_SETMASK",
+          "SIG_UNBLOCK"
+        ],
+        "setsockopt": [
+          "SOL_SOCKET",
+          "SOL_TCP"
+        ],
+        "socket": [
+          "AF_INET",
+          "SOCK_DGRAM",
+          "SOCK_STREAM"
+        ],
+        "socketpair": [
+          "AF_UNIX",
+          "SOCK_STREAM"
+        ],
+        "timerfd_create": [
+          "CLOCK_MONOTONIC"
+        ],
+        "utimensat": [
+          "AT_FDCWD"
+        ],
+        "wait4": [
+          "WEXITSTATUS",
+          "WIFEXITED",
+          "WNOHANG"
+        ],
+        "writev": [
+          "SIGTERM"
+        ]
+      },
+      "signals": [
+        "SIGCHLD",
+        "SIGTERM"
+      ],
+      "families": {
+        "descriptors": [
+          "close",
+          "dup2",
+          "fcntl",
+          "ioctl",
+          "pipe2",
+          "read",
+          "readv",
+          "write",
+          "writev"
+        ],
+        "files": [
+          "access",
+          "getcwd",
+          "getdents64",
+          "lseek",
+          "newfstatat",
+          "openat",
+          "readlink"
+        ],
+        "mappings": [
+          "brk",
+          "madvise",
+          "mmap",
+          "mprotect",
+          "mremap",
+          "munmap"
+        ],
+        "polling": [
+          "epoll_ctl",
+          "epoll_wait",
+          "ppoll",
+          "pselect6"
+        ],
+        "process_queries": [
+          "getegid",
+          "geteuid",
+          "getgid",
+          "getpid",
+          "getppid",
+          "prlimit64",
+          "sched_getaffinity",
+          "uname"
+        ],
+        "signals": [
+          "rt_sigaction",
+          "rt_sigprocmask",
+          "rt_sigreturn",
+          "sigaltstack"
+        ],
+        "threads": [
+          "clone",
+          "clone3",
+          "exit",
+          "futex",
+          "rseq",
+          "sched_yield",
+          "set_robust_list",
+          "set_tid_address"
+        ]
+      },
+      "path_count": 864
+    },
+    "fault": {
+      "trace_files": 3,
+      "syscalls": [
+        "access",
+        "arch_prctl",
+        "brk",
+        "clone3",
+        "close",
+        "execve",
+        "exit",
+        "exit_group",
+        "futex",
+        "getpid",
+        "getrandom",
+        "gettid",
+        "madvise",
+        "mmap",
+        "mprotect",
+        "munmap",
+        "newfstatat",
+        "openat",
+        "pipe2",
+        "ppoll",
+        "pread64",
+        "prlimit64",
+        "read",
+        "rseq",
+        "rt_sigaction",
+        "rt_sigprocmask",
+        "rt_sigreturn",
+        "set_robust_list",
+        "set_tid_address",
+        "sigaltstack",
+        "tgkill",
+        "write"
+      ],
+      "errors": {
+        "access": [
+          "ENOENT"
+        ],
+        "close": [
+          "EBADF"
+        ],
+        "mmap": [
+          "ENOMEM"
+        ],
+        "read": [
+          "EFAULT"
+        ]
+      },
+      "argument_tokens": {
+        "clone3": [
+          "CLONE_CHILD_CLEARTID",
+          "CLONE_FILES",
+          "CLONE_FS",
+          "CLONE_PARENT_SETTID",
+          "CLONE_SETTLS",
+          "CLONE_SIGHAND",
+          "CLONE_SYSVSEM",
+          "CLONE_THREAD",
+          "CLONE_VM"
+        ],
+        "futex": [
+          "FUTEX_BITSET_MATCH_ANY",
+          "FUTEX_CLOCK_REALTIME",
+          "FUTEX_WAIT_BITSET",
+          "FUTEX_WAKE_PRIVATE"
+        ],
+        "madvise": [
+          "MADV_DONTNEED"
+        ],
+        "mmap": [
+          "MAP_ANONYMOUS",
+          "MAP_DENYWRITE",
+          "MAP_FIXED",
+          "MAP_PRIVATE",
+          "MAP_STACK",
+          "PROT_EXEC",
+          "PROT_NONE",
+          "PROT_READ",
+          "PROT_WRITE"
+        ],
+        "mprotect": [
+          "PROT_READ",
+          "PROT_WRITE"
+        ],
+        "newfstatat": [
+          "AT_EMPTY_PATH"
+        ],
+        "openat": [
+          "AT_FDCWD",
+          "O_CLOEXEC",
+          "O_CREAT",
+          "O_RDONLY",
+          "O_TRUNC",
+          "O_WRONLY"
+        ],
+        "prlimit64": [
+          "RLIMIT_STACK"
+        ],
+        "read": [
+          "SA_RESTART"
+        ],
+        "rt_sigaction": [
+          "SA_ONSTACK",
+          "SA_RESTART",
+          "SA_RESTORER",
+          "SA_SIGINFO",
+          "SIGRTMIN",
+          "SIGRT_1",
+          "SIGUSR1"
+        ],
+        "rt_sigprocmask": [
+          "SIG_BLOCK",
+          "SIG_SETMASK",
+          "SIG_UNBLOCK"
+        ],
+        "tgkill": [
+          "SIGRTMIN",
+          "SIGUSR1"
+        ]
+      },
+      "signals": [
+        "SIGRTMIN",
+        "SIGUSR1"
+      ],
+      "families": {
+        "descriptors": [
+          "close",
+          "pipe2",
+          "read",
+          "write"
+        ],
+        "files": [
+          "access",
+          "newfstatat",
+          "openat"
+        ],
+        "mappings": [
+          "brk",
+          "madvise",
+          "mmap",
+          "mprotect",
+          "munmap"
+        ],
+        "polling": [
+          "ppoll"
+        ],
+        "process_queries": [
+          "getpid",
+          "gettid",
+          "prlimit64"
+        ],
+        "signals": [
+          "rt_sigaction",
+          "rt_sigprocmask",
+          "rt_sigreturn",
+          "sigaltstack",
+          "tgkill"
+        ],
+        "threads": [
+          "clone3",
+          "exit",
+          "futex",
+          "rseq",
+          "set_robust_list",
+          "set_tid_address"
+        ]
+      },
+      "path_count": 6
+    },
+    "workload": {
+      "trace_files": 16,
+      "syscalls": [
+        "accept",
+        "access",
+        "arch_prctl",
+        "bind",
+        "brk",
+        "chdir",
+        "chown",
+        "clone",
+        "clone3",
+        "close",
+        "close_range",
+        "dup2",
+        "epoll_create",
+        "epoll_ctl",
+        "epoll_wait",
+        "execve",
+        "exit",
+        "exit_group",
+        "fcntl",
+        "ftruncate",
+        "futex",
+        "getcwd",
+        "getdents64",
+        "getegid",
+        "geteuid",
+        "getgid",
+        "getpid",
+        "getppid",
+        "getrandom",
+        "getsockname",
+        "getsockopt",
+        "getuid",
+        "ioctl",
+        "link",
+        "listen",
+        "lseek",
+        "madvise",
+        "memfd_create",
+        "mkdir",
+        "mmap",
+        "mprotect",
+        "mremap",
+        "munmap",
+        "newfstatat",
+        "openat",
+        "pipe2",
+        "ppoll",
+        "prctl",
+        "pread64",
+        "prlimit64",
+        "pselect6",
+        "pwrite64",
+        "read",
+        "readlink",
+        "readv",
+        "recvmsg",
+        "rseq",
+        "rt_sigaction",
+        "rt_sigprocmask",
+        "rt_sigreturn",
+        "sched_getaffinity",
+        "sched_yield",
+        "set_robust_list",
+        "set_tid_address",
+        "setsid",
+        "setsockopt",
+        "sigaltstack",
+        "socket",
+        "socketpair",
+        "sysinfo",
+        "timerfd_create",
+        "timerfd_settime",
+        "uname",
+        "unlink",
+        "utimensat",
+        "wait4",
+        "write",
+        "writev"
+      ],
+      "errors": {
+        "accept": [
+          "EAGAIN"
+        ],
+        "access": [
+          "EACCES",
+          "ENOENT"
+        ],
+        "chown": [
+          "ENOENT"
+        ],
+        "close": [
+          "EBADF"
+        ],
+        "epoll_ctl": [
+          "EPERM"
+        ],
+        "execve": [
+          "ENOENT"
+        ],
+        "futex": [
+          "EAGAIN"
+        ],
+        "ioctl": [
+          "EBADF",
+          "ENOTTY"
+        ],
+        "link": [
+          "EEXIST"
+        ],
+        "mkdir": [
+          "EEXIST"
+        ],
+        "newfstatat": [
+          "ENOENT"
+        ],
+        "openat": [
+          "ENOENT",
+          "ENOTDIR"
+        ],
+        "read": [
+          "EAGAIN"
+        ],
+        "readlink": [
+          "EINVAL"
+        ],
+        "wait4": [
+          "ECHILD"
+        ]
+      },
+      "argument_tokens": {
+        "access": [
+          "W_OK"
+        ],
+        "bind": [
+          "AF_INET"
+        ],
+        "clone": [
+          "CLONE_CHILD_CLEARTID",
+          "CLONE_CHILD_SETTID",
+          "SIGCHLD"
+        ],
+        "clone3": [
+          "CLONE_CHILD_CLEARTID",
+          "CLONE_FILES",
+          "CLONE_FS",
+          "CLONE_PARENT_SETTID",
+          "CLONE_SETTLS",
+          "CLONE_SIGHAND",
+          "CLONE_SYSVSEM",
+          "CLONE_THREAD",
+          "CLONE_VM"
+        ],
+        "close": [
+          "OTP_VERSION"
+        ],
+        "epoll_ctl": [
+          "EPOLLIN",
+          "EPOLLONESHOT",
+          "EPOLL_CTL_ADD",
+          "EPOLL_CTL_DEL",
+          "EPOLL_CTL_MOD"
+        ],
+        "epoll_wait": [
+          "EPOLLIN"
+        ],
+        "fcntl": [
+          "F_DUPFD",
+          "F_GETFD",
+          "F_GETFL",
+          "F_SETFD",
+          "F_SETFL",
+          "O_NONBLOCK",
+          "O_RDONLY",
+          "O_RDWR",
+          "O_WRONLY"
+        ],
+        "futex": [
+          "FUTEX_BITSET_MATCH_ANY",
+          "FUTEX_CLOCK_REALTIME",
+          "FUTEX_WAIT_BITSET",
+          "FUTEX_WAIT_BITSET_PRIVATE",
+          "FUTEX_WAIT_PRIVATE",
+          "FUTEX_WAKE_PRIVATE"
+        ],
+        "getsockname": [
+          "AF_INET"
+        ],
+        "getsockopt": [
+          "SOL_IP",
+          "SOL_SOCKET"
+        ],
+        "madvise": [
+          "MADV_DONTNEED",
+          "MADV_HUGEPAGE"
+        ],
+        "mmap": [
+          "MAP_ANONYMOUS",
+          "MAP_DENYWRITE",
+          "MAP_FIXED",
+          "MAP_NORESERVE",
+          "MAP_PRIVATE",
+          "MAP_SHARED",
+          "MAP_STACK",
+          "PROT_EXEC",
+          "PROT_NONE",
+          "PROT_READ",
+          "PROT_WRITE"
+        ],
+        "mprotect": [
+          "PROT_READ",
+          "PROT_WRITE"
+        ],
+        "newfstatat": [
+          "AT_EMPTY_PATH",
+          "AT_FDCWD",
+          "AT_SYMLINK_NOFOLLOW",
+          "OTP_VERSION"
+        ],
+        "openat": [
+          "AT_FDCWD",
+          "OTP_VERSION",
+          "O_APPEND",
+          "O_CLOEXEC",
+          "O_CREAT",
+          "O_DIRECTORY",
+          "O_NONBLOCK",
+          "O_RDONLY",
+          "O_RDWR",
+          "O_TRUNC",
+          "O_WRONLY"
+        ],
+        "ppoll": [
+          "POLLIN",
+          "POLLRDNORM"
+        ],
+        "prctl": [
+          "PR_SET_NAME"
+        ],
+        "prlimit64": [
+          "RLIMIT_NOFILE",
+          "RLIMIT_STACK"
+        ],
+        "readv": [
+          "OTP_VERSION"
+        ],
+        "recvmsg": [
+          "MSG_DONTWAIT"
+        ],
+        "rt_sigaction": [
+          "SA_NOCLDSTOP",
+          "SA_ONSTACK",
+          "SA_RESTART",
+          "SA_RESTORER",
+          "SA_SIGINFO",
+          "SIGABRT",
+          "SIGALRM",
+          "SIGBUS",
+          "SIGCHLD",
+          "SIGCONT",
+          "SIGFPE",
+          "SIGHUP",
+          "SIGILL",
+          "SIGINT",
+          "SIGIO",
+          "SIGKILL",
+          "SIGPIPE",
+          "SIGPROF",
+          "SIGPWR",
+          "SIGQUIT",
+          "SIGRT_1",
+          "SIGRT_10",
+          "SIGRT_11",
+          "SIGRT_12",
+          "SIGRT_13",
+          "SIGRT_14",
+          "SIGRT_15",
+          "SIGRT_16",
+          "SIGRT_17",
+          "SIGRT_18",
+          "SIGRT_19",
+          "SIGRT_2",
+          "SIGRT_20",
+          "SIGRT_21",
+          "SIGRT_22",
+          "SIGRT_23",
+          "SIGRT_24",
+          "SIGRT_25",
+          "SIGRT_26",
+          "SIGRT_27",
+          "SIGRT_28",
+          "SIGRT_29",
+          "SIGRT_3",
+          "SIGRT_30",
+          "SIGRT_31",
+          "SIGRT_32",
+          "SIGRT_4",
+          "SIGRT_5",
+          "SIGRT_6",
+          "SIGRT_7",
+          "SIGRT_8",
+          "SIGRT_9",
+          "SIGSEGV",
+          "SIGSTKFLT",
+          "SIGSTOP",
+          "SIGSYS",
+          "SIGTERM",
+          "SIGTRAP",
+          "SIGTSTP",
+          "SIGTTIN",
+          "SIGTTOU",
+          "SIGURG",
+          "SIGUSR1",
+          "SIGUSR2",
+          "SIGVTALRM",
+          "SIGWINCH",
+          "SIGXCPU",
+          "SIGXFSZ",
+          "SIG_DFL",
+          "SIG_IGN"
+        ],
+        "rt_sigprocmask": [
+          "SIG_BLOCK",
+          "SIG_SETMASK",
+          "SIG_UNBLOCK"
+        ],
+        "setsockopt": [
+          "SOL_SOCKET",
+          "SOL_TCP"
+        ],
+        "socket": [
+          "AF_INET",
+          "SOCK_DGRAM",
+          "SOCK_STREAM"
+        ],
+        "socketpair": [
+          "AF_UNIX",
+          "SOCK_STREAM"
+        ],
+        "timerfd_create": [
+          "CLOCK_MONOTONIC"
+        ],
+        "utimensat": [
+          "AT_FDCWD"
+        ],
+        "wait4": [
+          "WEXITSTATUS",
+          "WIFEXITED",
+          "WNOHANG"
+        ]
+      },
+      "signals": [
+        "SIGCHLD"
+      ],
+      "families": {
+        "descriptors": [
+          "close",
+          "dup2",
+          "fcntl",
+          "ioctl",
+          "pipe2",
+          "read",
+          "readv",
+          "write",
+          "writev"
+        ],
+        "files": [
+          "access",
+          "getcwd",
+          "getdents64",
+          "lseek",
+          "newfstatat",
+          "openat",
+          "readlink"
+        ],
+        "mappings": [
+          "brk",
+          "madvise",
+          "mmap",
+          "mprotect",
+          "mremap",
+          "munmap"
+        ],
+        "polling": [
+          "epoll_ctl",
+          "epoll_wait",
+          "ppoll",
+          "pselect6"
+        ],
+        "process_queries": [
+          "getegid",
+          "geteuid",
+          "getgid",
+          "getpid",
+          "getppid",
+          "prlimit64",
+          "sched_getaffinity",
+          "uname"
+        ],
+        "signals": [
+          "rt_sigaction",
+          "rt_sigprocmask",
+          "rt_sigreturn",
+          "sigaltstack"
+        ],
+        "threads": [
+          "clone",
+          "clone3",
+          "exit",
+          "futex",
+          "rseq",
+          "sched_yield",
+          "set_robust_list",
+          "set_tid_address"
+        ]
+      },
+      "path_count": 892
+    }
+  }
+}

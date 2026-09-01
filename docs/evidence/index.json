@@ -26,6 +26,12 @@
       "claim": "Two fresh network-disabled Linux builders produced matching complete toolchain metadata, and the sealed OTP 29.0.5/Elixir 1.20.4 pair built and ran the reference Mix application offline."
     },
     {
+      "id": "RB-EV-P004-BEAM-HOST",
+      "task": "RB-T-P004",
+      "record": "docs/evidence/phase-0/RB-T-P004/evidence.json",
+      "claim": "The exact pinned runtime_lab workload produced two equal normalized host traces; revision 0 classifies all 91 host and target interactions against 18 sealed OTP/musl source items; and full-system AArch64-musl probes cover the required error, timeout, cancellation, signal, thread-lifecycle, and shutdown paths with no unexplained calls."
+    },
+    {
       "id": "RB-EV-P005-OTP",
       "task": "RB-T-P005",
       "record": "docs/evidence/phase-0/RB-T-P005/evidence.json",

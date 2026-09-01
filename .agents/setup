@@ -30,6 +30,7 @@ install_system_packages() {
     pkg-config
     python3
     squashfs-tools
+    strace
   )
   local missing=()
   local package

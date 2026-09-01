@@ -30,7 +30,7 @@
   "inputs": [
     {
       "path": ".agents/setup",
-      "digest": "sha256:cf6af227bc5db77812936a47994c15a53f4089fdb8b73148251a3dcd3cff666f"
+      "digest": "sha256:acfbeabf31dffa4c73eb51958b43cc7a0abc53d20c362c0175c89e6b0e160866"
     },
     {
       "path": ".agents/resume",

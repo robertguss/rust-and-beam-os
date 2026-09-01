@@ -1,0 +1,34 @@
+{
+  "artifacts": [
+    {
+      "bytes": 158666,
+      "path": "docs/evidence/phase-0/RB-T-P004/host-replay-1-normalized.json",
+      "sha256": "5b0ec5e966d3973b59324b0573256e136beac4862c14925cec915c9917fc6210"
+    },
+    {
+      "bytes": 631642,
+      "path": "docs/evidence/phase-0/RB-T-P004/host-replay-1-raw-strace.txt.gz",
+      "sha256": "87d9222387f67d10030344b5313dec2dfe943009c58ca4a03e9d39012465cfdb"
+    },
+    {
+      "bytes": 158666,
+      "path": "docs/evidence/phase-0/RB-T-P004/host-replay-2-normalized.json",
+      "sha256": "5b0ec5e966d3973b59324b0573256e136beac4862c14925cec915c9917fc6210"
+    },
+    {
+      "bytes": 625908,
+      "path": "docs/evidence/phase-0/RB-T-P004/host-replay-2-raw-strace.txt.gz",
+      "sha256": "4db2c7310a1169387dc366a1f7120bd74a813ea032f11e1c54565f8ca77b2ac4"
+    }
+  ],
+  "normalized_equal": true,
+  "replays": 2,
+  "runtime": {
+    "elixir": "1.20.4",
+    "erts": "17.0.5",
+    "otp": "29.0.5"
+  },
+  "runtime_flags": "+S 2:2 +SDcpu 1:1 +SDio 1 +A 1",
+  "runtime_lab_seed": 20260901,
+  "schema": "rust-beam/beam-host-trace-manifest/v1"
+}
