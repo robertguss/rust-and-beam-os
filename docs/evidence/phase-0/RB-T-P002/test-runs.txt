@@ -1,0 +1,15 @@
+$ unshare --user --map-root-user --net mix test --seed 0
+Compiling 10 files (.ex)
+Generated runtime_lab app
+Running ExUnit with seed: 0, max_cases: 16
+Finished in 0.1 seconds (0.09s async, 0.04s sync)
+Result: 10 passed
+
+$ unshare --user --map-root-user --net mix test --seed 1
+Running ExUnit with seed: 1, max_cases: 16
+Finished in 0.1 seconds (0.1s async, 0.04s sync)
+Result: 10 passed
+
+Both commands used the pinned OTP 29.0.5 / ERTS 17.0.5 / Elixir 1.20.4
+runtime, a fresh isolated Mix/Hex home, HEX_OFFLINE=1, and a network namespace
+with no host interfaces.

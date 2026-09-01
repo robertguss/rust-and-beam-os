@@ -1,0 +1,77 @@
+{
+  "application": "runtime_lab",
+  "assembled_observation": {
+    "applications": [
+      "elixir-1.20.4",
+      "iex-1.20.4",
+      "logger-1.20.4",
+      "runtime_lab-0.1.0"
+    ],
+    "embedded_erts_directories": [],
+    "file_count": 352,
+    "native_libraries": [],
+    "result": "pass"
+  },
+  "inputs": [
+    {
+      "path": "beam/runtime_lab/mix.exs",
+      "sha256": "ba99b1d0fafceb160a4ed1e289ebec77311428a506b451d8de7f4c78205cb61a"
+    },
+    {
+      "path": "beam/runtime_lab/config/config.exs",
+      "sha256": "749ff4457c8f3f4271104e95cdb9b1dea29242e536cc1f07a4b748db067523cf"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/application.ex",
+      "sha256": "e25cc7c478e925702b2a8d6fce78e2da46d50b6b09d8a376d07ee6dbdd0a5831"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/command.ex",
+      "sha256": "8665bf80d99656ab7b455495b09f45898b52faa5d7b5832b648b148a05c8b43e"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/demo_state.ex",
+      "sha256": "564db7f05586946582a7342c13d25c53e5630e19f6730655176163f49a36c3de"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/event.ex",
+      "sha256": "016ad0d0a1cb433f4f45caac6832a9e8981277233e7e3f48d8a698f86f523ff3"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/feature_worker.ex",
+      "sha256": "0e6f3ad8c0f721fccc14081cb82f1d3e4e63c96dca237d230235852ba8c102d7"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/metric_sampler.ex",
+      "sha256": "82ea816e28970b3659f4780c2ca68ba43cfe202cafe4d75f9047464f57e192e2"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/runtime_identity.ex",
+      "sha256": "441ee9ae761a584e5dda5b8041424c75b266ba2580fca1dbbd21cc76914016ee"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/supervisor.ex",
+      "sha256": "47b7f41dedd76ef2018a6ad4141a62d1e2a1bf532890865b93b830d26c39c712"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/workloads.ex",
+      "sha256": "e4c5c18927ddac623fbc01bc6a63c44406e2262264b41456c6001766c46c64d3"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab.ex",
+      "sha256": "46372a47e8f884a839a72973883a16c45464ab2e8697f95aebe99952668a1fe2"
+    }
+  ],
+  "mix_env": "prod",
+  "release_options": {
+    "include_erts": false,
+    "runtime_config_path": false
+  },
+  "runtime_pair": {
+    "elixir": "1.20.4",
+    "erts": "17.0.5",
+    "otp": "29.0.5"
+  },
+  "schema": "rust-beam/runtime-lab-release-inputs/v1",
+  "version": "0.1.0"
+}

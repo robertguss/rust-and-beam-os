@@ -1,0 +1,19 @@
+{
+  "schema": "rust-beam/environment/v1",
+  "recorded_at": "2026-09-01T00:23:05Z",
+  "runner": "Amp orb (remote secure E2B Linux sandbox)",
+  "os": "debian 12",
+  "kernel": "Linux 6.1.158+",
+  "architecture": "x86_64",
+  "source_revision": "022f624af37f92be356e604cd009170d2dc39f81",
+  "source_dirty": true,
+  "network_test": "fresh user and network namespace with HEX_OFFLINE=1 and isolated Mix/Hex homes",
+  "tools": [
+    { "name": "otp", "version": "29.0.5 / ERTS 17.0.5" },
+    { "name": "elixir", "version": "1.20.4 compiled with Erlang/OTP 29" },
+    { "name": "mix", "version": "1.20.4 compiled with Erlang/OTP 29" },
+    { "name": "python", "version": "3.11.6" },
+    { "name": "rustc", "version": "1.89.0 (29483883e 2025-08-04)" },
+    { "name": "just", "version": "1.42.4" }
+  ]
+}

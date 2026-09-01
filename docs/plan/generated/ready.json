@@ -1,17 +1,8 @@
 {
   "date": null,
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:546dcfadbfe992c364c31303ad1ea4e89f30b0589e0c0412a84b25c20c506fc4",
+  "source_digest": "sha256:d7bff276e2d13c13d162078b6a51780cca62ef9d1eea7be5f77363312ab29220",
   "tasks": [
-    {
-      "id": "RB-T-P002",
-      "incomplete_downstream": 102,
-      "milestone": "RB-M-M0",
-      "milestone_order": 0,
-      "path": "tasks/rb-t-p002.md",
-      "priority": "P3",
-      "reason": "open; milestone authorized; all dependencies done"
-    },
     {
       "id": "RB-T-P005",
       "incomplete_downstream": 102,
@@ -27,6 +18,24 @@
       "milestone": "RB-M-M0",
       "milestone_order": 0,
       "path": "tasks/rb-t-p011.md",
+      "priority": "P3",
+      "reason": "open; milestone authorized; all dependencies done"
+    },
+    {
+      "id": "RB-T-P004",
+      "incomplete_downstream": 98,
+      "milestone": "RB-M-M0",
+      "milestone_order": 0,
+      "path": "tasks/rb-t-p004.md",
+      "priority": "P3",
+      "reason": "open; milestone authorized; all dependencies done"
+    },
+    {
+      "id": "RB-T-P009",
+      "incomplete_downstream": 98,
+      "milestone": "RB-M-M0",
+      "milestone_order": 0,
+      "path": "tasks/rb-t-p009.md",
       "priority": "P3",
       "reason": "open; milestone authorized; all dependencies done"
     }

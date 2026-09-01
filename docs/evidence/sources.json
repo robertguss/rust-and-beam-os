@@ -54,7 +54,7 @@
       "claims": [
         "The frozen runtime candidate uses the immutable OTP 29.0.5 source release."
       ],
-      "consumers": ["RB-T-P003", "toolchain/sources.lock.json", "toolchain/contract.json"],
+      "consumers": ["RB-T-P002", "RB-T-P003", "toolchain/sources.lock.json", "toolchain/contract.json"],
       "limitations": "The release identity does not by itself establish compatibility with Elixir; the offline runtime-pair smoke supplies that evidence."
     },
     {
@@ -68,7 +68,7 @@
       "claims": [
         "The frozen runtime candidate builds Elixir 1.20.4 from an immutable commit archive."
       ],
-      "consumers": ["RB-T-P003", "toolchain/sources.lock.json", "toolchain/contract.json"],
+      "consumers": ["RB-T-P002", "RB-T-P003", "toolchain/sources.lock.json", "toolchain/contract.json"],
       "limitations": "The source identity does not prove the selected OTP pair runs; the network-disabled Mix smoke supplies that evidence."
     },
     {
@@ -82,7 +82,7 @@
       "claims": [
         "Elixir 1.20 supports Erlang/OTP 27 through 29."
       ],
-      "consumers": ["RB-T-P003", "toolchain/contract.json", "toolchain/TOOLCHAIN.md"],
+      "consumers": ["RB-T-P002", "RB-T-P003", "toolchain/contract.json", "toolchain/TOOLCHAIN.md"],
       "limitations": "Documentation establishes the supported range; the repository smoke tests only the selected OTP 29.0.5 pair."
     },
     {

@@ -1,0 +1,10 @@
+$ timeout --signal=TERM 3s mix run --no-halt
+runtime_lab_event schema="runtime_lab/event-v1" type=feature_worker_started workload_version="1.0.0" generation=1 reason=initial restart_count=0 revision=1 worker=#PID<0.130.0>
+runtime_lab_event schema="runtime_lab/event-v1" type=metric_sampler_started workload_version="1.0.0" interval_ms=1000
+runtime_lab_event schema="runtime_lab/event-v1" type=application_started workload_version="1.0.0" build_id="runtime_lab-0.1.0"
+runtime_lab_event schema="runtime_lab/event-v1" type=runtime_identity workload_version="1.0.0" application="runtime_lab" build_id="runtime_lab-0.1.0" dirty_cpu_schedulers=8 dirty_cpu_schedulers_online=8 dirty_io_schedulers=10 elixir="1.20.4" emulator_flavor=jit erts="17.0.5" otp="29.0.5" schedulers=8 schedulers_online=8 thread_pool_size=1
+00:22:23.955 [notice] SIGTERM received - shutting down
+
+runtime_lab_event schema="runtime_lab/event-v1" type=application_stopped workload_version="1.0.0" status=normal
+
+Harness result: expected timeout status 124 after all required boot and shutdown markers.

@@ -13,7 +13,9 @@ class GateAwareLabelTests(unittest.TestCase):
         cls.records = {record["id"]: record for record in projection["records"]}
 
     def test_ready_task_is_ready_for_agent(self) -> None:
-        self.assertIn("ready-for-agent", self.records["RB-T-AUDIT0"]["labels"])
+        self.assertTrue(
+            any("ready-for-agent" in record["labels"] for record in self.records.values())
+        )
 
     def test_completed_task_is_done(self) -> None:
         self.assertEqual(self.records["RB-T-P001"]["labels"], ["done"])

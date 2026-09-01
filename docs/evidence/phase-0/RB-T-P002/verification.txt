@@ -1,0 +1,20 @@
+$ mix format --check-formatted
+PASS
+
+$ unshare --user --map-root-user --net mix test --seed 0
+Result: 10 passed
+
+$ unshare --user --map-root-user --net mix test --seed 1
+Result: 10 passed
+
+$ mix run -e 'RuntimeLab.Command.main(System.argv())' -- all --seed 20260901
+PASS: every bounded workload completed; crash-once preserved state and incremented generation; four-crash storm exceeded max_restarts=3.
+
+$ repeat workload and compare canonical command_result event bytes
+PASS: SHA-256 6454b584f3426e5591bf9e8cf94becceac792a234cf9626cc05007c5dc0ad9c8 matched.
+
+$ timeout --signal=TERM 3s mix run --no-halt
+PASS: runtime identity and initial lifecycle appeared before expected harness status 124; SIGTERM produced application_stopped status=normal.
+
+$ MIX_ENV=prod mix release --overwrite
+PASS: runtime_lab 0.1.0 assembled; 352 files, no embedded ERTS directory, no native library, runtime_config_path=false.

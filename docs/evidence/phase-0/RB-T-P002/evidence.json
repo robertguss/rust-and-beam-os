@@ -1,0 +1,154 @@
+{
+  "schema": "rust-beam/evidence/v1",
+  "id": "RB-EV-P002-RUNTIME-LAB",
+  "task": "RB-T-P002",
+  "recorded_at": "2026-09-01T00:23:05Z",
+  "claim": "The dependency-free runtime_lab application reported the exact pinned OTP 29.0.5 / ERTS 17.0.5 / Elixir 1.20.4 host identity, passed 10 tests twice without network access, preserved state across an intentional worker restart, escalated a four-crash storm past its configured restart intensity, reproduced deterministic bounded workload results, booted under controlled mix run --no-halt shutdown, and assembled an ERTS-free release payload with no native libraries.",
+  "classification": "host",
+  "build": {
+    "id": "rb1-022f624af37f-dirty-20260901T002305Z",
+    "source_revision": "022f624af37f92be356e604cd009170d2dc39f81",
+    "source_dirty": true,
+    "target": "x86_64 Linux host / dependency-free Mix reference application"
+  },
+  "command": {
+    "argv": [
+      "bash",
+      "-c",
+      "cd beam/runtime_lab && mix format --check-formatted && unshare --user --map-root-user --net mix test --seed 0 && unshare --user --map-root-user --net mix test --seed 1 && mix run -e 'RuntimeLab.Command.main(System.argv())' -- all --seed 20260901 && timeout --signal=TERM 3s mix run --no-halt; test $? -eq 124 && MIX_ENV=prod mix release --overwrite"
+    ],
+    "cwd": "."
+  },
+  "environment": {
+    "os": "debian 12 / Linux 6.1.158+; fresh network namespace for test runs",
+    "architecture": "x86_64",
+    "tools": [
+      { "name": "otp", "version": "29.0.5 / ERTS 17.0.5" },
+      { "name": "elixir", "version": "1.20.4 compiled with Erlang/OTP 29" },
+      { "name": "mix", "version": "1.20.4 compiled with Erlang/OTP 29" },
+      { "name": "python", "version": "3.11.6" },
+      { "name": "rustc", "version": "1.89.0 (29483883e 2025-08-04)" },
+      { "name": "just", "version": "1.42.4" }
+    ]
+  },
+  "inputs": [
+    {
+      "path": "beam/runtime_lab/mix.exs",
+      "digest": "sha256:ba99b1d0fafceb160a4ed1e289ebec77311428a506b451d8de7f4c78205cb61a"
+    },
+    {
+      "path": "beam/runtime_lab/config/config.exs",
+      "digest": "sha256:749ff4457c8f3f4271104e95cdb9b1dea29242e536cc1f07a4b748db067523cf"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab.ex",
+      "digest": "sha256:46372a47e8f884a839a72973883a16c45464ab2e8697f95aebe99952668a1fe2"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/application.ex",
+      "digest": "sha256:e25cc7c478e925702b2a8d6fce78e2da46d50b6b09d8a376d07ee6dbdd0a5831"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/command.ex",
+      "digest": "sha256:8665bf80d99656ab7b455495b09f45898b52faa5d7b5832b648b148a05c8b43e"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/demo_state.ex",
+      "digest": "sha256:564db7f05586946582a7342c13d25c53e5630e19f6730655176163f49a36c3de"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/event.ex",
+      "digest": "sha256:016ad0d0a1cb433f4f45caac6832a9e8981277233e7e3f48d8a698f86f523ff3"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/feature_worker.ex",
+      "digest": "sha256:0e6f3ad8c0f721fccc14081cb82f1d3e4e63c96dca237d230235852ba8c102d7"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/metric_sampler.ex",
+      "digest": "sha256:82ea816e28970b3659f4780c2ca68ba43cfe202cafe4d75f9047464f57e192e2"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/runtime_identity.ex",
+      "digest": "sha256:441ee9ae761a584e5dda5b8041424c75b266ba2580fca1dbbd21cc76914016ee"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/supervisor.ex",
+      "digest": "sha256:47b7f41dedd76ef2018a6ad4141a62d1e2a1bf532890865b93b830d26c39c712"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/workloads.ex",
+      "digest": "sha256:e4c5c18927ddac623fbc01bc6a63c44406e2262264b41456c6001766c46c64d3"
+    },
+    {
+      "path": "beam/runtime_lab/test/project_contract_test.exs",
+      "digest": "sha256:4bbebb11b1871178f885ad1cf12cc07eb809dbda2d347ceb2b0cac576c1d25e1"
+    },
+    {
+      "path": "beam/runtime_lab/test/runtime_identity_test.exs",
+      "digest": "sha256:3ec820d45d7e3b94ccff8755485574572eeffe3675e6c4d44ccbd90571791b14"
+    },
+    {
+      "path": "beam/runtime_lab/test/supervision_test.exs",
+      "digest": "sha256:71c3265e51dc58bbf33bd9600ca1f96665d3ac8f10c9d802f0ca5b1592647abd"
+    },
+    {
+      "path": "beam/runtime_lab/test/test_helper.exs",
+      "digest": "sha256:55022d8aeb9d9f461c0da561f2d91077f6cfad9783613c264d52eafad4d8ec6b"
+    },
+    {
+      "path": "beam/runtime_lab/test/workloads_test.exs",
+      "digest": "sha256:da75fdd61dc9e853eb2b0fbc06cf408c88e72534d1d0b70988a590c26ca11881"
+    },
+    {
+      "path": "toolchain/contract.json",
+      "digest": "sha256:2732ba0680e6f3b229cad0f5b8f0ea450adc959f7be8cc581678701d8e8fce00"
+    },
+    {
+      "path": "toolchain/sources.lock.json",
+      "digest": "sha256:ab563078a6f8cc7bde137b06a72db55e54187405c7ff10ff4151ba2f1e0fd517"
+    },
+    {
+      "path": "docs/evidence/sources.json",
+      "digest": "sha256:6af7889af4a5ab8513f98fe039a9fcf816eafb862655ab9f0a22b472e6d2c888"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/phase-0/RB-T-P002/README.md",
+      "digest": "sha256:52f8b5d010ca1fca24de964aefa1bc7a857720dc313f6f4aaa276951fbd5d164"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P002/environment.json",
+      "digest": "sha256:de0642b1d532a635fd82b854d6fe81fea56fa9afee59180d69cc9bc5963fbaf8"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P002/test-runs.txt",
+      "digest": "sha256:f80ec02c11ef70334bdd961291405a07d4171f5636f3d7cf67ca53195f85f2e5"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P002/reference-boot.txt",
+      "digest": "sha256:0cd333909dabf329c7c83ffda028c4c08c8edfab70d200b396f0b9ef5d5fe5c2"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P002/workload.txt",
+      "digest": "sha256:323f44a5a270bd13b939f37b2c1f7e5c65889da052efdfd864101f5814a650cf"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P002/workload-comparison.json",
+      "digest": "sha256:b540d675964fe4f6aaf9b4b90ff3b50ce41fcebd5544966fdca9ea3a6b8b6bae"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P002/release-inputs.json",
+      "digest": "sha256:3102886b39f1f572a5425e7b2548e3554dbc59ea92809fadcfe172e574bf358c"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P002/verification.txt",
+      "digest": "sha256:527a73beefb592cc9b6a4d9fdaeb8d56b1c33c9043b99e08c8fa9da3e7a4d1b3"
+    }
+  ],
+  "result": {
+    "status": "pass",
+    "exit_code": 0
+  }
+}

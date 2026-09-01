@@ -1,0 +1,9 @@
+{
+  "schema": "rust-beam/runtime-lab-workload-comparison/v1",
+  "command": "mix run -e 'RuntimeLab.Command.main(System.argv())' -- all --seed 20260901",
+  "runs": 2,
+  "seed": 20260901,
+  "compared_field": "canonical command_result event bytes",
+  "sha256": "6454b584f3426e5591bf9e8cf94becceac792a234cf9626cc05007c5dc0ad9c8",
+  "result": "match"
+}

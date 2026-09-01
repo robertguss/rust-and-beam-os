@@ -85,7 +85,7 @@
     },
     {
       "path": "docs/evidence/sources.json",
-      "digest": "sha256:87000c5f6cdf21d58bc3a12ba8898fd858e3dd82a2e84596e01b19de5c2dc425"
+      "digest": "sha256:6af7889af4a5ab8513f98fe039a9fcf816eafb862655ab9f0a22b472e6d2c888"
     },
     {
       "path": "docs/evidence/schema/evidence-v1.schema.json",

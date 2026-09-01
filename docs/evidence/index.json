@@ -14,6 +14,12 @@
       "claim": "A fresh simulated orb installed the pinned repository toolchain in under two minutes; repeated setup and resume reused it without installation, and a minimal login shell passed every repository check."
     },
     {
+      "id": "RB-EV-P002-RUNTIME-LAB",
+      "task": "RB-T-P002",
+      "record": "docs/evidence/phase-0/RB-T-P002/evidence.json",
+      "claim": "The dependency-free runtime_lab application reported the exact pinned OTP 29.0.5 / ERTS 17.0.5 / Elixir 1.20.4 host identity, passed 10 tests twice without network access, preserved state across an intentional worker restart, escalated a four-crash storm past its configured restart intensity, reproduced deterministic bounded workload results, booted under controlled mix run --no-halt shutdown, and assembled an ERTS-free release payload with no native libraries."
+    },
+    {
       "id": "RB-EV-P003-TOOLCHAIN",
       "task": "RB-T-P003",
       "record": "docs/evidence/phase-0/RB-T-P003/evidence.json",
