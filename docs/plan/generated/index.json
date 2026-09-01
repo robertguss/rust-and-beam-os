@@ -833,13 +833,13 @@
       "evidence": [],
       "id": "RB-T-P006",
       "milestone": "RB-M-M0",
-      "owner": null,
+      "owner": "amp:T-01a05912-a43d-754e-84fc-d56536c31a76",
       "parent": null,
       "path": "tasks/rb-t-p006.md",
       "priority": "P3",
       "related": [],
       "schema": "repo-plan/v1",
-      "state": "open",
+      "state": "in_progress",
       "title": "Run the target ERTS artifact on AArch64 Linux",
       "type": "task",
       "x_labels": [
@@ -3862,5 +3862,5 @@
     }
   ],
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:416797a692cdeb3ae03f70c616f7af51ff55aed6db78547043be3c660e639c5f"
+  "source_digest": "sha256:5661e7faf76fdab7133180bbb569daf1ffe612d75f5de4630756357f1e29ee2b"
 }
