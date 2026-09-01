@@ -1,0 +1,10 @@
+[build]
+target = "aarch64-unknown-none"
+
+[target.aarch64-unknown-none]
+rustflags = [
+  "-Ctarget-cpu=cortex-a53",
+  "-Cpanic=abort",
+  "-Clink-arg=-Tlinker.ld",
+  "-Clink-arg=--build-id=none",
+]

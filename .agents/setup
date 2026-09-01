@@ -13,7 +13,21 @@ run_step() {
 }
 
 install_system_packages() {
-  local packages=(bash build-essential ca-certificates coreutils curl git python3)
+  local packages=(
+    bash
+    build-essential
+    ca-certificates
+    coreutils
+    curl
+    device-tree-compiler
+    git
+    libfdt-dev
+    libglib2.0-dev
+    libpixman-1-dev
+    ninja-build
+    pkg-config
+    python3
+  )
   local missing=()
   local package
   for package in "${packages[@]}"; do

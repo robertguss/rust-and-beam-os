@@ -1,0 +1,18 @@
+[package]
+name = "virtio-probe"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+virtio-drivers = { version = "=0.13.0", default-features = false, features = ["alloc"] }
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = false

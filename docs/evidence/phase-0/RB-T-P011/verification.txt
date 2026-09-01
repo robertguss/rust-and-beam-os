@@ -1,0 +1,117 @@
+$ just run-virtio-probe-tcg
+python3 scripts/virtio_probe.py run --boots 1 --output target/virtio-probe/run
+virtio-probe: using prepared target/qemu-11.1.0/build/qemu-system-aarch64
+virtio-probe: boot 1/run pass frames=2 inputs=8
+virtio-probe: 1/1 TCG boots passed; receipt=target/virtio-probe/run/aggregate.json
+
+$ just test-virtio-probe-tcg
+python3 -m unittest tests.test_virtio_probe -v
+test_dependency_and_unsafe_contract_is_pinned (tests.test_virtio_probe.VirtioProbeTests.test_dependency_and_unsafe_contract_is_pinned) ... ok
+test_ppm_landmarks_validate_changed_frame (tests.test_virtio_probe.VirtioProbeTests.test_ppm_landmarks_validate_changed_frame) ... ok
+test_qemu_argv_freezes_acceptance_platform (tests.test_virtio_probe.VirtioProbeTests.test_qemu_argv_freezes_acceptance_platform) ... ok
+test_qemu_source_matches_sealed_lock (tests.test_virtio_probe.VirtioProbeTests.test_qemu_source_matches_sealed_lock) ... ok
+test_serial_monitor_rejects_guest_failure (tests.test_virtio_probe.VirtioProbeTests.test_serial_monitor_rejects_guest_failure) ... ok
+test_serial_summary_requires_contract_milestones (tests.test_virtio_probe.VirtioProbeTests.test_serial_summary_requires_contract_milestones) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK
+cargo fmt --manifest-path tests/virtio-probe/Cargo.toml --all --check
+cargo clippy --manifest-path tests/virtio-probe/Cargo.toml --release --locked --offline -- -D warnings
+    Checking virtio-probe v0.1.0 (/home/user/workspace/repo/tests/virtio-probe)
+    Finished `release` profile [optimized] target(s) in 0.28s
+python3 scripts/virtio_probe.py run --boots 10 --output target/virtio-probe/acceptance
+virtio-probe: using prepared target/qemu-11.1.0/build/qemu-system-aarch64
+virtio-probe: boot 1/acceptance pass frames=2 inputs=8
+virtio-probe: boot 2/acceptance pass frames=2 inputs=8
+virtio-probe: boot 3/acceptance pass frames=2 inputs=8
+virtio-probe: boot 4/acceptance pass frames=2 inputs=8
+virtio-probe: boot 5/acceptance pass frames=2 inputs=8
+virtio-probe: boot 6/acceptance pass frames=2 inputs=8
+virtio-probe: boot 7/acceptance pass frames=2 inputs=8
+virtio-probe: boot 8/acceptance pass frames=2 inputs=8
+virtio-probe: boot 9/acceptance pass frames=2 inputs=8
+virtio-probe: boot 10/acceptance pass frames=2 inputs=8
+virtio-probe: 10/10 TCG boots passed; receipt=target/virtio-probe/acceptance/aggregate.json
+
+$ cargo tree --manifest-path tests/virtio-probe/Cargo.toml --locked --offline -e features
+virtio-probe v0.1.0 (/home/user/workspace/repo/tests/virtio-probe)
+└── virtio-drivers feature "alloc"
+    ├── virtio-drivers v0.13.0
+    │   ├── thiserror v2.0.20
+    │   │   └── thiserror-impl feature "default"
+    │   │       └── thiserror-impl v2.0.20 (proc-macro)
+    │   │           ├── proc-macro2 feature "default"
+    │   │           │   ├── proc-macro2 v1.0.107
+    │   │           │   │   └── unicode-ident feature "default"
+    │   │           │   │       └── unicode-ident v1.0.24
+    │   │           │   └── proc-macro2 feature "proc-macro"
+    │   │           │       └── proc-macro2 v1.0.107 (*)
+    │   │           ├── quote feature "default"
+    │   │           │   ├── quote v1.0.47
+    │   │           │   │   └── proc-macro2 v1.0.107 (*)
+    │   │           │   └── quote feature "proc-macro"
+    │   │           │       ├── quote v1.0.47 (*)
+    │   │           │       └── proc-macro2 feature "proc-macro" (*)
+    │   │           └── syn feature "default"
+    │   │               ├── syn v3.0.4
+    │   │               │   ├── proc-macro2 v1.0.107 (*)
+    │   │               │   ├── quote v1.0.47 (*)
+    │   │               │   └── unicode-ident feature "default" (*)
+    │   │               ├── syn feature "clone-impls"
+    │   │               │   └── syn v3.0.4 (*)
+    │   │               ├── syn feature "derive"
+    │   │               │   └── syn v3.0.4 (*)
+    │   │               ├── syn feature "parsing"
+    │   │               │   └── syn v3.0.4 (*)
+    │   │               ├── syn feature "printing"
+    │   │               │   └── syn v3.0.4 (*)
+    │   │               └── syn feature "proc-macro"
+    │   │                   ├── syn v3.0.4 (*)
+    │   │                   ├── proc-macro2 feature "proc-macro" (*)
+    │   │                   └── quote feature "proc-macro" (*)
+    │   ├── bitflags feature "default"
+    │   │   └── bitflags v2.13.1
+    │   ├── enumn feature "default"
+    │   │   └── enumn v0.1.14 (proc-macro)
+    │   │       ├── proc-macro2 feature "default" (*)
+    │   │       ├── quote feature "default" (*)
+    │   │       └── syn feature "default"
+    │   │           ├── syn v2.0.119
+    │   │           │   ├── proc-macro2 v1.0.107 (*)
+    │   │           │   ├── quote v1.0.47 (*)
+    │   │           │   └── unicode-ident feature "default" (*)
+    │   │           ├── syn feature "clone-impls"
+    │   │           │   └── syn v2.0.119 (*)
+    │   │           ├── syn feature "derive"
+    │   │           │   └── syn v2.0.119 (*)
+    │   │           ├── syn feature "parsing"
+    │   │           │   └── syn v2.0.119 (*)
+    │   │           ├── syn feature "printing"
+    │   │           │   └── syn v2.0.119 (*)
+    │   │           └── syn feature "proc-macro"
+    │   │               ├── syn v2.0.119 (*)
+    │   │               ├── proc-macro2 feature "proc-macro" (*)
+    │   │               └── quote feature "proc-macro" (*)
+    │   ├── log feature "default"
+    │   │   └── log v0.4.34
+    │   ├── safe-mmio feature "default"
+    │   │   └── safe-mmio v0.3.1
+    │   │       ├── zerocopy feature "default"
+    │   │       │   └── zerocopy v0.8.56
+    │   │       │       └── zerocopy-derive feature "default"
+    │   │       │           └── zerocopy-derive v0.8.56 (proc-macro)
+    │   │       │               ├── proc-macro2 feature "default" (*)
+    │   │       │               ├── quote feature "default" (*)
+    │   │       │               ├── syn feature "default" (*)
+    │   │       │               └── syn feature "full"
+    │   │       │                   └── syn v2.0.119 (*)
+    │   │       └── zerocopy feature "derive"
+    │   │           ├── zerocopy v0.8.56 (*)
+    │   │           └── zerocopy feature "zerocopy-derive"
+    │   │               └── zerocopy v0.8.56 (*)
+    │   ├── zerocopy feature "default" (*)
+    │   └── zerocopy feature "derive" (*)
+    └── zerocopy feature "alloc"
+        └── zerocopy v0.8.56 (*)

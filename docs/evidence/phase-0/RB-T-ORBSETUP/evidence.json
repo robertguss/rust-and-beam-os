@@ -30,7 +30,7 @@
   "inputs": [
     {
       "path": ".agents/setup",
-      "digest": "sha256:72ee94eebd3f54ea6f0c1b971e28edbfaf64a5727069371ad4cff8b2a3ffc3a2"
+      "digest": "sha256:623d5ff008f1914cb95f0bb4603738943e0f32e9d3612ba6a63712e50a3e4b50"
     },
     {
       "path": ".agents/resume",
@@ -42,7 +42,7 @@
     },
     {
       "path": "scripts/bootstrap.sh",
-      "digest": "sha256:81dffee1b932b433348719f6c2eaf8fabdefc12421b6458b786eaf8775d71414"
+      "digest": "sha256:7ed47d2000b9914a00e0e778a2839ac915c0d71c3599421a05714d82d532acc8"
     },
     {
       "path": "scripts/evidence.py",

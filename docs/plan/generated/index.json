@@ -963,16 +963,18 @@
         "RB-T-P003",
         "RB-T-P001"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/evidence/phase-0/RB-T-P011/evidence.json"
+      ],
       "id": "RB-T-P011",
       "milestone": "RB-M-M0",
-      "owner": "amp:T-01a05912-a43d-754e-84fc-d56536c31a76",
+      "owner": null,
       "parent": null,
       "path": "tasks/rb-t-p011.md",
       "priority": "P3",
       "related": [],
       "schema": "repo-plan/v1",
-      "state": "in_progress",
+      "state": "done",
       "title": "Prove bare-metal virtio display and pointer input under Linux TCG",
       "type": "task",
       "x_labels": [
@@ -3860,5 +3862,5 @@
     }
   ],
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:81115a033336eeb6ebc6e0713aba0ded76d2a6256fc4085640bb86d3a67871dc"
+  "source_digest": "sha256:416797a692cdeb3ae03f70c616f7af51ff55aed6db78547043be3c660e639c5f"
 }

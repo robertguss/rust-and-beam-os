@@ -1,0 +1,211 @@
+{
+  "schema": "rust-beam/evidence/v1",
+  "id": "RB-EV-P011-VIRTIO",
+  "task": "RB-T-P011",
+  "recorded_at": "2026-09-01T02:59:48Z",
+  "claim": "The independent no_std AArch64 probe passed ten fresh QEMU 11.1.0 TCG boots while discovering the PCI platform, presenting two checked virtio GPU frames, receiving scripted absolute pointer and button input, and exercising the audited VirtIO status, queue, reset, interrupt, DMA, malformed-command, and teardown contracts.",
+  "classification": "target",
+  "build": {
+    "id": "rb1-7743641b76d8-dirty-20260901T024226Z",
+    "source_revision": "7743641b76d84de11d0416ccf7bacf2e7a714a46",
+    "source_dirty": true,
+    "target": "bare-metal aarch64-unknown-none under QEMU 11.1.0 TCG on x86_64 Linux"
+  },
+  "command": {
+    "argv": [
+      "just",
+      "test-virtio-probe-tcg"
+    ],
+    "cwd": "."
+  },
+  "environment": {
+    "os": "debian 12 / Linux 6.1.158+",
+    "architecture": "x86_64 host / AArch64 target",
+    "tools": [
+      {
+        "name": "rustc",
+        "version": "1.89.0 (29483883e 2025-08-04)"
+      },
+      {
+        "name": "cargo",
+        "version": "1.89.0 (c24e10642 2025-06-23)"
+      },
+      {
+        "name": "just",
+        "version": "1.42.4"
+      },
+      {
+        "name": "python",
+        "version": "3.11.6"
+      },
+      {
+        "name": "qemu-system-aarch64",
+        "version": "11.1.0"
+      },
+      {
+        "name": "dtc",
+        "version": "1.6.1"
+      },
+      {
+        "name": "virtio-drivers",
+        "version": "0.13.0; default features off; alloc on"
+      }
+    ]
+  },
+  "inputs": [
+    {
+      "path": "Cargo.toml",
+      "digest": "sha256:2ac5f986addc7d2aecc556b8c9bf24730d01caae8094aaf75168c334bdb4b401"
+    },
+    {
+      "path": "justfile",
+      "digest": "sha256:728d0f22b938b18e57b8c08860bdd4f8aef44ec322f0596932e30f524600dfbd"
+    },
+    {
+      "path": "rust-toolchain.toml",
+      "digest": "sha256:6c5d3c2f5c6b13243f4cd1fc3afe30786e232ce0ff6bdf1725ac323dbcd257c2"
+    },
+    {
+      "path": "scripts/virtio_probe.py",
+      "digest": "sha256:cf314a09931edfacb25354b3d4bda63bfea8ee3c83e7f4bee632572f954d144f"
+    },
+    {
+      "path": "tests/test_virtio_probe.py",
+      "digest": "sha256:bde5712fe513f2ef0eda9e5e26640600676029bc7d2d3a32d8e3cdda085154c6"
+    },
+    {
+      "path": "tests/virtio-probe/.cargo/config.toml",
+      "digest": "sha256:0d5464c295b378027a23ec8939651429c7e14368b9c3412b74c6020a1ed7f427"
+    },
+    {
+      "path": "tests/virtio-probe/Cargo.toml",
+      "digest": "sha256:745733c64c8a81a98517cff02aa18007ed94a804a5749fb88d378b79ee5caa43"
+    },
+    {
+      "path": "tests/virtio-probe/Cargo.lock",
+      "digest": "sha256:398bec4c8a05c946e045175f0ba922ecf91dd1b7c74b2a913420397974c4bb8b"
+    },
+    {
+      "path": "tests/virtio-probe/linker.ld",
+      "digest": "sha256:a5c7ce9014483e21578763d6b2254f563670110235f4c7adc90bc7a6727a5152"
+    },
+    {
+      "path": "tests/virtio-probe/src/boot.S",
+      "digest": "sha256:ceaf8159bc55e4571fe5b400e5e6a3fea60c21550d01f6e4fcdcef873e8fb635"
+    },
+    {
+      "path": "tests/virtio-probe/src/fdt.rs",
+      "digest": "sha256:95cb725b42d2cda1fed8126d321644222477f271ef8467485d071b1513e8e38c"
+    },
+    {
+      "path": "tests/virtio-probe/src/hal.rs",
+      "digest": "sha256:25ec31250617124a194d6745d241394265058702fff4b96801330703ab2a21e8"
+    },
+    {
+      "path": "tests/virtio-probe/src/main.rs",
+      "digest": "sha256:e078ee53fd39f159572c28280e9b0ead121fed643937bcf49a3e4a9164754f45"
+    },
+    {
+      "path": "tests/virtio-probe/src/serial.rs",
+      "digest": "sha256:a04f3b5a596ab95698f0bc423836827bbd32dbbda336e02601e242ffbc275f33"
+    },
+    {
+      "path": "toolchain/sources.lock.json",
+      "digest": "sha256:5c1267150cea3b382773e5592da6007b3a26236a16605a9bf5248e6d0271a38c"
+    },
+    {
+      "path": "docs/evidence/sources.json",
+      "digest": "sha256:78c6f84208147a5311d0a5321b657a0bc59eff017ba2e49a5465792f63925427"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/README.md",
+      "digest": "sha256:4a50f5fcf19e243e711490727b0d3ef7e25f32406c1af5a39f60039e96c7b365"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/aggregate.json",
+      "digest": "sha256:e329bd2d29a425b52c6d58681449a05b6808fe083a86d1138837e5f85ba071af"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/verification.txt",
+      "digest": "sha256:ace820f1fa7e069be99ce40e64175314eefab0e1fe7200b4b91cc6c9fa441015"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/qemu-provenance.json",
+      "digest": "sha256:41315ee7ef41a1cd842a171f38148ca797375da8cbf237c88398ce17ae7388ef"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/crate-features.txt",
+      "digest": "sha256:b789dd887fda5bffa239d12682ed65b972d75b2a2896379fb185c3d28cc64318"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/boots/boot-01-receipt.json",
+      "digest": "sha256:3dbfae3912f445cae62ee7e2e316472527b0c0469752a649f49e62287c57b807"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/boots/boot-02-receipt.json",
+      "digest": "sha256:253358f792a98fc7a3017a6369a1d176956900f6daa1d14d2e0b20397098e889"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/boots/boot-03-receipt.json",
+      "digest": "sha256:73d75e8710ffd09f419427b78944e47389b50d6f5bad6a1e0dedf808c1bf8d62"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/boots/boot-04-receipt.json",
+      "digest": "sha256:7ae7a7d293e06ced9f2ffda34b07f9e953b8496910cc1fcd9450563528173a87"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/boots/boot-05-receipt.json",
+      "digest": "sha256:38900b2f9265f88a22c989cbe89184f4e5f801027e9d83ab53c5c4273e83bcd0"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/boots/boot-06-receipt.json",
+      "digest": "sha256:0f3e6c7d4330fa65fc20523b1aa4e701a0b41ef30074bf450da36c735365a7b8"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/boots/boot-07-receipt.json",
+      "digest": "sha256:eb8090cb0ef838b6ea7f63c3abf1be727ce9f2c6b8dd760ef88981a6164143b9"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/boots/boot-08-receipt.json",
+      "digest": "sha256:67757364caefdd19ea95496e805405a0fe684c7301415560732d23c84e6e6641"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/boots/boot-09-receipt.json",
+      "digest": "sha256:509784acffa4980dee0498a1836a82433084e21191e90f020a891243a8e80847"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/boots/boot-10-receipt.json",
+      "digest": "sha256:dcfb2ef3616649a1425e5dab8d001b988f0db00fc098f42eea43670a19ed75b0"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/boots/boot-01-serial.jsonl",
+      "digest": "sha256:2f295f3aa10f00bb00ce6e5d093756a9cc2db2b11233a3074c8470470dcf43a7"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/boots/boot-01-qmp.jsonl",
+      "digest": "sha256:f83cc563bd948ba0b0793ff8d89a797ba11128aa5effa43be57db39446e80a44"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/machine.dtb",
+      "digest": "sha256:f4fe3f11b48e720059e91fef013f45af96db04489381b758f466220fc903b963"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/machine.dts",
+      "digest": "sha256:00db5ce69be17f109fc6a7683b40f7aca3366d9ceb20d52f772ee20885bb2480"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/screenshot.ppm",
+      "digest": "sha256:48458a6990f915219e22aea609e51a05045eb2b9ccec34d5a487786d3a6a2430"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P011/screenshot.png",
+      "digest": "sha256:bd321bb3bbc1c2c5f83dbee1ee59075981cad3659dbf95fa6489ce66a8838dbd"
+    }
+  ],
+  "result": {
+    "status": "pass",
+    "exit_code": 0
+  }
+}

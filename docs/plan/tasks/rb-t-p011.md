@@ -3,7 +3,7 @@ schema: "repo-plan/v1"
 id: "RB-T-P011"
 title: "Prove bare-metal virtio display and pointer input under Linux TCG"
 type: "task"
-state: "in_progress"
+state: "done"
 priority: "P3"
 milestone: "RB-M-M0"
 parent: null
@@ -12,9 +12,10 @@ depends_on:
   - "RB-T-P001"
 related: []
 actor: "agent"
-owner: "amp:T-01a05912-a43d-754e-84fc-d56536c31a76"
+owner: null
 defer_until: null
-evidence: []
+evidence:
+  - "docs/evidence/phase-0/RB-T-P011/evidence.json"
 x_legacy_id: "P0-11"
 x_linear_id: "ROB-696"
 x_linear_url: "https://linear.app/robert-guss/issue/ROB-696/p0-11-prove-bare-metal-virtio-display-and-pointer-input-under-linux"
@@ -52,12 +53,12 @@ Blocked by: RB-T-P001, RB-T-P003.
 
 ## Acceptance criteria
 
-- [ ] The probe boots under remote Linux with TCG from one documented command.
-- [ ] The framebuffer visibly changes and pointer events are recorded with
+- [x] The probe boots under remote Linux with TCG from one documented command.
+- [x] The framebuffer visibly changes and pointer events are recorded with
       correct coordinates/buttons.
-- [ ] QMP can capture a screenshot containing stable landmarks.
-- [ ] No semihosting or host framebuffer bridge is used in the acceptance run.
-- [ ] The exact QEMU machine, CPU, memory, device, and transport arguments are
+- [x] QMP can capture a screenshot containing stable landmarks.
+- [x] No semihosting or host framebuffer bridge is used in the acceptance run.
+- [x] The exact QEMU machine, CPU, memory, device, and transport arguments are
       recorded.
 
 ## Verification
@@ -70,6 +71,13 @@ Blocked by: RB-T-P001, RB-T-P003.
 - Run ten TCG boots and scripted input actions.
 - Save a screenshot, serial log, device tree, QEMU version, and command.
 - Record all crate features and unsafe integration points.
+- [Execution receipt](../../evidence/phase-0/RB-T-P011/evidence.json)
+- [Evidence explanation and learning checkpoint](../../evidence/phase-0/RB-T-P011/README.md)
+- [Ten-boot aggregate](../../evidence/phase-0/RB-T-P011/aggregate.json)
+- [Verification transcript and crate feature graph](../../evidence/phase-0/RB-T-P011/verification.txt)
+- [QEMU build provenance](../../evidence/phase-0/RB-T-P011/qemu-provenance.json)
+- [Representative screenshot](../../evidence/phase-0/RB-T-P011/screenshot.png)
+- [Representative decoded device tree](../../evidence/phase-0/RB-T-P011/machine.dts)
 
 ## Out of scope
 

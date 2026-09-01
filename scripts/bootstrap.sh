@@ -62,6 +62,7 @@ fi
 rustup set auto-self-update disable
 echo "bootstrap: installing Rust ${rust_channel} from rust-toolchain.toml"
 rustup toolchain install "$rust_channel" --profile minimal --component clippy --component rustfmt
+rustup "+${rust_channel}" target add aarch64-unknown-none
 
 installed_just=""
 if [[ -x "$CARGO_HOME/bin/just" ]]; then
@@ -71,6 +72,12 @@ if [[ "$installed_just" != "$just_version" ]]; then
   echo "bootstrap: installing just ${just_version} with Cargo's locked package graph"
   cargo "+${rust_channel}" install just --version "$just_version" --locked --force
 fi
+
+echo "bootstrap: caching the independent virtio probe dependency graph"
+cargo "+${rust_channel}" fetch --manifest-path "$repo_root/tests/virtio-probe/Cargo.toml" --locked
+
+echo "bootstrap: preparing sealed QEMU for the TCG virtio probe"
+python3 "$repo_root/scripts/virtio_probe.py" prepare --root "$repo_root"
 
 echo "bootstrap: rustc $(rustc --version)"
 echo "bootstrap: $(just --version)"

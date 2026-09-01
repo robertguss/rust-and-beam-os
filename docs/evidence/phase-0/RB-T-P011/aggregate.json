@@ -1,0 +1,78 @@
+{
+  "all_dma_bounds_violations": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "all_frames": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "all_input_events": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8
+  ],
+  "boots_passed": 10,
+  "boots_requested": 10,
+  "durations_seconds": [
+    0.138,
+    0.125,
+    0.124,
+    0.145,
+    0.135,
+    0.135,
+    0.124,
+    0.136,
+    0.124,
+    0.126
+  ],
+  "host": {
+    "architecture": "x86_64",
+    "os": "Linux"
+  },
+  "machine": "virt-11.1",
+  "probe_image_sha256": "b6117ccdba4eac8ddcc595c6885b239ce8ba2d724c7756e2debbfd6f2dc122e8",
+  "qemu_binary_sha256": "6b6cbd5fe5cb4669e33704651c1cd70a9fcf9581a1e3e86313ea5ced40ea3b9a",
+  "qemu_provenance_sha256": "41315ee7ef41a1cd842a171f38148ca797375da8cbf237c88398ce17ae7388ef",
+  "qemu_source_sha256": "6ee1d1a61f68212476b27108c26da5f449dc09b626d42f8279ba0dc2e08fa858",
+  "qemu_version": "QEMU emulator version 11.1.0",
+  "receipt_paths": [
+    "boot-01/receipt.json",
+    "boot-02/receipt.json",
+    "boot-03/receipt.json",
+    "boot-04/receipt.json",
+    "boot-05/receipt.json",
+    "boot-06/receipt.json",
+    "boot-07/receipt.json",
+    "boot-08/receipt.json",
+    "boot-09/receipt.json",
+    "boot-10/receipt.json"
+  ],
+  "rust_target": "aarch64-unknown-none",
+  "schema": "rust-beam/virtio-probe-run/v1",
+  "status": "pass",
+  "virtio_drivers": "0.13.0"
+}

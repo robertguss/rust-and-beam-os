@@ -1,0 +1,156 @@
+{
+  "accelerator": "tcg,thread=single",
+  "boot": 3,
+  "cpu": "cortex-a53",
+  "devices": [
+    "virtio-gpu-pci,id=gpu0,bus=pcie.0,addr=1,xres=640,yres=480",
+    "virtio-tablet-pci,id=pointer0,bus=pcie.0,addr=2"
+  ],
+  "dtb_sha256": "f4fe3f11b48e720059e91fef013f45af96db04489381b758f466220fc903b963",
+  "duration_seconds": 0.124,
+  "gic": "3",
+  "host_framebuffer_bridge": false,
+  "machine": "virt-11.1",
+  "memory": "512M",
+  "probe_sha256": "b6117ccdba4eac8ddcc595c6885b239ce8ba2d724c7756e2debbfd6f2dc122e8",
+  "qemu_argv": [
+    "/home/user/workspace/repo/target/qemu-11.1.0/build/qemu-system-aarch64",
+    "-machine",
+    "virt-11.1,gic-version=3,dtb-randomness=off",
+    "-cpu",
+    "cortex-a53",
+    "-accel",
+    "tcg,thread=single",
+    "-smp",
+    "1",
+    "-m",
+    "512M",
+    "-nodefaults",
+    "-no-reboot",
+    "-no-shutdown",
+    "-display",
+    "none",
+    "-serial",
+    "file:/home/user/workspace/repo/target/virtio-probe/acceptance/boot-03/serial.jsonl",
+    "-qmp",
+    "unix:/home/user/workspace/repo/target/virtio-probe/acceptance/boot-03/qmp.sock,server=on,wait=off",
+    "-kernel",
+    "/home/user/workspace/repo/tests/virtio-probe/target/aarch64-unknown-none/release/virtio-probe.img",
+    "-device",
+    "virtio-gpu-pci,id=gpu0,bus=pcie.0,addr=1,xres=640,yres=480",
+    "-device",
+    "virtio-tablet-pci,id=pointer0,bus=pcie.0,addr=2"
+  ],
+  "qemu_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "qemu_sha256": "6b6cbd5fe5cb4669e33704651c1cd70a9fcf9581a1e3e86313ea5ced40ea3b9a",
+  "qmp_log_sha256": "dd758f79015706760e4ef90f07b516cbcedaf5d2c52630d53d9296a3dd31d0d5",
+  "qmp_metadata": {
+    "query-cpus-fast": [
+      {
+        "cpu-index": 0,
+        "props": {
+          "cluster-id": 0,
+          "core-id": 0,
+          "socket-id": 0,
+          "thread-id": 0
+        },
+        "qom-path": "/machine/unattached/device[0]",
+        "qom-type": "cortex-a53-arm-cpu",
+        "target": "aarch64",
+        "thread-id": 358735
+      }
+    ],
+    "query-mice": [
+      {
+        "absolute": true,
+        "current": true,
+        "index": 1,
+        "name": "QEMU Virtio Tablet"
+      }
+    ],
+    "query-status": {
+      "running": true,
+      "status": "running"
+    },
+    "query-version": {
+      "package": "",
+      "qemu": {
+        "major": 11,
+        "micro": 0,
+        "minor": 1
+      }
+    },
+    "x-query-virtio": [
+      {
+        "name": "virtio-gpu",
+        "path": "/machine/peripheral/gpu0/virtio-backend"
+      },
+      {
+        "name": "virtio-input",
+        "path": "/machine/peripheral/pointer0/virtio-backend"
+      }
+    ]
+  },
+  "schema": "rust-beam/virtio-probe-boot/v1",
+  "screenshot": {
+    "expected": {
+      "bottom_left": "ffff00",
+      "bottom_right": "ffffff",
+      "changed_center": "30d020",
+      "pointer_red": "ff2020",
+      "top_left": "ff00ff",
+      "top_right": "00ffff"
+    },
+    "height": 480,
+    "observed": {
+      "bottom_left": "ffff00",
+      "bottom_right": "ffffff",
+      "changed_center": "30d020",
+      "pointer_red": "ff2020",
+      "top_left": "ff00ff",
+      "top_right": "00ffff"
+    },
+    "width": 640
+  },
+  "screenshot_sha256": "48458a6990f915219e22aea609e51a05045eb2b9ccec34d5a487786d3a6a2430",
+  "semihosting": false,
+  "serial": {
+    "dma_bounds_violations": 0,
+    "duplicate_isr_ack_empty": true,
+    "event_count": 29,
+    "event_names": [
+      "boot",
+      "dma_contract",
+      "frame_presented",
+      "input_event",
+      "malformed_command",
+      "pass",
+      "pci_bar",
+      "pci_devices",
+      "pci_interrupts",
+      "platform",
+      "queue_exhaustion",
+      "ready_for_capture",
+      "ready_for_input",
+      "reset_recovery",
+      "teardown",
+      "transport_audit"
+    ],
+    "frames": 2,
+    "gpu_interrupt": {
+      "flags": 4,
+      "gic_irq": 36,
+      "pin": 1
+    },
+    "input_events": 8,
+    "input_interrupt": {
+      "flags": 4,
+      "gic_irq": 37,
+      "pin": 1
+    },
+    "interrupts_observed": 3,
+    "malformed_response_length": 24
+  },
+  "serial_sha256": "2f295f3aa10f00bb00ce6e5d093756a9cc2db2b11233a3074c8470470dcf43a7",
+  "status": "pass"
+}

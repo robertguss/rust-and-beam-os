@@ -1,5 +1,6 @@
 [workspace]
 members = ["xtask"]
+exclude = ["tests/virtio-probe"]
 resolver = "2"
 
 [workspace.package]

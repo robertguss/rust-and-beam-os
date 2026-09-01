@@ -1,0 +1,79 @@
+virtio-probe v0.1.0 (/home/user/workspace/repo/tests/virtio-probe)
+└── virtio-drivers feature "alloc"
+    ├── virtio-drivers v0.13.0
+    │   ├── thiserror v2.0.20
+    │   │   └── thiserror-impl feature "default"
+    │   │       └── thiserror-impl v2.0.20 (proc-macro)
+    │   │           ├── proc-macro2 feature "default"
+    │   │           │   ├── proc-macro2 v1.0.107
+    │   │           │   │   └── unicode-ident feature "default"
+    │   │           │   │       └── unicode-ident v1.0.24
+    │   │           │   └── proc-macro2 feature "proc-macro"
+    │   │           │       └── proc-macro2 v1.0.107 (*)
+    │   │           ├── quote feature "default"
+    │   │           │   ├── quote v1.0.47
+    │   │           │   │   └── proc-macro2 v1.0.107 (*)
+    │   │           │   └── quote feature "proc-macro"
+    │   │           │       ├── quote v1.0.47 (*)
+    │   │           │       └── proc-macro2 feature "proc-macro" (*)
+    │   │           └── syn feature "default"
+    │   │               ├── syn v3.0.4
+    │   │               │   ├── proc-macro2 v1.0.107 (*)
+    │   │               │   ├── quote v1.0.47 (*)
+    │   │               │   └── unicode-ident feature "default" (*)
+    │   │               ├── syn feature "clone-impls"
+    │   │               │   └── syn v3.0.4 (*)
+    │   │               ├── syn feature "derive"
+    │   │               │   └── syn v3.0.4 (*)
+    │   │               ├── syn feature "parsing"
+    │   │               │   └── syn v3.0.4 (*)
+    │   │               ├── syn feature "printing"
+    │   │               │   └── syn v3.0.4 (*)
+    │   │               └── syn feature "proc-macro"
+    │   │                   ├── syn v3.0.4 (*)
+    │   │                   ├── proc-macro2 feature "proc-macro" (*)
+    │   │                   └── quote feature "proc-macro" (*)
+    │   ├── bitflags feature "default"
+    │   │   └── bitflags v2.13.1
+    │   ├── enumn feature "default"
+    │   │   └── enumn v0.1.14 (proc-macro)
+    │   │       ├── proc-macro2 feature "default" (*)
+    │   │       ├── quote feature "default" (*)
+    │   │       └── syn feature "default"
+    │   │           ├── syn v2.0.119
+    │   │           │   ├── proc-macro2 v1.0.107 (*)
+    │   │           │   ├── quote v1.0.47 (*)
+    │   │           │   └── unicode-ident feature "default" (*)
+    │   │           ├── syn feature "clone-impls"
+    │   │           │   └── syn v2.0.119 (*)
+    │   │           ├── syn feature "derive"
+    │   │           │   └── syn v2.0.119 (*)
+    │   │           ├── syn feature "parsing"
+    │   │           │   └── syn v2.0.119 (*)
+    │   │           ├── syn feature "printing"
+    │   │           │   └── syn v2.0.119 (*)
+    │   │           └── syn feature "proc-macro"
+    │   │               ├── syn v2.0.119 (*)
+    │   │               ├── proc-macro2 feature "proc-macro" (*)
+    │   │               └── quote feature "proc-macro" (*)
+    │   ├── log feature "default"
+    │   │   └── log v0.4.34
+    │   ├── safe-mmio feature "default"
+    │   │   └── safe-mmio v0.3.1
+    │   │       ├── zerocopy feature "default"
+    │   │       │   └── zerocopy v0.8.56
+    │   │       │       └── zerocopy-derive feature "default"
+    │   │       │           └── zerocopy-derive v0.8.56 (proc-macro)
+    │   │       │               ├── proc-macro2 feature "default" (*)
+    │   │       │               ├── quote feature "default" (*)
+    │   │       │               ├── syn feature "default" (*)
+    │   │       │               └── syn feature "full"
+    │   │       │                   └── syn v2.0.119 (*)
+    │   │       └── zerocopy feature "derive"
+    │   │           ├── zerocopy v0.8.56 (*)
+    │   │           └── zerocopy feature "zerocopy-derive"
+    │   │               └── zerocopy v0.8.56 (*)
+    │   ├── zerocopy feature "default" (*)
+    │   └── zerocopy feature "derive" (*)
+    └── zerocopy feature "alloc"
+        └── zerocopy v0.8.56 (*)

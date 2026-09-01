@@ -138,8 +138,22 @@
       "claims": [
         "QEMU 11.1.0 is the frozen emulator candidate behind the versioned virt-11.1 runner profiles."
       ],
-      "consumers": ["RB-T-P003", "toolchain/sources.lock.json", "toolchain/contract.json"],
-      "limitations": "RB-T-P014 still owns executable validation and the final machine, CPU, GIC, HWCAP, and DTB contract."
+      "consumers": ["RB-T-P003", "RB-T-P011", "toolchain/sources.lock.json", "toolchain/contract.json"],
+      "limitations": "RB-T-P011 validates its isolated display/input profile under TCG; RB-T-P014 still owns the final machine, CPU, GIC, HWCAP, and DTB contract."
+    },
+    {
+      "id": "RB-SRC-VIRTIO-DRIVERS-0-13-0",
+      "title": "virtio-drivers 0.13.0 crate archive",
+      "locator": "https://static.crates.io/crates/virtio-drivers/virtio-drivers-0.13.0.crate",
+      "retrieved_on": "2026-09-01",
+      "immutable_reference": "crates.io virtio-drivers 0.13.0 / upstream commit c5d3ea74d5896036c4760d6199c1a1cc1257b659",
+      "digest": "sha256:cfdc1c628cdd8ce7c3b9e65a8ed550d0338e9ef9f911e729666f1cce097de2f7",
+      "classification": "source",
+      "claims": [
+        "The independent bare-metal probe pins virtio-drivers 0.13.0 with default features disabled and only the alloc feature enabled."
+      ],
+      "consumers": ["RB-T-P011", "tests/virtio-probe/Cargo.toml", "tests/virtio-probe/Cargo.lock"],
+      "limitations": "The crate archive is 96,008 bytes and MIT licensed; the P011 target run validates only its QEMU PCI GPU/input path and the explicitly audited HAL boundary, not every transport or device implementation."
     },
     {
       "id": "RB-SRC-MESON-1-9-0",

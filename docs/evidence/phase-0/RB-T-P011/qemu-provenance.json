@@ -1,0 +1,24 @@
+{
+  "configure_argv": [
+    "--target-list=aarch64-softmmu",
+    "--without-default-features",
+    "--enable-system",
+    "--enable-tcg",
+    "--enable-pixman",
+    "--enable-fdt=system",
+    "--disable-debug-info",
+    "--disable-werror",
+    "--disable-containers",
+    "--prefix=/qemu-probe",
+    "-Dwrap_mode=nodownload"
+  ],
+  "machine": "virt-11.1",
+  "qemu_binary_sha256": "6b6cbd5fe5cb4669e33704651c1cd70a9fcf9581a1e3e86313ea5ced40ea3b9a",
+  "qemu_version": "QEMU emulator version 11.1.0",
+  "schema": "rust-beam/virtio-probe-qemu/v1",
+  "source": {
+    "sha256": "6ee1d1a61f68212476b27108c26da5f449dc09b626d42f8279ba0dc2e08fa858",
+    "size": 141831772,
+    "url": "https://download.qemu.org/qemu-11.1.0.tar.xz"
+  }
+}

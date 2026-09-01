@@ -76,6 +76,17 @@ prior-art-tyn-reproduce:
 test-thread-progress-probe:
     python3 scripts/thread_progress.py check --root .
 
+# Boot the bare-metal virtio display/input probe once under pinned QEMU TCG.
+run-virtio-probe-tcg:
+    python3 scripts/virtio_probe.py run --boots 1 --output target/virtio-probe/run
+
+# Run host contract tests and ten independent QEMU TCG acceptance boots.
+test-virtio-probe-tcg:
+    python3 -m unittest tests.test_virtio_probe -v
+    cargo fmt --manifest-path tests/virtio-probe/Cargo.toml --all --check
+    cargo clippy --manifest-path tests/virtio-probe/Cargo.toml --release --locked --offline -- -D warnings
+    python3 scripts/virtio_probe.py run --boots 10 --output target/virtio-probe/acceptance
+
 # Prove every relevant Tyn limitation has one owned project disposition.
 prior-art-coverage:
     python3 scripts/prior_art.py coverage --root .

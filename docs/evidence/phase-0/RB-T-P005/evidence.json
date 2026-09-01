@@ -34,7 +34,7 @@
   "inputs": [
     {
       "path": "justfile",
-      "digest": "sha256:037424a8831052aae050db7126fd0bb1f11dee9e4f3ff8826d99cb87dd49b7d3"
+      "digest": "sha256:728d0f22b938b18e57b8c08860bdd4f8aef44ec322f0596932e30f524600dfbd"
     },
     {
       "path": "scripts/otp_artifact.py",
@@ -54,7 +54,7 @@
     },
     {
       "path": "docs/evidence/sources.json",
-      "digest": "sha256:c10a646db35654bc3253f50cd359826d8de8ef992336fb8a2674bc0ed012d56b"
+      "digest": "sha256:78c6f84208147a5311d0a5321b657a0bc59eff017ba2e49a5465792f63925427"
     },
     {
       "path": "xtask/src/main.rs",
