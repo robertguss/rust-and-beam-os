@@ -1,0 +1,327 @@
+{
+  "attempts": [
+    {
+      "path": "lib/compiler-10.0.3/ebin/beam_ssa_opt.beam",
+      "strings": [
+        "-isolate_nifs/1-anonymous-4-",
+        "-isolate_nifs/1-anonymous-5-",
+        "-isolate_nifs/1-anonymous-6-",
+        "-isolate_nifs/1-anonymous-7-",
+        "-isolate_nifs/1-lc$^2/1-2-",
+        "-restore_nifs/2-anonymous-1-",
+        "-restore_nifs/2-lc$^0/1-0-",
+        "isolate_nifs",
+        "restore_nifs`is_nif0=:="
+      ]
+    },
+    {
+      "path": "lib/compiler-10.0.3/ebin/v3_core.beam",
+      "strings": [
+        "insert_nif_start",
+        "load_nif"
+      ]
+    },
+    {
+      "path": "lib/erts-17.0.5/ebin/erl_tracer.beam",
+      "strings": [
+        "load_nif okpenabled"
+      ]
+    },
+    {
+      "path": "lib/erts-17.0.5/ebin/erlang.beam",
+      "strings": [
+        "load_nif",
+        "open_port@send"
+      ]
+    },
+    {
+      "path": "lib/erts-17.0.5/ebin/erts_internal.beam",
+      "strings": [
+        "open_port"
+      ]
+    },
+    {
+      "path": "lib/erts-17.0.5/ebin/prim_buffer.beam",
+      "strings": [
+        "load_nif ok0newPundef"
+      ]
+    },
+    {
+      "path": "lib/erts-17.0.5/ebin/prim_file.beam",
+      "strings": [
+        "advise_nif",
+        "allocate_nif",
+        "altname_nif",
+        "close_nif",
+        "del_dir_nif",
+        "del_file_nif",
+        "delayed_close_nif",
+        "file_desc_to_ref_nif",
+        "get_cwd_nif",
+        "get_device_cwd_nif",
+        "get_handle_nif",
+        "internal_get_nif_resource",
+        "ipread_s32bu_p32bu_nifPundef",
+        "list_dir_nif",
+        "load_nif ok@copy",
+        "make_dir_nif",
+        "make_hard_link_nif",
+        "make_soft_link_nif",
+        "open_nif",
+        "pread_nif",
+        "pwrite_nif",
+        "read_file_nif",
+        "read_handle_info_nif",
+        "read_info_nif",
+        "read_link_nif",
+        "read_nif",
+        "rename_nif",
+        "seek_nif",
+        "set_cwd_nif",
+        "set_owner_nif",
+        "set_permissions_nif",
+        "set_time_nif",
+        "sync_nif",
+        "truncate_nif",
+        "write_nif"
+      ]
+    },
+    {
+      "path": "lib/erts-17.0.5/ebin/prim_inet.beam",
+      "strings": [
+        "open_port okPerror`badarg"
+      ]
+    },
+    {
+      "path": "lib/erts-17.0.5/ebin/prim_net.beam",
+      "strings": [
+        "load_nif",
+        "load_nif_result ok@infoPdebugpcommand@data"
+      ]
+    },
+    {
+      "path": "lib/erts-17.0.5/ebin/prim_socket.beam",
+      "strings": [
+        "load_nif",
+        "load_nif_result@init"
+      ]
+    },
+    {
+      "path": "lib/erts-17.0.5/ebin/zlib.beam",
+      "strings": [
+        "clearStash_nif",
+        "close_nif",
+        "deflateEnd_nif",
+        "deflateInit_nif",
+        "deflateParams_nif@none",
+        "deflateReset_nif",
+        "deflateSetDictionary_nif",
+        "deflate_nif",
+        "enqueue_nif",
+        "getStash_nif",
+        "inflateEnd_nif",
+        "inflateGetDictionary_nif",
+        "inflateInit_nif",
+        "inflateReset_nifpinflate@true",
+        "inflateSetDictionary_nif",
+        "inflate_nif",
+        "load_nif ok@open",
+        "open_nifPundef",
+        "setStash_nif",
+        "set_controller_nif"
+      ]
+    },
+    {
+      "path": "lib/kernel-11.0.3/ebin/erl_erts_errors.beam",
+      "strings": [
+        "load_nif",
+        "must be spawn_executablej",
+        "open_portPphash`phash2",
+        "spawn_executable`memberpforeachPthrowpinvalid@maps@portpprocessPtable"
+      ]
+    },
+    {
+      "path": "lib/kernel-11.0.3/ebin/erl_kernel_errors.beam",
+      "strings": [
+        "!open_port failed with reason: ~tp",
+        "open_portpgeneral"
+      ]
+    },
+    {
+      "path": "lib/kernel-11.0.3/ebin/heart.beam",
+      "strings": [
+        "open_port"
+      ]
+    },
+    {
+      "path": "lib/kernel-11.0.3/ebin/inet.beam",
+      "strings": [
+        "inet_gethost_native"
+      ]
+    },
+    {
+      "path": "lib/kernel-11.0.3/ebin/inet_gethost_native.beam",
+      "strings": [
+        "5/buildroot/otp/lib/kernel/src/inet_gethost_native.erlj",
+        "do_open_port",
+        "do_open_porta",
+        "inet_gethost",
+        "inet_gethost_native",
+        "inet_gethost_native@init`erlang",
+        "inet_gethost_native_sup",
+        "inet_gethost_native_suph",
+        "inet_gethost_nativej",
+        "inet_gethost_nativew",
+        "open_port`badarg hd ++@halt",
+        "spawn_executable"
+      ]
+    },
+    {
+      "path": "lib/kernel-11.0.3/ebin/net.beam",
+      "strings": [
+        "load_nif_result`badmap`erlangPerrorPundef`notsupPraisePp_get"
+      ]
+    },
+    {
+      "path": "lib/kernel-11.0.3/ebin/os.beam",
+      "strings": [
+        "open_portPcause`module"
+      ]
+    },
+    {
+      "path": "lib/kernel-11.0.3/ebin/prim_tty.beam",
+      "strings": [
+        "load_nifPerror`reload ok",
+        "read_nif",
+        "setupterm_nif",
+        "tigetflag_nif",
+        "tigetnum_nif",
+        "tigetstr_nif",
+        "tinfo_nif",
+        "tputs_nif",
+        "write_nif"
+      ]
+    },
+    {
+      "path": "lib/kernel-11.0.3/ebin/ram_file.beam",
+      "strings": [
+        "open_port"
+      ]
+    },
+    {
+      "path": "lib/kernel-11.0.3/ebin/raw_file_io_compressed.beam",
+      "strings": [
+        "internal_get_nif_resource"
+      ]
+    },
+    {
+      "path": "lib/kernel-11.0.3/ebin/raw_file_io_delayed.beam",
+      "strings": [
+        "internal_get_nif_resource"
+      ]
+    },
+    {
+      "path": "lib/kernel-11.0.3/ebin/raw_file_io_list.beam",
+      "strings": [
+        "internal_get_nif_resource"
+      ]
+    },
+    {
+      "path": "lib/kernel-11.0.3/ebin/socket.beam",
+      "strings": [
+        "internal_get_nif_resource tl",
+        "load_nif_result`badmapPundef`notsupPraisepmonitor`setopt`closed"
+      ]
+    },
+    {
+      "path": "lib/kernel-11.0.3/ebin/user_drv.beam",
+      "strings": [
+        "open_portPspawn`enoent`mktemp0cmd",
+        "spawn_executable@args"
+      ]
+    },
+    {
+      "path": "lib/sasl-4.4/ebin/erlsrv.beam",
+      "strings": [
+        "open_port@EXIT"
+      ]
+    },
+    {
+      "path": "lib/stdlib-8.0.3/ebin/erl_internal.beam",
+      "strings": [
+        "open_port"
+      ]
+    },
+    {
+      "path": "lib/stdlib-8.0.3/ebin/erl_lint.beam",
+      "strings": [
+        "-check_nifs/2-lc$^0/1-0-@nifs",
+        "-check_nifs/2-lc$^1/1-1-",
+        "-check_nifs/2-lc$^2/1-2-",
+        ".nifs defined, but no call to erlang:load_nif/2j",
+        "check_load_nif",
+        "check_nif_inline",
+        "check_nifs",
+        "load_nif",
+        "no_load_nif",
+        "undefined_nif"
+      ]
+    },
+    {
+      "path": "lib/stdlib-8.0.3/ebin/escript.beam",
+      "strings": [
+        "open_port@selfpcommand"
+      ]
+    },
+    {
+      "path": "lib/stdlib-8.0.3/ebin/peer.beam",
+      "strings": [
+        "open_port",
+        "spawn_executable@args"
+      ]
+    },
+    {
+      "path": "lib/stdlib-8.0.3/ebin/slave.beam",
+      "strings": [
+        "open_port"
+      ]
+    },
+    {
+      "path": "lib/stdlib-8.0.3/ebin/win32reg.beam",
+      "strings": [
+        "open_port okPclose`unlink0die@exit"
+      ]
+    },
+    {
+      "path": "lib/stdlib-8.0.3/ebin/zstd.beam",
+      "strings": [
+        "compress_close_nif",
+        "compress_reset_nif",
+        "compress_stream_nif",
+        "create_cdict_nif",
+        "create_ddict_nif",
+        "decompress_close_nif",
+        "decompress_reset_nif",
+        "decompress_stream_nif",
+        "getDictId_fromCDict_nif",
+        "getDictId_fromDDict_nif",
+        "getDictId_fromDict_nif",
+        "getDictId_fromFrame_nif",
+        "get_compress_parameter_nif",
+        "get_decompress_parameter_nif",
+        "get_frame_header_nif",
+        "init_compress_nifPundef",
+        "init_decompress_nif",
+        "load_compress_dictionary_nif",
+        "load_decompress_dictionary_nif",
+        "load_nif ok",
+        "ref_compress_dictionary_nif",
+        "ref_decompress_dictionary_nif",
+        "set_compress_parameter_nif",
+        "set_decompress_parameter_nif",
+        "set_pledged_src_size_nif"
+      ]
+    }
+  ],
+  "method": "String-table inventory; P006 owns authoritative target runtime load tracing."
+}

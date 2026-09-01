@@ -3,7 +3,7 @@ schema: "repo-plan/v1"
 id: "RB-T-P005"
 title: "Cross-build static non-JIT AArch64-musl upstream ERTS"
 type: "task"
-state: "in_progress"
+state: "done"
 priority: "P3"
 milestone: "RB-M-M0"
 parent: null
@@ -11,9 +11,10 @@ depends_on:
   - "RB-T-P003"
 related: []
 actor: "agent"
-owner: "amp:T-01a05912-a43d-754e-84fc-d56536c31a76"
+owner: null
 defer_until: null
-evidence: []
+evidence:
+  - "docs/evidence/phase-0/RB-T-P005/evidence.json"
 x_legacy_id: "P0-05"
 x_linear_id: "ROB-688"
 x_linear_url: "https://linear.app/robert-guss/issue/ROB-688/p0-05-cross-build-static-non-jit-aarch64-musl-upstream-erts"
@@ -52,12 +53,12 @@ Blocked by: RB-T-P003.
 
 ## Acceptance criteria
 
-- [ ] The artifact is AArch64, static, and has no unresolved dynamic
+- [x] The artifact is AArch64, static, and has no unresolved dynamic
       interpreter/dependencies.
-- [ ] The build starts from the pinned upstream tag and a clean builder.
-- [ ] Any source patch is confined to build detection or an OS adapter,
+- [x] The build starts from the pinned upstream tag and a clean builder.
+- [x] Any source patch is confined to build detection or an OS adapter,
       explained line-by-line, and included in the upstream-diff budget.
-- [ ] Re-running the build produces an equivalent artifact or a documented
+- [x] Re-running the build produces an equivalent artifact or a documented
       reproducibility defect that blocks the gate.
 
 ## Verification
@@ -68,9 +69,14 @@ Blocked by: RB-T-P003.
 
 ## Evidence
 
-- Inspect the ELF headers and dependency metadata.
-- Rebuild from a clean environment.
-- Archive the build receipt, logs, artifact hash, and patch audit.
+- [Execution receipt](../../evidence/phase-0/RB-T-P005/evidence.json)
+- [Evidence explanation](../../evidence/phase-0/RB-T-P005/README.md)
+- [Primary build receipt](../../evidence/phase-0/RB-T-P005/primary-build-receipt.json)
+- [Complete native-closure inspection](../../evidence/phase-0/RB-T-P005/inspection-receipt.json)
+- [Clean-rebuild comparison](../../evidence/phase-0/RB-T-P005/rebuild-comparison.json)
+- [ELF headers](../../evidence/phase-0/RB-T-P005/beam-headers.txt)
+- [ELF relocations](../../evidence/phase-0/RB-T-P005/beam-relocations.txt)
+- [Verification transcript](../../evidence/phase-0/RB-T-P005/verification.txt)
 
 ## Out of scope
 

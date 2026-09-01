@@ -1,0 +1,11 @@
+{
+  "beam_exact_match": true,
+  "equivalence": "Every native runtime object has the same relative path, kind, size, and SHA-256 digest.",
+  "native_closure_count": 23,
+  "native_closure_exact_match": true,
+  "primary_beam": "sha256:54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201",
+  "profile_digest": "sha256:66d3f4ea9d0a2fba170b7342877b3ac2a0e8605eaab0dd189110f4282cf23cd7",
+  "rebuild_beam": "sha256:54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201",
+  "result": "equivalent",
+  "schema": "rust-beam/otp-rebuild-comparison/v1"
+}

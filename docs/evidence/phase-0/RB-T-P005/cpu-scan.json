@@ -1,0 +1,22 @@
+{
+  "assumptions": {
+    "AT_HWCAP_not_required": [
+      "ATOMICS"
+    ],
+    "AT_HWCAP_required": [
+      "FP",
+      "ASIMD"
+    ],
+    "AT_PAGESZ": 4096,
+    "ET_EXEC_mapping": "All PT_LOAD segments are mapped at their linked virtual addresses below 2 GiB"
+  },
+  "branch_protection_instructions": [],
+  "compiler_flags": [
+    "--target=aarch64-linux-musl",
+    "-march=armv8-a",
+    "-mno-outline-atomics"
+  ],
+  "instructions_scanned": 723833,
+  "lse_instructions": [],
+  "tool": "LLVM (http://llvm.org/):"
+}

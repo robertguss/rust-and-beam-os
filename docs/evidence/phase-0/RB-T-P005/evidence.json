@@ -1,0 +1,170 @@
+{
+  "schema": "rust-beam/evidence/v1",
+  "id": "RB-EV-P005-OTP",
+  "task": "RB-T-P005",
+  "recorded_at": "2026-09-01T01:42:02Z",
+  "claim": "The pinned official OTP 29.0.5 flow produced a static non-JIT AArch64-musl release whose complete 23-object native closure passed sealed ELF/CPU/load audits and matched a second clean rebuild exactly.",
+  "classification": "host",
+  "build": {
+    "id": "rb1-2b357cd79c36-dirty-20260901T014202Z",
+    "source_revision": "2b357cd79c368e97080810147c8e6665094e3ee4",
+    "source_dirty": true,
+    "target": "x86_64 Linux host cross-building static aarch64-unknown-linux-musl ERTS"
+  },
+  "command": {
+    "argv": ["just", "verify-otp-rebuild"],
+    "cwd": "."
+  },
+  "environment": {
+    "os": "debian 12 / Linux 6.1.158+",
+    "architecture": "x86_64",
+    "tools": [
+      { "name": "python", "version": "3.11.6" },
+      { "name": "just", "version": "1.42.4" },
+      { "name": "make", "version": "GNU Make 4.3" },
+      { "name": "perl", "version": "5.36.0" },
+      { "name": "clang", "version": "20.1.8" },
+      { "name": "lld", "version": "20.1.8" },
+      { "name": "llvm-ar", "version": "20.1.8" },
+      { "name": "otp-source", "version": "29.0.5" },
+      { "name": "erts", "version": "17.0.5" },
+      { "name": "musl", "version": "1.2.5" }
+    ]
+  },
+  "inputs": [
+    {
+      "path": "justfile",
+      "digest": "sha256:037424a8831052aae050db7126fd0bb1f11dee9e4f3ff8826d99cb87dd49b7d3"
+    },
+    {
+      "path": "scripts/otp_artifact.py",
+      "digest": "sha256:cf4abc20ded0654d917a08865c16bd90dcda2aac0ecd8d17686eb4e1723e0d44"
+    },
+    {
+      "path": "tests/test_otp_artifact.py",
+      "digest": "sha256:249bd8a32849cc504cb2cdcffc6ef6579dbdd3822c02a682f91ef9d63b06d52b"
+    },
+    {
+      "path": "toolchain/otp/aarch64-linux-musl.json",
+      "digest": "sha256:66d3f4ea9d0a2fba170b7342877b3ac2a0e8605eaab0dd189110f4282cf23cd7"
+    },
+    {
+      "path": "toolchain/sources.lock.json",
+      "digest": "sha256:5c1267150cea3b382773e5592da6007b3a26236a16605a9bf5248e6d0271a38c"
+    },
+    {
+      "path": "docs/evidence/sources.json",
+      "digest": "sha256:c10a646db35654bc3253f50cd359826d8de8ef992336fb8a2674bc0ed012d56b"
+    },
+    {
+      "path": "xtask/src/main.rs",
+      "digest": "sha256:9c541bace05d1be380a9761287a0194115f4870bc9d4b02de166280b7fc58153"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/README.md",
+      "digest": "sha256:3f7647640516800f3bce2d2d87e3915eba51dede75d2f8bc034fc038cf8bd6e5"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/applications.json",
+      "digest": "sha256:b3986e0131ead267eb5026d7a3a710a5b016356bfb3b3778922af3d87e0dec2e"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/beam-headers.txt",
+      "digest": "sha256:b13a922028bad53ebac9051a79b5b9698b7e60c323597d89888d87364f1b4fac"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/beam-link.map.gz",
+      "digest": "sha256:3da3cc21c125982026d13a967bb9d5d3916c30a91a3f8555a3edb4a9c06ad453"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/beam-relocations.txt",
+      "digest": "sha256:15864317fea2c9ccafcbdd8216912d3497e933fce1ffe4a0dbf37d14cbb033d3"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/beam-symbols.txt.gz",
+      "digest": "sha256:e0e9f16cf6753ca8098743f2b6d37e6d3fa5babfc4558fae00f66abba76b64e0"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/build-mode.json",
+      "digest": "sha256:dd5935ddc6afc587dc28a3b7e9d0713597cb35467911e3a32eb92b8a540d6313"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/builtins.json",
+      "digest": "sha256:a99bff44b73212f136cac499aca51cbf8be204c9c901a6330bdc23ae98d29e80"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/cpu-scan.json",
+      "digest": "sha256:17692a7302e7e0f13e54db92ce150775f423aef9bfc40ef5f5f0e223f6a3f779"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/erl-xcomp-aarch64-linux-musl.conf",
+      "digest": "sha256:86b85e4015abfced31cafae5b23291d14a95c580516ee12567f81400a7ca1dfa"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/erts-config.h.gz",
+      "digest": "sha256:0a812bc22dc2b0188125463d72344a02f2f23fd4b9a83c9ca3778068c5918fc0"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/erts-config.log.gz",
+      "digest": "sha256:3731a63a541a351cdcd0e71452aa916004d0b9a96ada18a83cf46ab0643abaea"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/erts-emulator-Makefile.gz",
+      "digest": "sha256:6784ecec6cbf44863547a51b81b348b6505b98a4d5838f1729d134f74ff2e576"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/inspection-receipt.json",
+      "digest": "sha256:e94ee205af56acc61396459c021f1e208277f57e941aa66ff5a837ef4f3535d6"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/native-closure.json",
+      "digest": "sha256:2e6d57b4ca0bc026342bb66b4990d6c0fae02121569aee4ac5eaf84d0628abc8"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/otp-SKIP-APPLICATIONS.txt",
+      "digest": "sha256:20de6a69333bc4ef7f253e2dc574dd193bc59f736afe8aa027bfdd8c897bc223"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/primary-build-receipt.json",
+      "digest": "sha256:d3bac011e649afcaf61acb673b1fe7e7c0ed887fc91f5a9ba2a8d90e9b6522b5"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/primary-build.log.gz",
+      "digest": "sha256:2654a00f7f706b7b01f4e46cbec3e8c900beeab8776beeb1a43c54f0bff4c021"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/rebuild-build-receipt.json",
+      "digest": "sha256:0a9bf1122f9b1aabaa204cb5ba6433927514641b74428a45d56b73f678e1a8b2"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/rebuild-build.log.gz",
+      "digest": "sha256:9c08884f8882bea4af283e77eaeff06512ba8eba51bf2bae4192ac6414cba628"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/rebuild-comparison.json",
+      "digest": "sha256:05e552e6cc4796ca7997171ff42be92613516246607ee62363c3896c0a484e90"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/rebuild-inspection-receipt.json",
+      "digest": "sha256:e94ee205af56acc61396459c021f1e208277f57e941aa66ff5a837ef4f3535d6"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/rebuild-native-closure.json",
+      "digest": "sha256:2e6d57b4ca0bc026342bb66b4990d6c0fae02121569aee4ac5eaf84d0628abc8"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/runtime-load-attempts.json",
+      "digest": "sha256:bb472aa798d362ddf25a670c322dfdf7a4846e8f86ae014973c80a1e91e44dbb"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P005/verification.txt",
+      "digest": "sha256:b71b8610e6c3cf4a427124e04f77c684d3d40f53984aadc45819aec5af97b0d1"
+    }
+  ],
+  "result": {
+    "status": "pass",
+    "exit_code": 0
+  }
+}

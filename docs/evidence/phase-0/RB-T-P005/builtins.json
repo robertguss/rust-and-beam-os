@@ -1,0 +1,19 @@
+{
+  "builtin_drivers": [
+    "inet",
+    "ram_file"
+  ],
+  "builtin_nifs": [
+    "erl_tracer",
+    "prim_buffer",
+    "prim_file",
+    "prim_net",
+    "prim_socket",
+    "prim_tty",
+    "zlib",
+    "zstd"
+  ],
+  "generated_table": "erts/emulator/aarch64-unknown-linux-musl/opt/emu/driver_tab.c",
+  "statically_linked_application_drivers": [],
+  "statically_linked_application_nifs": []
+}

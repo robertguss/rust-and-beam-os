@@ -54,7 +54,7 @@
       "claims": [
         "The frozen runtime candidate uses the immutable OTP 29.0.5 source release."
       ],
-      "consumers": ["RB-T-P002", "RB-T-P003", "toolchain/sources.lock.json", "toolchain/contract.json"],
+      "consumers": ["RB-T-P002", "RB-T-P003", "RB-T-P005", "toolchain/sources.lock.json", "toolchain/contract.json"],
       "limitations": "The release identity does not by itself establish compatibility with Elixir; the offline runtime-pair smoke supplies that evidence."
     },
     {
@@ -110,7 +110,7 @@
       "claims": [
         "LLVM/Clang/LLD 20.1.8 is the frozen C, freestanding C++, and linker candidate."
       ],
-      "consumers": ["RB-T-P003", "toolchain/sources.lock.json", "toolchain/contract.json"],
+      "consumers": ["RB-T-P003", "RB-T-P005", "toolchain/sources.lock.json", "toolchain/contract.json"],
       "limitations": "P003 pins source and native host archives; later tasks own executable AArch64 compiler and linker probes."
     },
     {
@@ -124,7 +124,7 @@
       "claims": [
         "musl 1.2.5 is the frozen static AArch64 userspace C library source."
       ],
-      "consumers": ["RB-T-P003", "toolchain/sources.lock.json", "toolchain/contract.json"],
+      "consumers": ["RB-T-P003", "RB-T-P005", "toolchain/sources.lock.json", "toolchain/contract.json"],
       "limitations": "This pin does not claim a completed sysroot; RB-T-P005 owns the target build and executable probes."
     },
     {

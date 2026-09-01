@@ -1,0 +1,47 @@
+ELF Header:
+  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00
+  Class:                             ELF64
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           AArch64
+  Version:                           0x1
+  Entry point address:               0x2F4760
+  Start of program headers:          64 (bytes into file)
+  Start of section headers:          4440208 (bytes into file)
+  Flags:                             0x0
+  Size of this header:               64 (bytes)
+  Size of program headers:           56 (bytes)
+  Number of program headers:         8
+  Size of section headers:           64 (bytes)
+  Number of section headers:         19
+  Section header string table index: 17
+
+Elf file type is EXEC (Executable file)
+Entry point 0x2f4760
+There are 8 program headers, starting at offset 64
+
+Program Headers:
+  Type           Offset   VirtAddr           PhysAddr           FileSiz  MemSiz   Flg Align
+  PHDR           0x000040 0x0000000000200040 0x0000000000200040 0x0001c0 0x0001c0 R   0x8
+  LOAD           0x000000 0x0000000000200000 0x0000000000200000 0x0f3754 0x0f3754 R   0x1000
+  LOAD           0x0f3760 0x00000000002f4760 0x00000000002f4760 0x2c2df0 0x2c2df0 R E 0x1000
+  LOAD           0x3b6550 0x00000000005b8550 0x00000000005b8550 0x000158 0x000ab0 RW  0x1000
+  LOAD           0x3b66a8 0x00000000005b96a8 0x00000000005b96a8 0x016560 0x0521b8 RW  0x1000
+  GNU_RELRO      0x3b6550 0x00000000005b8550 0x00000000005b8550 0x000158 0x000ab0 R   0x1
+  GNU_EH_FRAME   0x0a932c 0x00000000002a932c 0x00000000002a932c 0x00b214 0x00b214 R   0x4
+  GNU_STACK      0x000000 0x0000000000000000 0x0000000000000000 0x000000 0x000000 RW  0x0
+
+ Section to Segment mapping:
+  Segment Sections...
+   00
+   01     .rodata .eh_frame_hdr .eh_frame
+   02     .text .init .fini
+   03     .init_array .fini_array .data.rel.ro .got .relro_padding
+   04     .data ERTS_LOW_WRITE .bss
+   05     .init_array .fini_array .data.rel.ro .got .relro_padding
+   06     .eh_frame_hdr
+   07
+   None   .comment .symtab .shstrtab .strtab

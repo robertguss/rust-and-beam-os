@@ -34,7 +34,7 @@
     },
     {
       "path": "justfile",
-      "digest": "sha256:531fe813c819ef66cc568d6aae013847be6f7d7ea4521fec0a0b2f22067d5ae8"
+      "digest": "sha256:037424a8831052aae050db7126fd0bb1f11dee9e4f3ff8826d99cb87dd49b7d3"
     },
     {
       "path": "rust-toolchain.toml",

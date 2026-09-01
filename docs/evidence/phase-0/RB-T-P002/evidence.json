@@ -106,11 +106,11 @@
     },
     {
       "path": "toolchain/sources.lock.json",
-      "digest": "sha256:ab563078a6f8cc7bde137b06a72db55e54187405c7ff10ff4151ba2f1e0fd517"
+      "digest": "sha256:5c1267150cea3b382773e5592da6007b3a26236a16605a9bf5248e6d0271a38c"
     },
     {
       "path": "docs/evidence/sources.json",
-      "digest": "sha256:6af7889af4a5ab8513f98fe039a9fcf816eafb862655ab9f0a22b472e6d2c888"
+      "digest": "sha256:c10a646db35654bc3253f50cd359826d8de8ef992336fb8a2674bc0ed012d56b"
     }
   ],
   "artifacts": [

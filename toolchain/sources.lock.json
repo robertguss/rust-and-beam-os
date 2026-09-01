@@ -72,7 +72,7 @@
       "license": "Apache-2.0 WITH LLVM-exception",
       "license_locator": "https://github.com/llvm/llvm-project/blob/llvmorg-20.1.8/LICENSE.TXT",
       "mirror_path": "sha256/6898f963c8e938981e6c4a302e83ec5beb4630147c7311183cf61069af16333d",
-      "consumers": ["RB-T-P003"]
+      "consumers": ["RB-T-P003", "RB-T-P005"]
     },
     {
       "id": "llvm-x86_64",

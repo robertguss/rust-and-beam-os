@@ -1,0 +1,20 @@
+$ python3 -m unittest tests.test_otp_artifact
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.003s
+
+OK
+
+$ just inspect-otp-artifact
+python3 scripts/otp_artifact.py inspect
+verified otp-source sha256:86f6f40d4638852b0383235b02a70d8450184e441e83a06a108bf8e5bf1b2e04
+verified musl-source sha256:a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4
+verified llvm-source sha256:6898f963c8e938981e6c4a302e83ec5beb4630147c7311183cf61069af16333d
+verified llvm-x86_64 sha256:1ead36b3dfcb774b57be530df42bec70ab2d239fbce9889447c7a29a4ddc1ae6
+verified llvm-aarch64 sha256:b855cc17d935fdd83da82206b7a7cfc680095efd1e9e8182c4a05e761958bef8
+reusing verified common cross toolchain at /home/user/workspace/repo/target/otp-aarch64/common
++ (/home/user/workspace/repo) /home/user/workspace/repo/target/otp-aarch64/common/llvm/bin/llvm-objdump --version
+inspected 23 native objects; beam.smp sha256:54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201
+
+$ jq -e '.result == "equivalent" and .beam_exact_match and .native_closure_exact_match' target/otp-aarch64/rebuild-comparison.json
+clean rebuild receipt: equivalent; 23 native objects; beam sha256:54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201

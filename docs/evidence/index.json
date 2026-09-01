@@ -26,6 +26,12 @@
       "claim": "Two fresh network-disabled Linux builders produced matching complete toolchain metadata, and the sealed OTP 29.0.5/Elixir 1.20.4 pair built and ran the reference Mix application offline."
     },
     {
+      "id": "RB-EV-P005-OTP",
+      "task": "RB-T-P005",
+      "record": "docs/evidence/phase-0/RB-T-P005/evidence.json",
+      "claim": "The pinned official OTP 29.0.5 flow produced a static non-JIT AArch64-musl release whose complete 23-object native closure passed sealed ELF/CPU/load audits and matched a second clean rebuild exactly."
+    },
+    {
       "id": "RB-EV-P017-PRIOR-ART",
       "task": "RB-T-P017",
       "record": "docs/evidence/phase-0/RB-T-P017/evidence.json",

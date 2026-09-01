@@ -88,9 +88,17 @@ status:
 build-kernel:
     cargo xtask unavailable build-kernel
 
-# Placeholder until its owning plan task is ready.
+# Cross-build a fresh static non-JIT AArch64-musl OTP release.
 build-otp:
-    cargo xtask unavailable build-otp
+    python3 scripts/otp_artifact.py build
+
+# Verify the complete native OTP release closure against its sealed ELF policy.
+inspect-otp-artifact:
+    python3 scripts/otp_artifact.py inspect
+
+# Repeat the clean cross-build and require an exact native-closure match.
+verify-otp-rebuild:
+    python3 scripts/otp_artifact.py verify-rebuild
 
 # Placeholder until its owning plan task is ready.
 build-release:

@@ -3,7 +3,6 @@ use std::process::ExitCode;
 
 const PLACEHOLDERS: &[&str] = &[
     "build-kernel",
-    "build-otp",
     "build-release",
     "image",
     "run-headless",

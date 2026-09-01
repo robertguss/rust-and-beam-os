@@ -803,16 +803,18 @@
       "depends_on": [
         "RB-T-P003"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/evidence/phase-0/RB-T-P005/evidence.json"
+      ],
       "id": "RB-T-P005",
       "milestone": "RB-M-M0",
-      "owner": "amp:T-01a05912-a43d-754e-84fc-d56536c31a76",
+      "owner": null,
       "parent": null,
       "path": "tasks/rb-t-p005.md",
       "priority": "P3",
       "related": [],
       "schema": "repo-plan/v1",
-      "state": "in_progress",
+      "state": "done",
       "title": "Cross-build static non-JIT AArch64-musl upstream ERTS",
       "type": "task",
       "x_labels": [
@@ -3858,5 +3860,5 @@
     }
   ],
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:fbddbd3ef186d6e24785b5b90c8d2fa2bde20278e0529f5d64315c9ea754e67a"
+  "source_digest": "sha256:9f14eaeadaca844e5496d383c24a17325cd5f52a0239c15f432902c563db7228"
 }

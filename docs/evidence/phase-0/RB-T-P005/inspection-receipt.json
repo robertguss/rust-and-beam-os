@@ -1,0 +1,173 @@
+{
+  "applications": [
+    "compiler",
+    "erl_interface",
+    "erts",
+    "kernel",
+    "sasl",
+    "stdlib"
+  ],
+  "artifact_assumptions": {
+    "auxv": {
+      "AT_HWCAP_not_required": [
+        "ATOMICS"
+      ],
+      "AT_HWCAP_required": [
+        "FP",
+        "ASIMD"
+      ],
+      "AT_PAGESZ": 4096,
+      "ET_EXEC_mapping": "All PT_LOAD segments are mapped at their linked virtual addresses below 2 GiB"
+    },
+    "branch_protection_instructions": false,
+    "cpu_baseline": "Armv8-A with FP and Advanced SIMD",
+    "dt_needed": [],
+    "dynamic_segment": false,
+    "elf_class": "ELF64",
+    "elf_data": "little-endian",
+    "executable_stack": false,
+    "interpreter": null,
+    "load_alignment": 4096,
+    "lse_instructions": false,
+    "machine": "AArch64",
+    "max_load_end_exclusive": 2147483648,
+    "pt_tls": false,
+    "runtime_relocations": false,
+    "tls_abi": "The sealed ELFs have no PT_TLS, but each thread still needs a musl pthread descriptor in TPIDR_EL0",
+    "type": "ET_EXEC"
+  },
+  "beam": {
+    "digest": "sha256:54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201",
+    "elf": {
+      "class": "ELF64",
+      "data": "little-endian",
+      "machine": "AArch64",
+      "osabi": 0,
+      "program_headers": [
+        {
+          "align": 8,
+          "filesz": 448,
+          "flags": 4,
+          "memsz": 448,
+          "offset": 64,
+          "type": "0x6",
+          "vaddr": 2097216
+        },
+        {
+          "align": 4096,
+          "filesz": 997204,
+          "flags": 4,
+          "memsz": 997204,
+          "offset": 0,
+          "type": "PT_LOAD",
+          "vaddr": 2097152
+        },
+        {
+          "align": 4096,
+          "filesz": 2895344,
+          "flags": 5,
+          "memsz": 2895344,
+          "offset": 997216,
+          "type": "PT_LOAD",
+          "vaddr": 3098464
+        },
+        {
+          "align": 4096,
+          "filesz": 344,
+          "flags": 6,
+          "memsz": 2736,
+          "offset": 3892560,
+          "type": "PT_LOAD",
+          "vaddr": 5997904
+        },
+        {
+          "align": 4096,
+          "filesz": 91488,
+          "flags": 6,
+          "memsz": 336312,
+          "offset": 3892904,
+          "type": "PT_LOAD",
+          "vaddr": 6002344
+        },
+        {
+          "align": 1,
+          "filesz": 344,
+          "flags": 4,
+          "memsz": 2736,
+          "offset": 3892560,
+          "type": "PT_GNU_RELRO",
+          "vaddr": 5997904
+        },
+        {
+          "align": 4,
+          "filesz": 45588,
+          "flags": 4,
+          "memsz": 45588,
+          "offset": 693036,
+          "type": "PT_GNU_EH_FRAME",
+          "vaddr": 2790188
+        },
+        {
+          "align": 0,
+          "filesz": 0,
+          "flags": 6,
+          "memsz": 0,
+          "offset": 0,
+          "type": "PT_GNU_STACK",
+          "vaddr": 0
+        }
+      ],
+      "relocation_sections": [],
+      "type": "ET_EXEC"
+    },
+    "path": "release/erts-17.0.5/bin/beam.smp",
+    "size": 4441424
+  },
+  "builtins": {
+    "builtin_drivers": [
+      "inet",
+      "ram_file"
+    ],
+    "builtin_nifs": [
+      "erl_tracer",
+      "prim_buffer",
+      "prim_file",
+      "prim_net",
+      "prim_socket",
+      "prim_tty",
+      "zlib",
+      "zstd"
+    ],
+    "generated_table": "erts/emulator/aarch64-unknown-linux-musl/opt/emu/driver_tab.c",
+    "statically_linked_application_drivers": [],
+    "statically_linked_application_nifs": []
+  },
+  "native_closure": {
+    "count": 23,
+    "digest": "sha256:2e6d57b4ca0bc026342bb66b4990d6c0fae02121569aee4ac5eaf84d0628abc8"
+  },
+  "patch_audit": {
+    "profile_patches": [],
+    "semantic_otp_patches": [],
+    "source_archive": "sha256:86f6f40d4638852b0383235b02a70d8450184e441e83a06a108bf8e5bf1b2e04",
+    "source_operations_before_build": [
+      "verify digest",
+      "extract archive"
+    ]
+  },
+  "profile_digest": "sha256:66d3f4ea9d0a2fba170b7342877b3ac2a0e8605eaab0dd189110f4282cf23cd7",
+  "reports": {
+    "applications.json": "sha256:b3986e0131ead267eb5026d7a3a710a5b016356bfb3b3778922af3d87e0dec2e",
+    "beam-headers.txt": "sha256:c7b48af411baf5efc614dab8b8e5ccd297d6cfd0662375c673b9ac70119801cf",
+    "beam-link.map": "sha256:af1418cbd8f223d9c464e9d9026958f1b81c0b6b381ea1d46de0ab73f89b7521",
+    "beam-relocations.txt": "sha256:15864317fea2c9ccafcbdd8216912d3497e933fce1ffe4a0dbf37d14cbb033d3",
+    "beam-symbols.txt": "sha256:79988eab577b375944c493f215451d3abba8a62223d8d358b8aa079e9e06cb6d",
+    "build-mode.json": "sha256:dd5935ddc6afc587dc28a3b7e9d0713597cb35467911e3a32eb92b8a540d6313",
+    "builtins.json": "sha256:a99bff44b73212f136cac499aca51cbf8be204c9c901a6330bdc23ae98d29e80",
+    "cpu-scan.json": "sha256:17692a7302e7e0f13e54db92ce150775f423aef9bfc40ef5f5f0e223f6a3f779",
+    "erl-xcomp-aarch64-linux-musl.conf": "sha256:86b85e4015abfced31cafae5b23291d14a95c580516ee12567f81400a7ca1dfa",
+    "native-closure.json": "sha256:2e6d57b4ca0bc026342bb66b4990d6c0fae02121569aee4ac5eaf84d0628abc8",
+    "runtime-load-attempts.json": "sha256:bb472aa798d362ddf25a670c322dfdf7a4846e8f86ae014973c80a1e91e44dbb"
+  },
+  "schema": "rust-beam/otp-artifact-inspection/v1"
+}
