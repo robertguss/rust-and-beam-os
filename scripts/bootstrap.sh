@@ -79,6 +79,9 @@ cargo "+${rust_channel}" fetch --manifest-path "$repo_root/tests/virtio-probe/Ca
 echo "bootstrap: preparing sealed QEMU for the TCG virtio probe"
 python3 "$repo_root/scripts/virtio_probe.py" prepare --root "$repo_root"
 
+echo "bootstrap: preparing the full-system AArch64 Linux ERTS reference"
+python3 "$repo_root/scripts/erts_linux.py" prepare --root "$repo_root"
+
 echo "bootstrap: rustc $(rustc --version)"
 echo "bootstrap: $(just --version)"
 echo "bootstrap: running just check"

@@ -1,0 +1,69 @@
+{
+  "schema": "rust-beam/erts-linux-reference-profile/v1",
+  "alpine_release": "3.22.5",
+  "kernel_release": "6.12.94-0-virt",
+  "sources": {
+    "alpine-aarch64-config": {
+      "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/netboot-3.22.5/config-6.12.94-0-virt",
+      "sha256": "6db4ab5d0cab3917c9db97c935598c17d463736ee6b0408bac27752e1e368dac",
+      "size": 158337
+    },
+    "alpine-aarch64-initramfs": {
+      "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/netboot-3.22.5/initramfs-virt",
+      "sha256": "508de7f561b94aac0b569611574502e4528eb21230318badac9626b7f1791bf4",
+      "size": 8910138
+    },
+    "alpine-aarch64-kernel": {
+      "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/netboot-3.22.5/vmlinuz-virt",
+      "sha256": "f270bfa4324e37f0a28662909b0450c802c8279143f353cbc7fe250cdfb733a8",
+      "size": 9605632
+    },
+    "alpine-aarch64-libbz2": {
+      "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/main/aarch64/libbz2-1.0.8-r6.apk",
+      "sha256": "1d588037cc45108acafdbb1507e9f683019a8816fb74d9aba9b0a2dc099463c4",
+      "size": 35391
+    },
+    "alpine-aarch64-libdw": {
+      "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/main/aarch64/libdw-0.193-r0.apk",
+      "sha256": "9a5a7809a65f262efcab0fc40cf7c4f39654313ba586b75e511ef87bdbaf4a51",
+      "size": 233561
+    },
+    "alpine-aarch64-libelf": {
+      "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/main/aarch64/libelf-0.193-r0.apk",
+      "sha256": "cbc2cbd52e27a381f17892392417fecfbeaba354479d3acd923cf57967d1b25a",
+      "size": 44640
+    },
+    "alpine-aarch64-modloop": {
+      "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/netboot-3.22.5/modloop-virt",
+      "sha256": "65a50040ab5129e6c1875353a8d8d91e695eb7f5fc2ba5a36809bd21539ab810",
+      "size": 16326656
+    },
+    "alpine-aarch64-musl-fts": {
+      "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/main/aarch64/musl-fts-1.2.7-r6.apk",
+      "sha256": "7b97efd27c2626c05304a8520732966c9b6e0fc746bd39a14918c55da6495676",
+      "size": 7645
+    },
+    "alpine-aarch64-strace": {
+      "url": "https://dl-cdn.alpinelinux.org/alpine/v3.22/main/aarch64/strace-6.13-r0.apk",
+      "sha256": "5e17811d3f9ab48cd1ff98450b0bf9541a259b6e1e60520b1a1b1ad737dbb559",
+      "size": 443185
+    }
+  },
+  "qemu": {
+    "version": "11.1.0",
+    "machine": "virt-11.1",
+    "cpu": "cortex-a53",
+    "gic": "3",
+    "accelerator": "tcg,thread=multi",
+    "vcpus": 4,
+    "memory_mib": 1024,
+    "dtb_randomness": false
+  },
+  "erts": {
+    "version": "17.0.5",
+    "otp_release": "29.0.5",
+    "beam_sha256": "54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201",
+    "single_scheduler_flags": ["-S", "1:1", "-SDcpu", "1:1", "-SDio", "1", "-A", "1"],
+    "candidate_flags": ["-S", "2:2", "-SDcpu", "1:1", "-SDio", "1", "-A", "1"]
+  }
+}

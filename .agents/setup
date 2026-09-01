@@ -18,8 +18,10 @@ install_system_packages() {
     build-essential
     ca-certificates
     coreutils
+    cpio
     curl
     device-tree-compiler
+    e2fsprogs
     git
     libfdt-dev
     libglib2.0-dev
@@ -27,6 +29,7 @@ install_system_packages() {
     ninja-build
     pkg-config
     python3
+    squashfs-tools
   )
   local missing=()
   local package

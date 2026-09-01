@@ -138,8 +138,134 @@
       "claims": [
         "QEMU 11.1.0 is the frozen emulator candidate behind the versioned virt-11.1 runner profiles."
       ],
-      "consumers": ["RB-T-P003", "RB-T-P011", "toolchain/sources.lock.json", "toolchain/contract.json"],
-      "limitations": "RB-T-P011 validates its isolated display/input profile under TCG; RB-T-P014 still owns the final machine, CPU, GIC, HWCAP, and DTB contract."
+      "consumers": ["RB-T-P003", "RB-T-P006", "RB-T-P011", "toolchain/sources.lock.json", "toolchain/contract.json", "toolchain/erts-linux/aarch64-tcg.json"],
+      "limitations": "RB-T-P006 validates an AArch64 Linux ERTS reference and RB-T-P011 validates its isolated display/input profile under TCG; RB-T-P014 still owns the final machine, CPU, GIC, HWCAP, and DTB contract."
+    },
+    {
+      "id": "RB-SRC-ALPINE-3-22-5-AARCH64-CONFIG",
+      "title": "Alpine Linux 3.22.5 AArch64 virt kernel configuration",
+      "locator": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/netboot-3.22.5/config-6.12.94-0-virt",
+      "retrieved_on": "2026-09-01",
+      "immutable_reference": "Alpine 3.22.5 / linux-virt 6.12.94-0-virt / aarch64",
+      "digest": "sha256:6db4ab5d0cab3917c9db97c935598c17d463736ee6b0408bac27752e1e368dac",
+      "classification": "source",
+      "claims": [
+        "The full-system ERTS reference seals the configuration of the exact Alpine AArch64 virt kernel it boots."
+      ],
+      "consumers": ["RB-T-P006", "toolchain/erts-linux/aarch64-tcg.json"],
+      "limitations": "Configuration provenance only; the target run captures the effective CPU, auxv, cache, signal, and syscall behavior."
+    },
+    {
+      "id": "RB-SRC-ALPINE-3-22-5-AARCH64-INITRAMFS",
+      "title": "Alpine Linux 3.22.5 AArch64 virt initramfs",
+      "locator": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/netboot-3.22.5/initramfs-virt",
+      "retrieved_on": "2026-09-01",
+      "immutable_reference": "Alpine 3.22.5 / initramfs-virt / aarch64",
+      "digest": "sha256:508de7f561b94aac0b569611574502e4528eb21230318badac9626b7f1791bf4",
+      "classification": "source",
+      "claims": [
+        "The offline reference guest starts from this versioned Alpine AArch64 initramfs and deterministically adds only the sealed probe closure."
+      ],
+      "consumers": ["RB-T-P006", "toolchain/erts-linux/aarch64-tcg.json"],
+      "limitations": "The initramfs is scaffolding for target evidence, not a project guest or a supported Linux distribution image."
+    },
+    {
+      "id": "RB-SRC-ALPINE-3-22-5-AARCH64-KERNEL",
+      "title": "Alpine Linux 3.22.5 AArch64 virt kernel 6.12.94",
+      "locator": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/netboot-3.22.5/vmlinuz-virt",
+      "retrieved_on": "2026-09-01",
+      "immutable_reference": "Alpine 3.22.5 / linux-virt 6.12.94-0-virt / aarch64",
+      "digest": "sha256:f270bfa4324e37f0a28662909b0450c802c8279143f353cbc7fe250cdfb733a8",
+      "classification": "source",
+      "claims": [
+        "The authoritative emulated target run boots a real AArch64 Linux 6.12.94 kernel rather than qemu-user syscall translation."
+      ],
+      "consumers": ["RB-T-P006", "toolchain/erts-linux/aarch64-tcg.json"],
+      "limitations": "This reference kernel separates ERTS/toolchain behavior from custom-kernel behavior; it is not the project kernel."
+    },
+    {
+      "id": "RB-SRC-ALPINE-3-22-5-AARCH64-MODLOOP",
+      "title": "Alpine Linux 3.22.5 AArch64 virt kernel modules",
+      "locator": "https://dl-cdn.alpinelinux.org/alpine/v3.22/releases/aarch64/netboot-3.22.5/modloop-virt",
+      "retrieved_on": "2026-09-01",
+      "immutable_reference": "Alpine 3.22.5 / modloop-virt 6.12.94-0-virt / aarch64",
+      "digest": "sha256:65a50040ab5129e6c1875353a8d8d91e695eb7f5fc2ba5a36809bd21539ab810",
+      "classification": "source",
+      "claims": [
+        "The reference initramfs uses the exact matching virtio-mmio, virtio-blk, and ext4 module closure for its ephemeral result disk."
+      ],
+      "consumers": ["RB-T-P006", "toolchain/erts-linux/aarch64-tcg.json"],
+      "limitations": "These modules transport evidence out of the reference VM; they are not dependencies of the static ERTS artifact."
+    },
+    {
+      "id": "RB-SRC-ALPINE-3-22-AARCH64-STRACE",
+      "title": "Alpine Linux 3.22 AArch64 strace 6.13-r0 package",
+      "locator": "https://dl-cdn.alpinelinux.org/alpine/v3.22/main/aarch64/strace-6.13-r0.apk",
+      "retrieved_on": "2026-09-01",
+      "immutable_reference": "Alpine v3.22 / strace 6.13-r0 / aarch64",
+      "digest": "sha256:5e17811d3f9ab48cd1ff98450b0bf9541a259b6e1e60520b1a1b1ad737dbb559",
+      "classification": "source",
+      "claims": [
+        "The guest traces the exact static target ERTS from inside the full-system AArch64 Linux VM with strace 6.13."
+      ],
+      "consumers": ["RB-T-P006", "toolchain/erts-linux/aarch64-tcg.json"],
+      "limitations": "Tracing perturbs timing and observes Linux syscall boundaries; it does not prove the future custom-kernel implementation."
+    },
+    {
+      "id": "RB-SRC-ALPINE-3-22-AARCH64-LIBDW",
+      "title": "Alpine Linux 3.22 AArch64 libdw 0.193-r0 package",
+      "locator": "https://dl-cdn.alpinelinux.org/alpine/v3.22/main/aarch64/libdw-0.193-r0.apk",
+      "retrieved_on": "2026-09-01",
+      "immutable_reference": "Alpine v3.22 / libdw 0.193-r0 / aarch64",
+      "digest": "sha256:9a5a7809a65f262efcab0fc40cf7c4f39654313ba586b75e511ef87bdbaf4a51",
+      "classification": "source",
+      "claims": [
+        "This package is part of the sealed runtime dependency closure of the guest-only strace executable."
+      ],
+      "consumers": ["RB-T-P006", "toolchain/erts-linux/aarch64-tcg.json"],
+      "limitations": "Guest instrumentation dependency only; the static ERTS does not load libdw."
+    },
+    {
+      "id": "RB-SRC-ALPINE-3-22-AARCH64-LIBELF",
+      "title": "Alpine Linux 3.22 AArch64 libelf 0.193-r0 package",
+      "locator": "https://dl-cdn.alpinelinux.org/alpine/v3.22/main/aarch64/libelf-0.193-r0.apk",
+      "retrieved_on": "2026-09-01",
+      "immutable_reference": "Alpine v3.22 / libelf 0.193-r0 / aarch64",
+      "digest": "sha256:cbc2cbd52e27a381f17892392417fecfbeaba354479d3acd923cf57967d1b25a",
+      "classification": "source",
+      "claims": [
+        "This package is part of the sealed runtime dependency closure of guest strace through libdw."
+      ],
+      "consumers": ["RB-T-P006", "toolchain/erts-linux/aarch64-tcg.json"],
+      "limitations": "Guest instrumentation dependency only; the static ERTS does not load libelf."
+    },
+    {
+      "id": "RB-SRC-ALPINE-3-22-AARCH64-LIBBZ2",
+      "title": "Alpine Linux 3.22 AArch64 libbz2 1.0.8-r6 package",
+      "locator": "https://dl-cdn.alpinelinux.org/alpine/v3.22/main/aarch64/libbz2-1.0.8-r6.apk",
+      "retrieved_on": "2026-09-01",
+      "immutable_reference": "Alpine v3.22 / libbz2 1.0.8-r6 / aarch64",
+      "digest": "sha256:1d588037cc45108acafdbb1507e9f683019a8816fb74d9aba9b0a2dc099463c4",
+      "classification": "source",
+      "claims": [
+        "This package is part of the sealed runtime dependency closure of guest strace through libdw."
+      ],
+      "consumers": ["RB-T-P006", "toolchain/erts-linux/aarch64-tcg.json"],
+      "limitations": "Guest instrumentation dependency only; the static ERTS does not load libbz2."
+    },
+    {
+      "id": "RB-SRC-ALPINE-3-22-AARCH64-MUSL-FTS",
+      "title": "Alpine Linux 3.22 AArch64 musl-fts 1.2.7-r6 package",
+      "locator": "https://dl-cdn.alpinelinux.org/alpine/v3.22/main/aarch64/musl-fts-1.2.7-r6.apk",
+      "retrieved_on": "2026-09-01",
+      "immutable_reference": "Alpine v3.22 / musl-fts 1.2.7-r6 / aarch64",
+      "digest": "sha256:7b97efd27c2626c05304a8520732966c9b6e0fc746bd39a14918c55da6495676",
+      "classification": "source",
+      "claims": [
+        "This package is part of the sealed runtime dependency closure of guest strace through libdw."
+      ],
+      "consumers": ["RB-T-P006", "toolchain/erts-linux/aarch64-tcg.json"],
+      "limitations": "Guest instrumentation dependency only; the static ERTS does not load libfts."
     },
     {
       "id": "RB-SRC-VIRTIO-DRIVERS-0-13-0",

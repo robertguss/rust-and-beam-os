@@ -87,6 +87,15 @@ test-virtio-probe-tcg:
     cargo clippy --manifest-path tests/virtio-probe/Cargo.toml --release --locked --offline -- -D warnings
     python3 scripts/virtio_probe.py run --boots 10 --output target/virtio-probe/acceptance
 
+# Boot the exact static target ERTS once in the sealed full-system AArch64 Linux VM.
+run-target-erts-linux:
+    python3 scripts/erts_linux.py run --boots 1 --output target/erts-linux-reference/run
+
+# Run host contract tests and ten fresh full-system AArch64 Linux TCG boots.
+test-target-erts-linux:
+    python3 -m unittest tests.test_erts_linux -v
+    python3 scripts/erts_linux.py run --boots 10 --output target/erts-linux-reference/acceptance
+
 # Prove every relevant Tyn limitation has one owned project disposition.
 prior-art-coverage:
     python3 scripts/prior_art.py coverage --root .

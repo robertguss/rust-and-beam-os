@@ -59,7 +59,7 @@
     },
     {
       "path": "justfile",
-      "digest": "sha256:728d0f22b938b18e57b8c08860bdd4f8aef44ec322f0596932e30f524600dfbd"
+      "digest": "sha256:64ffa497d54d2fd9a048611b9ce7f12e5c57d74e595ae98ff5f2899a03255e46"
     },
     {
       "path": "rust-toolchain.toml",
@@ -115,7 +115,7 @@
     },
     {
       "path": "docs/evidence/sources.json",
-      "digest": "sha256:78c6f84208147a5311d0a5321b657a0bc59eff017ba2e49a5465792f63925427"
+      "digest": "sha256:a30b27d040ac26a2c9a1fb0c57dce964d85e702132468be2451f2789c1d4239f"
     }
   ],
   "artifacts": [
