@@ -3,7 +3,7 @@ schema: "repo-plan/v1"
 id: "RB-T-P006"
 title: "Run the target ERTS artifact on AArch64 Linux"
 type: "task"
-state: "in_progress"
+state: "done"
 priority: "P3"
 milestone: "RB-M-M0"
 parent: null
@@ -11,9 +11,10 @@ depends_on:
   - "RB-T-P005"
 related: []
 actor: "agent"
-owner: "amp:T-01a05912-a43d-754e-84fc-d56536c31a76"
+owner: null
 defer_until: null
-evidence: []
+evidence:
+  - "docs/evidence/phase-0/RB-T-P006/evidence.json"
 x_legacy_id: "P0-06"
 x_linear_id: "ROB-693"
 x_linear_url: "https://linear.app/robert-guss/issue/ROB-693/p0-06-run-the-target-erts-artifact-on-aarch64-linux"
@@ -52,12 +53,12 @@ Blocked by: RB-T-P005.
 
 ## Acceptance criteria
 
-- [ ] `erlang:display(ok), halt().` or its direct equivalent succeeds.
-- [ ] Processes, messages, timers, binaries, ETS, and forced GC run using the
+- [x] `erlang:display(ok), halt().` or its direct equivalent succeeds.
+- [x] Processes, messages, timers, binaries, ETS, and forced GC run using the
       target artifact.
-- [ ] The runtime uses the expected non-JIT flavor and final candidate
+- [x] The runtime uses the expected non-JIT flavor and final candidate
       scheduler/dirty/async configuration.
-- [ ] No dependency on a dynamic linker, application NIF, network service, or
+- [x] No dependency on a dynamic linker, application NIF, network service, or
       unrecorded host file exists.
 
 ## Verification
@@ -70,6 +71,13 @@ Blocked by: RB-T-P005.
 - Run ten clean reference boots.
 - Save normalized traces and runtime identity.
 - Compare the observed calls with `beam-host.yaml` revision 0.
+
+- [Execution receipt](../../evidence/phase-0/RB-T-P006/evidence.json)
+- [Evidence explanation](../../evidence/phase-0/RB-T-P006/README.md)
+- [Ten-boot aggregate](../../evidence/phase-0/RB-T-P006/aggregate.json)
+- [Boot artifact matrix](../../evidence/phase-0/RB-T-P006/boot-matrix.json)
+- [Preparation provenance](../../evidence/phase-0/RB-T-P006/preparation-provenance.json)
+- [Verification transcript](../../evidence/phase-0/RB-T-P006/verification.txt)
 
 ## Out of scope
 

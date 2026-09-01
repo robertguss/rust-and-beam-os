@@ -1,0 +1,287 @@
+{
+  "beam_sha256": "54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201",
+  "boots": [
+    {
+      "artifacts": {
+        "normalized-strace.txt.gz": {
+          "bytes": 200576,
+          "sha256": "e6bc89ad238f2e52ba1251dcddfd57506094f79565934ed679208bf3ec77108f"
+        },
+        "receipt.json": {
+          "bytes": 40399,
+          "sha256": "163015896cd2b02c753eb483d1595492596c2b412edf420b004c818f4998d136"
+        },
+        "serial.log": {
+          "bytes": 473,
+          "sha256": "4381f019c1cac8f537e9aaabf78a6629fa72ef7a1b80ccc77f14eade4bce40ea"
+        }
+      },
+      "boot": 1,
+      "candidate_threads": 10,
+      "contract_status": "pass",
+      "duration_seconds": 29.299,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "shutdown_exit_code": 0,
+      "single_threads": 9,
+      "status": "pass",
+      "syscalls": 53
+    },
+    {
+      "artifacts": {
+        "normalized-strace.txt.gz": {
+          "bytes": 207165,
+          "sha256": "037e39930ef277cbb3fe539c23fbfc21e464a32fb2c540382215f658839c72e9"
+        },
+        "receipt.json": {
+          "bytes": 40399,
+          "sha256": "5f41c1a218ace5f7db53b274dbba6d56394e75a517b4783430e028a13af06ec2"
+        },
+        "serial.log": {
+          "bytes": 473,
+          "sha256": "7e95e7256f097d5f5ddc4715ce8297eb07a2a6203945b2df72b5a1563e2ec4ef"
+        }
+      },
+      "boot": 2,
+      "candidate_threads": 10,
+      "contract_status": "pass",
+      "duration_seconds": 29.761,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "shutdown_exit_code": 0,
+      "single_threads": 9,
+      "status": "pass",
+      "syscalls": 53
+    },
+    {
+      "artifacts": {
+        "normalized-strace.txt.gz": {
+          "bytes": 206296,
+          "sha256": "14b21b90f060282982a8d9b756de690f7f8fad9c9d2db32e80585375b2c2c0af"
+        },
+        "receipt.json": {
+          "bytes": 40397,
+          "sha256": "b48750fbcc2fda8c4dfa70e59a79da454cdb050b30a2c96de8b3ba2847ee5be5"
+        },
+        "serial.log": {
+          "bytes": 473,
+          "sha256": "10749a87259fe297ee3c676e37ee55610bf7eb1a859fa2442a19ec77747f432f"
+        }
+      },
+      "boot": 3,
+      "candidate_threads": 10,
+      "contract_status": "pass",
+      "duration_seconds": 30.263,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "shutdown_exit_code": 0,
+      "single_threads": 9,
+      "status": "pass",
+      "syscalls": 53
+    },
+    {
+      "artifacts": {
+        "normalized-strace.txt.gz": {
+          "bytes": 202325,
+          "sha256": "370fc904eb72f0beb5b91d9ba4044250b58fdb74abbc289b7dac77a39089fb2c"
+        },
+        "receipt.json": {
+          "bytes": 40413,
+          "sha256": "0743e541ed476aa26a237ac6ac30d01253a86b5e8269aa80fc61b53630ca9c78"
+        },
+        "serial.log": {
+          "bytes": 473,
+          "sha256": "3b7f2a69bd2048c406b50f0f5b0c00967f0aabd46cd49a64c7902a1c38b85536"
+        }
+      },
+      "boot": 4,
+      "candidate_threads": 10,
+      "contract_status": "pass",
+      "duration_seconds": 30.719,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "shutdown_exit_code": 0,
+      "single_threads": 9,
+      "status": "pass",
+      "syscalls": 53
+    },
+    {
+      "artifacts": {
+        "normalized-strace.txt.gz": {
+          "bytes": 206816,
+          "sha256": "233b224138bf723a098c8261c1098fffac88b68418afb626c0ac212bd5a3f405"
+        },
+        "receipt.json": {
+          "bytes": 40400,
+          "sha256": "76be0f8ca5be3aeeb29f39f8e1d6b45cdf649183ebf9454f00d8cf53e122d7cf"
+        },
+        "serial.log": {
+          "bytes": 473,
+          "sha256": "97f5b699342ce35292c4c70c899f5abf3fc1f364c4d9b3efd2a4475261710ab7"
+        }
+      },
+      "boot": 5,
+      "candidate_threads": 10,
+      "contract_status": "pass",
+      "duration_seconds": 31.321,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "shutdown_exit_code": 0,
+      "single_threads": 9,
+      "status": "pass",
+      "syscalls": 53
+    },
+    {
+      "artifacts": {
+        "normalized-strace.txt.gz": {
+          "bytes": 205440,
+          "sha256": "2a622359cb947a9e3360523f29f939bd5bb400d522822a5392f89cef8205c7e0"
+        },
+        "receipt.json": {
+          "bytes": 40400,
+          "sha256": "001fe371439d780fc4863873ce177fdbcf8eda0a55f1674a6b8706cbf3bc898f"
+        },
+        "serial.log": {
+          "bytes": 473,
+          "sha256": "996d9bfcb8e7fe038a6f91ee66c8c59b558d40183555f42d2f25a2f748b37e1c"
+        }
+      },
+      "boot": 6,
+      "candidate_threads": 10,
+      "contract_status": "pass",
+      "duration_seconds": 32.142,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "shutdown_exit_code": 0,
+      "single_threads": 9,
+      "status": "pass",
+      "syscalls": 53
+    },
+    {
+      "artifacts": {
+        "normalized-strace.txt.gz": {
+          "bytes": 195857,
+          "sha256": "26b4cd91d0e4124be3d794559a391cb0ab55572c4029fa75fda341aa6a88f733"
+        },
+        "receipt.json": {
+          "bytes": 40399,
+          "sha256": "77e8ddacf106e176a91152ad4303730165559c8e86d71e146ad7ad8a17a19f6b"
+        },
+        "serial.log": {
+          "bytes": 473,
+          "sha256": "8000ee6c3ace684848dae2ae680e45f57064eabdc0d59fe6d611cda305685923"
+        }
+      },
+      "boot": 7,
+      "candidate_threads": 10,
+      "contract_status": "pass",
+      "duration_seconds": 29.914,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "shutdown_exit_code": 0,
+      "single_threads": 9,
+      "status": "pass",
+      "syscalls": 53
+    },
+    {
+      "artifacts": {
+        "normalized-strace.txt.gz": {
+          "bytes": 205400,
+          "sha256": "d0b7e9301fad49c0b35e7d5aa25e0b18c614a3fe9ccbc628fe38f3d325e169b3"
+        },
+        "receipt.json": {
+          "bytes": 40397,
+          "sha256": "16df345d408d0b6295c43a31f627403fee0f6eada92a275009481cff0ef2ff67"
+        },
+        "serial.log": {
+          "bytes": 473,
+          "sha256": "142605074274dc071e8fba14de8d51894cbad9ac60241c959cedd55c4f057705"
+        }
+      },
+      "boot": 8,
+      "candidate_threads": 10,
+      "contract_status": "pass",
+      "duration_seconds": 32.298,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "shutdown_exit_code": 0,
+      "single_threads": 9,
+      "status": "pass",
+      "syscalls": 53
+    },
+    {
+      "artifacts": {
+        "normalized-strace.txt.gz": {
+          "bytes": 208181,
+          "sha256": "8669251ab847e13a4d3c715aea9141c4ab6ba49f54b27b848a4e7d1cde474b1a"
+        },
+        "receipt.json": {
+          "bytes": 40393,
+          "sha256": "c0c33438f0cbd7fd334b735f0562e55e63a499044282ef23879f53dad21ce45c"
+        },
+        "serial.log": {
+          "bytes": 473,
+          "sha256": "277524c6df1ce1bb7fcb8125bfdc64e2cecc93a870068594477ae5e7f5ac580c"
+        }
+      },
+      "boot": 9,
+      "candidate_threads": 10,
+      "contract_status": "pass",
+      "duration_seconds": 38.269,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "shutdown_exit_code": 0,
+      "single_threads": 9,
+      "status": "pass",
+      "syscalls": 53
+    },
+    {
+      "artifacts": {
+        "normalized-strace.txt.gz": {
+          "bytes": 201294,
+          "sha256": "cd89ed085e7b0da7ef3a6cace5717d1b0ee08a1ca7c56b310cd40929a94ddb63"
+        },
+        "receipt.json": {
+          "bytes": 40401,
+          "sha256": "e64a2c6932f391c378949e9c0ddd4fd47f2430b0fab3a17d0f5b4cfa8c8d5fa0"
+        },
+        "serial.log": {
+          "bytes": 473,
+          "sha256": "e2e92bb86091515dfe1258b49f1ec48f1b0a03e895354b26d49ba08eb500c2e3"
+        }
+      },
+      "boot": 10,
+      "candidate_threads": 10,
+      "contract_status": "pass",
+      "duration_seconds": 32.635,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "shutdown_exit_code": 0,
+      "single_threads": 9,
+      "status": "pass",
+      "syscalls": 53
+    }
+  ],
+  "platform": {
+    "cpu": "cortex-a53",
+    "machine": "virt-11.1",
+    "memory_mib": 1024,
+    "vcpus": 4
+  },
+  "runtime": {
+    "erts": "17.0.5",
+    "otp": "29.0.5"
+  },
+  "schema": "rust-beam/erts-linux-boot-matrix/v1",
+  "status": "pass"
+}

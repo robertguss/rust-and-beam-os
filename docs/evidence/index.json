@@ -38,6 +38,12 @@
       "claim": "The pinned official OTP 29.0.5 flow produced a static non-JIT AArch64-musl release whose complete 23-object native closure passed sealed ELF/CPU/load audits and matched a second clean rebuild exactly."
     },
     {
+      "id": "RB-EV-P006-ERTS-LINUX",
+      "task": "RB-T-P006",
+      "record": "docs/evidence/phase-0/RB-T-P006/evidence.json",
+      "claim": "The exact static non-JIT AArch64-musl ERTS artifact passed one smoke boot and ten fresh full-system QEMU TCG acceptance boots with minimal, single-scheduler, and final two-scheduler workload progress, complete platform/runtime capture, clean shutdown, no dynamic or unrecorded host dependency, and all 53 syscalls mapped to beam-host revision 0."
+    },
+    {
       "id": "RB-EV-P011-VIRTIO",
       "task": "RB-T-P011",
       "record": "docs/evidence/phase-0/RB-T-P011/evidence.json",

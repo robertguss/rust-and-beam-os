@@ -1,0 +1,26 @@
+$ just run-target-erts-linux
+python3 scripts/erts_linux.py run --boots 1 --output target/erts-linux-reference/run
+erts-linux: using prepared target/erts-linux-reference/reference-initramfs.gz
+erts-linux: boot 1/run pass threads=10 syscalls=53
+erts-linux: 1/1 full-system TCG boots passed; receipt=target/erts-linux-reference/run/aggregate.json
+
+$ just test-target-erts-linux
+python3 -m unittest tests.test_erts_linux -v
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.004s
+
+OK
+python3 scripts/erts_linux.py run --boots 10 --output target/erts-linux-reference/acceptance
+erts-linux: using prepared target/erts-linux-reference/reference-initramfs.gz
+erts-linux: boot 1/acceptance pass threads=10 syscalls=53
+erts-linux: boot 2/acceptance pass threads=10 syscalls=53
+erts-linux: boot 3/acceptance pass threads=10 syscalls=53
+erts-linux: boot 4/acceptance pass threads=10 syscalls=53
+erts-linux: boot 5/acceptance pass threads=10 syscalls=53
+erts-linux: boot 6/acceptance pass threads=10 syscalls=53
+erts-linux: boot 7/acceptance pass threads=10 syscalls=53
+erts-linux: boot 8/acceptance pass threads=10 syscalls=53
+erts-linux: boot 9/acceptance pass threads=10 syscalls=53
+erts-linux: boot 10/acceptance pass threads=10 syscalls=53
+erts-linux: 10/10 full-system TCG boots passed; receipt=target/erts-linux-reference/acceptance/aggregate.json

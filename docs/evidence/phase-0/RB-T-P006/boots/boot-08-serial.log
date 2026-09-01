@@ -1,0 +1,10 @@
+RB_GUEST event=boot kernel=6.12.94-0-virt machine=aarch64 vcpus=4
+RB_GUEST event=fault-probe status=0
+ok
+RB_GUEST event=minimal status=0
+RB_ERTS_RESULT profile=single schedulers=1 dirty_cpu=1 dirty_io=1 async=1
+RB_GUEST event=workload profile=single status=0 pid=477
+RB_ERTS_RESULT profile=candidate schedulers=2 dirty_cpu=1 dirty_io=1 async=1
+RB_GUEST event=workload profile=candidate status=0 pid=787
+RB_GUEST event=complete status=pass
+[   31.509863] reboot: Power down

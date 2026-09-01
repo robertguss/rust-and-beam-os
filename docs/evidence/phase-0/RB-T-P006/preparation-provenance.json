@@ -1,0 +1,39 @@
+{
+  "alpine_release": "3.22.5",
+  "identity": {
+    "beam_sha256": "54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201",
+    "profile_sha256": "48602504c066033beb4b50e24feefe691fba847e01d7d5ef0c101468c0cef595",
+    "qemu_sha256": "6b6cbd5fe5cb4669e33704651c1cd70a9fcf9581a1e3e86313ea5ced40ea3b9a",
+    "release_native_closure_sha256": "2e6d57b4ca0bc026342bb66b4990d6c0fae02121569aee4ac5eaf84d0628abc8",
+    "source_files": {
+      "tests/beam-host/fault_probe.c": "480a287899e5d9588b2617a95e2993d57dd7a3ce87e7cb07e6aea7e980dcddc5",
+      "tests/erts-linux/init.sh": "e6655b86393e87eb3d917867036bdea3d41cdfab0608ef65958cc81b98618d0b",
+      "tests/erts-linux/platform_probe.c": "75c3902fa3816568a23372d76ad197931ebcc8e87bb84d14b348ea61cb527a4c",
+      "tests/erts-linux/rb_erts_workload.erl": "faa0b078c09da164736ce44f568cdaa03652d8e587c469b33dba49bc9e305240"
+    },
+    "sources": {
+      "alpine-aarch64-config": "6db4ab5d0cab3917c9db97c935598c17d463736ee6b0408bac27752e1e368dac",
+      "alpine-aarch64-initramfs": "508de7f561b94aac0b569611574502e4528eb21230318badac9626b7f1791bf4",
+      "alpine-aarch64-kernel": "f270bfa4324e37f0a28662909b0450c802c8279143f353cbc7fe250cdfb733a8",
+      "alpine-aarch64-libbz2": "1d588037cc45108acafdbb1507e9f683019a8816fb74d9aba9b0a2dc099463c4",
+      "alpine-aarch64-libdw": "9a5a7809a65f262efcab0fc40cf7c4f39654313ba586b75e511ef87bdbaf4a51",
+      "alpine-aarch64-libelf": "cbc2cbd52e27a381f17892392417fecfbeaba354479d3acd923cf57967d1b25a",
+      "alpine-aarch64-modloop": "65a50040ab5129e6c1875353a8d8d91e695eb7f5fc2ba5a36809bd21539ab810",
+      "alpine-aarch64-musl-fts": "7b97efd27c2626c05304a8520732966c9b6e0fc746bd39a14918c55da6495676",
+      "alpine-aarch64-strace": "5e17811d3f9ab48cd1ff98450b0bf9541a259b6e1e60520b1a1b1ad737dbb559"
+    }
+  },
+  "kernel_release": "6.12.94-0-virt",
+  "outputs": {
+    "fault_probe_sha256": "a29a35ba9bb05b58a69137ed7d939dd795822390ee895f2450c76c595754005d",
+    "initramfs_path": "target/erts-linux-reference/reference-initramfs.gz",
+    "initramfs_sha256": "c928b5eb2b5c2b10408f5c099f67d0902fc9747421ee937af2ece4f598755c73",
+    "initramfs_size": 45301006,
+    "kernel_path": "target/toolchain-cache/sha256/f270bfa4324e37f0a28662909b0450c802c8279143f353cbc7fe250cdfb733a8",
+    "kernel_sha256": "f270bfa4324e37f0a28662909b0450c802c8279143f353cbc7fe250cdfb733a8",
+    "platform_probe_sha256": "7f201e5cbeeeaad5a8bf50d03e721c486b21a16d753f807df73986f2c73dcf9b",
+    "workload_beam_sha256": "995665b6d1acf36a597262b94f027a72a5d0438ef5defa78b54eb117e294a80e"
+  },
+  "schema": "rust-beam/erts-linux-preparation/v1",
+  "strace_version": "6.13-r0"
+}
