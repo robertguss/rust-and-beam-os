@@ -1,17 +1,8 @@
 {
   "date": null,
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:392ef3516af879cb4bdd4c4d3f769ff5db5fbd94f12d7921cfba0cfced7ab393",
+  "source_digest": "sha256:546dcfadbfe992c364c31303ad1ea4e89f30b0589e0c0412a84b25c20c506fc4",
   "tasks": [
-    {
-      "id": "RB-T-AUDIT0",
-      "incomplete_downstream": 96,
-      "milestone": "RB-M-M0",
-      "milestone_order": 0,
-      "path": "tasks/rb-t-audit0.md",
-      "priority": "P0",
-      "reason": "open; milestone authorized; all dependencies done"
-    },
     {
       "id": "RB-T-P002",
       "incomplete_downstream": 102,

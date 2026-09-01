@@ -656,13 +656,13 @@
       "evidence": [],
       "id": "RB-T-AUDIT0",
       "milestone": "RB-M-M0",
-      "owner": null,
+      "owner": "amp:T-01a05912-a43d-754e-84fc-d56536c31a76",
       "parent": null,
       "path": "tasks/rb-t-audit0.md",
       "priority": "P0",
       "related": [],
       "schema": "repo-plan/v1",
-      "state": "open",
+      "state": "in_progress",
       "title": "Close architecture-readiness blockers before Gate 0",
       "type": "task",
       "x_labels": [
@@ -3856,5 +3856,5 @@
     }
   ],
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:392ef3516af879cb4bdd4c4d3f769ff5db5fbd94f12d7921cfba0cfced7ab393"
+  "source_digest": "sha256:546dcfadbfe992c364c31303ad1ea4e89f30b0589e0c0412a84b25c20c506fc4"
 }
