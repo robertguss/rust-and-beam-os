@@ -3,7 +3,7 @@ schema: "repo-plan/v1"
 id: "RB-T-P007"
 title: "Pair a genuine Mix release with the target ERTS"
 type: "task"
-state: "in_progress"
+state: "done"
 priority: "P3"
 milestone: "RB-M-M0"
 parent: null
@@ -13,9 +13,10 @@ depends_on:
   - "RB-T-P006"
 related: []
 actor: "agent"
-owner: "amp:T-01a05fea-257c-73e8-966c-c4b4192e7854"
+owner: null
 defer_until: null
-evidence: []
+evidence:
+  - "docs/evidence/phase-0/RB-T-P007/evidence.json"
 x_legacy_id: "P0-07"
 x_linear_id: "ROB-692"
 x_linear_url: "https://linear.app/robert-guss/issue/ROB-692/p0-07-pair-a-genuine-mix-release-with-the-target-erts"
@@ -54,12 +55,12 @@ Blocked by: RB-T-P002, RB-T-P005, RB-T-P006.
 
 ## Acceptance criteria
 
-- [ ] The target ERTS boots the Mix-generated release on AArch64 Linux.
-- [ ] `Application.ensure_all_started/1`, configuration loading, supervision,
+- [x] The target ERTS boots the Mix-generated release on AArch64 Linux.
+- [x] `Application.ensure_all_started/1`, configuration loading, supervision,
       reference workloads, and clean shutdown work normally.
-- [ ] The release reports the exact pinned Elixir/OTP versions and artifact
+- [x] The release reports the exact pinned Elixir/OTP versions and artifact
       build ID.
-- [ ] The assembly process is reproducible and contains no host-architecture
+- [x] The assembly process is reproducible and contains no host-architecture
       ERTS or native dependency.
 
 ## Verification
@@ -73,6 +74,17 @@ Blocked by: RB-T-P002, RB-T-P005, RB-T-P006.
 - Build and boot from a clean Linux environment.
 - Inspect the release tree and all native artifacts.
 - Save launcher manifest, logs, inventory, and hashes.
+
+- [Execution receipt](../../evidence/phase-0/RB-T-P007/evidence.json)
+- [Evidence explanation and learning checkpoint](../../evidence/phase-0/RB-T-P007/README.md)
+- [Ten-boot aggregate](../../evidence/phase-0/RB-T-P007/aggregate.json)
+- [Boot artifact matrix](../../evidence/phase-0/RB-T-P007/boot-matrix.json)
+- [Pairing and native-closure receipt](../../evidence/phase-0/RB-T-P007/pair-receipt.json)
+- [Complete Mix tree inventory](../../evidence/phase-0/RB-T-P007/mix-tree-manifest.json)
+- [Complete paired tree inventory](../../evidence/phase-0/RB-T-P007/paired-tree-manifest.json)
+- [Direct launcher manifest](../../evidence/phase-0/RB-T-P007/launcher.json)
+- [Guest preparation receipt](../../evidence/phase-0/RB-T-P007/guest-preparation.json)
+- [Verification transcript](../../evidence/phase-0/RB-T-P007/verification.txt)
 
 ## Out of scope
 

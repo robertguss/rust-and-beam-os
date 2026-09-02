@@ -1,0 +1,70 @@
+$ git status --porcelain
+$ git rev-parse HEAD
+3f4d27008a270cc9265e34a427b9c6e3230d3176
+$ just build-release
+python3 scripts/runtime_release.py build
++ (/home/user/workspace/repo) /home/user/workspace/repo/target/toolchain-smoke/build/elixir/bin/elixir --short-version
++ (/home/user/workspace/repo) /home/user/workspace/repo/target/toolchain-smoke/install/otp/bin/erl -noshell -eval 'io:format("~s", [erlang:system_info(version)]), halt().'
++ (/home/user/workspace/repo/target/runtime-release/mix-work-primary/source) /home/user/workspace/repo/target/toolchain-smoke/build/elixir/bin/mix clean
++ (/home/user/workspace/repo/target/runtime-release/mix-work-primary/source) /home/user/workspace/repo/target/toolchain-smoke/build/elixir/bin/mix compile --warnings-as-errors
++ (/home/user/workspace/repo/target/runtime-release/mix-work-primary/source) /home/user/workspace/repo/target/toolchain-smoke/build/elixir/bin/mix release runtime_lab --overwrite
+runtime-release: built genuine Mix lane primary; files=362 digest=fd83c7b5c6a2f5bdf0d142f4ee8b6a8342848daaa2b2953314d568aabaae6ed5
+$ just pair-release
+python3 scripts/runtime_release.py pair
++ (/home/user/workspace/repo) /usr/local/bin/python3 scripts/otp_artifact.py inspect
++ (/home/user/workspace/repo) /home/user/workspace/repo/target/toolchain-smoke/build/elixir/bin/elixir --short-version
++ (/home/user/workspace/repo) /home/user/workspace/repo/target/toolchain-smoke/install/otp/bin/erl -noshell -eval 'io:format("~s", [erlang:system_info(version)]), halt().'
++ (/home/user/workspace/repo/target/runtime-release/mix-work-rebuild/source) /home/user/workspace/repo/target/toolchain-smoke/build/elixir/bin/mix clean
++ (/home/user/workspace/repo/target/runtime-release/mix-work-rebuild/source) /home/user/workspace/repo/target/toolchain-smoke/build/elixir/bin/mix compile --warnings-as-errors
++ (/home/user/workspace/repo/target/runtime-release/mix-work-rebuild/source) /home/user/workspace/repo/target/toolchain-smoke/build/elixir/bin/mix release runtime_lab --overwrite
+runtime-release: built genuine Mix lane rebuild; files=362 digest=fd83c7b5c6a2f5bdf0d142f4ee8b6a8342848daaa2b2953314d568aabaae6ed5
++ (/home/user/workspace/repo) /usr/local/bin/python3 scripts/otp_artifact.py inspect
++ (/home/user/workspace/repo) mksquashfs /home/user/workspace/repo/target/runtime-release/paired /home/user/workspace/repo/target/runtime-release/paired.squashfs -noappend -comp xz -all-root -no-xattrs -mkfs-time 1788210000 -all-time 1788210000 -processors 1 -no-progress -quiet
++ (/home/user/workspace/repo) mksquashfs /home/user/workspace/repo/target/runtime-release/paired-rebuild /home/user/workspace/repo/target/runtime-release/paired-rebuild.squashfs -noappend -comp xz -all-root -no-xattrs -mkfs-time 1788210000 -all-time 1788210000 -processors 1 -no-progress -quiet
+runtime-release: paired exact target ERTS; native=23 squashfs=56aa321b39848ffd09386f56fb117b4f8b5faf53787e2fb5d6dab15f23e047bb
+$ just test-target-release-linux
+python3 -m unittest tests.test_runtime_release -v
+test_exec_inventory_allows_only_beam_and_upstream_helpers (tests.test_runtime_release.RuntimeReleaseTests.test_exec_inventory_allows_only_beam_and_upstream_helpers) ... ok
+test_guest_init_launches_beam_without_release_script_or_erlexec (tests.test_runtime_release.RuntimeReleaseTests.test_guest_init_launches_beam_without_release_script_or_erlexec) ... ok
+test_launcher_is_exact_direct_target_beam_contract (tests.test_runtime_release.RuntimeReleaseTests.test_launcher_is_exact_direct_target_beam_contract) ... ok
+test_open_audit_requires_erofs_and_rejects_undeclared_writes (tests.test_runtime_release.RuntimeReleaseTests.test_open_audit_requires_erofs_and_rejects_undeclared_writes) ... ok
+test_qemu_argv_is_full_system_offline_with_read_only_release (tests.test_runtime_release.RuntimeReleaseTests.test_qemu_argv_is_full_system_offline_with_read_only_release) ... ok
+test_tree_manifest_is_stable_and_content_sensitive (tests.test_runtime_release.RuntimeReleaseTests.test_tree_manifest_is_stable_and_content_sensitive) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.004s
+
+OK
+python3 scripts/runtime_release.py run --boots 10 --output target/runtime-release/acceptance
+erts-linux: using prepared target/erts-linux-reference/reference-initramfs.gz
++ (/home/user/workspace/repo) /usr/sbin/mkfs.ext4 -q -F -O '^has_journal' -E lazy_itable_init=0,lazy_journal_init=0 -U 52554245-414d-4552-5453-000000000007 -L RBRELEASE /home/user/workspace/repo/target/runtime-release/acceptance/boot-01/results.img
++ (/home/user/workspace/repo) /usr/sbin/debugfs -R 'rdump /results /home/user/workspace/repo/target/runtime-release/acceptance/boot-01' /home/user/workspace/repo/target/runtime-release/acceptance/boot-01/results.img
+runtime-release: boot 1/acceptance pass opens=957 syscalls=52
++ (/home/user/workspace/repo) /usr/sbin/mkfs.ext4 -q -F -O '^has_journal' -E lazy_itable_init=0,lazy_journal_init=0 -U 52554245-414d-4552-5453-000000000007 -L RBRELEASE /home/user/workspace/repo/target/runtime-release/acceptance/boot-02/results.img
++ (/home/user/workspace/repo) /usr/sbin/debugfs -R 'rdump /results /home/user/workspace/repo/target/runtime-release/acceptance/boot-02' /home/user/workspace/repo/target/runtime-release/acceptance/boot-02/results.img
+runtime-release: boot 2/acceptance pass opens=957 syscalls=52
++ (/home/user/workspace/repo) /usr/sbin/mkfs.ext4 -q -F -O '^has_journal' -E lazy_itable_init=0,lazy_journal_init=0 -U 52554245-414d-4552-5453-000000000007 -L RBRELEASE /home/user/workspace/repo/target/runtime-release/acceptance/boot-03/results.img
++ (/home/user/workspace/repo) /usr/sbin/debugfs -R 'rdump /results /home/user/workspace/repo/target/runtime-release/acceptance/boot-03' /home/user/workspace/repo/target/runtime-release/acceptance/boot-03/results.img
+runtime-release: boot 3/acceptance pass opens=957 syscalls=52
++ (/home/user/workspace/repo) /usr/sbin/mkfs.ext4 -q -F -O '^has_journal' -E lazy_itable_init=0,lazy_journal_init=0 -U 52554245-414d-4552-5453-000000000007 -L RBRELEASE /home/user/workspace/repo/target/runtime-release/acceptance/boot-04/results.img
++ (/home/user/workspace/repo) /usr/sbin/debugfs -R 'rdump /results /home/user/workspace/repo/target/runtime-release/acceptance/boot-04' /home/user/workspace/repo/target/runtime-release/acceptance/boot-04/results.img
+runtime-release: boot 4/acceptance pass opens=957 syscalls=52
++ (/home/user/workspace/repo) /usr/sbin/mkfs.ext4 -q -F -O '^has_journal' -E lazy_itable_init=0,lazy_journal_init=0 -U 52554245-414d-4552-5453-000000000007 -L RBRELEASE /home/user/workspace/repo/target/runtime-release/acceptance/boot-05/results.img
++ (/home/user/workspace/repo) /usr/sbin/debugfs -R 'rdump /results /home/user/workspace/repo/target/runtime-release/acceptance/boot-05' /home/user/workspace/repo/target/runtime-release/acceptance/boot-05/results.img
+runtime-release: boot 5/acceptance pass opens=957 syscalls=52
++ (/home/user/workspace/repo) /usr/sbin/mkfs.ext4 -q -F -O '^has_journal' -E lazy_itable_init=0,lazy_journal_init=0 -U 52554245-414d-4552-5453-000000000007 -L RBRELEASE /home/user/workspace/repo/target/runtime-release/acceptance/boot-06/results.img
++ (/home/user/workspace/repo) /usr/sbin/debugfs -R 'rdump /results /home/user/workspace/repo/target/runtime-release/acceptance/boot-06' /home/user/workspace/repo/target/runtime-release/acceptance/boot-06/results.img
+runtime-release: boot 6/acceptance pass opens=957 syscalls=52
++ (/home/user/workspace/repo) /usr/sbin/mkfs.ext4 -q -F -O '^has_journal' -E lazy_itable_init=0,lazy_journal_init=0 -U 52554245-414d-4552-5453-000000000007 -L RBRELEASE /home/user/workspace/repo/target/runtime-release/acceptance/boot-07/results.img
++ (/home/user/workspace/repo) /usr/sbin/debugfs -R 'rdump /results /home/user/workspace/repo/target/runtime-release/acceptance/boot-07' /home/user/workspace/repo/target/runtime-release/acceptance/boot-07/results.img
+runtime-release: boot 7/acceptance pass opens=957 syscalls=52
++ (/home/user/workspace/repo) /usr/sbin/mkfs.ext4 -q -F -O '^has_journal' -E lazy_itable_init=0,lazy_journal_init=0 -U 52554245-414d-4552-5453-000000000007 -L RBRELEASE /home/user/workspace/repo/target/runtime-release/acceptance/boot-08/results.img
++ (/home/user/workspace/repo) /usr/sbin/debugfs -R 'rdump /results /home/user/workspace/repo/target/runtime-release/acceptance/boot-08' /home/user/workspace/repo/target/runtime-release/acceptance/boot-08/results.img
+runtime-release: boot 8/acceptance pass opens=957 syscalls=52
++ (/home/user/workspace/repo) /usr/sbin/mkfs.ext4 -q -F -O '^has_journal' -E lazy_itable_init=0,lazy_journal_init=0 -U 52554245-414d-4552-5453-000000000007 -L RBRELEASE /home/user/workspace/repo/target/runtime-release/acceptance/boot-09/results.img
++ (/home/user/workspace/repo) /usr/sbin/debugfs -R 'rdump /results /home/user/workspace/repo/target/runtime-release/acceptance/boot-09' /home/user/workspace/repo/target/runtime-release/acceptance/boot-09/results.img
+runtime-release: boot 9/acceptance pass opens=957 syscalls=52
++ (/home/user/workspace/repo) /usr/sbin/mkfs.ext4 -q -F -O '^has_journal' -E lazy_itable_init=0,lazy_journal_init=0 -U 52554245-414d-4552-5453-000000000007 -L RBRELEASE /home/user/workspace/repo/target/runtime-release/acceptance/boot-10/results.img
++ (/home/user/workspace/repo) /usr/sbin/debugfs -R 'rdump /results /home/user/workspace/repo/target/runtime-release/acceptance/boot-10' /home/user/workspace/repo/target/runtime-release/acceptance/boot-10/results.img
+runtime-release: boot 10/acceptance pass opens=957 syscalls=52
+runtime-release: 10/10 full-system target release boots passed

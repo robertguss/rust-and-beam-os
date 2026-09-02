@@ -1,0 +1,24 @@
++ (/home/user/workspace/repo/target/runtime-release/mix-work-primary/source) /home/user/workspace/repo/target/toolchain-smoke/build/elixir/bin/mix clean
++ (/home/user/workspace/repo/target/runtime-release/mix-work-primary/source) /home/user/workspace/repo/target/toolchain-smoke/build/elixir/bin/mix compile --warnings-as-errors
+Compiling 11 files (.ex)
+Generated runtime_lab app
++ (/home/user/workspace/repo/target/runtime-release/mix-work-primary/source) /home/user/workspace/repo/target/toolchain-smoke/build/elixir/bin/mix release runtime_lab --overwrite
+* assembling runtime_lab-0.1.0 on MIX_ENV=prod
+* creating _build/prod/rel/runtime_lab/releases/0.1.0/vm.args
+
+Release created at _build/prod/rel/runtime_lab
+
+    # To start your system
+    _build/prod/rel/runtime_lab/bin/runtime_lab start
+
+Once the release is running:
+
+    # To connect to it remotely
+    _build/prod/rel/runtime_lab/bin/runtime_lab remote
+
+    # To stop it gracefully (you may also send SIGINT/SIGTERM)
+    _build/prod/rel/runtime_lab/bin/runtime_lab stop
+
+To list all commands:
+
+    _build/prod/rel/runtime_lab/bin/runtime_lab

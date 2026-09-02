@@ -1,0 +1,288 @@
+{
+  "schema": "rust-beam/evidence/v1",
+  "id": "RB-EV-P007-MIX-ERTS",
+  "task": "RB-T-P007",
+  "recorded_at": "2026-09-02T03:12:56Z",
+  "claim": "Two fresh genuine Mix release builds paired reproducibly with the exact static AArch64-musl OTP 29.0.5 / ERTS 17.0.5 artifact, then passed ten read-only full-system AArch64 Linux boots through the direct beam.smp manifest with exact Elixir 1.20.4 identity, normal application behavior, no undeclared writes or native substitutions, and clean shutdown.",
+  "classification": "target",
+  "build": {
+    "id": "rb1-3f4d27008a27-clean-20260902T031256Z",
+    "source_revision": "3f4d27008a270cc9265e34a427b9c6e3230d3176",
+    "source_dirty": false,
+    "target": "immutable Mix release on static aarch64-linux-musl ERTS / full-system QEMU 11.1.0 TCG / Linux 6.12.94"
+  },
+  "command": {
+    "argv": [
+      "bash",
+      "-c",
+      "just build-release && just pair-release && just test-target-release-linux"
+    ],
+    "cwd": "."
+  },
+  "environment": {
+    "os": "debian 12 / Linux 6.1.158+ host; Alpine 3.22.5 / Linux 6.12.94 guest",
+    "architecture": "x86_64 host / AArch64 full-system guest",
+    "tools": [
+      {
+        "name": "qemu-system-aarch64",
+        "version": "11.1.0"
+      },
+      {
+        "name": "otp",
+        "version": "29.0.5"
+      },
+      {
+        "name": "erts",
+        "version": "17.0.5"
+      },
+      {
+        "name": "elixir",
+        "version": "1.20.4"
+      },
+      {
+        "name": "guest-strace",
+        "version": "6.13-r0"
+      },
+      {
+        "name": "mksquashfs",
+        "version": "4.5.1"
+      },
+      {
+        "name": "python",
+        "version": "3.11.6"
+      },
+      {
+        "name": "just",
+        "version": "1.42.4"
+      }
+    ]
+  },
+  "inputs": [
+    {
+      "path": "beam/runtime_lab/config/config.exs",
+      "digest": "sha256:749ff4457c8f3f4271104e95cdb9b1dea29242e536cc1f07a4b748db067523cf"
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/release_probe.ex",
+      "digest": "sha256:c6518311cf2540e7c9d0b79e5ca2ad1d7ee7780703c5736222533eec2e8062d3"
+    },
+    {
+      "path": "beam/runtime_lab/mix.exs",
+      "digest": "sha256:069eba166a65aa358dc92875865362e2d81d5a2ec7c6dafca6864de540f54d91"
+    },
+    {
+      "path": "beam/runtime_lab/rel/vm.args.eex",
+      "digest": "sha256:350bc170591ab5aa7f633a86ff88bb015919231ad9491f1a55b453ff8f226d4e"
+    },
+    {
+      "path": "image/runtime-lab-launcher.json",
+      "digest": "sha256:cb93e90cbe40fc8bf050c61ce4f09e8b4f4c1922897b21fbfc3f22201827eeae"
+    },
+    {
+      "path": "justfile",
+      "digest": "sha256:dda0cb98657d9924d19f2275c2abf24d35cd12abd38e7365443f4eb4a199f977"
+    },
+    {
+      "path": "scripts/runtime_release.py",
+      "digest": "sha256:5a45b3831cab47958a315b0dc3263ae2f1c7a93b17539277df5e9ecfdc7bfe16"
+    },
+    {
+      "path": "tests/runtime-release/init.sh",
+      "digest": "sha256:567fbe78d23613de02453e4792cdb923a22cc1df177b1dfa1e142ec08eaaa087"
+    },
+    {
+      "path": "tests/test_runtime_release.py",
+      "digest": "sha256:9d6941008ab0ad4b6d987f9cb9904ddf0e377eb977151efcd34dd27021abe222"
+    },
+    {
+      "path": "toolchain/erts-linux/aarch64-tcg.json",
+      "digest": "sha256:48602504c066033beb4b50e24feefe691fba847e01d7d5ef0c101468c0cef595"
+    },
+    {
+      "path": "toolchain/otp/aarch64-linux-musl.json",
+      "digest": "sha256:66d3f4ea9d0a2fba170b7342877b3ac2a0e8605eaab0dd189110f4282cf23cd7"
+    },
+    {
+      "path": "toolchain/sources.lock.json",
+      "digest": "sha256:5c1267150cea3b382773e5592da6007b3a26236a16605a9bf5248e6d0271a38c"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/README.md",
+      "digest": "sha256:dbee34f451049c9528237e59f3b39e9e85c5a1a3888f0769853294e174d2cd3b"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/aggregate.json",
+      "digest": "sha256:1ed8ce21f40a209fd49b9ec5c419352864e03ea3af85b0ab2886cefcbc277640"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boot-matrix.json",
+      "digest": "sha256:330ef09f41d3730f35059f11db7a9311debe26161b2f30f668e1d062928ec389"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-01-normalized-strace.txt.gz",
+      "digest": "sha256:20d80e561b84023f1c1c138bf45809823366f942cbe71a27e5b02c034344bde1"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-01-receipt.json",
+      "digest": "sha256:4e7467329026b8cd18d21328050630da5afa0e66f0e2739d79fb6407330060a8"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-01-serial.log",
+      "digest": "sha256:9fe7c1b0f716240d4ec7128150e202a3cf803a222263532ea3432b205d28bab3"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-02-normalized-strace.txt.gz",
+      "digest": "sha256:b9fe7a6381430938abb084013cf09bd27b57f797326959ad3e6f8f2fc4da6002"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-02-receipt.json",
+      "digest": "sha256:d1154ecad45cc545e58ff815b310ccb2621ea18b27bd17a3ef56c8d9b6ee1daf"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-02-serial.log",
+      "digest": "sha256:29d6af2e4a9dbae42c81bff97efd669a6dcb4b7ce67747691e49c533dfbf97cb"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-03-normalized-strace.txt.gz",
+      "digest": "sha256:ee5b43f29acd11769653826dd07f9d65720b68cf4fb60f994f9370b76dd391e2"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-03-receipt.json",
+      "digest": "sha256:bbfa11633b8d3e722d55d782ab172c96b77ccc6375fa909a581fce27d1038b42"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-03-serial.log",
+      "digest": "sha256:30b3315df6e812de1480d24d542226ab3a3ebc7517aef0e5fa6c8536036a9249"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-04-normalized-strace.txt.gz",
+      "digest": "sha256:5e1cb104708d596408d2d220e1f1f8e65a55932e370132a7482f067bc51fe1d6"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-04-receipt.json",
+      "digest": "sha256:304c63c6b27829bb6bcbdb34e440f519c969d3274a3eae2e9f68b5dcf8e1525c"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-04-serial.log",
+      "digest": "sha256:72c076789ad5b1003826675c95bc710da2d31adaea11263abcb645840612c0c5"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-05-normalized-strace.txt.gz",
+      "digest": "sha256:0dfec6abca937b30b32eb31bdca2eeb8ab0ec75230d60d1b5ae044b83d32ef5c"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-05-receipt.json",
+      "digest": "sha256:a4478b25092e1e36b3e4f7ce04ae32b437c12d4331fb368a3b220e93df9b7cab"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-05-serial.log",
+      "digest": "sha256:049e603684fa67d63d55465e471cd65b60646f9f1d5b30891846e32bf318b888"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-06-normalized-strace.txt.gz",
+      "digest": "sha256:46243ecde3d7e5e6d3c5544f417f4562da59fa7c0fa9f22979bb2861057a8981"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-06-receipt.json",
+      "digest": "sha256:57785808a3b690cae3407a93f8bb889ce9e2292785d8fd85b0fc488e5961c642"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-06-serial.log",
+      "digest": "sha256:c1bac0e6236d3413b06c50cea170185280264fff3bee49c0d4a78844edcb2a57"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-07-normalized-strace.txt.gz",
+      "digest": "sha256:4f0da3da3492d5e493a08f9b83660c8da22cb30e7a9a1eeec904e9646966e918"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-07-receipt.json",
+      "digest": "sha256:fb3dae0b29250188723b55bbf605f49a4ef4da6e40612e80d5dd2f7f71a94991"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-07-serial.log",
+      "digest": "sha256:bd1af437f012196d12a25920a19abf8ab5311bc4930028c6e087cdb77137b2c9"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-08-normalized-strace.txt.gz",
+      "digest": "sha256:5ef79a9fd1200d9298f679094000c39e2c91cd7c975d31dbcd4b2981beb76adb"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-08-receipt.json",
+      "digest": "sha256:fdc2a7d07c41de3f92e3747a3711ba1ee0a14e35502a843aa6ce4c92e5602b16"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-08-serial.log",
+      "digest": "sha256:4dc85aa2192202a6c8b4325151229dcf384b57aaa622784865a1ffe242963a3b"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-09-normalized-strace.txt.gz",
+      "digest": "sha256:1244a37a59e888d0d28b34577c2ac14939a2bb7611c8de49d26b24a975fa0f4c"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-09-receipt.json",
+      "digest": "sha256:a0929e3896fa49d4061bd153f2edff7425c17e4b7940e778ee5f156f8007f5e8"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-09-serial.log",
+      "digest": "sha256:a4486d51d882de03041e186fa619749f32ec838572ad9c8857b3ccb9e7ce876c"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-10-normalized-strace.txt.gz",
+      "digest": "sha256:cab243fd744b7533c594f48ddcd7058e31e553621d0ac04d7be08e0831706a1e"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-10-receipt.json",
+      "digest": "sha256:d1a45916aa6193255c10d5146955cfee91403cf4abc23b22ae46c1d5a45d3fdb"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/boots/boot-10-serial.log",
+      "digest": "sha256:4533b0e858dfa1f9712649f37a58165cf4f0020b817cfa07cf5ec85f9660bead"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/guest-preparation.json",
+      "digest": "sha256:22df1200a0aded8a28f062651c8bc0e58e3dcc915b9c936038792c0e8cef110f"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/launcher.json",
+      "digest": "sha256:cb93e90cbe40fc8bf050c61ce4f09e8b4f4c1922897b21fbfc3f22201827eeae"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/mix-primary-build-receipt.json",
+      "digest": "sha256:e2b8d777b486b1d223453346a6f66fceceb8c094a1cb0763312c36b633025eb4"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/mix-primary-build.log",
+      "digest": "sha256:b8dd7fe30dbf5ba2c0078218030c4fd2e430c6919d1abfefc8d35335e6da0c84"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/mix-rebuild-build-receipt.json",
+      "digest": "sha256:5e56d9618135cb63f43cb9c790737fa0a696e5c0ebf7d032f11800bfcadabafe"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/mix-rebuild-build.log",
+      "digest": "sha256:9d14272f55f85e98b37b72110927a6d4e1a77a7d65c917a85c93e03b3a7ae1fc"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/mix-tree-manifest.json",
+      "digest": "sha256:fd83c7b5c6a2f5bdf0d142f4ee8b6a8342848daaa2b2953314d568aabaae6ed5"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/pair-receipt.json",
+      "digest": "sha256:5d3a5482ae4b51f6017e088ab20ef09b48b18387911990876cc1b3dd268e21d3"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/paired-tree-manifest.json",
+      "digest": "sha256:81c39978580a40c0a3c087f732af7772b1efada0a8dfc2fb62a497244de76dc6"
+    },
+    {
+      "path": "docs/evidence/phase-0/RB-T-P007/verification.txt",
+      "digest": "sha256:394442a72ce12e98dccc96387b46e6ca99bfc9446ceaa3b591a2d83cc11a4693"
+    }
+  ],
+  "result": {
+    "status": "pass",
+    "exit_code": 0
+  }
+}

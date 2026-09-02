@@ -1,0 +1,578 @@
+{
+  "applications": [
+    "compiler",
+    "elixir",
+    "erl_interface",
+    "erts",
+    "iex",
+    "kernel",
+    "logger",
+    "runtime_lab",
+    "sasl",
+    "stdlib"
+  ],
+  "inventories": {
+    "mix_tree": {
+      "path": "target/runtime-release/mix-tree-manifest.json",
+      "sha256": "fd83c7b5c6a2f5bdf0d142f4ee8b6a8342848daaa2b2953314d568aabaae6ed5"
+    },
+    "paired_tree": {
+      "path": "target/runtime-release/paired-tree-manifest.json",
+      "sha256": "81c39978580a40c0a3c087f732af7772b1efada0a8dfc2fb62a497244de76dc6"
+    }
+  },
+  "launcher": {
+    "path": "image/runtime-lab-launcher.json",
+    "sha256": "cb93e90cbe40fc8bf050c61ce4f09e8b4f4c1922897b21fbfc3f22201827eeae"
+  },
+  "mix_release_exact_match": true,
+  "mix_tree_digest": "fd83c7b5c6a2f5bdf0d142f4ee8b6a8342848daaa2b2953314d568aabaae6ed5",
+  "native_closure_count": 23,
+  "pair_tree_digest": "81c39978580a40c0a3c087f732af7772b1efada0a8dfc2fb62a497244de76dc6",
+  "paired_tree_exact_match": true,
+  "primary": {
+    "applications": [
+      "compiler",
+      "elixir",
+      "erl_interface",
+      "erts",
+      "iex",
+      "kernel",
+      "logger",
+      "runtime_lab",
+      "sasl",
+      "stdlib"
+    ],
+    "genuine_mix_release": true,
+    "launcher_sha256": "cb93e90cbe40fc8bf050c61ce4f09e8b4f4c1922897b21fbfc3f22201827eeae",
+    "mix_lane": "primary",
+    "mix_tree_digest": "fd83c7b5c6a2f5bdf0d142f4ee8b6a8342848daaa2b2953314d568aabaae6ed5",
+    "native_closure_count": 23,
+    "native_closure_exact_match": true,
+    "native_inventory": [
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/beam.smp",
+        "sha256": "54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201",
+        "size": 4441424,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/ct_run",
+        "sha256": "179005123586d5d3c667b052fb4e1b05e83c1091272b99582563ce53fb636276",
+        "size": 79480,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/dialyzer",
+        "sha256": "095731d3fbe483b0e32cb4a60beea0b77fff37facfc9684e6f025af8ea7e0c23",
+        "size": 78216,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/epmd",
+        "sha256": "129788d24437047d6a7f06dd627227130abccf24af84e5a0622823b583431632",
+        "size": 143808,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/erl_call",
+        "sha256": "8475e6d8c5fa4ed483d76ac0954ce76cb73bbda207cc0f41b64130e7d5432d3f",
+        "size": 257000,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/erl_child_setup",
+        "sha256": "efef4f5bc901211a4bbd66f13c06a2f9ddf65c0386d22d0533b5820083126e05",
+        "size": 98408,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/erlc",
+        "sha256": "ae3b1560cc269146d3d1cb7032ea9ceb93c69005eed5bc698fdf491716881269",
+        "size": 268328,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/erlexec",
+        "sha256": "7c93fe289e25f541a91f8f883ed3311b6ec4795014ec1f0b1c7b79292026f1f4",
+        "size": 120296,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/escript",
+        "sha256": "a9d4b175da0c81615a37bb717df7e1bc7dfa4de7e5546257b103398a01606d4b",
+        "size": 88712,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/heart",
+        "sha256": "f14d35dc223221021e0ea2704784e9b4a5a1292d7cb1d64449d0254ef8f3c3ff",
+        "size": 101408,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/inet_gethost",
+        "sha256": "99c95b265cf1ab6c8e500db07a395b76cd61af794a480e2d1b332bca26851db2",
+        "size": 146848,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/run_erl",
+        "sha256": "ae7837f9c764954451abb6a3a20d14097edf50d3086feebc01eccafaebe32e8e",
+        "size": 128952,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/to_erl",
+        "sha256": "17a716dfc4d2a8d14d9dfec435e14f443ab423237cf3b2ce4dedf5dd385f63fc",
+        "size": 82488,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/typer",
+        "sha256": "0366af77a3a91e524922f59b7c2f362743fa92b4f7b45a8efa5e9d6794507234",
+        "size": 77800,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/yielding_c_fun",
+        "sha256": "37e55eb3226b99389a3a814f213b678466641ab9dc4132414f0a7c3f93c50b08",
+        "size": 179944,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "archive",
+        "path": "erts-17.0.5/lib/internal/liberts_internal.a",
+        "sha256": "b5a4095fe079faa131a63e863c051500c4021c010816466b55a737bbe5db88f5",
+        "size": 43112
+      },
+      {
+        "kind": "archive",
+        "path": "erts-17.0.5/lib/internal/liberts_internal_r.a",
+        "sha256": "b5a4095fe079faa131a63e863c051500c4021c010816466b55a737bbe5db88f5",
+        "size": 43112
+      },
+      {
+        "kind": "archive",
+        "path": "erts-17.0.5/lib/internal/libethread.a",
+        "sha256": "a0d1d14ae648db08186e9ee5df24a6fa9d953142706479a54850a8fb9213af8f",
+        "size": 102008
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "lib/erl_interface-5.8.1/bin/erl_call",
+        "sha256": "8475e6d8c5fa4ed483d76ac0954ce76cb73bbda207cc0f41b64130e7d5432d3f",
+        "size": 257000,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "archive",
+        "path": "lib/erl_interface-5.8.1/lib/libei.a",
+        "sha256": "43c2d5c16b45f44d7a408bbafcc3d5c368a5eff54e0c9311fd1119043ff5402d",
+        "size": 265112
+      },
+      {
+        "kind": "archive",
+        "path": "lib/erl_interface-5.8.1/lib/libei_st.a",
+        "sha256": "20209ccc6042af83db091aa5b19e23ccca1305d881b418bff0897082730280af",
+        "size": 260662
+      },
+      {
+        "kind": "archive",
+        "path": "usr/lib/libei.a",
+        "sha256": "43c2d5c16b45f44d7a408bbafcc3d5c368a5eff54e0c9311fd1119043ff5402d",
+        "size": 265112
+      },
+      {
+        "kind": "archive",
+        "path": "usr/lib/libei_st.a",
+        "sha256": "20209ccc6042af83db091aa5b19e23ccca1305d881b418bff0897082730280af",
+        "size": 260662
+      }
+    ],
+    "pair_lane": "paired",
+    "pair_tree_digest": "81c39978580a40c0a3c087f732af7772b1efada0a8dfc2fb62a497244de76dc6",
+    "pair_tree_entry_count": 1283,
+    "paired_beam_sha256": "54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201",
+    "result": "pass",
+    "schema": "rust-beam/runtime-lab-pair/v1",
+    "scripts": [
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "Install"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "bin/runtime_lab"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "erts-17.0.5/bin/erl.src"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "erts-17.0.5/bin/start.src"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "erts-17.0.5/bin/start_erl.src"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "misc/format_man_pages"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "releases/0.1.0/elixir"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "releases/0.1.0/env.sh"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "releases/0.1.0/iex"
+      }
+    ],
+    "target_beam_sha256": "54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201"
+  },
+  "rebuild": {
+    "applications": [
+      "compiler",
+      "elixir",
+      "erl_interface",
+      "erts",
+      "iex",
+      "kernel",
+      "logger",
+      "runtime_lab",
+      "sasl",
+      "stdlib"
+    ],
+    "genuine_mix_release": true,
+    "launcher_sha256": "cb93e90cbe40fc8bf050c61ce4f09e8b4f4c1922897b21fbfc3f22201827eeae",
+    "mix_lane": "rebuild",
+    "mix_tree_digest": "fd83c7b5c6a2f5bdf0d142f4ee8b6a8342848daaa2b2953314d568aabaae6ed5",
+    "native_closure_count": 23,
+    "native_closure_exact_match": true,
+    "native_inventory": [
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/beam.smp",
+        "sha256": "54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201",
+        "size": 4441424,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/ct_run",
+        "sha256": "179005123586d5d3c667b052fb4e1b05e83c1091272b99582563ce53fb636276",
+        "size": 79480,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/dialyzer",
+        "sha256": "095731d3fbe483b0e32cb4a60beea0b77fff37facfc9684e6f025af8ea7e0c23",
+        "size": 78216,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/epmd",
+        "sha256": "129788d24437047d6a7f06dd627227130abccf24af84e5a0622823b583431632",
+        "size": 143808,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/erl_call",
+        "sha256": "8475e6d8c5fa4ed483d76ac0954ce76cb73bbda207cc0f41b64130e7d5432d3f",
+        "size": 257000,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/erl_child_setup",
+        "sha256": "efef4f5bc901211a4bbd66f13c06a2f9ddf65c0386d22d0533b5820083126e05",
+        "size": 98408,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/erlc",
+        "sha256": "ae3b1560cc269146d3d1cb7032ea9ceb93c69005eed5bc698fdf491716881269",
+        "size": 268328,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/erlexec",
+        "sha256": "7c93fe289e25f541a91f8f883ed3311b6ec4795014ec1f0b1c7b79292026f1f4",
+        "size": 120296,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/escript",
+        "sha256": "a9d4b175da0c81615a37bb717df7e1bc7dfa4de7e5546257b103398a01606d4b",
+        "size": 88712,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/heart",
+        "sha256": "f14d35dc223221021e0ea2704784e9b4a5a1292d7cb1d64449d0254ef8f3c3ff",
+        "size": 101408,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/inet_gethost",
+        "sha256": "99c95b265cf1ab6c8e500db07a395b76cd61af794a480e2d1b332bca26851db2",
+        "size": 146848,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/run_erl",
+        "sha256": "ae7837f9c764954451abb6a3a20d14097edf50d3086feebc01eccafaebe32e8e",
+        "size": 128952,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/to_erl",
+        "sha256": "17a716dfc4d2a8d14d9dfec435e14f443ab423237cf3b2ce4dedf5dd385f63fc",
+        "size": 82488,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/typer",
+        "sha256": "0366af77a3a91e524922f59b7c2f362743fa92b4f7b45a8efa5e9d6794507234",
+        "size": 77800,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "erts-17.0.5/bin/yielding_c_fun",
+        "sha256": "37e55eb3226b99389a3a814f213b678466641ab9dc4132414f0a7c3f93c50b08",
+        "size": 179944,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "archive",
+        "path": "erts-17.0.5/lib/internal/liberts_internal.a",
+        "sha256": "b5a4095fe079faa131a63e863c051500c4021c010816466b55a737bbe5db88f5",
+        "size": 43112
+      },
+      {
+        "kind": "archive",
+        "path": "erts-17.0.5/lib/internal/liberts_internal_r.a",
+        "sha256": "b5a4095fe079faa131a63e863c051500c4021c010816466b55a737bbe5db88f5",
+        "size": 43112
+      },
+      {
+        "kind": "archive",
+        "path": "erts-17.0.5/lib/internal/libethread.a",
+        "sha256": "a0d1d14ae648db08186e9ee5df24a6fa9d953142706479a54850a8fb9213af8f",
+        "size": 102008
+      },
+      {
+        "kind": "elf",
+        "machine": "AArch64",
+        "path": "lib/erl_interface-5.8.1/bin/erl_call",
+        "sha256": "8475e6d8c5fa4ed483d76ac0954ce76cb73bbda207cc0f41b64130e7d5432d3f",
+        "size": 257000,
+        "type": "ET_EXEC"
+      },
+      {
+        "kind": "archive",
+        "path": "lib/erl_interface-5.8.1/lib/libei.a",
+        "sha256": "43c2d5c16b45f44d7a408bbafcc3d5c368a5eff54e0c9311fd1119043ff5402d",
+        "size": 265112
+      },
+      {
+        "kind": "archive",
+        "path": "lib/erl_interface-5.8.1/lib/libei_st.a",
+        "sha256": "20209ccc6042af83db091aa5b19e23ccca1305d881b418bff0897082730280af",
+        "size": 260662
+      },
+      {
+        "kind": "archive",
+        "path": "usr/lib/libei.a",
+        "sha256": "43c2d5c16b45f44d7a408bbafcc3d5c368a5eff54e0c9311fd1119043ff5402d",
+        "size": 265112
+      },
+      {
+        "kind": "archive",
+        "path": "usr/lib/libei_st.a",
+        "sha256": "20209ccc6042af83db091aa5b19e23ccca1305d881b418bff0897082730280af",
+        "size": 260662
+      }
+    ],
+    "pair_lane": "paired-rebuild",
+    "pair_tree_digest": "81c39978580a40c0a3c087f732af7772b1efada0a8dfc2fb62a497244de76dc6",
+    "pair_tree_entry_count": 1283,
+    "paired_beam_sha256": "54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201",
+    "result": "pass",
+    "schema": "rust-beam/runtime-lab-pair/v1",
+    "scripts": [
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "Install"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "bin/runtime_lab"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "erts-17.0.5/bin/erl.src"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "erts-17.0.5/bin/start.src"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "erts-17.0.5/bin/start_erl.src"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "misc/format_man_pages"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "releases/0.1.0/elixir"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "releases/0.1.0/env.sh"
+      },
+      {
+        "interpreter": "#!/bin/sh",
+        "invoked_by_launcher": false,
+        "path": "releases/0.1.0/iex"
+      }
+    ],
+    "target_beam_sha256": "54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201"
+  },
+  "result": "equivalent",
+  "schema": "rust-beam/runtime-lab-pair-comparison/v1",
+  "scripts": [
+    {
+      "interpreter": "#!/bin/sh",
+      "invoked_by_launcher": false,
+      "path": "Install"
+    },
+    {
+      "interpreter": "#!/bin/sh",
+      "invoked_by_launcher": false,
+      "path": "bin/runtime_lab"
+    },
+    {
+      "interpreter": "#!/bin/sh",
+      "invoked_by_launcher": false,
+      "path": "erts-17.0.5/bin/erl.src"
+    },
+    {
+      "interpreter": "#!/bin/sh",
+      "invoked_by_launcher": false,
+      "path": "erts-17.0.5/bin/start.src"
+    },
+    {
+      "interpreter": "#!/bin/sh",
+      "invoked_by_launcher": false,
+      "path": "erts-17.0.5/bin/start_erl.src"
+    },
+    {
+      "interpreter": "#!/bin/sh",
+      "invoked_by_launcher": false,
+      "path": "misc/format_man_pages"
+    },
+    {
+      "interpreter": "#!/bin/sh",
+      "invoked_by_launcher": false,
+      "path": "releases/0.1.0/elixir"
+    },
+    {
+      "interpreter": "#!/bin/sh",
+      "invoked_by_launcher": false,
+      "path": "releases/0.1.0/env.sh"
+    },
+    {
+      "interpreter": "#!/bin/sh",
+      "invoked_by_launcher": false,
+      "path": "releases/0.1.0/iex"
+    }
+  ],
+  "squashfs_exact_match": true,
+  "squashfs_sha256": "56aa321b39848ffd09386f56fb117b4f8b5faf53787e2fb5d6dab15f23e047bb",
+  "squashfs_size": 17387520,
+  "target_beam_sha256": "54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201"
+}

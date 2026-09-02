@@ -60,7 +60,7 @@
     },
     {
       "path": "justfile",
-      "digest": "sha256:c546b46590090ef7aced19df716ca86fca182ef07ff79b839f2e8e81fdd1eba3"
+      "digest": "sha256:dda0cb98657d9924d19f2275c2abf24d35cd12abd38e7365443f4eb4a199f977"
     },
     {
       "path": "scripts/erts_linux.py",

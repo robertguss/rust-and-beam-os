@@ -34,7 +34,7 @@
   "inputs": [
     {
       "path": "beam/runtime_lab/mix.exs",
-      "digest": "sha256:ba99b1d0fafceb160a4ed1e289ebec77311428a506b451d8de7f4c78205cb61a"
+      "digest": "sha256:069eba166a65aa358dc92875865362e2d81d5a2ec7c6dafca6864de540f54d91"
     },
     {
       "path": "beam/runtime_lab/config/config.exs",
@@ -82,7 +82,7 @@
     },
     {
       "path": "beam/runtime_lab/test/project_contract_test.exs",
-      "digest": "sha256:4bbebb11b1871178f885ad1cf12cc07eb809dbda2d347ceb2b0cac576c1d25e1"
+      "digest": "sha256:62266c1cf6bc5664117e0217213383f10907663a8942eb21507e3034dc547bb3"
     },
     {
       "path": "beam/runtime_lab/test/runtime_identity_test.exs",

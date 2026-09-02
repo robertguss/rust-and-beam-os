@@ -64,7 +64,7 @@
     },
     {
       "path": "justfile",
-      "digest": "sha256:c546b46590090ef7aced19df716ca86fca182ef07ff79b839f2e8e81fdd1eba3"
+      "digest": "sha256:dda0cb98657d9924d19f2275c2abf24d35cd12abd38e7365443f4eb4a199f977"
     },
     {
       "path": "scripts/beam_host.py",
@@ -92,7 +92,7 @@
     },
     {
       "path": "beam/runtime_lab/mix.exs",
-      "digest": "sha256:ba99b1d0fafceb160a4ed1e289ebec77311428a506b451d8de7f4c78205cb61a"
+      "digest": "sha256:069eba166a65aa358dc92875865362e2d81d5a2ec7c6dafca6864de540f54d91"
     },
     {
       "path": "beam/runtime_lab/lib/runtime_lab/command.ex",

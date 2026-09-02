@@ -44,6 +44,12 @@
       "claim": "The exact static non-JIT AArch64-musl ERTS artifact passed one smoke boot and ten fresh full-system QEMU TCG acceptance boots with minimal, single-scheduler, and final two-scheduler workload progress, complete platform/runtime capture, clean shutdown, no dynamic or unrecorded host dependency, and all 53 syscalls mapped to beam-host revision 0."
     },
     {
+      "id": "RB-EV-P007-MIX-ERTS",
+      "task": "RB-T-P007",
+      "record": "docs/evidence/phase-0/RB-T-P007/evidence.json",
+      "claim": "Two fresh genuine Mix release builds paired reproducibly with the exact static AArch64-musl OTP 29.0.5 / ERTS 17.0.5 artifact, then passed ten read-only full-system AArch64 Linux boots through the direct beam.smp manifest with exact Elixir 1.20.4 identity, normal application behavior, no undeclared writes or native substitutions, and clean shutdown."
+    },
+    {
       "id": "RB-EV-P011-VIRTIO",
       "task": "RB-T-P011",
       "record": "docs/evidence/phase-0/RB-T-P011/evidence.json",

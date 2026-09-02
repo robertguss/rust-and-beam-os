@@ -861,16 +861,18 @@
         "RB-T-P002",
         "RB-T-P006"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/evidence/phase-0/RB-T-P007/evidence.json"
+      ],
       "id": "RB-T-P007",
       "milestone": "RB-M-M0",
-      "owner": "amp:T-01a05fea-257c-73e8-966c-c4b4192e7854",
+      "owner": null,
       "parent": null,
       "path": "tasks/rb-t-p007.md",
       "priority": "P3",
       "related": [],
       "schema": "repo-plan/v1",
-      "state": "in_progress",
+      "state": "done",
       "title": "Pair a genuine Mix release with the target ERTS",
       "type": "task",
       "x_labels": [
@@ -3866,5 +3868,5 @@
     }
   ],
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:f4a7498e9997cc0588a0e07b81dafd3bc0214fcf59091d521007ad8f2d31ac09"
+  "source_digest": "sha256:619047ba7ecdc0bbf7f2079ffd5863c4fb630f32032586fafa279fa6405a4fc4"
 }

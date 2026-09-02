@@ -1,0 +1,309 @@
+{
+  "boot_count": 10,
+  "boots": [
+    {
+      "boot": 1,
+      "clean_application_shutdown": true,
+      "declared_erofs_count": 1,
+      "duration_seconds": 32.288,
+      "executable_inventory": [
+        {
+          "classification": "manifest-entrypoint",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/beam.smp"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/erl_child_setup"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/inet_gethost"
+        }
+      ],
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "normalized_strace_sha256": "20d80e561b84023f1c1c138bf45809823366f942cbe71a27e5b02c034344bde1",
+      "open_attempt_count": 957,
+      "qemu_exit_code": 0,
+      "receipt_sha256": "4e7467329026b8cd18d21328050630da5afa0e66f0e2739d79fb6407330060a8",
+      "release_read_count": 935,
+      "serial_sha256": "9fe7c1b0f716240d4ec7128150e202a3cf803a222263532ea3432b205d28bab3",
+      "status": "pass",
+      "undeclared_write_attempt_count": 0
+    },
+    {
+      "boot": 2,
+      "clean_application_shutdown": true,
+      "declared_erofs_count": 1,
+      "duration_seconds": 32.997,
+      "executable_inventory": [
+        {
+          "classification": "manifest-entrypoint",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/beam.smp"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/erl_child_setup"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/inet_gethost"
+        }
+      ],
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "normalized_strace_sha256": "b9fe7a6381430938abb084013cf09bd27b57f797326959ad3e6f8f2fc4da6002",
+      "open_attempt_count": 957,
+      "qemu_exit_code": 0,
+      "receipt_sha256": "d1154ecad45cc545e58ff815b310ccb2621ea18b27bd17a3ef56c8d9b6ee1daf",
+      "release_read_count": 935,
+      "serial_sha256": "29d6af2e4a9dbae42c81bff97efd669a6dcb4b7ce67747691e49c533dfbf97cb",
+      "status": "pass",
+      "undeclared_write_attempt_count": 0
+    },
+    {
+      "boot": 3,
+      "clean_application_shutdown": true,
+      "declared_erofs_count": 1,
+      "duration_seconds": 32.329,
+      "executable_inventory": [
+        {
+          "classification": "manifest-entrypoint",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/beam.smp"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/erl_child_setup"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/inet_gethost"
+        }
+      ],
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "normalized_strace_sha256": "ee5b43f29acd11769653826dd07f9d65720b68cf4fb60f994f9370b76dd391e2",
+      "open_attempt_count": 957,
+      "qemu_exit_code": 0,
+      "receipt_sha256": "bbfa11633b8d3e722d55d782ab172c96b77ccc6375fa909a581fce27d1038b42",
+      "release_read_count": 935,
+      "serial_sha256": "30b3315df6e812de1480d24d542226ab3a3ebc7517aef0e5fa6c8536036a9249",
+      "status": "pass",
+      "undeclared_write_attempt_count": 0
+    },
+    {
+      "boot": 4,
+      "clean_application_shutdown": true,
+      "declared_erofs_count": 1,
+      "duration_seconds": 33.069,
+      "executable_inventory": [
+        {
+          "classification": "manifest-entrypoint",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/beam.smp"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/erl_child_setup"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/inet_gethost"
+        }
+      ],
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "normalized_strace_sha256": "5e1cb104708d596408d2d220e1f1f8e65a55932e370132a7482f067bc51fe1d6",
+      "open_attempt_count": 957,
+      "qemu_exit_code": 0,
+      "receipt_sha256": "304c63c6b27829bb6bcbdb34e440f519c969d3274a3eae2e9f68b5dcf8e1525c",
+      "release_read_count": 935,
+      "serial_sha256": "72c076789ad5b1003826675c95bc710da2d31adaea11263abcb645840612c0c5",
+      "status": "pass",
+      "undeclared_write_attempt_count": 0
+    },
+    {
+      "boot": 5,
+      "clean_application_shutdown": true,
+      "declared_erofs_count": 1,
+      "duration_seconds": 30.799,
+      "executable_inventory": [
+        {
+          "classification": "manifest-entrypoint",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/beam.smp"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/erl_child_setup"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/inet_gethost"
+        }
+      ],
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "normalized_strace_sha256": "0dfec6abca937b30b32eb31bdca2eeb8ab0ec75230d60d1b5ae044b83d32ef5c",
+      "open_attempt_count": 957,
+      "qemu_exit_code": 0,
+      "receipt_sha256": "a4478b25092e1e36b3e4f7ce04ae32b437c12d4331fb368a3b220e93df9b7cab",
+      "release_read_count": 935,
+      "serial_sha256": "049e603684fa67d63d55465e471cd65b60646f9f1d5b30891846e32bf318b888",
+      "status": "pass",
+      "undeclared_write_attempt_count": 0
+    },
+    {
+      "boot": 6,
+      "clean_application_shutdown": true,
+      "declared_erofs_count": 1,
+      "duration_seconds": 31.178,
+      "executable_inventory": [
+        {
+          "classification": "manifest-entrypoint",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/beam.smp"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/erl_child_setup"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/inet_gethost"
+        }
+      ],
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "normalized_strace_sha256": "46243ecde3d7e5e6d3c5544f417f4562da59fa7c0fa9f22979bb2861057a8981",
+      "open_attempt_count": 957,
+      "qemu_exit_code": 0,
+      "receipt_sha256": "57785808a3b690cae3407a93f8bb889ce9e2292785d8fd85b0fc488e5961c642",
+      "release_read_count": 935,
+      "serial_sha256": "c1bac0e6236d3413b06c50cea170185280264fff3bee49c0d4a78844edcb2a57",
+      "status": "pass",
+      "undeclared_write_attempt_count": 0
+    },
+    {
+      "boot": 7,
+      "clean_application_shutdown": true,
+      "declared_erofs_count": 1,
+      "duration_seconds": 31.916,
+      "executable_inventory": [
+        {
+          "classification": "manifest-entrypoint",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/beam.smp"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/erl_child_setup"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/inet_gethost"
+        }
+      ],
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "normalized_strace_sha256": "4f0da3da3492d5e493a08f9b83660c8da22cb30e7a9a1eeec904e9646966e918",
+      "open_attempt_count": 957,
+      "qemu_exit_code": 0,
+      "receipt_sha256": "fb3dae0b29250188723b55bbf605f49a4ef4da6e40612e80d5dd2f7f71a94991",
+      "release_read_count": 935,
+      "serial_sha256": "bd1af437f012196d12a25920a19abf8ab5311bc4930028c6e087cdb77137b2c9",
+      "status": "pass",
+      "undeclared_write_attempt_count": 0
+    },
+    {
+      "boot": 8,
+      "clean_application_shutdown": true,
+      "declared_erofs_count": 1,
+      "duration_seconds": 30.893,
+      "executable_inventory": [
+        {
+          "classification": "manifest-entrypoint",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/beam.smp"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/erl_child_setup"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/inet_gethost"
+        }
+      ],
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "normalized_strace_sha256": "5ef79a9fd1200d9298f679094000c39e2c91cd7c975d31dbcd4b2981beb76adb",
+      "open_attempt_count": 957,
+      "qemu_exit_code": 0,
+      "receipt_sha256": "fdc2a7d07c41de3f92e3747a3711ba1ee0a14e35502a843aa6ce4c92e5602b16",
+      "release_read_count": 935,
+      "serial_sha256": "4dc85aa2192202a6c8b4325151229dcf384b57aaa622784865a1ffe242963a3b",
+      "status": "pass",
+      "undeclared_write_attempt_count": 0
+    },
+    {
+      "boot": 9,
+      "clean_application_shutdown": true,
+      "declared_erofs_count": 1,
+      "duration_seconds": 31.437,
+      "executable_inventory": [
+        {
+          "classification": "manifest-entrypoint",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/beam.smp"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/erl_child_setup"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/inet_gethost"
+        }
+      ],
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "normalized_strace_sha256": "1244a37a59e888d0d28b34577c2ac14939a2bb7611c8de49d26b24a975fa0f4c",
+      "open_attempt_count": 957,
+      "qemu_exit_code": 0,
+      "receipt_sha256": "a0929e3896fa49d4061bd153f2edff7425c17e4b7940e778ee5f156f8007f5e8",
+      "release_read_count": 935,
+      "serial_sha256": "a4486d51d882de03041e186fa619749f32ec838572ad9c8857b3ccb9e7ce876c",
+      "status": "pass",
+      "undeclared_write_attempt_count": 0
+    },
+    {
+      "boot": 10,
+      "clean_application_shutdown": true,
+      "declared_erofs_count": 1,
+      "duration_seconds": 28.151,
+      "executable_inventory": [
+        {
+          "classification": "manifest-entrypoint",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/beam.smp"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/erl_child_setup"
+        },
+        {
+          "classification": "upstream-erts-helper",
+          "path": "/system/beam/runtime_lab/erts-17.0.5/bin/inet_gethost"
+        }
+      ],
+      "external_network_connections": 0,
+      "network_service_listeners": 0,
+      "normalized_strace_sha256": "cab243fd744b7533c594f48ddcd7058e31e553621d0ac04d7be08e0831706a1e",
+      "open_attempt_count": 957,
+      "qemu_exit_code": 0,
+      "receipt_sha256": "d1a45916aa6193255c10d5146955cfee91403cf4abc23b22ae46c1d5a45d3fdb",
+      "release_read_count": 935,
+      "serial_sha256": "4533b0e858dfa1f9712649f37a58165cf4f0020b817cfa07cf5ec85f9660bead",
+      "status": "pass",
+      "undeclared_write_attempt_count": 0
+    }
+  ],
+  "schema": "rust-beam/runtime-lab-boot-matrix/v1",
+  "source_revision": "3f4d27008a270cc9265e34a427b9c6e3230d3176",
+  "status": "pass",
+  "target_beam_sha256": "54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201"
+}
