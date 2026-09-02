@@ -129,6 +129,20 @@ inspect-otp-artifact:
 verify-otp-rebuild:
     python3 scripts/otp_artifact.py verify-rebuild
 
+# Cross-build a fresh static helperless ERTS release with the sealed Unix adapter.
+build-otp-helperless:
+    python3 scripts/otp_artifact.py --profile toolchain/otp/aarch64-linux-musl-helperless.json --work-root target/otp-helperless build
+
+# Verify the helperless native closure and its exact static beam.smp contract.
+inspect-otp-helperless:
+    python3 scripts/otp_artifact.py --profile toolchain/otp/aarch64-linux-musl-helperless.json --work-root target/otp-helperless inspect
+
+# Prove a clean rebuild and repeat ten direct full-system ERTS workload boots.
+test-target-helperless-linux:
+    python3 -m unittest tests.test_otp_artifact tests.test_erts_linux tests.test_runtime_release_helperless -v
+    python3 scripts/otp_artifact.py --profile toolchain/otp/aarch64-linux-musl-helperless.json --work-root target/otp-helperless verify-rebuild
+    python3 scripts/runtime_release_helperless.py runtime --boots 10 --output target/erts-linux-helperless/acceptance
+
 # Build a genuine runtime_lab Mix release with the pinned host OTP/Elixir pair.
 build-release:
     python3 scripts/runtime_release.py build
@@ -141,6 +155,11 @@ pair-release:
 test-target-release-linux:
     python3 -m unittest tests.test_runtime_release -v
     python3 scripts/runtime_release.py run --boots 10 --output target/runtime-release/acceptance
+
+# Run ten full-system Mix release boots with helpers absent and negative paths bounded.
+test-target-release-helperless-linux:
+    python3 -m unittest tests.test_runtime_release tests.test_runtime_release_helperless -v
+    python3 scripts/runtime_release_helperless.py run --boots 10 --output target/runtime-release-helperless/acceptance
 
 # Placeholder until its owning plan task is ready.
 image:

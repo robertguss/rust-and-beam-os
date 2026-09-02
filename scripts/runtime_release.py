@@ -32,15 +32,23 @@ MIX_PROJECT = ROOT / "beam/runtime_lab"
 HOST_RUNTIME = ROOT / "target/toolchain-smoke"
 TARGET_RELEASE = ROOT / "target/otp-aarch64/primary/release"
 TARGET_BEAM = TARGET_RELEASE / "erts-17.0.5/bin/beam.smp"
+TARGET_NATIVE_CLOSURE_PATH = ROOT / "target/otp-aarch64/primary/inspection/native-closure.json"
 LAUNCHER_PATH = ROOT / "image/runtime-lab-launcher.json"
 INIT_PATH = ROOT / "tests/runtime-release/init.sh"
 OTP_PROFILE_PATH = ROOT / "toolchain/otp/aarch64-linux-musl.json"
+OTP_ARTIFACT_ARGS: list[str] = []
 RELEASE_ROOT = "/system/beam/runtime_lab"
 TARGET_BEAM_SHA256 = "54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201"
 ARTIFACT_BUILD_ID = (
     "otp-29.0.5-erts-17.0.5-beam-sha256-"
     "54ea7bc1953eb19908817ed243f63ddfabb7d8d9eefdb9d88f15ef4fe3577201"
 )
+PROBE_EVAL = "'Elixir.RuntimeLab.ReleaseProbe':run()."
+RELEASE_BUILD_ENV: dict[str, str] = {}
+ALLOWED_RUNTIME_HELPERS = {
+    "erl_child_setup": "upstream-erts-helper",
+    "inet_gethost": "upstream-erts-helper",
+}
 MIX_APPLICATIONS = {"elixir", "iex", "logger", "runtime_lab"}
 TARGET_APPLICATIONS = {"compiler", "erl_interface", "erts", "kernel", "sasl", "stdlib"}
 WRITE_FLAGS = {"O_WRONLY", "O_RDWR", "O_CREAT", "O_TRUNC", "O_APPEND", "O_TMPFILE"}
@@ -167,7 +175,7 @@ def validate_launcher(value: Any) -> dict[str, Any]:
         f"{RELEASE_ROOT}/releases/0.1.0/start",
         f"{RELEASE_ROOT}/releases/0.1.0/sys",
         f"{RELEASE_ROOT}/releases/0.1.0/vm.args",
-        "'Elixir.RuntimeLab.ReleaseProbe':run().",
+        PROBE_EVAL,
     ):
         if required not in arguments:
             raise ReleaseError(f"launcher is missing {required}")
@@ -217,6 +225,7 @@ def host_environment(home: Path) -> dict[str, str]:
             "ERL_COMPILER_OPTIONS": "deterministic",
         }
     )
+    env.update(RELEASE_BUILD_ENV)
     return env
 
 
@@ -490,10 +499,10 @@ def mix_lane_current(name: str) -> bool:
 
 def ensure_target_release() -> None:
     if not TARGET_BEAM.is_file() or sha256(TARGET_BEAM) != TARGET_BEAM_SHA256:
-        run([sys.executable, "scripts/otp_artifact.py", "build"])
-    run([sys.executable, "scripts/otp_artifact.py", "inspect"])
+        run([sys.executable, "scripts/otp_artifact.py", *OTP_ARTIFACT_ARGS, "build"])
+    run([sys.executable, "scripts/otp_artifact.py", *OTP_ARTIFACT_ARGS, "inspect"])
     if sha256(TARGET_BEAM) != TARGET_BEAM_SHA256:
-        raise ReleaseError("target beam.smp differs from the exact P005 artifact")
+        raise ReleaseError("target beam.smp differs from the sealed artifact")
 
 
 def copy_entry(source: Path, destination: Path) -> None:
@@ -529,7 +538,7 @@ def pair_lane(mix_name: str, pair_name: str) -> tuple[Path, dict[str, Any]]:
         copy_entry(source, pair / "lib" / source.name)
 
     pair_native = native_inventory(pair)
-    p005_native = load_json(ROOT / "target/otp-aarch64/primary/inspection/native-closure.json")
+    target_native = load_json(TARGET_NATIVE_CLOSURE_PATH)
     expected_native = [
         {
             "path": entry["path"],
@@ -537,14 +546,14 @@ def pair_lane(mix_name: str, pair_name: str) -> tuple[Path, dict[str, Any]]:
             "size": entry["size"],
             "sha256": entry["digest"].removeprefix("sha256:"),
         }
-        for entry in p005_native
+        for entry in target_native
     ]
     actual_native = [
         {key: entry[key] for key in ("path", "kind", "size", "sha256")}
         for entry in pair_native
     ]
     if actual_native != expected_native:
-        raise ReleaseError("paired native closure is not byte-identical to P005")
+        raise ReleaseError("paired native closure is not byte-identical to the sealed target")
     if sha256(pair / "erts-17.0.5/bin/beam.smp") != TARGET_BEAM_SHA256:
         raise ReleaseError("paired release substituted beam.smp")
     if not (pair / "releases/29/OTP_VERSION").is_file():
@@ -842,11 +851,13 @@ def exec_inventory(trace_dir: Path) -> list[dict[str, str]]:
     forbidden = [path for path in paths if path.endswith(("/erlexec", "/erl", "/runtime_lab", "/sh"))]
     if forbidden:
         raise ReleaseError(f"release launch used a forbidden executable: {forbidden}")
-    allowed_helpers = {
-        expected_beam: "manifest-entrypoint",
-        f"{RELEASE_ROOT}/erts-17.0.5/bin/erl_child_setup": "upstream-erts-helper",
-        f"{RELEASE_ROOT}/erts-17.0.5/bin/inet_gethost": "upstream-erts-helper",
-    }
+    allowed_helpers = {expected_beam: "manifest-entrypoint"}
+    allowed_helpers.update(
+        {
+            f"{RELEASE_ROOT}/erts-17.0.5/bin/{name}": classification
+            for name, classification in ALLOWED_RUNTIME_HELPERS.items()
+        }
+    )
     unknown = sorted(set(paths) - set(allowed_helpers))
     if unknown:
         raise ReleaseError(f"unexpected executable in release trace: {unknown}")

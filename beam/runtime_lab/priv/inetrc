@@ -1,0 +1,2 @@
+%% The helperless target permits static host-file lookup only.
+{lookup, [file]}.

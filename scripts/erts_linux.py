@@ -27,10 +27,16 @@ WORK_ROOT = Path("target/erts-linux-reference")
 CACHE_ROOT = Path("target/toolchain-cache/sha256")
 BEAM_PATH = Path("target/otp-aarch64/primary/release/erts-17.0.5/bin/beam.smp")
 RELEASE_PATH = Path("target/otp-aarch64/primary/release")
+NATIVE_CLOSURE_PATH = Path("target/otp-aarch64/primary/inspection/native-closure.json")
+INIT_PATH = Path("tests/erts-linux/init.sh")
+OTP_ARTIFACT_ARGS: list[str] = []
+ERTS_BEAM_SHA256_OVERRIDE: str | None = None
+ERTS_INETRC_CONTENT: str | None = None
+DECLARED_RUNTIME_PATHS: set[str] = set()
 QEMU_PATH = Path("target/qemu-11.1.0/build/qemu-system-aarch64")
 SOURCE_FILES = (
     Path("tests/beam-host/fault_probe.c"),
-    Path("tests/erts-linux/init.sh"),
+    INIT_PATH,
     Path("tests/erts-linux/platform_probe.c"),
     Path("tests/erts-linux/rb_erts_workload.erl"),
 )
@@ -167,6 +173,8 @@ def validate_profile(profile: Any) -> None:
 def load_profile(root: Path) -> dict[str, Any]:
     profile = load_json(root / PROFILE_PATH)
     validate_profile(profile)
+    if ERTS_BEAM_SHA256_OVERRIDE is not None:
+        profile["erts"]["beam_sha256"] = ERTS_BEAM_SHA256_OVERRIDE
     return profile
 
 
@@ -222,13 +230,17 @@ def ensure_otp(root: Path, profile: dict[str, Any]) -> Path:
     beam = root / BEAM_PATH
     if not beam.is_file():
         run(["./scripts/toolchain-bootstrap.sh"], cwd=root, timeout=7200)
-        run([sys.executable, "scripts/otp_artifact.py", "build"], cwd=root, timeout=7200)
+        run(
+            [sys.executable, "scripts/otp_artifact.py", *OTP_ARTIFACT_ARGS, "build"],
+            cwd=root,
+            timeout=7200,
+        )
     if not beam.is_file() or sha256(beam) != profile["erts"]["beam_sha256"]:
-        raise ReferenceError("P005 beam.smp is absent or differs from the sealed artifact")
+        raise ReferenceError("beam.smp is absent or differs from the sealed artifact")
     headers = run(["readelf", "-l", str(beam)], cwd=root, timeout=30).stdout
     dynamic = run(["readelf", "-d", str(beam)], cwd=root, timeout=30).stdout
     if "INTERP" in headers or "NEEDED" in dynamic or "There is no dynamic section" not in dynamic:
-        raise ReferenceError("P005 beam.smp is not the sealed static executable")
+        raise ReferenceError("beam.smp is not the sealed static executable")
     return beam
 
 
@@ -295,9 +307,8 @@ def preparation_identity(root: Path, profile: dict[str, Any], qemu: Path, beam: 
         "sources": {source_id: source["sha256"] for source_id, source in profile["sources"].items()},
         "source_files": {str(path): sha256(root / path) for path in SOURCE_FILES},
         "beam_sha256": sha256(beam),
-        "release_native_closure_sha256": sha256(
-            root / "target/otp-aarch64/primary/inspection/native-closure.json"
-        ),
+        "release_native_closure_sha256": sha256(root / NATIVE_CLOSURE_PATH),
+        "erts_inetrc_content": ERTS_INETRC_CONTENT,
         "qemu_sha256": sha256(qemu),
     }
 
@@ -470,10 +481,12 @@ def prepare_reference(root: Path) -> dict[str, Path]:
     build_c_probe(root, Path("tests/erts-linux/platform_probe.c"), probe / "platform_probe")
     build_c_probe(root, Path("tests/beam-host/fault_probe.c"), probe / "beam_host_fault_probe")
     build_workload(root, probe)
-    shutil.copy2(root / "tests/erts-linux/init.sh", guest_root / "init")
+    shutil.copy2(root / INIT_PATH, guest_root / "init")
     (guest_root / "init").chmod(0o755)
     (guest_root / "etc/hosts").write_text("127.0.0.1 localhost rb-erts-reference\n::1 localhost\n")
     (guest_root / "etc/resolv.conf").write_text("# Network services are disabled in this guest.\n")
+    if ERTS_INETRC_CONTENT is not None:
+        (guest_root / "etc/rb-helperless-inetrc").write_text(ERTS_INETRC_CONTENT)
 
     source_epoch = load_json(root / OTP_PROFILE_PATH)["source_date_epoch"]
     set_tree_mtime(guest_root, source_epoch)
@@ -666,7 +679,10 @@ def file_access_summary(paths: list[str]) -> dict[str, list[str]]:
         "forbidden": [],
     }
     for path in paths:
-        if path.endswith("/.erlang"):
+        normalized_path = path.rstrip('\\"')
+        if normalized_path in DECLARED_RUNTIME_PATHS:
+            category = "required_runtime"
+        elif path.endswith("/.erlang"):
             category = "optional_absent"
         elif path.startswith(("/probe", "/work", "/tmp")):
             category = "removable_harness"

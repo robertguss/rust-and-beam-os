@@ -13,6 +13,10 @@ export ROOTDIR=/otp
 export BINDIR=/otp/erts-17.0.5/bin
 export PROGNAME=erl
 export EMU=beam
+ERTS_EXTRA_ARGS=
+if [ -f /etc/rb-helperless-inetrc ]; then
+    ERTS_EXTRA_ARGS='-kernel inetrc "/etc/rb-helperless-inetrc"'
+fi
 
 fail() {
     code="$1"
@@ -69,7 +73,7 @@ strace -ff -qq -ttt -T -yy -s 256 -o /tmp/traces/minimal \
     "$BINDIR/beam.smp" -S 1:1 -SDcpu 1:1 -SDio 1 -A 1 -- \
     -root /otp -bindir "$BINDIR" -progname erl -- \
     -home /tmp/home -boot /otp/releases/29/start -boot_var ERTS_LIB_DIR /otp/lib \
-    -config /otp/releases/29/sys -noshell -noinput \
+    -config /otp/releases/29/sys $ERTS_EXTRA_ARGS -noshell -noinput \
     -eval 'erlang:display(ok), halt().' </dev/null
 minimal_status=$?
 printf 'RB_GUEST event=minimal status=%s\n' "$minimal_status"
@@ -111,7 +115,7 @@ run_profile() {
         "$BINDIR/beam.smp" "$@" -- \
         -root /otp -bindir "$BINDIR" -progname erl -- \
         -home /tmp/home -boot /otp/releases/29/start -boot_var ERTS_LIB_DIR /otp/lib \
-        -config /otp/releases/29/sys -pa /probe -noshell -noinput \
+        -config /otp/releases/29/sys $ERTS_EXTRA_ARGS -pa /probe -noshell -noinput \
         -profile "$profile" -s rb_erts_workload run -s init stop </dev/null &
     tracer_pid=$!
     for _attempt in $(seq 1 500); do

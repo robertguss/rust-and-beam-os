@@ -40,6 +40,42 @@ class OtpArtifactTests(unittest.TestCase):
     def test_repository_profile_is_valid(self):
         profile = json.loads((ROOT / "toolchain/otp/aarch64-linux-musl.json").read_text())
         OTP.validate_profile(profile)
+        self.assertEqual([], profile["patches"])
+
+    def test_helperless_profile_seals_small_unix_host_adapter(self):
+        profile_path = ROOT / "toolchain/otp/aarch64-linux-musl-helperless.json"
+        profile = OTP.load_profile(profile_path)
+        self.assertEqual(["-DRB_ERTS_NO_FORKER=1"], profile["compiler"]["cflags"][-1:])
+        self.assertEqual(1, len(profile["patches"]))
+
+        audit = OTP.audit_patch(profile["patches"][0])
+        self.assertEqual(["erts/emulator/sys/unix/sys_drivers.c"], audit["files"])
+        self.assertLessEqual(audit["changed_lines"], 40)
+        self.assertEqual("unix-host-adapter", audit["classification"])
+        self.assertEqual(
+            [
+                "erts-17.0.5/bin/erl_child_setup",
+                "erts-17.0.5/bin/inet_gethost",
+            ],
+            audit["release_omissions"],
+        )
+
+    def test_release_omissions_remove_only_sealed_helpers(self):
+        profile = OTP.load_profile(ROOT / "toolchain/otp/aarch64-linux-musl-helperless.json")
+        with tempfile.TemporaryDirectory() as temporary:
+            release = Path(temporary)
+            helper_dir = release / "erts-17.0.5/bin"
+            helper_dir.mkdir(parents=True)
+            for helper in ("erl_child_setup", "inet_gethost"):
+                (helper_dir / helper).write_bytes(helper.encode())
+
+            receipts = OTP.apply_release_omissions(release, profile)
+
+        self.assertEqual(2, len(receipts))
+        self.assertEqual(
+            ["erts-17.0.5/bin/erl_child_setup", "erts-17.0.5/bin/inet_gethost"],
+            [receipt["path"] for receipt in receipts],
+        )
 
     def test_parse_aarch64_static_exec(self):
         with tempfile.TemporaryDirectory() as temporary:

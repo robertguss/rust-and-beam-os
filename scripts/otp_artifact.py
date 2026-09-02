@@ -25,7 +25,6 @@ PROFILE_PATH = ROOT / "toolchain/otp/aarch64-linux-musl.json"
 SOURCE_LOCK_PATH = ROOT / "toolchain/sources.lock.json"
 WORK_ROOT = ROOT / "target/otp-aarch64"
 CACHE_ROOT = ROOT / "target/toolchain-cache"
-BUILD_ROOT = WORK_ROOT / "work"
 
 PROFILE_FIELDS = {
     "schema",
@@ -41,6 +40,16 @@ PROFILE_FIELDS = {
     "native_policy",
     "artifact_contract",
     "patches",
+}
+PATCH_FIELDS = {
+    "path",
+    "digest",
+    "strip",
+    "files",
+    "max_changed_lines",
+    "classification",
+    "description",
+    "release_omissions",
 }
 SOURCE_IDS = {
     "otp-source",
@@ -104,8 +113,8 @@ def profile_digest(profile: dict[str, Any]) -> str:
     return bytes_sha256(canonical_json(profile).encode())
 
 
-def load_profile() -> dict[str, Any]:
-    profile = load_json(PROFILE_PATH)
+def load_profile(profile_path: Path = PROFILE_PATH) -> dict[str, Any]:
+    profile = load_json(profile_path)
     validate_profile(profile)
     return profile
 
@@ -156,8 +165,44 @@ def validate_profile(profile: Any) -> None:
     mandatory = {"compiler", "erl_interface", "erts", "kernel", "sasl", "stdlib"}
     if set(included) != mandatory:
         raise ArtifactError("included OTP application closure differs from the mandatory runtime_lab set")
-    if profile["patches"] != []:
-        raise ArtifactError("the Phase 0 profile permits no OTP source patches")
+    patches = profile["patches"]
+    if not isinstance(patches, list):
+        raise ArtifactError("OTP profile patches must be a list")
+    for patch in patches:
+        if not isinstance(patch, dict) or set(patch) != PATCH_FIELDS:
+            raise ArtifactError("OTP patch profile fields differ")
+        path = patch["path"]
+        files = patch["files"]
+        if not isinstance(path, str) or not path.startswith("toolchain/otp/patches/"):
+            raise ArtifactError("OTP patch must live under toolchain/otp/patches")
+        if not re.fullmatch(r"sha256:[0-9a-f]{64}", str(patch["digest"])):
+            raise ArtifactError(f"invalid OTP patch digest for {path}")
+        if patch["strip"] != 1:
+            raise ArtifactError("OTP patches must use strip level 1")
+        if (
+            not isinstance(files, list)
+            or not files
+            or len(files) != len(set(files))
+            or any(not isinstance(item, str) or not item.startswith("erts/emulator/sys/unix/") for item in files)
+        ):
+            raise ArtifactError("OTP patches may change only declared Unix OS-glue files")
+        if not isinstance(patch["max_changed_lines"], int) or not 1 <= patch["max_changed_lines"] <= 40:
+            raise ArtifactError("OTP patch changed-line budget must be between 1 and 40")
+        if patch["classification"] != "unix-host-adapter":
+            raise ArtifactError("OTP patches must be classified as Unix host adapters")
+        if not isinstance(patch["description"], str) or not patch["description"].strip():
+            raise ArtifactError("OTP patch description must be non-empty")
+        omissions = patch["release_omissions"]
+        allowed_omissions = {
+            f"erts-{profile['erts_release']}/bin/erl_child_setup",
+            f"erts-{profile['erts_release']}/bin/inet_gethost",
+        }
+        if (
+            not isinstance(omissions, list)
+            or len(omissions) != len(set(omissions))
+            or not set(omissions).issubset(allowed_omissions)
+        ):
+            raise ArtifactError("OTP release omissions may name only the two sealed ERTS helpers")
     contract = profile["artifact_contract"]
     expected_contract = {
         "elf_class": "ELF64",
@@ -272,6 +317,67 @@ def extract_archive(archive: Path, destination: Path) -> None:
         ["tar", "-xf", str(archive), "-C", str(destination), "--strip-components=1"],
         cwd=ROOT,
     )
+
+
+def audit_patch(patch: dict[str, Any]) -> dict[str, Any]:
+    path = ROOT / patch["path"]
+    if not path.is_file():
+        raise ArtifactError(f"missing sealed OTP patch: {patch['path']}")
+    actual_digest = sha256(path)
+    if actual_digest != patch["digest"]:
+        raise ArtifactError(
+            f"OTP patch digest mismatch for {patch['path']}: {actual_digest}"
+        )
+    changed_files: list[str] = []
+    additions = 0
+    deletions = 0
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if line.startswith("+++ b/"):
+            changed_files.append(line.removeprefix("+++ b/"))
+        elif line.startswith("+") and not line.startswith("+++"):
+            additions += 1
+        elif line.startswith("-") and not line.startswith("---"):
+            deletions += 1
+    changed_files = sorted(set(changed_files))
+    if changed_files != sorted(patch["files"]):
+        raise ArtifactError(
+            f"OTP patch files differ for {patch['path']}: {changed_files}"
+        )
+    changed_lines = additions + deletions
+    if changed_lines > patch["max_changed_lines"]:
+        raise ArtifactError(
+            f"OTP patch exceeds changed-line budget for {patch['path']}: {changed_lines}"
+        )
+    return {
+        **patch,
+        "actual_digest": actual_digest,
+        "additions": additions,
+        "deletions": deletions,
+        "changed_lines": changed_lines,
+    }
+
+
+def apply_profile_patches(
+    source: Path,
+    profile: dict[str, Any],
+    log: Path,
+) -> list[dict[str, Any]]:
+    receipts = [audit_patch(patch) for patch in profile["patches"]]
+    for receipt in receipts:
+        run(
+            [
+                "patch",
+                "--batch",
+                "--forward",
+                "--fuzz=0",
+                f"-p{receipt['strip']}",
+                "-i",
+                str(ROOT / receipt["path"]),
+            ],
+            cwd=source,
+            log=log,
+        )
+    return receipts
 
 
 def extract_selected(archive: Path, suffixes: Iterable[str], destination: Path) -> list[Path]:
@@ -537,17 +643,40 @@ def locate_beam(release: Path) -> Path:
     return matches[0]
 
 
-def build_lane(name: str, profile: dict[str, Any], archives: dict[str, Path], common: Path) -> Path:
-    destination = WORK_ROOT / name
+def apply_release_omissions(release: Path, profile: dict[str, Any]) -> list[dict[str, Any]]:
+    receipts = []
+    for patch in profile["patches"]:
+        for relative in patch["release_omissions"]:
+            path = release / relative
+            if not path.is_file() or path.is_symlink():
+                raise ArtifactError(f"sealed release omission is not a regular file: {relative}")
+            receipt = {"path": relative, "size": path.stat().st_size, "digest": sha256(path)}
+            path.unlink()
+            receipts.append(receipt)
+    return receipts
+
+
+def build_lane(
+    name: str,
+    profile: dict[str, Any],
+    archives: dict[str, Path],
+    common: Path,
+    *,
+    profile_path: Path = PROFILE_PATH,
+    work_root: Path = WORK_ROOT,
+) -> Path:
+    destination = work_root / name
     if destination.exists():
         shutil.rmtree(destination)
-    lane = BUILD_ROOT
+    lane = work_root / "work"
     if lane.exists():
         shutil.rmtree(lane)
     lane.mkdir(parents=True)
     source = lane / "src"
     release = lane / "release"
+    log = lane / "build.log"
     extract_archive(archives["otp-source"], source)
+    patch_receipts = apply_profile_patches(source, profile, log)
     wrapper_dir = lane / "toolchain"
     wrapper_dir.mkdir()
     clang = common / "llvm/bin/clang"
@@ -556,7 +685,6 @@ def build_lane(name: str, profile: dict[str, Any], archives: dict[str, Path], co
     xcomp = lane / "erl-xcomp-aarch64-linux-musl.conf"
     xcomp.write_text(xcomp_text(profile, common, lane), encoding="utf-8")
     env = build_environment(profile, common, lane)
-    log = lane / "build.log"
     configure_command = ["./otp_build", "configure", f"--xcomp-conf={xcomp}"]
     boot_command = ["./otp_build", "boot", "-a"]
     release_command = ["./otp_build", "release", "-a", str(release)]
@@ -572,6 +700,7 @@ def build_lane(name: str, profile: dict[str, Any], archives: dict[str, Path], co
         )
     run(boot_command, cwd=source, env=env, log=log)
     run(release_command, cwd=source, env=env, log=log)
+    release_omissions = apply_release_omissions(release, profile)
     commands = [configure_command, boot_command, release_command]
     beam = locate_beam(release)
     if not (lane / "beam-link.map").is_file():
@@ -588,14 +717,15 @@ def build_lane(name: str, profile: dict[str, Any], archives: dict[str, Path], co
     receipt = {
         "schema": "rust-beam/otp-build-receipt/v1",
         "lane": name,
-        "profile": {"path": PROFILE_PATH.relative_to(ROOT).as_posix(), "digest": sha256(PROFILE_PATH)},
+        "profile": {"path": profile_path.relative_to(ROOT).as_posix(), "digest": sha256(profile_path)},
         "source_lock": {"path": SOURCE_LOCK_PATH.relative_to(ROOT).as_posix(), "digest": sha256(SOURCE_LOCK_PATH)},
         "sources": source_entries(profile),
         "source_start": {
             "archive_verified": True,
             "fresh_extraction": True,
             "upstream_reference": source_entries(profile)["otp-source"]["immutable_reference"],
-            "patches": [],
+            "patches": patch_receipts,
+            "release_omissions": release_omissions,
         },
         "commands": [shlex.join(command) for command in commands],
         "environment": controlled_environment,
@@ -885,7 +1015,13 @@ def runtime_load_attempts(release: Path, strings_tool: Path) -> list[dict[str, A
     return attempts
 
 
-def write_inspection_reports(lane: Path, profile: dict[str, Any], common: Path) -> dict[str, Any]:
+def write_inspection_reports(
+    lane: Path,
+    profile: dict[str, Any],
+    common: Path,
+    *,
+    profile_path: Path = PROFILE_PATH,
+) -> dict[str, Any]:
     release = lane / "release"
     beam = locate_beam(release)
     inspection = lane / "inspection"
@@ -942,9 +1078,14 @@ def write_inspection_reports(lane: Path, profile: dict[str, Any], common: Path) 
         (inspection / name).write_text(output, encoding="utf-8")
     shutil.copy2(lane / "beam-link.map", inspection / "beam-link.map")
     shutil.copy2(lane / "erl-xcomp-aarch64-linux-musl.conf", inspection / "erl-xcomp-aarch64-linux-musl.conf")
+    build_receipt = load_json(lane / "build-receipt.json")
+    applied_patches = build_receipt.get("source_start", {}).get("patches")
+    expected_patches = [audit_patch(patch) for patch in profile["patches"]]
+    if applied_patches != expected_patches:
+        raise ArtifactError("built OTP patch receipt differs from the sealed profile")
     receipt = {
         "schema": "rust-beam/otp-artifact-inspection/v1",
-        "profile_digest": sha256(PROFILE_PATH),
+        "profile_digest": sha256(profile_path),
         "beam": {
             "path": beam.relative_to(lane).as_posix(),
             "size": beam.stat().st_size,
@@ -959,8 +1100,13 @@ def write_inspection_reports(lane: Path, profile: dict[str, Any], common: Path) 
         "builtins": builtins,
         "patch_audit": {
             "profile_patches": profile["patches"],
+            "applied_host_adapter_patches": applied_patches,
             "source_archive": profile["sources"]["otp-source"],
-            "source_operations_before_build": ["verify digest", "extract archive"],
+            "source_operations_before_build": [
+                "verify source digest",
+                "extract source archive",
+                "verify and apply declared host-adapter patches",
+            ],
             "semantic_otp_patches": [],
         },
         "artifact_assumptions": profile["artifact_contract"],
@@ -975,14 +1121,21 @@ def write_inspection_reports(lane: Path, profile: dict[str, Any], common: Path) 
     return receipt
 
 
-def inspect_lane(name: str, profile: dict[str, Any], common: Path) -> dict[str, Any]:
-    lane = WORK_ROOT / name
+def inspect_lane(
+    name: str,
+    profile: dict[str, Any],
+    common: Path,
+    *,
+    profile_path: Path = PROFILE_PATH,
+    work_root: Path = WORK_ROOT,
+) -> dict[str, Any]:
+    lane = work_root / name
     if not (lane / "build-receipt.json").is_file():
         raise ArtifactError(f"missing {name} build; run just build-otp first")
     receipt = load_json(lane / "build-receipt.json")
-    if receipt.get("profile", {}).get("digest") != sha256(PROFILE_PATH):
+    if receipt.get("profile", {}).get("digest") != sha256(profile_path):
         raise ArtifactError(f"{name} was built with a different profile; rebuild it")
-    return write_inspection_reports(lane, profile, common)
+    return write_inspection_reports(lane, profile, common, profile_path=profile_path)
 
 
 def comparison_manifest(lane: Path) -> list[dict[str, Any]]:
@@ -994,13 +1147,24 @@ def comparison_manifest(lane: Path) -> list[dict[str, Any]]:
     ]
 
 
-def verify_rebuild(profile: dict[str, Any], archives: dict[str, Path], common: Path) -> None:
-    primary = WORK_ROOT / "primary"
+def verify_rebuild(
+    profile: dict[str, Any],
+    archives: dict[str, Path],
+    common: Path,
+    *,
+    profile_path: Path = PROFILE_PATH,
+    work_root: Path = WORK_ROOT,
+) -> None:
+    primary = work_root / "primary"
     if not (primary / "build-receipt.json").is_file():
-        build_lane("primary", profile, archives, common)
-    inspect_lane("primary", profile, common)
-    secondary = build_lane("rebuild", profile, archives, common)
-    inspect_lane("rebuild", profile, common)
+        build_lane(
+            "primary", profile, archives, common, profile_path=profile_path, work_root=work_root
+        )
+    inspect_lane("primary", profile, common, profile_path=profile_path, work_root=work_root)
+    secondary = build_lane(
+        "rebuild", profile, archives, common, profile_path=profile_path, work_root=work_root
+    )
+    inspect_lane("rebuild", profile, common, profile_path=profile_path, work_root=work_root)
     first = comparison_manifest(primary)
     second = comparison_manifest(secondary)
     first_beam = locate_beam(primary / "release")
@@ -1014,18 +1178,20 @@ def verify_rebuild(profile: dict[str, Any], archives: dict[str, Path], common: P
         "beam_exact_match": sha256(first_beam) == sha256(second_beam),
         "native_closure_exact_match": first == second,
         "native_closure_count": len(first),
-        "profile_digest": sha256(PROFILE_PATH),
+        "profile_digest": sha256(profile_path),
     }
     if not comparison["beam_exact_match"] or not comparison["native_closure_exact_match"]:
         comparison["result"] = "mismatch"
-        (WORK_ROOT / "rebuild-comparison.json").write_text(canonical_json(comparison), encoding="utf-8")
+        (work_root / "rebuild-comparison.json").write_text(canonical_json(comparison), encoding="utf-8")
         raise ArtifactError("clean rebuild differs from the primary native closure")
-    (WORK_ROOT / "rebuild-comparison.json").write_text(canonical_json(comparison), encoding="utf-8")
+    (work_root / "rebuild-comparison.json").write_text(canonical_json(comparison), encoding="utf-8")
     print(f"clean rebuild equivalent: {len(first)} native objects, beam {sha256(first_beam)}", flush=True)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--profile", type=Path, default=PROFILE_PATH)
+    parser.add_argument("--work-root", type=Path, default=WORK_ROOT)
     subparsers = parser.add_subparsers(dest="command", required=True)
     subparsers.add_parser("build", help="build a fresh primary OTP release")
     inspect_parser = subparsers.add_parser("inspect", help="inspect a built OTP release")
@@ -1037,15 +1203,36 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     try:
-        profile = load_profile()
+        profile_path = args.profile if args.profile.is_absolute() else ROOT / args.profile
+        work_root = args.work_root if args.work_root.is_absolute() else ROOT / args.work_root
+        profile = load_profile(profile_path)
         archives = verified_archives(profile)
         common = prepare_common(profile, archives)
         if args.command == "build":
-            build_lane("primary", profile, archives, common)
+            build_lane(
+                "primary",
+                profile,
+                archives,
+                common,
+                profile_path=profile_path,
+                work_root=work_root,
+            )
         elif args.command == "inspect":
-            inspect_lane(args.lane, profile, common)
+            inspect_lane(
+                args.lane,
+                profile,
+                common,
+                profile_path=profile_path,
+                work_root=work_root,
+            )
         elif args.command == "verify-rebuild":
-            verify_rebuild(profile, archives, common)
+            verify_rebuild(
+                profile,
+                archives,
+                common,
+                profile_path=profile_path,
+                work_root=work_root,
+            )
         else:
             raise AssertionError(args.command)
     except ArtifactError as error:

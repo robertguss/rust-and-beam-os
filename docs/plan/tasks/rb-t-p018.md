@@ -78,9 +78,11 @@ Blocks: RB-T-P008, RB-T-P014, RB-G-GATE0.
       `execve`, `setsid`, `wait4`, SCM_RIGHTS transfer, or `inet_gethost`
       activity. `erl_child_setup` and `inet_gethost` are absent from the image.
 - [ ] `init:stop`, SIGTERM, `os:cmd`, external `open_port` spawn forms, `heart`,
-      and native hostname lookup each have a declared result and bounded test;
-      unsupported operations fail honestly without hanging or destabilizing
-      ERTS.
+      and public hostname lookup under the configured file-only policy each have
+      a declared result and bounded test; unsupported operations fail honestly
+      without hanging or destabilizing ERTS. Direct calls to OTP's internal
+      `inet_gethost_native` module are an out-of-contract policy bypass and must
+      be characterized separately if tested.
 - [ ] Runtime evidence and a source assertion prove `erts_sys_unix_later_init`
       remains active.
 - [ ] UDP probes are eliminated or ADR 0002 proves and accepts a metadata-only

@@ -1,7 +1,7 @@
 {
   "schema": "rust-beam/beam-host-contract/v1",
   "revision": 0,
-  "status": "phase-0-source-plus-trace",
+  "status": "phase-0-source-plus-helperless-trace",
   "target": "aarch64-linux-musl",
   "architecture": "provisional until the custom-kernel conformance suite passes",
   "runtime": {
@@ -40,10 +40,10 @@
       "blocking": "regular-file operations may block on backing storage"
     },
     "local-ipc": {
-      "callers": ["ERTS child setup", "ERTS Unix-domain descriptor passing"],
-      "semantics": ["AF_UNIX stream socketpair", "SCM_RIGHTS preserves descriptor identity", "message boundaries follow stream semantics"],
+      "callers": ["disabled ERTS forker path"],
+      "semantics": ["not required by the helperless target profile"],
       "errors": ["EAGAIN", "EBADF", "EINTR", "EMFILE", "ENFILE"],
-      "blocking": "send and receive may block unless the descriptor is nonblocking"
+      "blocking": "not applicable while external process creation is disabled"
     },
     "memory": {
       "callers": ["ERTS allocator", "musl allocator", "musl pthread stack allocator"],
@@ -64,10 +64,10 @@
       "blocking": "blocks until readiness, signal, or timeout"
     },
     "process": {
-      "callers": ["ERTS bootstrap", "erl_child_setup", "inet_gethost"],
-      "semantics": ["Linux process and session identity", "child exit status and SIGCHLD", "exit_group terminates the process"],
-      "errors": ["EAGAIN", "ECHILD", "EINTR", "ENOENT", "ESRCH"],
-      "blocking": "wait4 may block; lifecycle and identity operations do not"
+      "callers": ["ERTS bootstrap and shutdown"],
+      "semantics": ["single native process identity", "exit_group terminates the process", "external spawn fails with ENOTSUP before a process syscall"],
+      "errors": ["ENOTSUP", "ESRCH"],
+      "blocking": "identity and shutdown operations do not block; no child wait is admitted"
     },
     "query": {
       "callers": ["ERTS platform discovery", "musl startup"],
@@ -103,14 +103,14 @@
   "interactions": [
     {"syscall":"bind","classification":"required","family":"network-restricted","operations":["AF_INET SOCK_DGRAM wildcard port 0"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_network_restriction_conformance"]},
     {"syscall":"brk","classification":"required","family":"memory","operations":["query", "grow", "shrink"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_memory_conformance"]},
-    {"syscall":"chdir","classification":"required","family":"process","operations":["change helper working directory to root"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_process_conformance"]},
+    {"syscall":"chdir","classification":"optional/disabled","family":"process","operations":["change helper working directory to root"],"reason":"absent after disabling the forker in the helperless target profile"},
     {"syscall":"clock_getres","classification":"required","family":"time","operations":["CLOCK_MONOTONIC", "CLOCK_REALTIME"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_time_conformance"]},
     {"syscall":"clock_gettime","classification":"required","family":"time","operations":["CLOCK_MONOTONIC", "CLOCK_REALTIME"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_time_conformance"]},
-    {"syscall":"clone","classification":"required","family":"thread","operations":["musl pthread flags", "child TLS", "parent and child TID"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_thread_conformance"]},
+    {"syscall":"clone","classification":"required","family":"thread","operations":["musl pthread CLONE_THREAD flags without SIGCHLD", "child TLS", "parent and child TID"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_thread_conformance"]},
     {"syscall":"close","classification":"required","family":"descriptor","operations":["valid close", "EBADF double-close"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_descriptor_conformance"]},
-    {"syscall":"dup","classification":"required","family":"descriptor","operations":["duplicate inherited descriptor"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_descriptor_conformance"]},
-    {"syscall":"dup3","classification":"required","family":"descriptor","operations":["duplicate to exact number", "O_CLOEXEC"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_descriptor_conformance"]},
-    {"syscall":"execve","classification":"required","family":"process","operations":["beam.smp", "erl_child_setup", "inet_gethost"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_process_conformance"]},
+    {"syscall":"dup","classification":"optional/disabled","family":"descriptor","operations":["helper standard-I/O duplication"],"reason":"absent after disabling the forker in the helperless target profile"},
+    {"syscall":"dup3","classification":"optional/disabled","family":"descriptor","operations":["helper exact descriptor duplication"],"reason":"absent after disabling the forker in the helperless target profile"},
+    {"syscall":"execve","classification":"optional/disabled","family":"process","operations":["Linux evidence-harness image entrypoint only"],"reason":"custom-kernel image loading is not an ERTS execve; helper execution is absent and external spawn returns ENOTSUP"},
     {"syscall":"exit","classification":"required","family":"thread","operations":["native thread exit"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_thread_conformance"]},
     {"syscall":"exit_group","classification":"required","family":"process","operations":["normal process shutdown"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_process_conformance"]},
     {"syscall":"faccessat","classification":"required","family":"filesystem","operations":["F_OK path probe relative to AT_FDCWD"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_filesystem_conformance"]},
@@ -124,7 +124,7 @@
     {"syscall":"getsockname","classification":"required","family":"network-restricted","operations":["read ephemeral UDP port"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_network_restriction_conformance"]},
     {"syscall":"getsockopt","classification":"required","family":"network-restricted","operations":["read socket type and error"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_network_restriction_conformance"]},
     {"syscall":"ioctl","classification":"required","family":"descriptor","operations":["TIOCGWINSZ console query", "ENOTTY on regular file"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_descriptor_conformance"]},
-    {"syscall":"kill","classification":"required","family":"signal","operations":["process-directed SIGCHLD helper management"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_signal_conformance"]},
+    {"syscall":"kill","classification":"optional/disabled","family":"signal","operations":["process-directed SIGCHLD helper management"],"reason":"absent after disabling the forker in the helperless target profile"},
     {"syscall":"mmap","classification":"required","family":"memory","operations":["anonymous allocation", "file mapping", "thread stack and guard", "MAP_FIXED", "ENOMEM fault"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_memory_conformance"]},
     {"syscall":"mprotect","classification":"required","family":"memory","operations":["PROT_NONE guard", "PROT_READ|PROT_WRITE", "read-only and executable segments"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_memory_conformance"]},
     {"syscall":"munmap","classification":"required","family":"memory","operations":["allocator release", "joined thread stack release"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_memory_conformance"]},
@@ -137,21 +137,21 @@
     {"syscall":"read","classification":"required","family":"descriptor","operations":["regular file", "pipe", "socket", "EFAULT guarded destination", "short read", "EOF"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_descriptor_conformance"]},
     {"syscall":"readlinkat","classification":"required","family":"filesystem","operations":["absolute and AT_FDCWD symlink query"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_filesystem_conformance"]},
     {"syscall":"readv","classification":"required","family":"descriptor","operations":["single and multiple iovec reads", "short vector read"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_descriptor_conformance"]},
-    {"syscall":"recvmsg","classification":"required","family":"local-ipc","operations":["SCM_RIGHTS receive", "MSG_DONTWAIT", "EOF"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_local_ipc_conformance"]},
+    {"syscall":"recvmsg","classification":"optional/disabled","family":"local-ipc","operations":["forker SCM_RIGHTS receive"],"reason":"absent after disabling the forker in the helperless target profile"},
     {"syscall":"rt_sigaction","classification":"required","family":"signal","operations":["SA_SIGINFO", "SA_RESTART", "SA_ONSTACK", "SA_RESTORER"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_signal_conformance"]},
     {"syscall":"rt_sigprocmask","classification":"required","family":"signal","operations":["SIG_BLOCK", "SIG_UNBLOCK", "SIG_SETMASK", "inherit at clone"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_signal_conformance"]},
     {"syscall":"rt_sigreturn","classification":"required","family":"signal","operations":["restore AArch64 general registers", "restore FPSIMD context", "restore signal mask"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_signal_conformance"]},
     {"syscall":"sched_getaffinity","classification":"required","family":"query","operations":["current process CPU mask"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_query_conformance"]},
     {"syscall":"sched_yield","classification":"required","family":"thread","operations":["yield current native thread"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_thread_conformance"]},
-    {"syscall":"sendmsg","classification":"required","family":"local-ipc","operations":["SCM_RIGHTS send", "three descriptors"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_local_ipc_conformance"]},
-    {"syscall":"set_tid_address","classification":"required","family":"thread","operations":["main and helper child-TID registration"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_thread_conformance"]},
-    {"syscall":"setsid","classification":"required","family":"process","operations":["child helper session creation"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_process_conformance"]},
+    {"syscall":"sendmsg","classification":"optional/disabled","family":"local-ipc","operations":["forker SCM_RIGHTS send"],"reason":"absent after disabling the forker in the helperless target profile"},
+    {"syscall":"set_tid_address","classification":"required","family":"thread","operations":["main native process child-TID registration"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_thread_conformance"]},
+    {"syscall":"setsid","classification":"optional/disabled","family":"process","operations":["child helper session creation"],"reason":"absent after disabling the forker in the helperless target profile"},
     {"syscall":"sigaltstack","classification":"required","family":"signal","operations":["install 64 KiB alternate stack", "deliver SIGUSR1 on stack"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_signal_conformance"]},
     {"syscall":"socket","classification":"required","family":"network-restricted","operations":["AF_INET SOCK_DGRAM only"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_network_restriction_conformance"]},
-    {"syscall":"socketpair","classification":"required","family":"local-ipc","operations":["AF_UNIX SOCK_STREAM"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_local_ipc_conformance"]},
+    {"syscall":"socketpair","classification":"optional/disabled","family":"local-ipc","operations":["forker AF_UNIX SOCK_STREAM"],"reason":"absent after disabling the forker in the helperless target profile"},
     {"syscall":"tkill","classification":"required","family":"signal","operations":["musl cancellation signal", "thread-directed SIGUSR1"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_signal_conformance"]},
     {"syscall":"uname","classification":"required","family":"query","operations":["Linux AArch64 identity"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_query_conformance"]},
-    {"syscall":"wait4","classification":"required","family":"process","operations":["WNOHANG reap", "ECHILD"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_process_conformance"]},
+    {"syscall":"wait4","classification":"optional/disabled","family":"process","operations":["child helper reap"],"reason":"absent after disabling the forker in the helperless target profile"},
     {"syscall":"write","classification":"required","family":"descriptor","operations":["regular file", "pipe", "console", "short write"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_descriptor_conformance"]},
     {"syscall":"writev","classification":"required","family":"descriptor","operations":["single and multiple iovec writes", "stdio flush"],"evidence":["docs/evidence/phase-0/RB-T-P004/target-observations.json"],"tests":["beam_host_descriptor_conformance"]},
 
@@ -198,11 +198,11 @@
     {"source":"otp-source","path":"erts/emulator/sys/unix/sys.c","symbols":["sigaction", "sigprocmask", "pipe", "uname"],"interactions":["rt_sigaction", "rt_sigprocmask", "pipe2", "read", "write", "uname"],"disposition":"traced-target"},
     {"source":"otp-source","path":"erts/emulator/sys/unix/sys_time.c","symbols":["clock_gettime", "clock_getres"],"interactions":["clock_gettime", "clock_getres"],"disposition":"traced-target"},
     {"source":"otp-source","path":"erts/emulator/sys/unix/sys_signal_stack.c","symbols":["sigaltstack", "SA_ONSTACK"],"interactions":["sigaltstack"],"disposition":"traced-target-fault-probe"},
-    {"source":"otp-source","path":"erts/emulator/sys/unix/sys_uds.c","symbols":["sendmsg", "recvmsg", "SCM_RIGHTS"],"interactions":["socketpair", "sendmsg", "recvmsg"],"disposition":"traced-target"},
+    {"source":"otp-source","path":"erts/emulator/sys/unix/sys_uds.c","symbols":["sendmsg", "recvmsg", "SCM_RIGHTS"],"interactions":["socketpair", "sendmsg", "recvmsg"],"disposition":"source-visible-helperless-disabled"},
     {"source":"otp-source","path":"erts/emulator/sys/common/erl_poll.c","symbols":["ppoll", "poll", "ERTS_POLL_IS_FALLBACK"],"interactions":["ppoll", "epoll_create", "epoll_ctl", "epoll_wait"],"disposition":"portable-poll-traced-target-kernel-poll-disabled"},
     {"source":"otp-source","path":"erts/emulator/sys/common/erl_mmap.c","symbols":["mmap", "madvise", "MADV_FREE"],"interactions":["mmap", "mprotect", "munmap", "madvise"],"disposition":"mapping-traced-target-advice-traced-host"},
     {"source":"otp-source","path":"erts/lib_src/pthread/ethread.c","symbols":["pthread_create", "pthread_join", "clock_gettime"],"interactions":["clone", "futex", "clock_gettime", "sched_yield"],"disposition":"traced-target"},
-    {"source":"otp-source","path":"erts/emulator/sys/unix/erl_child_setup.c","symbols":["setsid", "execv", "waitpid"],"interactions":["setsid", "execve", "wait4"],"disposition":"traced-target"},
+    {"source":"otp-source","path":"erts/emulator/sys/unix/erl_child_setup.c","symbols":["setsid", "execv", "waitpid"],"interactions":["setsid", "execve", "wait4"],"disposition":"built-upstream-but-omitted-from-helperless-release"},
     {"source":"musl-source","path":"src/thread/pthread_create.c","symbols":["SYS_set_tid_address", "SYS_set_robust_list", "SYS_sched_setscheduler"],"interactions":["clone", "exit", "futex", "mmap", "mprotect", "munmap", "rt_sigprocmask", "set_tid_address", "set_robust_list", "sched_setscheduler"],"disposition":"normal-and-fault-paths-traced-explicit-scheduling-disabled"},
     {"source":"musl-source","path":"src/thread/aarch64/clone.s","symbols":["SYS_clone", "SYS_exit", "svc #0"],"interactions":["clone", "exit"],"disposition":"traced-target"},
     {"source":"musl-source","path":"src/thread/__timedwait.c","symbols":["FUTEX_WAIT", "ETIMEDOUT", "ECANCELED"],"interactions":["clock_gettime", "futex"],"disposition":"timeout-and-cancellation-traced"},
@@ -215,8 +215,8 @@
     {"source":"musl-source","path":"src/select/ppoll.c","symbols":["SYS_ppoll", "ENOSYS", "_NSIG"],"interactions":["ppoll"],"disposition":"readiness-and-timeout-traced-target"}
   ],
   "gate_risks": [
-    "The exact workload currently starts erl_child_setup and inet_gethost; eliminating broad process creation remains a Gate 0 design pressure.",
-    "ERTS creates three AF_INET UDP sockets bound to wildcard port zero even though no packet, connection, listener, or network device is used; revision 0 admits only that observed subset.",
+    "The helperless profile removes erl_child_setup and inet_gethost execution through the sealed P018 Unix adapter; P008 must validate the narrowed call-level contract.",
+    "ERTS creates three AF_INET UDP sockets bound to wildcard port zero even though no packet, connection, listener, or network device is used; ADR 0002 accepts only that metadata-only subset under H2.",
     "madvise and robust-mutex paths are source-visible but absent from the bounded target workload; they remain optional until dedicated custom-kernel conformance enables them."
   ],
   "unresolved": []

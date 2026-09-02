@@ -7,12 +7,18 @@ defmodule RuntimeLab.ReleaseProbe do
 
   @spec run() :: :ok
   def run do
+    run_for(@artifact_build_id)
+  end
+
+  @doc false
+  @spec run_for(String.t()) :: :ok
+  def run_for(expected_artifact_build_id) do
     {:ok, started_applications} = Application.ensure_all_started(:runtime_lab)
     identity = RuntimeLab.identity()
     config = Application.fetch_env!(:runtime_lab, RuntimeLab.Supervisor)
     artifact_build_id = System.fetch_env!("RB_ERTS_ARTIFACT_BUILD_ID")
 
-    true = artifact_build_id == @artifact_build_id
+    true = artifact_build_id == expected_artifact_build_id
     true = identity.elixir == "1.20.4"
     true = identity.otp == "29.0.5"
     true = identity.erts == "17.0.5"
