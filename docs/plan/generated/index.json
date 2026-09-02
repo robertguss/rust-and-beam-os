@@ -321,6 +321,7 @@
       "defer_until": null,
       "depends_on": [
         "RB-T-AUDIT0",
+        "RB-T-P018",
         "RB-T-P017",
         "RB-T-P016",
         "RB-T-P015",
@@ -349,7 +350,7 @@
       "related": [],
       "schema": "repo-plan/v1",
       "state": "open",
-      "title": "Decide whether the Rust-kernel/standard-BEAM POC may enter kernel implementation",
+      "title": "Decide whether kernel implementation may begin",
       "type": "gate",
       "x_labels": [
         "ready-for-human"
@@ -888,6 +889,7 @@
       "depends_on": [
         "RB-T-P017",
         "RB-T-P014",
+        "RB-T-P018",
         "RB-T-P007",
         "RB-T-P004"
       ],
@@ -1054,6 +1056,7 @@
       "depends_on": [
         "RB-T-P003",
         "RB-T-P006",
+        "RB-T-P018",
         "RB-T-P012"
       ],
       "evidence": [],
@@ -1066,7 +1069,7 @@
       "related": [],
       "schema": "repo-plan/v1",
       "state": "open",
-      "title": "Freeze the versioned QEMU machine, CPU, auxv/HWCAP, page-size, cache, and atomics baseline",
+      "title": "Freeze the AArch64 platform baseline",
       "type": "task",
       "x_labels": [
         "ready-for-agent"
@@ -1158,6 +1161,29 @@
       "x_legacy_id": "P0-17",
       "x_linear_id": "ROB-780",
       "x_linear_url": "https://linear.app/robert-guss/issue/ROB-780/p0-17-reproduce-and-disposition-current-beam-on-custom-kernel-prior"
+    },
+    {
+      "actor": "agent",
+      "defer_until": null,
+      "depends_on": [
+        "RB-T-P004",
+        "RB-T-P005",
+        "RB-T-P006",
+        "RB-T-P007",
+        "RB-T-P017"
+      ],
+      "evidence": [],
+      "id": "RB-T-P018",
+      "milestone": "RB-M-M0",
+      "owner": null,
+      "parent": null,
+      "path": "tasks/rb-t-p018.md",
+      "priority": "P0",
+      "related": [],
+      "schema": "repo-plan/v1",
+      "state": "open",
+      "title": "Disposition ERTS helper processes",
+      "type": "task"
     },
     {
       "actor": "agent",
@@ -3868,5 +3894,5 @@
     }
   ],
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:619047ba7ecdc0bbf7f2079ffd5863c4fb630f32032586fafa279fa6405a4fc4"
+  "source_digest": "sha256:d1adfb3382474a65051b3d9655d96c7ee0317252530f68b13427d9d01add9253"
 }

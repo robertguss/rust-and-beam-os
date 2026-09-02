@@ -42,9 +42,6 @@ Produce the artifact named by the goal.
 - [ ] Every modified downstream ticket names the frozen contract it consumes.
 - [ ] A clean remote Linux runner and the designated Apple Silicon Mac reproduce
       the applicable Gate 0 commands.
-- [ ] `RB-G-GATE0` records Continue, Narrow, Pivot, or Stop and lists accepted
-      residual risks.
-- [ ] The user explicitly approves the Gate 0 decision.
 
 ## Verification
 
@@ -73,6 +70,10 @@ The original plan is strong at the product and milestone level, but it omitted
 several contracts that sit below every later ERTS, SMP, IPC, and GUI assumption.
 QEMU can make an incomplete implementation appear healthy, so these requirements
 must be frozen before kernel work rather than discovered opportunistically.
+
+AUDIT0 supplies evidence to Gate 0; it does not own or wait on the Gate 0 human
+decision. Gate 0 depends on AUDIT0, so placing the decision or user approval in
+this task's acceptance criteria would create a circular completion condition.
 
 ### A. Freeze the exact emulated platform
 
