@@ -1175,13 +1175,13 @@
       "evidence": [],
       "id": "RB-T-P018",
       "milestone": "RB-M-M0",
-      "owner": null,
+      "owner": "amp:T-01a05912-a43d-754e-84fc-d56536c31a76",
       "parent": null,
       "path": "tasks/rb-t-p018.md",
       "priority": "P0",
       "related": [],
       "schema": "repo-plan/v1",
-      "state": "open",
+      "state": "in_progress",
       "title": "Disposition ERTS helper processes",
       "type": "task"
     },
@@ -3894,5 +3894,5 @@
     }
   ],
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:d1adfb3382474a65051b3d9655d96c7ee0317252530f68b13427d9d01add9253"
+  "source_digest": "sha256:ee0365b0217dee9828d7a988b4433d57812154ca118810b62d29677a09f3f6f8"
 }
