@@ -1,0 +1,370 @@
+{
+  "file_lookup": {
+    "boots_passed": 10,
+    "name": "localhost",
+    "result": "127.0.0.1"
+  },
+  "internal_native_resolver": {
+    "acceptance_invocation": "not invoked",
+    "classification": "unsupported-internal-policy-bypass",
+    "configured_public_path_reaches_module": false,
+    "module": "inet_gethost_native",
+    "pivot_condition": "a required application or configured public API reaches this backend",
+    "upstream_failure_behavior": "VM halt when the required port program cannot be opened"
+  },
+  "liveness_after_rejections": {
+    "boots_passed": 10
+  },
+  "operations": [
+    {
+      "boots": [
+        {
+          "boot": 1,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 2,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 3,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 4,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 5,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 6,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 7,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 8,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 9,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 10,
+          "bounded": true,
+          "rejected": true
+        }
+      ],
+      "expected": "operation not supported (enotsup)",
+      "name": "os_cmd",
+      "status": "pass"
+    },
+    {
+      "boots": [
+        {
+          "boot": 1,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 2,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 3,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 4,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 5,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 6,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 7,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 8,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 9,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 10,
+          "bounded": true,
+          "rejected": true
+        }
+      ],
+      "expected": ":enotsup",
+      "name": "system_cmd",
+      "status": "pass"
+    },
+    {
+      "boots": [
+        {
+          "boot": 1,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 2,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 3,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 4,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 5,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 6,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 7,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 8,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 9,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 10,
+          "bounded": true,
+          "rejected": true
+        }
+      ],
+      "expected": ":enotsup",
+      "name": "port_spawn",
+      "status": "pass"
+    },
+    {
+      "boots": [
+        {
+          "boot": 1,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 2,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 3,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 4,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 5,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 6,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 7,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 8,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 9,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 10,
+          "bounded": true,
+          "rejected": true
+        }
+      ],
+      "expected": ":enotsup",
+      "name": "port_spawn_executable",
+      "status": "pass"
+    },
+    {
+      "boots": [
+        {
+          "boot": 1,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 2,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 3,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 4,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 5,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 6,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 7,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 8,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 9,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 10,
+          "bounded": true,
+          "rejected": true
+        }
+      ],
+      "expected": "{:return, :ignore}",
+      "name": "heart",
+      "status": "pass"
+    },
+    {
+      "boots": [
+        {
+          "boot": 1,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 2,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 3,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 4,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 5,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 6,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 7,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 8,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 9,
+          "bounded": true,
+          "rejected": true
+        },
+        {
+          "boot": 10,
+          "bounded": true,
+          "rejected": true
+        }
+      ],
+      "expected": "{:return, {:error, :nxdomain}}",
+      "name": "public_missing_host",
+      "status": "pass"
+    }
+  ],
+  "schema": "rust-beam/helperless-negative-operation-matrix/v1",
+  "shutdown": {
+    "boots_passed": 10,
+    "init_stop_exit": 0,
+    "sigterm_exit": 0
+  },
+  "status": "pass",
+  "timeout_milliseconds": 1000
+}

@@ -56,15 +56,15 @@
   "inputs": [
     {
       "path": "abi/beam-host.yaml",
-      "digest": "sha256:e293d55b2712e89b26833b6fedaa7bc24259f969bacd3e3ac3f55fba2c2b6ce5"
+      "digest": "sha256:89c7ec505e7606cf385f3d212337d8bd89896552c385f90bc71b5f680cdca9f8"
     },
     {
       "path": "justfile",
-      "digest": "sha256:dda0cb98657d9924d19f2275c2abf24d35cd12abd38e7365443f4eb4a199f977"
+      "digest": "sha256:88a971251ad2bba9c3cdc956c6eb4ee80a9909f9be37bbfe18a421bddbb76b52"
     },
     {
       "path": "scripts/erts_linux.py",
-      "digest": "sha256:43469d1d537c613f19e023b086c70a4f067802139d0143bb10b01a2b934bfd6d"
+      "digest": "sha256:6e0157c78e101e1086d658b796e3f7135500e98675a1f266f268cbba03354cd2"
     },
     {
       "path": "tests/beam-host/fault_probe.c",
@@ -72,7 +72,7 @@
     },
     {
       "path": "tests/erts-linux/init.sh",
-      "digest": "sha256:e6655b86393e87eb3d917867036bdea3d41cdfab0608ef65958cc81b98618d0b"
+      "digest": "sha256:8b7c1d632b12be5945a7f412d2525c3e0012fd92992f7cb69f13d11318c9194a"
     },
     {
       "path": "tests/erts-linux/platform_probe.c",

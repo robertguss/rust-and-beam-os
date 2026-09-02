@@ -38,7 +38,7 @@
     },
     {
       "path": "beam/runtime_lab/config/config.exs",
-      "digest": "sha256:749ff4457c8f3f4271104e95cdb9b1dea29242e536cc1f07a4b748db067523cf"
+      "digest": "sha256:d4c312a482c6d913223b8f385399efe501af9a2b3f2715d3f920608b7434e336"
     },
     {
       "path": "beam/runtime_lab/lib/runtime_lab.ex",

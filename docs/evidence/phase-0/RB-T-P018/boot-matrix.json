@@ -1,0 +1,670 @@
+{
+  "beam_sha256": "2236a94efdea84687c7139f4fa021c4381aa5d00969976bfc330049554711c22",
+  "direct_boots_passed": 10,
+  "mix_boots_passed": 10,
+  "rows": [
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 181841,
+          "digest": "sha256:e1fd56bcadd8067c1c13f8382a83b70e3bd1c846f24beb85fb7b1ef7fdde4517"
+        },
+        "receipt": {
+          "bytes": 40453,
+          "digest": "sha256:820ae1c2faec42f0414746fb718beb3980d8a49f7240304b433cd44ad422a045"
+        },
+        "serial": {
+          "bytes": 473,
+          "digest": "sha256:7761ba8aa914b64935c54f62fdd994d842aaa3f189aa19d7b53b4d5304e6c6cd"
+        }
+      },
+      "boot": 1,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "direct",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 44
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 175808,
+          "digest": "sha256:183fe78b87272af87e418bf38e7d144f2b2da82cfec4d85f8c639d01b26e099b"
+        },
+        "receipt": {
+          "bytes": 40445,
+          "digest": "sha256:3d49f7ec8043a529f10afaecb743ac65363c5085113232a679585cafb444323a"
+        },
+        "serial": {
+          "bytes": 473,
+          "digest": "sha256:bf29e091a43efbdd8791c40c698ead626ee856817fe3a23fc02e2d4f2b0244f8"
+        }
+      },
+      "boot": 2,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "direct",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 44
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 185140,
+          "digest": "sha256:07fa36c9b2b82fd170aa611de9f6759ccdf0be209d44e9ad900c47a4407ab60f"
+        },
+        "receipt": {
+          "bytes": 40443,
+          "digest": "sha256:ab616e86408a5e457c0f487bb86f5b1a4ab09b080a66d44542b4234604a3c062"
+        },
+        "serial": {
+          "bytes": 473,
+          "digest": "sha256:efd0d95ce8af9a0b66004bf6c200339c4acef02e39cf6b814e3b3f83a5bb044b"
+        }
+      },
+      "boot": 3,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "direct",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 44
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 182979,
+          "digest": "sha256:5d4bfd4a7f8c87406e71587778ed9f3fb44f5b8661f1b4dd8dbfe2f3ed173546"
+        },
+        "receipt": {
+          "bytes": 40452,
+          "digest": "sha256:e765169b144804d1d630c7c29dec831cd1c25c9a8d8d4655f975d0f45ab345a6"
+        },
+        "serial": {
+          "bytes": 473,
+          "digest": "sha256:1162531f0e865dd4d5911bb7ae3b7178d697d1cd8834ef63fb584e840cff87a0"
+        }
+      },
+      "boot": 4,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "direct",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 44
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 173014,
+          "digest": "sha256:095f6abe4652831cf3852266e2a90290aa3de9cb8c36ef9e20b635849c23414f"
+        },
+        "receipt": {
+          "bytes": 40441,
+          "digest": "sha256:7c5c8b4437ba0223079da3e51dea0918bbd4b2494e0db821233559a4a0c6e9b0"
+        },
+        "serial": {
+          "bytes": 473,
+          "digest": "sha256:a2b4b1ef42b56c1801035ae5bcade10482b1225ce8310289961ff731f3da9147"
+        }
+      },
+      "boot": 5,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "direct",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 44
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 182080,
+          "digest": "sha256:2ae910063f70388f154f95ba5b1f86bd570ad145ad7806359052b14d6971bcee"
+        },
+        "receipt": {
+          "bytes": 40459,
+          "digest": "sha256:189e69ffe2a44675be1124f6a143a8ac2263ddc068919676186ab1f0d1b5c83b"
+        },
+        "serial": {
+          "bytes": 473,
+          "digest": "sha256:f065f628ba8518111ea18e28305fd94811b12f4514e161ba4f66851b826590c5"
+        }
+      },
+      "boot": 6,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "direct",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 44
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 185996,
+          "digest": "sha256:c5bf90e9b3026bbff2dbc3d5f18628a2dd9827d45925b27d13a9922d68710455"
+        },
+        "receipt": {
+          "bytes": 40446,
+          "digest": "sha256:47d967fdb1d96b7100ce3b18dab14916f41b0b520396139102700f8d7508a2f1"
+        },
+        "serial": {
+          "bytes": 473,
+          "digest": "sha256:eb39806e0f8f79a690cf74918a82eb5d5597cf31e462db040b717c8e8f1bf4aa"
+        }
+      },
+      "boot": 7,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "direct",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 44
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 186681,
+          "digest": "sha256:85a1cd12dd2d0226eb8075b5e25bc95e79dd7b888f461b8deaf6f2f126b0a7f4"
+        },
+        "receipt": {
+          "bytes": 40448,
+          "digest": "sha256:f15301f47b2416357c32a71a8dc7e2d63367109aa3dd11d74434b2263d86723a"
+        },
+        "serial": {
+          "bytes": 473,
+          "digest": "sha256:d39c567513e675eb261d93d4532b3b5e36fb44ce693bce8f3a6710e35ab2cc5e"
+        }
+      },
+      "boot": 8,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "direct",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 44
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 180109,
+          "digest": "sha256:9e7d51df51af4d265b6b54a607b007b14756d160c21aece98da49d0fa4c97844"
+        },
+        "receipt": {
+          "bytes": 40460,
+          "digest": "sha256:c4c910fe18af02ee986855f525ac594c873401e6d6d49e930231c631bdeebc79"
+        },
+        "serial": {
+          "bytes": 473,
+          "digest": "sha256:363e02bb773c2aa342165ef147003bea4a64fa00f96baa359fadd618ed5f5950"
+        }
+      },
+      "boot": 9,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "direct",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 44
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 173155,
+          "digest": "sha256:b8d0ac1cc32b8fc0dea8bc133374965ae35200a6d7b56df4688a95a7f90d8009"
+        },
+        "receipt": {
+          "bytes": 40459,
+          "digest": "sha256:feea264fc5958ab8c5cb43c359bcab0822d69f17a985b18ed4aa40d46ff76542"
+        },
+        "serial": {
+          "bytes": 473,
+          "digest": "sha256:1181f655b3ce51d215d6da0c1f741ecda4b3add97f195172dfb3de8805a608a0"
+        }
+      },
+      "boot": 10,
+      "ephemeral_udp_binds": 3,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "direct",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 44
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 288900,
+          "digest": "sha256:1ad1b81173e28cff8d1d9130db794307b3a1512bddc02aec8c288af6f3d47770"
+        },
+        "receipt": {
+          "bytes": 610720,
+          "digest": "sha256:b54de89a5445f3b44bc2d7c2c843c59815a1113286dbf1863dde8e2b2cc5f45f"
+        },
+        "serial": {
+          "bytes": 7577,
+          "digest": "sha256:4f19b1658b2d93c2ac07e28c60f287a138b9c1a5b7780fb5eff207c3d9846f17"
+        }
+      },
+      "boot": 1,
+      "ephemeral_udp_binds": 1,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "mix",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 41
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 291930,
+          "digest": "sha256:5a470a0ccfa89c8a3655e44a50ffcdf4488f42cefc6669e99677e95cbb1402e9"
+        },
+        "receipt": {
+          "bytes": 610719,
+          "digest": "sha256:1d016a83559f3a2f96d953c2aab3533a3dbba9eaa6c1d94fdc3192fde54de5d7"
+        },
+        "serial": {
+          "bytes": 7577,
+          "digest": "sha256:667a2be2f71fbf0d78741501cf5784cc3d1d925a2f9d0b2184992158fb1dd5ec"
+        }
+      },
+      "boot": 2,
+      "ephemeral_udp_binds": 1,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "mix",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 41
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 284443,
+          "digest": "sha256:5ad6b505d19558299bcb49490fe217d2d70b76607e1c6f6d10d2e0ba58108417"
+        },
+        "receipt": {
+          "bytes": 610720,
+          "digest": "sha256:faee897452988799590312f15070c3fcb3b239effbbe32c7b0d6955baff3ae86"
+        },
+        "serial": {
+          "bytes": 7577,
+          "digest": "sha256:63e51ddfec6b80c242027047a1f46c2ce3939037d51b636ddddf1ef95eac680a"
+        }
+      },
+      "boot": 3,
+      "ephemeral_udp_binds": 1,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "mix",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 41
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 268889,
+          "digest": "sha256:c6593e44eb2984de7904ecd806bd9ce74b089c91305b2c8b853bff8124698fb0"
+        },
+        "receipt": {
+          "bytes": 610720,
+          "digest": "sha256:d5c488ed12a9068fb364444dd1d14d7dc04cefd46ac6d1d1978e38da4b79d94c"
+        },
+        "serial": {
+          "bytes": 7577,
+          "digest": "sha256:f01e704f170e09239831b5db27dfce44d2c2c68039c08f9115474c9e720ebca3"
+        }
+      },
+      "boot": 4,
+      "ephemeral_udp_binds": 1,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "mix",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 41
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 286636,
+          "digest": "sha256:035c1e88527f7583d3c3a2bce8d0f8845fa44818b6997319115f4738bfe6e2ce"
+        },
+        "receipt": {
+          "bytes": 610720,
+          "digest": "sha256:60ca0796366ebf7ccf39fa652fd59fe79e75ab22a8c6afcd9ca8977349a22696"
+        },
+        "serial": {
+          "bytes": 7577,
+          "digest": "sha256:ac57df2e4759d08d810aae8896ebac03ce6c3fd15cb200f1ff220b9198e627d2"
+        }
+      },
+      "boot": 5,
+      "ephemeral_udp_binds": 1,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "mix",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 41
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 281688,
+          "digest": "sha256:b00f15de7cc2da916264e5f7010bb68f98a7f49a1abc0fee8a43c6ec74828647"
+        },
+        "receipt": {
+          "bytes": 610720,
+          "digest": "sha256:68bbf01c31d634c9da7db538dc77ec72bbc865515c47c5ece4d0a53ed5c00434"
+        },
+        "serial": {
+          "bytes": 7577,
+          "digest": "sha256:cfd4a732248eedcf2c61d9104a1f0613e3ffed49a262881d32e5a885838fa298"
+        }
+      },
+      "boot": 6,
+      "ephemeral_udp_binds": 1,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "mix",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 41
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 284395,
+          "digest": "sha256:336aa6e17fe8fc204e431170efdea2118e9d13d6595fa5b17ca30d7a5b872cc1"
+        },
+        "receipt": {
+          "bytes": 610720,
+          "digest": "sha256:61e02f7565412333f5ed4afe0f08aa30f3c137a92adb74f28a2a9ede96512758"
+        },
+        "serial": {
+          "bytes": 7577,
+          "digest": "sha256:790d4ce6d8dcdc753fb8b236562a48b32868c50c6e0c288efa425b72be38bcf4"
+        }
+      },
+      "boot": 7,
+      "ephemeral_udp_binds": 1,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "mix",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 41
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 274449,
+          "digest": "sha256:61dd69dd2914d2e07b2c2734ba158a111a6d3fd62746fccbecbf40703d822163"
+        },
+        "receipt": {
+          "bytes": 610720,
+          "digest": "sha256:b41ffd05afb3ff4aca6a1d6ead1852958bd6783620cdce6233cb62ac425dbd9e"
+        },
+        "serial": {
+          "bytes": 7577,
+          "digest": "sha256:3037eab4beb0ebb0567fb53839b60bd5edb1b0b223a2559dea8f04f2ba103e9a"
+        }
+      },
+      "boot": 8,
+      "ephemeral_udp_binds": 1,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "mix",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 41
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 251223,
+          "digest": "sha256:dfd5f778c4375b1095b6f96bb0d7a30e6e8bed2be8bc98b70ddca3795857ab61"
+        },
+        "receipt": {
+          "bytes": 610720,
+          "digest": "sha256:606540899505ef4acc73a203466710681371557c85ad71876057e77877431a46"
+        },
+        "serial": {
+          "bytes": 7577,
+          "digest": "sha256:1a420856219cb29cd9b87884d8f018a1dfa8ac772df2291a3dc0ea95099191c0"
+        }
+      },
+      "boot": 9,
+      "ephemeral_udp_binds": 1,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "mix",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 41
+    },
+    {
+      "artifacts": {
+        "normalized_trace": {
+          "bytes": 253236,
+          "digest": "sha256:244ac4677e50c05e00660fda2a750e0bd97aefeeaa09bdd1ede4df8004b822ce"
+        },
+        "receipt": {
+          "bytes": 610721,
+          "digest": "sha256:835ae3bba83ec37cb3f0faf3b6c5e9b982083b5e512817fa571473ac48d66183"
+        },
+        "serial": {
+          "bytes": 7577,
+          "digest": "sha256:2759a01cd69fa8472a72dbd556f5a9b1f917b4a0c46ecd645088b5b36702a7f6"
+        }
+      },
+      "boot": 10,
+      "ephemeral_udp_binds": 1,
+      "external_network_connections": 0,
+      "helper_process_audit": {
+        "clone_process": 0,
+        "fork": 0,
+        "scm_rights": 0,
+        "setsid": 0,
+        "socketpair": 0,
+        "status": "pass",
+        "vfork": 0,
+        "wait4": 0
+      },
+      "lane": "mix",
+      "network_service_listeners": 0,
+      "status": "pass",
+      "syscall_count": 41
+    }
+  ],
+  "schema": "rust-beam/helperless-boot-matrix/v1",
+  "source_revision": "2c8e486dc2ceab0a1f011c9f744ee5f44f9c6d40",
+  "status": "pass"
+}

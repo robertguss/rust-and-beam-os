@@ -1,0 +1,11 @@
+{
+  "identity": {
+    "base_initramfs_sha256": "e8647e45d9d7f1f30e06662fa0966b87924780e723964e03a403dcf7db71ce54",
+    "init_source_sha256": "a50ab406d630e6db752afe8cf0d077f1f62d689c46a7b053dd59cd0a02975b2b",
+    "launcher_sha256": "1627c5d8cb30b1782614bbd15f5614f508731c79fec7ed33f304d5a3c868da8a",
+    "release_squashfs_sha256": "c3c6096a7b08e60844d16c4386f17a7851040408ea8db058ecb1ee4d8475efd6"
+  },
+  "initramfs_sha256": "14b53d7e92569a27c701c2c66e111f07cfe054393efc2b0c5f462d9e73723ec5",
+  "initramfs_size": 26849318,
+  "schema": "rust-beam/runtime-lab-guest-preparation/v1"
+}

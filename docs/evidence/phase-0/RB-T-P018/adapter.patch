@@ -1,0 +1,19 @@
+diff --git a/erts/emulator/sys/unix/sys_drivers.c b/erts/emulator/sys/unix/sys_drivers.c
+--- a/erts/emulator/sys/unix/sys_drivers.c
++++ b/erts/emulator/sys/unix/sys_drivers.c
+@@ -171,0 +172 @@
++#ifndef RB_ERTS_NO_FORKER
+@@ -173,0 +175 @@
++#endif
+@@ -176,0 +179 @@
++#ifndef RB_ERTS_NO_FORKER
+@@ -193 +196,2 @@
+-    erts_sys_unix_later_init(); /* Need to be called after forker has been started */
++#endif
++    erts_sys_unix_later_init();
+@@ -482,0 +487,5 @@
++
++#ifdef RB_ERTS_NO_FORKER
++    errno = ENOTSUP;
++    return ERL_DRV_ERROR_ERRNO;
++#endif

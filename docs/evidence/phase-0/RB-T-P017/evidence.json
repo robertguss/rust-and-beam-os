@@ -35,7 +35,7 @@
   "inputs": [
     {
       "path": "justfile",
-      "digest": "sha256:dda0cb98657d9924d19f2275c2abf24d35cd12abd38e7365443f4eb4a199f977"
+      "digest": "sha256:88a971251ad2bba9c3cdc956c6eb4ee80a9909f9be37bbfe18a421bddbb76b52"
     },
     {
       "path": "scripts/prior_art.py",
@@ -67,7 +67,7 @@
     },
     {
       "path": "docs/plan/gates/rb-g-gate0.md",
-      "digest": "sha256:fe8d2a221b644bab5cbd85b44554ba6e177885c87081e32d94ec5cba7b7b21bb"
+      "digest": "sha256:00a1d16437a31b3e018a2b3635873c061ca5422a73c9018657f39430fdd0701f"
     }
   ],
   "artifacts": [

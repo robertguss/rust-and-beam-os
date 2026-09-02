@@ -60,6 +60,12 @@
       "task": "RB-T-P017",
       "record": "docs/evidence/phase-0/RB-T-P017/evidence.json",
       "claim": "The pinned Tyn source, committed ERTS ELF, architecture differences, limitations, and corrected futex history were audited; its kernel rebuilt; unavailable KVM execution was recorded without TCG substitution; and the Linux liveness probe passed while detecting five injected thread-progress failures."
+    },
+    {
+      "id": "RB-EV-P018-HELPERLESS-ERTS",
+      "task": "RB-T-P018",
+      "record": "docs/evidence/phase-0/RB-T-P018/evidence.json",
+      "claim": "A sealed 11-line Unix OS-glue adapter reproducibly removed both ERTS helper processes and nine helper-only syscalls while the exact helperless AArch64-musl ERTS and genuine Mix release each passed ten full-system boots, bounded unsupported operations, file-only lookup, and clean shutdown."
     }
   ]
 }

@@ -1,0 +1,196 @@
+{
+  "schema": "rust-beam/otp-build-profile/v1",
+  "target": "aarch64-unknown-linux-musl",
+  "otp_release": "29.0.5",
+  "erts_release": "17.0.5",
+  "source_date_epoch": 1788210000,
+  "sources": {
+    "otp-source": "sha256:86f6f40d4638852b0383235b02a70d8450184e441e83a06a108bf8e5bf1b2e04",
+    "musl-source": "sha256:a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4",
+    "llvm-source": "sha256:6898f963c8e938981e6c4a302e83ec5beb4630147c7311183cf61069af16333d",
+    "llvm-x86_64": "sha256:1ead36b3dfcb774b57be530df42bec70ab2d239fbce9889447c7a29a4ddc1ae6",
+    "llvm-aarch64": "sha256:b855cc17d935fdd83da82206b7a7cfc680095efd1e9e8182c4a05e761958bef8"
+  },
+  "compiler": {
+    "version": "20.1.8",
+    "target_flags": [
+      "--target=aarch64-linux-musl",
+      "-march=armv8-a",
+      "-mno-outline-atomics"
+    ],
+    "cflags": [
+      "-O2",
+      "-g0",
+      "-DRB_ERTS_NO_FORKER=1"
+    ],
+    "ldflags": [
+      "-static",
+      "-fuse-ld=lld",
+      "-rtlib=compiler-rt",
+      "--unwindlib=none",
+      "-Wl,-z,max-page-size=4096",
+      "-Wl,-z,common-page-size=4096",
+      "-Wl,--build-id=none"
+    ]
+  },
+  "configure_flags": [
+    "--disable-jit",
+    "--disable-kernel-poll",
+    "--disable-pie",
+    "--disable-saved-compile-time",
+    "--disable-sctp",
+    "--disable-security-hardening-flags",
+    "--enable-deterministic-build",
+    "--disable-static-nifs",
+    "--enable-static-drivers",
+    "--enable-builtin-zlib",
+    "--enable-builtin-zstd",
+    "--enable-builtin-ryu",
+    "--without-termcap",
+    "--without-javac",
+    "--without-asn1",
+    "--without-common_test",
+    "--without-crypto",
+    "--without-debugger",
+    "--without-dialyzer",
+    "--without-diameter",
+    "--without-edoc",
+    "--without-eldap",
+    "--without-et",
+    "--without-eunit",
+    "--without-ftp",
+    "--without-inets",
+    "--without-jinterface",
+    "--without-megaco",
+    "--without-mnesia",
+    "--without-observer",
+    "--without-odbc",
+    "--without-os_mon",
+    "--without-parsetools",
+    "--without-public_key",
+    "--without-reltool",
+    "--without-runtime_tools",
+    "--without-snmp",
+    "--without-ssh",
+    "--without-ssl",
+    "--without-syntax_tools",
+    "--without-tftp",
+    "--without-tools",
+    "--without-wx",
+    "--without-xmerl"
+  ],
+  "cross_answers": {
+    "erl_xcomp_bigendian": "no",
+    "erl_xcomp_double_middle_endian": "no",
+    "erl_xcomp_linux_clock_gettime_correction": "yes",
+    "erl_xcomp_linux_nptl": "yes",
+    "erl_xcomp_linux_usable_sigusrx": "yes",
+    "erl_xcomp_linux_usable_sigaltstack": "yes",
+    "erl_xcomp_poll": "yes",
+    "erl_xcomp_kqueue": "no",
+    "erl_xcomp_putenv_copy": "no",
+    "erl_xcomp_reliable_fpe": "no",
+    "erl_xcomp_getaddrinfo": "no",
+    "erl_xcomp_gethrvtime_procfs_ioctl": "no",
+    "erl_xcomp_clock_gettime_cpu_time": "no",
+    "erl_xcomp_after_morecore_hook": "no",
+    "erl_xcomp_dlsym_brk_wrappers": "no",
+    "erl_xcomp_posix_memalign": "yes",
+    "erl_xcomp_code_model_small": "yes"
+  },
+  "applications": {
+    "included": [
+      "compiler",
+      "erl_interface",
+      "erts",
+      "kernel",
+      "sasl",
+      "stdlib"
+    ],
+    "excluded": [
+      "asn1",
+      "common_test",
+      "crypto",
+      "debugger",
+      "dialyzer",
+      "diameter",
+      "edoc",
+      "eldap",
+      "et",
+      "eunit",
+      "ftp",
+      "inets",
+      "jinterface",
+      "megaco",
+      "mnesia",
+      "observer",
+      "odbc",
+      "os_mon",
+      "parsetools",
+      "public_key",
+      "reltool",
+      "runtime_tools",
+      "snmp",
+      "ssh",
+      "ssl",
+      "syntax_tools",
+      "tftp",
+      "tools",
+      "wx",
+      "xmerl"
+    ]
+  },
+  "native_policy": {
+    "application_nifs": [],
+    "dynamic_drivers": [],
+    "dynamic_libraries": [],
+    "builtin_nifs": "inventory-from-generated-driver-table",
+    "builtin_drivers": "inventory-from-generated-driver-table"
+  },
+  "artifact_contract": {
+    "elf_class": "ELF64",
+    "elf_data": "little-endian",
+    "machine": "AArch64",
+    "type": "ET_EXEC",
+    "dynamic_segment": false,
+    "interpreter": null,
+    "dt_needed": [],
+    "load_alignment": 4096,
+    "max_load_end_exclusive": 2147483648,
+    "executable_stack": false,
+    "runtime_relocations": false,
+    "pt_tls": false,
+    "tls_abi": "The sealed ELFs have no PT_TLS, but each thread still needs a musl pthread descriptor in TPIDR_EL0",
+    "cpu_baseline": "Armv8-A with FP and Advanced SIMD",
+    "lse_instructions": false,
+    "branch_protection_instructions": false,
+    "auxv": {
+      "AT_PAGESZ": 4096,
+      "AT_HWCAP_required": [
+        "FP",
+        "ASIMD"
+      ],
+      "AT_HWCAP_not_required": [
+        "ATOMICS"
+      ],
+      "ET_EXEC_mapping": "All PT_LOAD segments are mapped at their linked virtual addresses below 2 GiB"
+    }
+  },
+  "patches": [
+    {
+      "path": "toolchain/otp/patches/0001-rust-beam-disable-forker.patch",
+      "digest": "sha256:75961539bb6859da5bcdaefc260fb66377243faa97c7ba1bbe06d5d285ee16ad",
+      "strip": 1,
+      "files": [
+        "erts/emulator/sys/unix/sys_drivers.c"
+      ],
+      "max_changed_lines": 40,
+      "classification": "unix-host-adapter",
+      "description": "Skip the ERTS forker and reject external spawn requests synchronously with ENOTSUP",
+      "release_omissions": [
+        "erts-17.0.5/bin/erl_child_setup",
+        "erts-17.0.5/bin/inet_gethost"
+      ]
+    }
+  ]
+}

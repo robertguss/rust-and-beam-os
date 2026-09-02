@@ -1,0 +1,112 @@
+{
+  "schema": "rust-beam/runtime-lab-launcher/v1",
+  "process": {
+    "name": "runtime_lab",
+    "abi": "linux-aarch64-beam-v1",
+    "root_directory": "/system/beam/runtime_lab",
+    "working_directory": "/",
+    "executable": "/system/beam/runtime_lab/erts-17.0.5/bin/beam.smp",
+    "read_only_release": true
+  },
+  "runtime": {
+    "otp": "29.0.5",
+    "erts": "17.0.5",
+    "elixir": "1.20.4",
+    "artifact_build_id": "otp-29.0.5-erts-17.0.5-helperless-beam-sha256-2236a94efdea84687c7139f4fa021c4381aa5d00969976bfc330049554711c22",
+    "beam_sha256": "2236a94efdea84687c7139f4fa021c4381aa5d00969976bfc330049554711c22"
+  },
+  "release": {
+    "name": "runtime_lab",
+    "version": "0.1.0",
+    "boot_script": "/system/beam/runtime_lab/releases/0.1.0/start",
+    "sys_config": "/system/beam/runtime_lab/releases/0.1.0/sys",
+    "vm_args": "/system/beam/runtime_lab/releases/0.1.0/vm.args",
+    "boot_variables": {
+      "ERTS_LIB_DIR": "/system/beam/runtime_lab/lib",
+      "RELEASE_LIB": "/system/beam/runtime_lab/lib"
+    },
+    "code_paths": [
+      "/system/beam/runtime_lab/lib/*/ebin",
+      "/system/beam/runtime_lab/releases/0.1.0/consolidated"
+    ],
+    "config_providers": [],
+    "runtime_config_path": false
+  },
+  "vm_flags": [
+    "-S 2:2",
+    "-SDcpu 1:1",
+    "-SDio 1",
+    "-A 1"
+  ],
+  "environment": {
+    "BINDIR": "/system/beam/runtime_lab/erts-17.0.5/bin",
+    "EMU": "beam",
+    "ERL_CRASH_DUMP": "/dev/null",
+    "ERL_CRASH_DUMP_SECONDS": "0",
+    "HOME": "/tmp/runtime-lab-home",
+    "LC_ALL": "C.UTF-8",
+    "PROGNAME": "runtime_lab",
+    "RB_ERTS_ARTIFACT_BUILD_ID": "otp-29.0.5-erts-17.0.5-helperless-beam-sha256-2236a94efdea84687c7139f4fa021c4381aa5d00969976bfc330049554711c22",
+    "RELEASE_DISTRIBUTION": "none",
+    "RELEASE_MODE": "embedded",
+    "RELEASE_NAME": "runtime_lab",
+    "RELEASE_ROOT": "/system/beam/runtime_lab",
+    "RELEASE_VSN": "0.1.0",
+    "ROOTDIR": "/system/beam/runtime_lab",
+    "TMPDIR": "/tmp",
+    "TZ": "UTC"
+  },
+  "arguments": [
+    "/system/beam/runtime_lab/erts-17.0.5/bin/beam.smp",
+    "-S",
+    "2:2",
+    "-SDcpu",
+    "1:1",
+    "-SDio",
+    "1",
+    "-A",
+    "1",
+    "--",
+    "-root",
+    "/system/beam/runtime_lab",
+    "-bindir",
+    "/system/beam/runtime_lab/erts-17.0.5/bin",
+    "-progname",
+    "runtime_lab",
+    "--",
+    "-home",
+    "/tmp/runtime-lab-home",
+    "-boot",
+    "/system/beam/runtime_lab/releases/0.1.0/start",
+    "-boot_var",
+    "ERTS_LIB_DIR",
+    "/system/beam/runtime_lab/lib",
+    "-boot_var",
+    "RELEASE_LIB",
+    "/system/beam/runtime_lab/lib",
+    "-config",
+    "/system/beam/runtime_lab/releases/0.1.0/sys",
+    "-args_file",
+    "/system/beam/runtime_lab/releases/0.1.0/vm.args",
+    "-kernel",
+    "inetrc",
+    "\"/system/beam/runtime_lab/lib/runtime_lab-0.1.0/priv/inetrc\"",
+    "-mode",
+    "embedded",
+    "-noshell",
+    "-noinput",
+    "-eval",
+    "'Elixir.RuntimeLab.HelperlessProbe':run().",
+    "-s",
+    "init",
+    "stop"
+  ],
+  "forbidden_launchers": [
+    "bin/runtime_lab",
+    "erlexec",
+    "erl",
+    "shell",
+    "erl_child_setup",
+    "inet_gethost"
+  ]
+}

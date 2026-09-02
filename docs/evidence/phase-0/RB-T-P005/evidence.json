@@ -34,15 +34,15 @@
   "inputs": [
     {
       "path": "justfile",
-      "digest": "sha256:dda0cb98657d9924d19f2275c2abf24d35cd12abd38e7365443f4eb4a199f977"
+      "digest": "sha256:88a971251ad2bba9c3cdc956c6eb4ee80a9909f9be37bbfe18a421bddbb76b52"
     },
     {
       "path": "scripts/otp_artifact.py",
-      "digest": "sha256:cf4abc20ded0654d917a08865c16bd90dcda2aac0ecd8d17686eb4e1723e0d44"
+      "digest": "sha256:b16d339d59df13dede564b01a17997cb685abc32f5ea23f1038e7ae5aec49046"
     },
     {
       "path": "tests/test_otp_artifact.py",
-      "digest": "sha256:249bd8a32849cc504cb2cdcffc6ef6579dbdd3822c02a682f91ef9d63b06d52b"
+      "digest": "sha256:1506c7c7675d007c367a01a65831ebcc1e259aa4dc81ebf553e19547a33dc908"
     },
     {
       "path": "toolchain/otp/aarch64-linux-musl.json",

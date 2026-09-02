@@ -1,0 +1,61 @@
+/init: line 73: can't create /system/beam/runtime_lab/.rb-harness-write: Read-only file system
+RB_RELEASE_GUEST event=boot kernel=6.12.94-0-virt machine=aarch64 mount=squashfs-ro profile=helperless
+runtime_lab_event schema="runtime_lab/event-v1" type=feature_worker_started workload_version="1.0.0" generation=1 reason=initial restart_count=0 revision=1 worker=#PID<0.685.0>
+runtime_lab_event schema="runtime_lab/event-v1" type=metric_sampler_started workload_version="1.0.0" interval_ms=1000
+runtime_lab_event schema="runtime_lab/event-v1" type=application_started workload_version="1.0.0" build_id="runtime_lab-0.1.0"
+runtime_lab_event schema="runtime_lab/event-v1" type=runtime_identity workload_version="1.0.0" application="runtime_lab" build_id="runtime_lab-0.1.0" dirty_cpu_schedulers=1 dirty_cpu_schedulers_online=1 dirty_io_schedulers=1 elixir="1.20.4" emulator_flavor=emu erts="17.0.5" otp="29.0.5" schedulers=2 schedulers_online=2 thread_pool_size=1
+runtime_lab_event schema="runtime_lab/event-v1" type=demo_state_changed workload_version="1.0.0" counter=7 revision=2
+runtime_lab_event schema="runtime_lab/event-v1" type=workload_started workload_version="1.0.0" command=crash_once seed=20260901
+runtime_lab_event schema="runtime_lab/event-v1" type=feature_worker_crashing workload_version="1.0.0" generation=1 reason=crash_once revision=3
+[31m22:40:10.963 [error] GenServer RuntimeLab.FeatureWorker terminating
+** (stop) {:intentional_crash, :crash_once}
+Last message: {:"$gen_cast", {:crash, :crash_once}}
+State: %{state_name: RuntimeLab.DemoState, generation: 1}[0m
+runtime_lab_event schema="runtime_lab/event-v1" type=feature_worker_started workload_version="1.0.0" generation=2 reason=crash_once restart_count=1 revision=4 worker=#PID<0.687.0>
+runtime_lab_event schema="runtime_lab/event-v1" type=workload_completed workload_version="1.0.0" command=crash_once result=%{counter:7,generation:2,previous_generation:1,restart_count:1,restarted:true} seed=20260901
+runtime_lab_event schema="runtime_lab/event-v1" type=metric_sampler_started workload_version="1.0.0" interval_ms=1000
+runtime_lab_event schema="runtime_lab/event-v1" type=workload_started workload_version="1.0.0" command=all seed=20260901
+runtime_lab_event schema="runtime_lab/event-v1" type=feature_worker_crashing workload_version="1.0.0" generation=2 reason=crash_once revision=5
+[31m22:40:11.216 [error] GenServer RuntimeLab.FeatureWorker terminating
+** (stop) {:intentional_crash, :crash_once}
+Last message: {:"$gen_cast", {:crash, :crash_once}}
+State: %{state_name: RuntimeLab.DemoState, generation: 2}[0m
+runtime_lab_event schema="runtime_lab/event-v1" type=feature_worker_started workload_version="1.0.0" generation=3 reason=crash_once restart_count=2 revision=6 worker=#PID<0.722.0>
+runtime_lab_event schema="runtime_lab/event-v1" type=metric_sampler_started workload_version="1.0.0" interval_ms=1000
+runtime_lab_event schema="runtime_lab/event-v1" type=feature_worker_started workload_version="1.0.0" generation=1 reason=initial restart_count=0 revision=1 worker=#PID<0.726.0>
+runtime_lab_event schema="runtime_lab/event-v1" type=feature_worker_crashing workload_version="1.0.0" generation=1 reason=crash_storm revision=2
+[31m22:40:11.300 [error] GenServer RuntimeLab.Storm.FeatureWorker terminating
+** (stop) {:intentional_crash, :crash_storm}
+Last message: {:"$gen_cast", {:crash, :crash_storm}}
+State: %{state_name: RuntimeLab.Storm.DemoState, generation: 1}[0m
+runtime_lab_event schema="runtime_lab/event-v1" type=feature_worker_started workload_version="1.0.0" generation=2 reason=crash_storm restart_count=1 revision=3 worker=#PID<0.727.0>
+runtime_lab_event schema="runtime_lab/event-v1" type=feature_worker_crashing workload_version="1.0.0" generation=2 reason=crash_storm revision=4
+[31m22:40:11.360 [error] GenServer RuntimeLab.Storm.FeatureWorker terminating
+** (stop) {:intentional_crash, :crash_storm}
+Last message: {:"$gen_cast", {:crash, :crash_storm}}
+State: %{state_name: RuntimeLab.Storm.DemoState, generation: 2}[0m
+runtime_lab_event schema="runtime_lab/event-v1" type=feature_worker_started workload_version="1.0.0" generation=3 reason=crash_storm restart_count=2 revision=5 worker=#PID<0.728.0>
+runtime_lab_event schema="runtime_lab/event-v1" type=feature_worker_crashing workload_version="1.0.0" generation=3 reason=crash_storm revision=6
+[31m22:40:11.423 [error] GenServer RuntimeLab.Storm.FeatureWorker terminating
+** (stop) {:intentional_crash, :crash_storm}
+Last message: {:"$gen_cast", {:crash, :crash_storm}}
+State: %{state_name: RuntimeLab.Storm.DemoState, generation: 3}[0m
+runtime_lab_event schema="runtime_lab/event-v1" type=feature_worker_started workload_version="1.0.0" generation=4 reason=crash_storm restart_count=3 revision=7 worker=#PID<0.729.0>
+runtime_lab_event schema="runtime_lab/event-v1" type=feature_worker_crashing workload_version="1.0.0" generation=4 reason=crash_storm revision=8
+[31m22:40:11.475 [error] GenServer RuntimeLab.Storm.FeatureWorker terminating
+** (stop) {:intentional_crash, :crash_storm}
+Last message: {:"$gen_cast", {:crash, :crash_storm}}
+State: %{state_name: RuntimeLab.Storm.DemoState, generation: 4}[0m
+runtime_lab_event schema="runtime_lab/event-v1" type=workload_completed workload_version="1.0.0" command=all result=%{binaries:%{bytes:65536,checksum:8355840},crash_once:%{counter:7,generation:3,previous_generation:2,restart_count:2,restarted:true},crash_storm:%{attempted_crashes:4,max_restarts:3,state_survived_escalation:false,supervisor_reason:shutdown},ets:%{checksum:5186823552,deleted:85,remaining:171},garbage_collection:%{bytes:32768,collection_completed:true,objects:2048},process_churn:%{checksum:60919236860,completed:32,exited:32},timers:%{fired:16,first:1,last:16}} seed=20260901
+runtime_lab_event schema="runtime_lab/event-v1" type=target_release_result workload_version="1.0.0" application_ensure_all_started=true artifact_build_id="otp-29.0.5-erts-17.0.5-helperless-beam-sha256-2236a94efdea84687c7139f4fa021c4381aa5d00969976bfc330049554711c22" config_loaded=true elixir="1.20.4" otp="29.0.5" read_only_error=erofs release_root="/system/beam/runtime_lab" started_applications=[] status=pass supervision=true workloads=true
+runtime_lab_event schema="runtime_lab/event-v1" type=helperless_result workload_version="1.0.0" file_lookup=true liveness_after_rejections=true operations="[%{name: :os_cmd, rejected: true, bounded: true, outcome: \"{:raise, ArgumentError, \\\"errors were found at the given arguments: operation not supported (enotsup)\\\"}\"}, %{name: :system_cmd, rejected: true, bounded: true, outcome: \"{:raise, ErlangError, \\\"Erlang error: :enotsup\\\"}\"}, %{name: :port_spawn, rejected: true, bounded: true, outcome: \"{:raise, ErlangError, \\\"Erlang error: :enotsup\\\"}\"}, %{name: :port_spawn_executable, rejected: true, bounded: true, outcome: \"{:raise, ErlangError, \\\"Erlang error: :enotsup\\\"}\"}, %{name: :heart, rejected: true, bounded: true, outcome: \"{:return, :ignore}\"}, %{name: :public_missing_host, rejected: true, bounded: true, outcome: \"{:return, {:error, :nxdomain}}\"}]" status=pass
+runtime_lab_event schema="runtime_lab/event-v1" type=application_stopped workload_version="1.0.0" status=normal
+RB_RELEASE_GUEST event=beam-exit status=0
+RB_RELEASE_GUEST event=sigterm-ready
+RB_RELEASE_GUEST event=sigterm-target launcher_pid=439 beam_pid=439
+=INFO REPORT==== 2-Sep-2026::22:40:14.390965 ===
+SIGTERM received - shutting down
+
+RB_RELEASE_GUEST event=sigterm-exit status=0
+RB_RELEASE_GUEST event=complete status=pass
+[   26.382172] reboot: Power down

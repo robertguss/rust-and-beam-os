@@ -1,0 +1,312 @@
+{
+  "accelerator": "tcg,thread=multi",
+  "all_application_shutdowns_clean": true,
+  "all_external_network_connections": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "all_network_service_listeners": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "all_read_only_mounts": true,
+  "all_undeclared_write_attempts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "artifact_build_id": "otp-29.0.5-erts-17.0.5-helperless-beam-sha256-2236a94efdea84687c7139f4fa021c4381aa5d00969976bfc330049554711c22",
+  "boots_passed": 10,
+  "boots_requested": 10,
+  "cpu": "cortex-a53",
+  "elixir": "1.20.4",
+  "erts": "17.0.5",
+  "full_system": true,
+  "genuine_mix_release": true,
+  "helperless": {
+    "adapter": {
+      "changed_files": [
+        "erts/emulator/sys/unix/sys_drivers.c"
+      ],
+      "patch_changed_lines": 11,
+      "patch_digest": "sha256:75961539bb6859da5bcdaefc260fb66377243faa97c7ba1bbe06d5d285ee16ad",
+      "release_omissions": [
+        {
+          "digest": "sha256:efef4f5bc901211a4bbd66f13c06a2f9ddf65c0386d22d0533b5820083126e05",
+          "path": "erts-17.0.5/bin/erl_child_setup",
+          "size": 98408
+        },
+        {
+          "digest": "sha256:99c95b265cf1ab6c8e500db07a395b76cd61af794a480e2d1b332bca26851db2",
+          "path": "erts-17.0.5/bin/inet_gethost",
+          "size": 146848
+        }
+      ],
+      "unix_later_init_retained": true
+    },
+    "boots": [
+      {
+        "file_lookup": "localhost -> 127.0.0.1",
+        "helpers_absent": [
+          "erl_child_setup",
+          "inet_gethost"
+        ],
+        "negative_operations_bounded": 6,
+        "process_syscalls": {
+          "clone_process": 0,
+          "fork": 0,
+          "scm_rights": 0,
+          "setsid": 0,
+          "socketpair": 0,
+          "status": "pass",
+          "vfork": 0,
+          "wait4": 0
+        },
+        "sigterm_exit": 0,
+        "status": "pass",
+        "udp_interpretation": "metadata-only when no connect, send, or listener is observed"
+      },
+      {
+        "file_lookup": "localhost -> 127.0.0.1",
+        "helpers_absent": [
+          "erl_child_setup",
+          "inet_gethost"
+        ],
+        "negative_operations_bounded": 6,
+        "process_syscalls": {
+          "clone_process": 0,
+          "fork": 0,
+          "scm_rights": 0,
+          "setsid": 0,
+          "socketpair": 0,
+          "status": "pass",
+          "vfork": 0,
+          "wait4": 0
+        },
+        "sigterm_exit": 0,
+        "status": "pass",
+        "udp_interpretation": "metadata-only when no connect, send, or listener is observed"
+      },
+      {
+        "file_lookup": "localhost -> 127.0.0.1",
+        "helpers_absent": [
+          "erl_child_setup",
+          "inet_gethost"
+        ],
+        "negative_operations_bounded": 6,
+        "process_syscalls": {
+          "clone_process": 0,
+          "fork": 0,
+          "scm_rights": 0,
+          "setsid": 0,
+          "socketpair": 0,
+          "status": "pass",
+          "vfork": 0,
+          "wait4": 0
+        },
+        "sigterm_exit": 0,
+        "status": "pass",
+        "udp_interpretation": "metadata-only when no connect, send, or listener is observed"
+      },
+      {
+        "file_lookup": "localhost -> 127.0.0.1",
+        "helpers_absent": [
+          "erl_child_setup",
+          "inet_gethost"
+        ],
+        "negative_operations_bounded": 6,
+        "process_syscalls": {
+          "clone_process": 0,
+          "fork": 0,
+          "scm_rights": 0,
+          "setsid": 0,
+          "socketpair": 0,
+          "status": "pass",
+          "vfork": 0,
+          "wait4": 0
+        },
+        "sigterm_exit": 0,
+        "status": "pass",
+        "udp_interpretation": "metadata-only when no connect, send, or listener is observed"
+      },
+      {
+        "file_lookup": "localhost -> 127.0.0.1",
+        "helpers_absent": [
+          "erl_child_setup",
+          "inet_gethost"
+        ],
+        "negative_operations_bounded": 6,
+        "process_syscalls": {
+          "clone_process": 0,
+          "fork": 0,
+          "scm_rights": 0,
+          "setsid": 0,
+          "socketpair": 0,
+          "status": "pass",
+          "vfork": 0,
+          "wait4": 0
+        },
+        "sigterm_exit": 0,
+        "status": "pass",
+        "udp_interpretation": "metadata-only when no connect, send, or listener is observed"
+      },
+      {
+        "file_lookup": "localhost -> 127.0.0.1",
+        "helpers_absent": [
+          "erl_child_setup",
+          "inet_gethost"
+        ],
+        "negative_operations_bounded": 6,
+        "process_syscalls": {
+          "clone_process": 0,
+          "fork": 0,
+          "scm_rights": 0,
+          "setsid": 0,
+          "socketpair": 0,
+          "status": "pass",
+          "vfork": 0,
+          "wait4": 0
+        },
+        "sigterm_exit": 0,
+        "status": "pass",
+        "udp_interpretation": "metadata-only when no connect, send, or listener is observed"
+      },
+      {
+        "file_lookup": "localhost -> 127.0.0.1",
+        "helpers_absent": [
+          "erl_child_setup",
+          "inet_gethost"
+        ],
+        "negative_operations_bounded": 6,
+        "process_syscalls": {
+          "clone_process": 0,
+          "fork": 0,
+          "scm_rights": 0,
+          "setsid": 0,
+          "socketpair": 0,
+          "status": "pass",
+          "vfork": 0,
+          "wait4": 0
+        },
+        "sigterm_exit": 0,
+        "status": "pass",
+        "udp_interpretation": "metadata-only when no connect, send, or listener is observed"
+      },
+      {
+        "file_lookup": "localhost -> 127.0.0.1",
+        "helpers_absent": [
+          "erl_child_setup",
+          "inet_gethost"
+        ],
+        "negative_operations_bounded": 6,
+        "process_syscalls": {
+          "clone_process": 0,
+          "fork": 0,
+          "scm_rights": 0,
+          "setsid": 0,
+          "socketpair": 0,
+          "status": "pass",
+          "vfork": 0,
+          "wait4": 0
+        },
+        "sigterm_exit": 0,
+        "status": "pass",
+        "udp_interpretation": "metadata-only when no connect, send, or listener is observed"
+      },
+      {
+        "file_lookup": "localhost -> 127.0.0.1",
+        "helpers_absent": [
+          "erl_child_setup",
+          "inet_gethost"
+        ],
+        "negative_operations_bounded": 6,
+        "process_syscalls": {
+          "clone_process": 0,
+          "fork": 0,
+          "scm_rights": 0,
+          "setsid": 0,
+          "socketpair": 0,
+          "status": "pass",
+          "vfork": 0,
+          "wait4": 0
+        },
+        "sigterm_exit": 0,
+        "status": "pass",
+        "udp_interpretation": "metadata-only when no connect, send, or listener is observed"
+      },
+      {
+        "file_lookup": "localhost -> 127.0.0.1",
+        "helpers_absent": [
+          "erl_child_setup",
+          "inet_gethost"
+        ],
+        "negative_operations_bounded": 6,
+        "process_syscalls": {
+          "clone_process": 0,
+          "fork": 0,
+          "scm_rights": 0,
+          "setsid": 0,
+          "socketpair": 0,
+          "status": "pass",
+          "vfork": 0,
+          "wait4": 0
+        },
+        "sigterm_exit": 0,
+        "status": "pass",
+        "udp_interpretation": "metadata-only when no connect, send, or listener is observed"
+      }
+    ],
+    "status": "pass"
+  },
+  "kernel_release": "6.12.94-0-virt",
+  "machine": "virt-11.1",
+  "memory_mib": 1024,
+  "mix_release_exact_match": true,
+  "mix_tree_digest": "0a568c6f15048680fdda198df58c41424d018dd0128d580153f2d4b793450ae7",
+  "native_closure_count": 21,
+  "otp": "29.0.5",
+  "pair_tree_digest": "88bec1df31f551c01f24e4390ffbe93c11d0f0f64c0436c97b61913d392bfd36",
+  "paired_tree_exact_match": true,
+  "qemu_user": false,
+  "receipt_paths": [
+    "boot-01/receipt.json",
+    "boot-02/receipt.json",
+    "boot-03/receipt.json",
+    "boot-04/receipt.json",
+    "boot-05/receipt.json",
+    "boot-06/receipt.json",
+    "boot-07/receipt.json",
+    "boot-08/receipt.json",
+    "boot-09/receipt.json",
+    "boot-10/receipt.json"
+  ],
+  "schema": "rust-beam/runtime-lab-linux-run/v1",
+  "squashfs_exact_match": true,
+  "squashfs_sha256": "c3c6096a7b08e60844d16c4386f17a7851040408ea8db058ecb1ee4d8475efd6",
+  "status": "pass",
+  "target_beam_sha256": "2236a94efdea84687c7139f4fa021c4381aa5d00969976bfc330049554711c22",
+  "vcpus": 4
+}

@@ -59,7 +59,7 @@
     },
     {
       "path": "justfile",
-      "digest": "sha256:dda0cb98657d9924d19f2275c2abf24d35cd12abd38e7365443f4eb4a199f977"
+      "digest": "sha256:88a971251ad2bba9c3cdc956c6eb4ee80a9909f9be37bbfe18a421bddbb76b52"
     },
     {
       "path": "rust-toolchain.toml",

@@ -3,7 +3,7 @@ schema: "repo-plan/v1"
 id: "RB-T-P018"
 title: "Disposition ERTS helper processes"
 type: "task"
-state: "in_progress"
+state: "done"
 priority: "P0"
 milestone: "RB-M-M0"
 parent: null
@@ -15,9 +15,10 @@ depends_on:
   - "RB-T-P017"
 related: []
 actor: "agent"
-owner: "amp:T-01a05912-a43d-754e-84fc-d56536c31a76"
+owner: null
 defer_until: null
-evidence: []
+evidence:
+  - "docs/evidence/phase-0/RB-T-P018/evidence.json"
 ---
 
 # RB-T-P018: Disposition ERTS helper processes
@@ -64,31 +65,31 @@ Blocks: RB-T-P008, RB-T-P014, RB-G-GATE0.
 
 ## Acceptance criteria
 
-- [ ] Two clean builds produce the same patched native closure and exact
+- [x] Two clean builds produce the same patched native closure and exact
       `beam.smp` digest; the complete patch is saved and explained line by line.
-- [ ] The patch changes no scheduler, GC, loader, BEAM instruction, process, or
+- [x] The patch changes no scheduler, GC, loader, BEAM instruction, process, or
       code-loading semantics. It remains confined to `erts/emulator/sys/unix/`
       plus release configuration; exceeding 40 non-generated changed lines or
       escaping that boundary forces an explicit Gate 0 repair/pivot decision
       rather than silent scope growth.
-- [ ] Ten authoritative full-system AArch64 Linux boots of the exact paired Mix
+- [x] Ten authoritative full-system AArch64 Linux boots of the exact paired Mix
       release pass startup, IPC-ready idle, reference workloads, supervised
       crashes, shutdown, and the final scheduler profile.
-- [ ] Normalized target traces contain zero helper `clone(SIGCHLD)`, helper
+- [x] Normalized target traces contain zero helper `clone(SIGCHLD)`, helper
       `execve`, `setsid`, `wait4`, SCM_RIGHTS transfer, or `inet_gethost`
       activity. `erl_child_setup` and `inet_gethost` are absent from the image.
-- [ ] `init:stop`, SIGTERM, `os:cmd`, external `open_port` spawn forms, `heart`,
+- [x] `init:stop`, SIGTERM, `os:cmd`, external `open_port` spawn forms, `heart`,
       and public hostname lookup under the configured file-only policy each have
       a declared result and bounded test; unsupported operations fail honestly
       without hanging or destabilizing ERTS. Direct calls to OTP's internal
       `inet_gethost_native` module are an out-of-contract policy bypass and must
       be characterized separately if tested.
-- [ ] Runtime evidence and a source assertion prove `erts_sys_unix_later_init`
+- [x] Runtime evidence and a source assertion prove `erts_sys_unix_later_init`
       remains active.
-- [ ] UDP probes are eliminated or ADR 0002 proves and accepts a metadata-only
+- [x] UDP probes are eliminated or ADR 0002 proves and accepts a metadata-only
       operation with no connect, send, listen, packet, external endpoint, or
       network-device path. If that interpretation is unacceptable, H2 fails.
-- [ ] General process creation is removed from the required custom-kernel host
+- [x] General process creation is removed from the required custom-kernel host
       contract; no bounded `fork`, copied-address-space helper, or
       artifact-specific success emulation is proposed.
 
@@ -107,6 +108,17 @@ just check
 Store the ADR, exact patch, clean-build comparison, native inventories, ten-boot
 receipts, normalized traces, syscall delta, negative-operation matrix, and
 verification transcript under `docs/evidence/phase-0/RB-T-P018/`.
+
+- [Execution receipt](../../evidence/phase-0/RB-T-P018/evidence.json)
+- [Evidence explanation and learning checkpoint](../../evidence/phase-0/RB-T-P018/README.md)
+- [Twenty-boot artifact matrix](../../evidence/phase-0/RB-T-P018/boot-matrix.json)
+- [Clean OTP rebuild comparison](../../evidence/phase-0/RB-T-P018/otp-rebuild-comparison.json)
+- [Syscall delta](../../evidence/phase-0/RB-T-P018/syscall-delta.json)
+- [Negative-operation matrix](../../evidence/phase-0/RB-T-P018/negative-operation-matrix.json)
+- [Line-by-line patch explanation](../../evidence/phase-0/RB-T-P018/patch-explanation.json)
+- [Direct ERTS aggregate](../../evidence/phase-0/RB-T-P018/direct-aggregate.json)
+- [Mix release aggregate](../../evidence/phase-0/RB-T-P018/mix-aggregate.json)
+- [Verification transcript](../../evidence/phase-0/RB-T-P018/verification.txt)
 
 ## Out of scope
 

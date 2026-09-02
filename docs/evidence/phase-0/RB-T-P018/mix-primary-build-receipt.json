@@ -1,0 +1,136 @@
+{
+  "applications": [
+    "elixir",
+    "iex",
+    "logger",
+    "runtime_lab"
+  ],
+  "build_log_sha256": "4deb7f976ffb0877cb564dcc6ca31ddf446d5ebac82243413e6cb50e4040cc6e",
+  "commands": [
+    "/home/user/workspace/repo/target/toolchain-smoke/build/elixir/bin/mix clean",
+    "/home/user/workspace/repo/target/toolchain-smoke/build/elixir/bin/mix compile --warnings-as-errors",
+    "/home/user/workspace/repo/target/toolchain-smoke/build/elixir/bin/mix release runtime_lab --overwrite"
+  ],
+  "embedded_erts": [],
+  "inputs": [
+    {
+      "path": "beam/runtime_lab/mix.exs",
+      "sha256": "069eba166a65aa358dc92875865362e2d81d5a2ec7c6dafca6864de540f54d91",
+      "size": 622
+    },
+    {
+      "path": "beam/runtime_lab/config/config.exs",
+      "sha256": "d4c312a482c6d913223b8f385399efe501af9a2b3f2715d3f920608b7434e336",
+      "size": 416
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/application.ex",
+      "sha256": "e25cc7c478e925702b2a8d6fce78e2da46d50b6b09d8a376d07ee6dbdd0a5831",
+      "size": 537
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/command.ex",
+      "sha256": "8665bf80d99656ab7b455495b09f45898b52faa5d7b5832b648b148a05c8b43e",
+      "size": 1042
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/demo_state.ex",
+      "sha256": "564db7f05586946582a7342c13d25c53e5630e19f6730655176163f49a36c3de",
+      "size": 4169
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/event.ex",
+      "sha256": "016ad0d0a1cb433f4f45caac6832a9e8981277233e7e3f48d8a698f86f523ff3",
+      "size": 1701
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/feature_worker.ex",
+      "sha256": "0e6f3ad8c0f721fccc14081cb82f1d3e4e63c96dca237d230235852ba8c102d7",
+      "size": 1458
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/helperless_probe.ex",
+      "sha256": "b77a9ef3baeed7546ea73160f35e23389a422914417dc4cb806dfbd99f864252",
+      "size": 2717
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/metric_sampler.ex",
+      "sha256": "82ea816e28970b3659f4780c2ca68ba43cfe202cafe4d75f9047464f57e192e2",
+      "size": 1277
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/release_probe.ex",
+      "sha256": "ba4ab7bc9c0e1cf515bff81e9ee091bdb8278d33ef48493e6c57ba02e9094b53",
+      "size": 2907
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/runtime_identity.ex",
+      "sha256": "441ee9ae761a584e5dda5b8041424c75b266ba2580fca1dbbd21cc76914016ee",
+      "size": 1784
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/supervisor.ex",
+      "sha256": "47b7f41dedd76ef2018a6ad4141a62d1e2a1bf532890865b93b830d26c39c712",
+      "size": 1521
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab/workloads.ex",
+      "sha256": "e4c5c18927ddac623fbc01bc6a63c44406e2262264b41456c6001766c46c64d3",
+      "size": 10262
+    },
+    {
+      "path": "beam/runtime_lab/lib/runtime_lab.ex",
+      "sha256": "46372a47e8f884a839a72973883a16c45464ab2e8697f95aebe99952668a1fe2",
+      "size": 1360
+    },
+    {
+      "path": "beam/runtime_lab/rel/vm.args.eex",
+      "sha256": "350bc170591ab5aa7f633a86ff88bb015919231ad9491f1a55b453ff8f226d4e",
+      "size": 108
+    }
+  ],
+  "lane": "primary",
+  "mix_env": "prod",
+  "native_objects": [],
+  "network_required": false,
+  "release_options": {
+    "include_erts": false,
+    "include_executables_for": [
+      "unix"
+    ],
+    "runtime_config_path": false
+  },
+  "result": "pass",
+  "runtime_pair": {
+    "elixir": "1.20.4",
+    "elixir_root": "target/toolchain-smoke/build/elixir",
+    "erts": "17.0.5",
+    "otp": "29.0.5",
+    "otp_root": "target/toolchain-smoke/install/otp"
+  },
+  "schema": "rust-beam/runtime-lab-mix-build/v1",
+  "scripts": [
+    {
+      "interpreter": "#!/bin/sh",
+      "invoked_by_launcher": false,
+      "path": "bin/runtime_lab"
+    },
+    {
+      "interpreter": "#!/bin/sh",
+      "invoked_by_launcher": false,
+      "path": "releases/0.1.0/elixir"
+    },
+    {
+      "interpreter": "#!/bin/sh",
+      "invoked_by_launcher": false,
+      "path": "releases/0.1.0/env.sh"
+    },
+    {
+      "interpreter": "#!/bin/sh",
+      "invoked_by_launcher": false,
+      "path": "releases/0.1.0/iex"
+    }
+  ],
+  "tree_digest": "0a568c6f15048680fdda198df58c41424d018dd0128d580153f2d4b793450ae7",
+  "tree_entry_count": 365
+}

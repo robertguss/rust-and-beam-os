@@ -1,0 +1,647 @@
+{
+  "commands": [
+    "./otp_build configure --xcomp-conf=/home/user/workspace/repo/target/otp-helperless/work/erl-xcomp-aarch64-linux-musl.conf",
+    "./otp_build boot -a",
+    "./otp_build release -a /home/user/workspace/repo/target/otp-helperless/work/release"
+  ],
+  "cross_configuration": {
+    "application_skip_file": {
+      "digest": "sha256:20de6a69333bc4ef7f253e2dc574dd193bc59f736afe8aa027bfdd8c897bc223",
+      "generated_odbc_override": true,
+      "path": "lib/SKIP-APPLICATIONS"
+    },
+    "configure_flags": [
+      "--disable-jit",
+      "--disable-kernel-poll",
+      "--disable-pie",
+      "--disable-saved-compile-time",
+      "--disable-sctp",
+      "--disable-security-hardening-flags",
+      "--enable-deterministic-build",
+      "--disable-static-nifs",
+      "--enable-static-drivers",
+      "--enable-builtin-zlib",
+      "--enable-builtin-zstd",
+      "--enable-builtin-ryu",
+      "--without-termcap",
+      "--without-javac",
+      "--without-asn1",
+      "--without-common_test",
+      "--without-crypto",
+      "--without-debugger",
+      "--without-dialyzer",
+      "--without-diameter",
+      "--without-edoc",
+      "--without-eldap",
+      "--without-et",
+      "--without-eunit",
+      "--without-ftp",
+      "--without-inets",
+      "--without-jinterface",
+      "--without-megaco",
+      "--without-mnesia",
+      "--without-observer",
+      "--without-odbc",
+      "--without-os_mon",
+      "--without-parsetools",
+      "--without-public_key",
+      "--without-reltool",
+      "--without-runtime_tools",
+      "--without-snmp",
+      "--without-ssh",
+      "--without-ssl",
+      "--without-syntax_tools",
+      "--without-tftp",
+      "--without-tools",
+      "--without-wx",
+      "--without-xmerl"
+    ],
+    "cross_answers": {
+      "erl_xcomp_after_morecore_hook": "no",
+      "erl_xcomp_bigendian": "no",
+      "erl_xcomp_clock_gettime_cpu_time": "no",
+      "erl_xcomp_code_model_small": "yes",
+      "erl_xcomp_dlsym_brk_wrappers": "no",
+      "erl_xcomp_double_middle_endian": "no",
+      "erl_xcomp_getaddrinfo": "no",
+      "erl_xcomp_gethrvtime_procfs_ioctl": "no",
+      "erl_xcomp_kqueue": "no",
+      "erl_xcomp_linux_clock_gettime_correction": "yes",
+      "erl_xcomp_linux_nptl": "yes",
+      "erl_xcomp_linux_usable_sigaltstack": "yes",
+      "erl_xcomp_linux_usable_sigusrx": "yes",
+      "erl_xcomp_poll": "yes",
+      "erl_xcomp_posix_memalign": "yes",
+      "erl_xcomp_putenv_copy": "no",
+      "erl_xcomp_reliable_fpe": "no"
+    },
+    "digest": "sha256:556e931a4ac45e96c828b9cc758c99d0d379d28da33b9a4253a6bdec8b0e3512",
+    "path": "erl-xcomp-aarch64-linux-musl.conf"
+  },
+  "environment": {
+    "HOME": "/home/user/workspace/repo/target/otp-helperless/work/home",
+    "LC_ALL": "C",
+    "MAKEFLAGS": "-j8",
+    "PATH": "/home/user/workspace/repo/target/otp-aarch64/common/llvm/bin:/home/user/.cargo/bin:/home/user/.amp/bin:/opt/git/bin:/home/user/.local/bin:/home/user/.local/bin:/home/user/.local/bin:/usr/local/bin:/usr/bin",
+    "SOURCE_DATE_EPOCH": "1788210000",
+    "TMPDIR": "/home/user/workspace/repo/target/otp-helperless/work/tmp",
+    "TZ": "UTC",
+    "V": "1",
+    "ZERO_AR_DATE": "1"
+  },
+  "generated_configuration": [
+    {
+      "digest": "sha256:9c8140a0d6bf507f2ac9871ae5e6d463762e757408a8660fee1f4caefab107f7",
+      "path": "Makefile",
+      "size": 35674
+    },
+    {
+      "digest": "sha256:fdf473703ae47ad78f53c06fa0a14e785ce9f642a0e6a2595c301fa7e10da11f",
+      "path": "erts/Makefile",
+      "size": 5700
+    },
+    {
+      "digest": "sha256:7173bc256e7a5cf6525ee0179eabf8af72c7afc1580e1cfe9eaf2009588640d0",
+      "path": "erts/aarch64-unknown-linux-musl/config.h",
+      "size": 50438
+    },
+    {
+      "digest": "sha256:6398efd8253ed4f6d26197e063c7e57e61719c7e6824248fd044aea5c7640f11",
+      "path": "erts/config.log",
+      "size": 1023256
+    },
+    {
+      "digest": "sha256:88b90867e22e1cdf9ce7b1995b23614a2e60919d8eb93e6ed48d22e11e4f4c3a",
+      "path": "erts/config.status",
+      "size": 52915
+    },
+    {
+      "digest": "sha256:b995773dc2a7789de0163949b6bcc6c1e30aa841b65e4c99965b978470a7b77b",
+      "path": "erts/doc/Makefile",
+      "size": 1864
+    },
+    {
+      "digest": "sha256:14ce2f6262c55261d9ce72e3404fcab4f80ae95bacc17cf21c181bb4d1332344",
+      "path": "erts/emulator/Makefile",
+      "size": 814
+    },
+    {
+      "digest": "sha256:5015afa44eaae7a7f16e9a169f892d607975a2f6a713a8db4cb9eebb612d0acd",
+      "path": "erts/emulator/aarch64-unknown-linux-musl/Makefile",
+      "size": 55563
+    },
+    {
+      "digest": "sha256:caf8b642f899df8cf41b758b6abc02425f5b0f551ab76c0e2b4901632e2580de",
+      "path": "erts/epmd/Makefile",
+      "size": 1147
+    },
+    {
+      "digest": "sha256:1e7a6960228cc41307633856e6651ab49a64781d80f917b561cfec0d1577b816",
+      "path": "erts/epmd/src/aarch64-unknown-linux-musl/Makefile",
+      "size": 4003
+    },
+    {
+      "digest": "sha256:0b7cf60d933b9ed5942186c60a15e2686b3cdc962a7f93401611d7083e1e70e5",
+      "path": "erts/etc/Makefile",
+      "size": 909
+    },
+    {
+      "digest": "sha256:cd4c1e0a7bf4d316dface3de870878fb79d6f6288a37d7527cf0c48e0cb49f30",
+      "path": "erts/etc/common/aarch64-unknown-linux-musl/Makefile",
+      "size": 20392
+    },
+    {
+      "digest": "sha256:af751044fe1cb078453d195ea88cbd05fdf4272a1eda8d34ef86b729ce87e925",
+      "path": "erts/example/Makefile",
+      "size": 1677
+    },
+    {
+      "digest": "sha256:df9d19aeed471ca552fc4bf366eb2980c7695d3cfcbc0aac03759a8f2ea13e34",
+      "path": "erts/lib_src/Makefile",
+      "size": 769
+    },
+    {
+      "digest": "sha256:b1b8f2a8b8069199df6aaa6a94da102e41bdf04aac6a79b996a03697dbd295d9",
+      "path": "erts/lib_src/aarch64-unknown-linux-musl/Makefile",
+      "size": 18655
+    },
+    {
+      "digest": "sha256:68c901314baaf14603dcd64f7b9ac41cc2b012983b13671370e9e45923137103",
+      "path": "erts/preloaded/Makefile",
+      "size": 785
+    },
+    {
+      "digest": "sha256:81d46b6d7f5886e480052b53540aeba13fa8cbcb86ad272b55d150e5a4714c0a",
+      "path": "erts/start_scripts/Makefile",
+      "size": 7599
+    },
+    {
+      "digest": "sha256:28d3142d99e7ad0685396b3a6be32e52f8e9a736b217c694f07f95be2698f7ee",
+      "path": "erts/test/Makefile",
+      "size": 2611
+    },
+    {
+      "digest": "sha256:2b82645aef155bf95a08bf3c292f403eaf58afca0e60faf069229411b18676a5",
+      "path": "erts/x86_64-pc-linux-gnu/config.h",
+      "size": 49762
+    },
+    {
+      "digest": "sha256:c33f47f84c7b9a2fe0abac514a4ce4faeef5dafae45428e0e224812c86dc452e",
+      "path": "lib/Makefile",
+      "size": 2324
+    },
+    {
+      "digest": "sha256:c773cd1ac1e01f71f13bd7709ee17cebf6319517e6a6f49bb35c6339dd415187",
+      "path": "lib/asn1/Makefile",
+      "size": 1255
+    },
+    {
+      "digest": "sha256:7bb48100d2ab7fe50c7c4e8c9604689d4b5baa001d5e2fb794ec8c961ad5c280",
+      "path": "lib/common_test/Makefile",
+      "size": 1133
+    },
+    {
+      "digest": "sha256:0041a4c79877949750709575633e4f8687c66454cc7925eb7c1f65b40c2030d0",
+      "path": "lib/compiler/Makefile",
+      "size": 1306
+    },
+    {
+      "digest": "sha256:41d7c4b289f5b62501be2cb1bf6c6dc5459c09f548cfe0f9c5214decb8b14f21",
+      "path": "lib/crypto/Makefile",
+      "size": 1009
+    },
+    {
+      "digest": "sha256:aecaced523e6372a603bcb7fc10a65f558e8c56f3d73e11c181dc504c3ec2789",
+      "path": "lib/debugger/Makefile",
+      "size": 1174
+    },
+    {
+      "digest": "sha256:ff0b4fa5b6a5a410c3037f9a93332a5ad9e2b49d2b61c21a69d71fe7218391ad",
+      "path": "lib/dialyzer/Makefile",
+      "size": 1245
+    },
+    {
+      "digest": "sha256:7ede32f06d4c7938e24c30c5de7d7dc654fcf40b5ed6b62b9147af114e82a0a8",
+      "path": "lib/diameter/Makefile",
+      "size": 1002
+    },
+    {
+      "digest": "sha256:f119b5f8f57c4ab0850ac6354235b11ff1da8cf62a46d23995fcb6fb5e6be365",
+      "path": "lib/edoc/Makefile",
+      "size": 3016
+    },
+    {
+      "digest": "sha256:366be99bf297efdedbe630d78dd2a4e7dbc39c5dc994fbdcad3efc41dc2f482a",
+      "path": "lib/eldap/Makefile",
+      "size": 1201
+    },
+    {
+      "digest": "sha256:4638cfe45065296e6431c212c0bfec31f956f7c260bb9213b6110c2eea8e074f",
+      "path": "lib/erl_interface/Makefile",
+      "size": 1148
+    },
+    {
+      "digest": "sha256:9a110ea2070ddcd20f77ac8cc81cdea379d6047a9f5329ff85d22cbccc87a349",
+      "path": "lib/erl_interface/config.log",
+      "size": 177246
+    },
+    {
+      "digest": "sha256:79a8ebae9bf2b2db66863492fbc6549773af8c4092f186c39bb5aa30939692c0",
+      "path": "lib/erl_interface/config.status",
+      "size": 41383
+    },
+    {
+      "digest": "sha256:1bd9f9da1d1a25f52316ec4c729869e27dbaab16e416188d7db7c38ac9686aac",
+      "path": "lib/erl_interface/src/aarch64-unknown-linux-musl/Makefile",
+      "size": 21684
+    },
+    {
+      "digest": "sha256:1b65b2154b430a2f1c2e9cf6bea2ab98b0baa783197e4e1ab4f57e6aaa815ede",
+      "path": "lib/erl_interface/src/aarch64-unknown-linux-musl/config.h",
+      "size": 10477
+    },
+    {
+      "digest": "sha256:7384760faa273cfee4c039252e732bfee7435091fda4e74d683bb3dbd1da7cc3",
+      "path": "lib/erl_interface/src/x86_64-pc-linux-gnu/config.h",
+      "size": 10467
+    },
+    {
+      "digest": "sha256:79047d4cd7777d33f05273fc1fd6aab88c5f0d2c9ac87c1f9e1116eb318db38b",
+      "path": "lib/et/Makefile",
+      "size": 1176
+    },
+    {
+      "digest": "sha256:700664c2de501a7120c0521dc647673b5fbca16c9101c4ffc3a8e1b72973abcd",
+      "path": "lib/eunit/Makefile",
+      "size": 1911
+    },
+    {
+      "digest": "sha256:33751e91edc771c46e60784034300ebffae55099a10f972841e56db812e4955e",
+      "path": "lib/ftp/Makefile",
+      "size": 1212
+    },
+    {
+      "digest": "sha256:fd58b40a8dbc1b88f0d6da1c0eee9b0b239552e7c97791c238c7c8dc6d17b394",
+      "path": "lib/inets/Makefile",
+      "size": 1227
+    },
+    {
+      "digest": "sha256:d99f5202acca34af06912cc74b4d9c54efd464fe8844509eca0a9a449370d33f",
+      "path": "lib/jinterface/Makefile",
+      "size": 1324
+    },
+    {
+      "digest": "sha256:2644b9dbceaaa16443713a415bbf428ea2b28d77c7faf73d81d7f757384a6da6",
+      "path": "lib/jinterface/SKIP",
+      "size": 31
+    },
+    {
+      "digest": "sha256:4cdabe23117b189557c3e18dd7f3694bea89d3b35e0866332dc6df24e30e7e77",
+      "path": "lib/kernel/Makefile",
+      "size": 1247
+    },
+    {
+      "digest": "sha256:8afeb9d8a211e287b547e0e4ef8d4d91380cfd17feab7ed3721007154d39936a",
+      "path": "lib/megaco/Makefile",
+      "size": 3563
+    },
+    {
+      "digest": "sha256:fae010161b8dc523e1a5c8ef5479a1c92d5058fdfe2fc948273ac017db0b7da5",
+      "path": "lib/mnesia/Makefile",
+      "size": 1198
+    },
+    {
+      "digest": "sha256:aac572c628377a28ae5f012abd4431c704b13aebde14264aa1ea0593aacaf3ce",
+      "path": "lib/observer/Makefile",
+      "size": 1002
+    },
+    {
+      "digest": "sha256:fccbcb01661bb41e52289113f8a8c052862a8580d2d74802fdfe2e8e5df5cb98",
+      "path": "lib/odbc/Makefile",
+      "size": 1653
+    },
+    {
+      "digest": "sha256:78e7b4ab147aa984789b548d4e1bbbc7b75e75a60784965730adf9f311393326",
+      "path": "lib/odbc/c_src/aarch64-unknown-linux-musl/Makefile",
+      "size": 4712
+    },
+    {
+      "digest": "sha256:ef881a3886ae67b1ae02820048a2c9d77e559f2b4b004c3b5d85c398bf84e345",
+      "path": "lib/odbc/config.log",
+      "size": 22067
+    },
+    {
+      "digest": "sha256:0bed5b88b158cda9e6a3db8dd555d788c7adc1685e65dfd3a5caa1d355518649",
+      "path": "lib/odbc/config.status",
+      "size": 31897
+    },
+    {
+      "digest": "sha256:d0d03a03ed1ac0a894c109526b898e82e09467da217baa0200d2c634630ab911",
+      "path": "lib/os_mon/Makefile",
+      "size": 971
+    },
+    {
+      "digest": "sha256:dc4e705c784410d8e88b0808449fd08c9326132d64a557889fb1c324747688a9",
+      "path": "lib/os_mon/c_src/aarch64-unknown-linux-musl/Makefile",
+      "size": 4225
+    },
+    {
+      "digest": "sha256:8b58d4a624be66a29dca21862d5b15bef3587b61b84f8f5de8b139ec2e6b7dee",
+      "path": "lib/parsetools/Makefile",
+      "size": 1183
+    },
+    {
+      "digest": "sha256:a4a89cbd01a8a688afa4b431ee5db88968b9e4dc364a881bea7b11e25660248a",
+      "path": "lib/public_key/Makefile",
+      "size": 1222
+    },
+    {
+      "digest": "sha256:2a5f058d32569f128209e54b1884b7fa068de4a68e6d4df4e372e979e33605c8",
+      "path": "lib/reltool/Makefile",
+      "size": 1233
+    },
+    {
+      "digest": "sha256:3ef209cded826f99db12329780fc0fd0f8fc6f68357c2ed077ac4fd036836012",
+      "path": "lib/runtime_tools/Makefile",
+      "size": 1024
+    },
+    {
+      "digest": "sha256:144de7e57d802f0079a2bc7c88ac3016372b378cbb1df4639c036804a3d8c4d5",
+      "path": "lib/runtime_tools/c_src/aarch64-unknown-linux-musl/Makefile",
+      "size": 3376
+    },
+    {
+      "digest": "sha256:6b4851d498254c84ec4d57c34df11765bd08a61bb0425767ddfe3646ea6fa3f6",
+      "path": "lib/sasl/Makefile",
+      "size": 1021
+    },
+    {
+      "digest": "sha256:01ac45e3ee36fd34a3fe67f0b8e08414492e4caf4052c296840812c5b9bb821f",
+      "path": "lib/snmp/Makefile",
+      "size": 1855
+    },
+    {
+      "digest": "sha256:92dca20718baa89bc1688764546f0bd3e8431edb3bc00b55d9d5660991455efd",
+      "path": "lib/snmp/config.log",
+      "size": 4454
+    },
+    {
+      "digest": "sha256:6ade688d30c442a2feeb129538307e039d4de986669ed6a1c9dfc01adb1c6060",
+      "path": "lib/snmp/config.status",
+      "size": 24500
+    },
+    {
+      "digest": "sha256:f3b6cd727cc6d9d4c50288db2fa801f341bf9449ea768613376af71ee2abe363",
+      "path": "lib/ssh/Makefile",
+      "size": 1012
+    },
+    {
+      "digest": "sha256:a2c841a26ee983a337feb4c1d1990b9463bd730b6991dd88c92d61b755bc067b",
+      "path": "lib/ssl/Makefile",
+      "size": 1072
+    },
+    {
+      "digest": "sha256:9ea3e84056b21f26e2c72ff632ba1c76c15209926b64b502463e7f2eab45c426",
+      "path": "lib/stdlib/Makefile",
+      "size": 1378
+    },
+    {
+      "digest": "sha256:c2f48d4f36060b7190bb4a0a5f89cab1f9d745ead475a3bcd0dc44e42956956c",
+      "path": "lib/syntax_tools/Makefile",
+      "size": 1981
+    },
+    {
+      "digest": "sha256:6d2477bb5fb3930b13ae932c5259164b51e7bddea770f7606b771408b7112701",
+      "path": "lib/tftp/Makefile",
+      "size": 1347
+    },
+    {
+      "digest": "sha256:8421d6ece250ffeac29714648d7a87807d7bae11bebc5a1cb7dcdaca36c50611",
+      "path": "lib/tools/Makefile",
+      "size": 1253
+    },
+    {
+      "digest": "sha256:c8dfd3c7cc23e9b3ef35d311b668e5f4c26c4f748f0b32035586ac5931b00445",
+      "path": "lib/wx/Makefile",
+      "size": 1191
+    },
+    {
+      "digest": "sha256:75e8f043817af0ef1bd08b4e09a76ed381cf93d1043cab3b6d436ea70fb76683",
+      "path": "lib/wx/config.log",
+      "size": 43251
+    },
+    {
+      "digest": "sha256:48364a64c86c50b276cd4d071665ff47b4d50653aa606cd08dcd0d22c7183bdc",
+      "path": "lib/wx/x86_64-pc-linux-gnu/config.status",
+      "size": 27733
+    },
+    {
+      "digest": "sha256:e5ede24eadd6c17fc79ff217936f6c4279790cc8b34b36bce01cd50a58fcdaa7",
+      "path": "lib/xmerl/Makefile",
+      "size": 1321
+    },
+    {
+      "digest": "sha256:065ceb32182133d8f155f71f5cbb0c98dc15e962dc39b2a7974c31e9b089648d",
+      "path": "make/config.log",
+      "size": 88872
+    },
+    {
+      "digest": "sha256:3dabb3017fb39a91cb81c9b6738641ad1b6f3398de167ad6f4afd39ca4f151e4",
+      "path": "make/config.status",
+      "size": 37271
+    },
+    {
+      "digest": "sha256:9824fb32b7208751bb6ad70e95748b0efbde4f351b66a6aebb71cec34f83f9de",
+      "path": "system/doc/Makefile",
+      "size": 3515
+    }
+  ],
+  "lane": "rebuild",
+  "outputs": {
+    "beam": "release/erts-17.0.5/bin/beam.smp",
+    "beam_digest": "sha256:2236a94efdea84687c7139f4fa021c4381aa5d00969976bfc330049554711c22",
+    "beam_link_map": {
+      "digest": "sha256:a916ddb5d69b1d298d201f12342d08bb720134bd41b4bf7387269e8b04f9ff6b",
+      "path": "beam-link.map"
+    },
+    "beam_size": 4438520,
+    "build_log": {
+      "digest": "sha256:06226780a2e578d23c675855315a70305bc3b122c4e1dac1343eba67a2fbbc4e",
+      "path": "build.log"
+    },
+    "release": "release"
+  },
+  "profile": {
+    "digest": "sha256:177b2a80468b38e299707bf3ec02804ee576992259cd23be7d82d05c57416105",
+    "path": "toolchain/otp/aarch64-linux-musl-helperless.json"
+  },
+  "schema": "rust-beam/otp-build-receipt/v1",
+  "source_lock": {
+    "digest": "sha256:5c1267150cea3b382773e5592da6007b3a26236a16605a9bf5248e6d0271a38c",
+    "path": "toolchain/sources.lock.json"
+  },
+  "source_start": {
+    "archive_verified": true,
+    "fresh_extraction": true,
+    "patches": [
+      {
+        "actual_digest": "sha256:75961539bb6859da5bcdaefc260fb66377243faa97c7ba1bbe06d5d285ee16ad",
+        "additions": 10,
+        "changed_lines": 11,
+        "classification": "unix-host-adapter",
+        "deletions": 1,
+        "description": "Skip the ERTS forker and reject external spawn requests synchronously with ENOTSUP",
+        "digest": "sha256:75961539bb6859da5bcdaefc260fb66377243faa97c7ba1bbe06d5d285ee16ad",
+        "files": [
+          "erts/emulator/sys/unix/sys_drivers.c"
+        ],
+        "max_changed_lines": 40,
+        "path": "toolchain/otp/patches/0001-rust-beam-disable-forker.patch",
+        "release_omissions": [
+          "erts-17.0.5/bin/erl_child_setup",
+          "erts-17.0.5/bin/inet_gethost"
+        ],
+        "strip": 1
+      }
+    ],
+    "release_omissions": [
+      {
+        "digest": "sha256:efef4f5bc901211a4bbd66f13c06a2f9ddf65c0386d22d0533b5820083126e05",
+        "path": "erts-17.0.5/bin/erl_child_setup",
+        "size": 98408
+      },
+      {
+        "digest": "sha256:99c95b265cf1ab6c8e500db07a395b76cd61af794a480e2d1b332bca26851db2",
+        "path": "erts-17.0.5/bin/inet_gethost",
+        "size": 146848
+      }
+    ],
+    "upstream_reference": "OTP-29.0.5 / commit 5cf5f9725452f4e1b6a4890e8ff0305d76924b98"
+  },
+  "sources": {
+    "llvm-aarch64": {
+      "artifact": "aarch64-linux-binary",
+      "component": "LLVM/Clang/LLD",
+      "consumers": [
+        "RB-T-P003",
+        "RB-T-P005"
+      ],
+      "digest": "sha256:b855cc17d935fdd83da82206b7a7cfc680095efd1e9e8182c4a05e761958bef8",
+      "digest_provenance": "official-github-release-asset-digest",
+      "hosts": [
+        "aarch64-unknown-linux-gnu"
+      ],
+      "id": "llvm-aarch64",
+      "immutable_reference": "llvmorg-20.1.8",
+      "kind": "archive",
+      "license": "Apache-2.0 WITH LLVM-exception",
+      "license_locator": "https://github.com/llvm/llvm-project/blob/llvmorg-20.1.8/LICENSE.TXT",
+      "locator": "https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/LLVM-20.1.8-Linux-ARM64.tar.xz",
+      "mirror_path": "sha256/b855cc17d935fdd83da82206b7a7cfc680095efd1e9e8182c4a05e761958bef8",
+      "size": 1859437192,
+      "version": "20.1.8"
+    },
+    "llvm-source": {
+      "artifact": "source",
+      "component": "LLVM/Clang/LLD",
+      "consumers": [
+        "RB-T-P003",
+        "RB-T-P005"
+      ],
+      "digest": "sha256:6898f963c8e938981e6c4a302e83ec5beb4630147c7311183cf61069af16333d",
+      "digest_provenance": "official-github-release-asset-digest",
+      "hosts": [
+        "all"
+      ],
+      "id": "llvm-source",
+      "immutable_reference": "llvmorg-20.1.8",
+      "kind": "archive",
+      "license": "Apache-2.0 WITH LLVM-exception",
+      "license_locator": "https://github.com/llvm/llvm-project/blob/llvmorg-20.1.8/LICENSE.TXT",
+      "locator": "https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/llvm-project-20.1.8.src.tar.xz",
+      "mirror_path": "sha256/6898f963c8e938981e6c4a302e83ec5beb4630147c7311183cf61069af16333d",
+      "size": 147242952,
+      "version": "20.1.8"
+    },
+    "llvm-x86_64": {
+      "artifact": "x86_64-linux-binary",
+      "component": "LLVM/Clang/LLD",
+      "consumers": [
+        "RB-T-P003",
+        "RB-T-P005"
+      ],
+      "digest": "sha256:1ead36b3dfcb774b57be530df42bec70ab2d239fbce9889447c7a29a4ddc1ae6",
+      "digest_provenance": "official-github-release-asset-digest",
+      "hosts": [
+        "x86_64-unknown-linux-gnu"
+      ],
+      "id": "llvm-x86_64",
+      "immutable_reference": "llvmorg-20.1.8",
+      "kind": "archive",
+      "license": "Apache-2.0 WITH LLVM-exception",
+      "license_locator": "https://github.com/llvm/llvm-project/blob/llvmorg-20.1.8/LICENSE.TXT",
+      "locator": "https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/LLVM-20.1.8-Linux-X64.tar.xz",
+      "mirror_path": "sha256/1ead36b3dfcb774b57be530df42bec70ab2d239fbce9889447c7a29a4ddc1ae6",
+      "size": 2021269412,
+      "version": "20.1.8"
+    },
+    "musl-source": {
+      "artifact": "source",
+      "component": "musl",
+      "consumers": [
+        "RB-T-P003",
+        "RB-T-P005"
+      ],
+      "digest": "sha256:a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4",
+      "digest_provenance": "locally-computed-from-versioned-upstream-artifact",
+      "hosts": [
+        "all"
+      ],
+      "id": "musl-source",
+      "immutable_reference": "musl 1.2.5",
+      "kind": "archive",
+      "license": "MIT",
+      "license_locator": "https://git.musl-libc.org/cgit/musl/tree/COPYRIGHT?h=v1.2.5",
+      "locator": "https://musl.libc.org/releases/musl-1.2.5.tar.gz",
+      "mirror_path": "sha256/a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4",
+      "size": 1080786,
+      "version": "1.2.5"
+    },
+    "otp-source": {
+      "artifact": "source",
+      "component": "Erlang/OTP",
+      "consumers": [
+        "RB-T-P003",
+        "RB-T-P002",
+        "RB-T-P005"
+      ],
+      "digest": "sha256:86f6f40d4638852b0383235b02a70d8450184e441e83a06a108bf8e5bf1b2e04",
+      "digest_provenance": "official-github-release-asset-digest",
+      "hosts": [
+        "all"
+      ],
+      "id": "otp-source",
+      "immutable_reference": "OTP-29.0.5 / commit 5cf5f9725452f4e1b6a4890e8ff0305d76924b98",
+      "kind": "archive",
+      "license": "Apache-2.0",
+      "license_locator": "https://github.com/erlang/otp/blob/OTP-29.0.5/LICENSE.txt",
+      "locator": "https://github.com/erlang/otp/releases/download/OTP-29.0.5/otp_src_29.0.5.tar.gz",
+      "mirror_path": "sha256/86f6f40d4638852b0383235b02a70d8450184e441e83a06a108bf8e5bf1b2e04",
+      "size": 106645320,
+      "version": "29.0.5"
+    }
+  },
+  "tools": {
+    "host": {
+      "architecture": "x86_64",
+      "make": "GNU Make 4.3",
+      "perl": "This is perl 5, version 36, subversion 0 (v5.36.0) built for x86_64-linux-gnu-thread-multi",
+      "system": "Linux-6.1.158+-x86_64-with-glibc2.36"
+    },
+    "target": {
+      "clang": "clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)",
+      "lld": "LLD 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261) (compatible with GNU linkers)",
+      "llvm_ar": "LLVM (http://llvm.org/):"
+    }
+  }
+}

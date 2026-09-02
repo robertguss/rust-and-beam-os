@@ -1,0 +1,65 @@
+{
+  "budget": 40,
+  "changed_lines": 11,
+  "changes": [
+    {
+      "change": "add",
+      "explanation": "Begin compile-time guard around local forker setup variables.",
+      "text": "#ifndef RB_ERTS_NO_FORKER"
+    },
+    {
+      "change": "add",
+      "explanation": "End local-variable guard; SIGPIPE setup remains unconditional.",
+      "text": "#endif"
+    },
+    {
+      "change": "add",
+      "explanation": "Begin compile-time guard around forker driver configuration and startup.",
+      "text": "#ifndef RB_ERTS_NO_FORKER"
+    },
+    {
+      "change": "delete",
+      "explanation": "Remove the obsolete claim that later init requires a live forker.",
+      "text": "erts_sys_unix_later_init(); /* Need to be called after forker has been started */"
+    },
+    {
+      "change": "add",
+      "explanation": "End guard after the forker port startup.",
+      "text": "#endif"
+    },
+    {
+      "change": "add",
+      "explanation": "Retain all later Unix initialization unconditionally.",
+      "text": "erts_sys_unix_later_init();"
+    },
+    {
+      "change": "add",
+      "explanation": "Separate declarations from the helperless spawn rejection block.",
+      "text": ""
+    },
+    {
+      "change": "add",
+      "explanation": "Select helperless behavior only in the sealed compile-time profile.",
+      "text": "#ifdef RB_ERTS_NO_FORKER"
+    },
+    {
+      "change": "add",
+      "explanation": "Expose an honest unsupported-operation error to the port API.",
+      "text": "errno = ENOTSUP;"
+    },
+    {
+      "change": "add",
+      "explanation": "Reject synchronously before pipe allocation or forker access.",
+      "text": "return ERL_DRV_ERROR_ERRNO;"
+    },
+    {
+      "change": "add",
+      "explanation": "Leave upstream spawn behavior byte-for-byte available in other profiles.",
+      "text": "#endif"
+    }
+  ],
+  "patch_digest": "sha256:75961539bb6859da5bcdaefc260fb66377243faa97c7ba1bbe06d5d285ee16ad",
+  "path": "erts/emulator/sys/unix/sys_drivers.c",
+  "result": "pass",
+  "schema": "rust-beam/erts-host-adapter-explanation/v1"
+}

@@ -1,0 +1,17 @@
+RB-T-P018 verification
+source revision: 2c8e486dc2ceab0a1f011c9f744ee5f44f9c6d40 (clean implementation revision)
+
+just build-otp-helperless
+PASS: fresh primary build; beam.smp sha256 2236a94efdea84687c7139f4fa021c4381aa5d00969976bfc330049554711c22
+
+just inspect-otp-helperless
+PASS: static AArch64 ET_EXEC contract; 21-object native closure; sealed adapter and omission receipts validated
+
+just test-target-helperless-linux
+PASS: 12 targeted tests; clean rebuild equivalent; 10/10 full-system AArch64 Linux TCG boots; stable 44-syscall set; zero helper process operations; clean shutdown
+
+just test-target-release-helperless-linux
+PASS: 9 targeted tests; two 365-entry Mix trees equal; paired trees and SquashFS equal; 10/10 full-system AArch64 Linux TCG boots; 41 syscalls and 958 opens per boot; six bounded negative operations; init:stop and SIGTERM exit 0
+
+just check
+PASS: cargo fmt; clippy -D warnings; Rust tests; 75 Python tests; 141 plan records; 12 evidence records including fixture; 134 gate-aware labels

@@ -1172,16 +1172,18 @@
         "RB-T-P007",
         "RB-T-P017"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/evidence/phase-0/RB-T-P018/evidence.json"
+      ],
       "id": "RB-T-P018",
       "milestone": "RB-M-M0",
-      "owner": "amp:T-01a05912-a43d-754e-84fc-d56536c31a76",
+      "owner": null,
       "parent": null,
       "path": "tasks/rb-t-p018.md",
       "priority": "P0",
       "related": [],
       "schema": "repo-plan/v1",
-      "state": "in_progress",
+      "state": "done",
       "title": "Disposition ERTS helper processes",
       "type": "task"
     },
@@ -3894,5 +3896,5 @@
     }
   ],
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:898eecabfba88d5a6a1466b63aaebfb8f38d5344d83deb386799b200564e5260"
+  "source_digest": "sha256:8ae06e85fc4c6517de287d4662a761b788560bb960c7068e7c5913ba011cf75f"
 }

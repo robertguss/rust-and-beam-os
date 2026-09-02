@@ -60,11 +60,11 @@
   "inputs": [
     {
       "path": "beam/runtime_lab/config/config.exs",
-      "digest": "sha256:749ff4457c8f3f4271104e95cdb9b1dea29242e536cc1f07a4b748db067523cf"
+      "digest": "sha256:d4c312a482c6d913223b8f385399efe501af9a2b3f2715d3f920608b7434e336"
     },
     {
       "path": "beam/runtime_lab/lib/runtime_lab/release_probe.ex",
-      "digest": "sha256:c6518311cf2540e7c9d0b79e5ca2ad1d7ee7780703c5736222533eec2e8062d3"
+      "digest": "sha256:ba4ab7bc9c0e1cf515bff81e9ee091bdb8278d33ef48493e6c57ba02e9094b53"
     },
     {
       "path": "beam/runtime_lab/mix.exs",
@@ -80,11 +80,11 @@
     },
     {
       "path": "justfile",
-      "digest": "sha256:dda0cb98657d9924d19f2275c2abf24d35cd12abd38e7365443f4eb4a199f977"
+      "digest": "sha256:88a971251ad2bba9c3cdc956c6eb4ee80a9909f9be37bbfe18a421bddbb76b52"
     },
     {
       "path": "scripts/runtime_release.py",
-      "digest": "sha256:5a45b3831cab47958a315b0dc3263ae2f1c7a93b17539277df5e9ecfdc7bfe16"
+      "digest": "sha256:0ff0a72012d550ad7c4d47104cd313780487fa7c3df3752f25f22b2963695359"
     },
     {
       "path": "tests/runtime-release/init.sh",
