@@ -129,9 +129,18 @@ inspect-otp-artifact:
 verify-otp-rebuild:
     python3 scripts/otp_artifact.py verify-rebuild
 
-# Placeholder until its owning plan task is ready.
+# Build a genuine runtime_lab Mix release with the pinned host OTP/Elixir pair.
 build-release:
-    cargo xtask unavailable build-release
+    python3 scripts/runtime_release.py build
+
+# Pair the Mix payload with the exact target ERTS and prove a clean rebuild matches.
+pair-release:
+    python3 scripts/runtime_release.py pair
+
+# Run unit checks and ten authoritative full-system AArch64 Linux release boots.
+test-target-release-linux:
+    python3 -m unittest tests.test_runtime_release -v
+    python3 scripts/runtime_release.py run --boots 10 --output target/runtime-release/acceptance
 
 # Placeholder until its owning plan task is ready.
 image:

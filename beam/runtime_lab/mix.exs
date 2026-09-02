@@ -11,7 +11,9 @@ defmodule RuntimeLab.MixProject do
       deps: [],
       releases: [
         runtime_lab: [
+          cookie: "RUNTIME_LAB_PHASE0_OFFLINE_COOKIE",
           include_erts: false,
+          include_executables_for: [:unix],
           runtime_config_path: false
         ]
       ]
