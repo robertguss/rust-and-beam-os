@@ -3,7 +3,7 @@ schema: "repo-plan/v1"
 id: "RB-T-P012"
 title: "Prove the display/input path under Apple Silicon HVF and select MMIO or PCI"
 type: "task"
-state: "open"
+state: "in_progress"
 priority: "P3"
 milestone: "RB-M-M0"
 parent: null
@@ -11,9 +11,13 @@ depends_on:
   - "RB-T-P011"
 related: []
 actor: "agent"
-owner: null
+owner: "devin"
 defer_until: null
-evidence: []
+evidence:
+  - "docs/adr/0003-virtio-transport-selection.md"
+  - "docs/evidence/phase-0/RB-T-P012/README.md"
+  - "docs/evidence/phase-0/RB-T-P012/boots/tcg-boot-01-serial.jsonl"
+  - "docs/evidence/phase-0/RB-T-P012/boots/hvf-boot-01-serial.jsonl"
 x_legacy_id: "P0-12"
 x_linear_id: "ROB-694"
 x_linear_url: "https://linear.app/robert-guss/issue/ROB-694/p0-12-prove-the-displayinput-path-under-apple-silicon-hvf-and-select"

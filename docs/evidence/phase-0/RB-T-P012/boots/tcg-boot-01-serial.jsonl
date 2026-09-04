@@ -1,0 +1,29 @@
+{"component":"virtio-probe","event":"boot","dtb_address":1207959552,"dtb_size":1048576,"irq_mode":"masked-polling"}
+{"component":"virtio-probe","event":"dma_contract","mapping":"identity","cache_policy":"DTB dma-coherent required","access_platform_negotiated":false,"barriers":"virtio-drivers SeqCst fence plus Acquire/Release rings","heap_start":1074585600,"heap_size":16777216}
+{"component":"virtio-probe","event":"platform","uart_base":150994944,"uart_size":4096,"ram_start":1073741824,"ram_size":536870912,"ecam_base":275146342400,"ecam_size":268435456,"pci_mmio_base":268435456,"pci_mmio_size":788463616,"bus_start":0,"bus_end":255,"dma_coherent":true}
+{"component":"virtio-probe","event":"pci_devices","functions":3,"gpu_bdf":"00:01.0","input_bdf":"00:02.0"}
+{"component":"virtio-probe","event":"pci_interrupts","source":"ECAM interrupt pin plus DTB interrupt-map","parent_phandle":32770,"route_count":16,"gpu_pin":1,"gpu_gic_irq":36,"gpu_flags":4,"input_pin":1,"input_gic_irq":37,"input_flags":4}
+{"component":"virtio-probe","event":"pci_bar","bus":0,"device":1,"function":0,"bar":1,"address":268435456,"size":4096,"source":"DTB ranges plus ECAM BAR sizing"}
+{"component":"virtio-probe","event":"pci_bar","bus":0,"device":1,"function":0,"bar":4,"address":268451840,"size":16384,"source":"DTB ranges plus ECAM BAR sizing"}
+{"component":"virtio-probe","event":"pci_bar","bus":0,"device":2,"function":0,"bar":1,"address":268468224,"size":4096,"source":"DTB ranges plus ECAM BAR sizing"}
+{"component":"virtio-probe","event":"pci_bar","bus":0,"device":2,"function":0,"bar":4,"address":268484608,"size":16384,"source":"DTB ranges plus ECAM BAR sizing"}
+{"component":"virtio-probe","event":"debug_reset","status":0}
+{"component":"virtio-probe","event":"debug","stage":"transport_reset","device":"gpu"}
+{"component":"virtio-probe","event":"transport_audit","device":"gpu","offered_features":1104611901442,"selected_features":4294967296,"version_1_offered":true,"features_ok_readback":true,"access_platform_selected":false,"queue0_max":64,"queue1_max":16}
+{"component":"virtio-probe","event":"debug_reset","status":0}
+{"component":"virtio-probe","event":"reset_recovery","device":"gpu","failed_status_observed":true,"reset_to_zero":true,"generation":1}
+{"component":"virtio-probe","event":"debug_reset","status":0}
+{"component":"virtio-probe","event":"debug_reset","status":0}
+{"component":"virtio-probe","event":"queue_exhaustion","device":"gpu","queue_size":2,"accepted":2,"third_error":"QueueFull","recovered_by_reset":true}
+{"component":"virtio-probe","event":"debug_reset","status":0}
+{"component":"virtio-probe","event":"debug_reset","status":0}
+{"component":"virtio-probe","event":"malformed_command","request_length":4,"descriptor_output_length":32,"completed_before_timeout":true,"response_length":24,"canaries_ok":true,"timeout_spins":10000000,"recovered_by_reset":true}
+{"component":"virtio-probe","event":"debug_reset","status":0}
+{"component":"virtio-probe","event":"debug_reset","status":0}
+{"component":"virtio-probe","event":"debug","stage":"transport_reset","device":"input"}
+{"component":"virtio-probe","event":"transport_audit","device":"input","offered_features":1104611901440,"selected_features":4294967296,"version_1_offered":true,"features_ok_readback":true,"access_platform_selected":false,"queue0_max":64,"queue1_max":64}
+{"component":"virtio-probe","event":"debug_reset","status":0}
+{"component":"virtio-probe","event":"reset_recovery","device":"input","failed_status_observed":true,"reset_to_zero":true,"generation":1}
+{"component":"virtio-probe","event":"debug_reset","status":0}
+{"component":"virtio-probe","event":"frame_presented","frame":1,"width":640,"height":480,"stride":2560,"pixel_format":"B8G8R8A8_UNORM","buffer_owner":"VirtIOGpu DMA","present_completion":"synchronous used-ring response","hardware_cursor":true}
+{"component":"virtio-probe","event":"ready_for_input","input_name_length":19,"event_queue_size":32,"status_queue_size":32,"abs_x_code":0,"abs_y_code":1,"left_code":272,"right_code":273,"x_min":0,"x_max":32767,"y_min":0,"y_max":32767}

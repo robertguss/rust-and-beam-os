@@ -124,6 +124,7 @@ fn run(dtb_address: usize) -> Result<(), &'static str> {
     allocate_bars(&mut root, gpu_function, &mut next_bar, mmio_end)?;
     allocate_bars(&mut root, input_function, &mut next_bar, mmio_end)?;
 
+    // SAFETY: The GPU BAR 4 is identity-mapped and sized at least 4 KiB by allocate_bars.
     audit_transport(&mut root, gpu_function, "gpu", true)?;
     audit_transport(&mut root, input_function, "input", false)?;
 
@@ -444,6 +445,10 @@ fn audit_transport<C: virtio_drivers::transport::pci::bus::ConfigurationAccess>(
     let mut transport =
         PciTransport::new::<ProbeHal, _>(root, function).map_err(|_| "create audit transport")?;
     reset(&mut transport)?;
+    serial::event(
+        "debug",
+        format_args!(",\"stage\":\"transport_reset\",\"device\":\"{}\"", kind),
+    );
     transport.set_status(DeviceStatus::ACKNOWLEDGE | DeviceStatus::DRIVER);
     let offered = transport.read_device_features();
     if offered & VERSION_1 == 0 {
@@ -572,8 +577,12 @@ fn initialize_version_1(transport: &mut impl Transport) -> Result<(), &'static s
 
 fn reset(transport: &mut impl Transport) -> Result<(), &'static str> {
     transport.set_status(DeviceStatus::empty());
-    for _ in 0..AUDIT_SPINS {
-        if transport.get_status().is_empty() {
+    for i in 0..AUDIT_SPINS {
+        let status = transport.get_status();
+        if i == 0 {
+            serial::event("debug_reset", format_args!(",\"status\":{}", status.bits()));
+        }
+        if status.is_empty() {
             return Ok(());
         }
         spin_loop();

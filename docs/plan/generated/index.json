@@ -998,16 +998,21 @@
       "depends_on": [
         "RB-T-P011"
       ],
-      "evidence": [],
+      "evidence": [
+        "docs/adr/0003-virtio-transport-selection.md",
+        "docs/evidence/phase-0/RB-T-P012/README.md",
+        "docs/evidence/phase-0/RB-T-P012/boots/tcg-boot-01-serial.jsonl",
+        "docs/evidence/phase-0/RB-T-P012/boots/hvf-boot-01-serial.jsonl"
+      ],
       "id": "RB-T-P012",
       "milestone": "RB-M-M0",
-      "owner": null,
+      "owner": "devin",
       "parent": null,
       "path": "tasks/rb-t-p012.md",
       "priority": "P3",
       "related": [],
       "schema": "repo-plan/v1",
-      "state": "open",
+      "state": "in_progress",
       "title": "Prove the display/input path under Apple Silicon HVF and select MMIO or PCI",
       "type": "task",
       "x_labels": [
@@ -3896,5 +3901,5 @@
     }
   ],
   "schema": "repo-plan/v1",
-  "source_digest": "sha256:8ae06e85fc4c6517de287d4662a761b788560bb960c7068e7c5913ba011cf75f"
+  "source_digest": "sha256:098440904db07fa928a2deb49066fc4a1669cc6da066e75eac69161bafde246e"
 }
